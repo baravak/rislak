@@ -19,20 +19,25 @@
                             <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-max absolute left-0">
                                 <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" title="@lang('Define new schedule')" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                                     <i class="w-6 text-center fal fa-calendar-alt pb-1"></i>
-                                    <span class="vaiable-font-medium mr-2">@lang('Define new schedule')</span>
+                                    <span class="mr-2">@lang('Define new schedule')</span>
                                 </a>
                                 <a href="{{ route($room->type == 'personal_clinic' ? 'dashboard.center.users.index' : 'dashboard.room.users.index', $room->id) }}" title="{{ __('Users') }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                                     <i class="w-6 text-center fal fa-users pb-1"></i>
-                                    <span class="vaiable-font-medium mr-2">@lang('Users')</span>
+                                    <span class="mr-2">@lang('Users')</span>
                                 </a>
-                                <a href="{{ route('dashboard.room.setting.session-platforms', $room->id) }}" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+
+                                <div class="flex items-center text-sm text-gray-800 py-3 px-4 bg-gray-100 transition dir-rtl cursor-default">
                                     <i class="w-6 text-center fal fa-cog pb-1"></i>
-                                    <span class="vaiable-font-medium mr-2">@lang('Platform settings')</span>
+                                    <span class="variable-font-medium mr-2">@lang('Settings')</span>
+                                </div>
+                                <a href="{{ route('dashboard.room.setting.session-platforms', $room->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                    <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
+                                    <span>@lang('Platform settings')</span>
                                 </a>
                                 @if (config('app.env') == 'local')
-                                    <a href="#" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                                        <i class="w-6 text-center fal fa-tags pb-1"></i>
-                                        <span class="vaiable-font-medium mr-2">@lang('Tags settings')</span>
+                                    <a href="#" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                        <i class="w-6 text-center fal fa-tags pb-1 pl-2"></i>
+                                        <span>@lang('Tags settings')</span>
                                     </a>
                                 @endif
                             </div>
