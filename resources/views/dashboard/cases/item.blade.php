@@ -10,7 +10,7 @@
         <div class="flex flex-wrap items-start mt-4">
             <i class="fal fa-user text-xs align-middle text-gray-700 ml-2"></i>
             @foreach ($case->clients ?: [] as $client)
-                <span class="text-xs text-gray-500 ml-1 mb-1">@displayName($client) ،</span>
+                <span class="text-xs text-gray-500 ml-1 mb-1">@displayName($client){{ !$loop->last ? '،' : '' }}</span>
             @endforeach
         </div>
     </div>
