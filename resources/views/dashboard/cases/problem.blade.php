@@ -21,7 +21,7 @@
                 @foreach ($case->tags ?: [] as $tag)
                     <span class="flex items-center text-xs text-gray-500 bg-gray-100 rounded h-6 px-2 ml-1 mb-1">{{ $tag->title }}</span>
                 @endforeach
-                <a href="#" class="flex items-center border border-brand text-xs text-brand hover:bg-brand hover:text-white transition rounded h-6 px-2 ml-1 mb-1">ویرایش برچسب‌ها</a>
+                <a href="{{ route('dashboard.cases.edit', $case->id) }}#tags" class="flex items-center border border-brand text-xs text-brand hover:bg-brand hover:text-white transition rounded h-6 px-2 ml-1 mb-1">ویرایش برچسب‌ها</a>
             </div>
         </div>
     @endcan

@@ -15,13 +15,13 @@
                 <a href="{{ route('dashboard.rooms.show', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-brand hover:bg-brand-600 transition rounded-md text-white text-sm"><i class="fal fa-eye"></i></a>
                 <a href="{{ route('dashboard.room.schedules.index', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-green-500 hover:bg-green-700 transition rounded-md text-white mt-1"><i class="fal fa-calendar-alt"></i></a>
             </div>
-            {{-- <div class="flex items-center flex-wrap mt-4">
-                <a href="#" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">اضطراب</a>
-                <a href="#" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">استرس</a>
-                <a href="#" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">آسیب‌شناسی اجتماعی</a>
-                <a href="#" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">روانشناختی</a>
-                <a href="#" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">طلاق پدر و مادر</a>
-            </div> --}}
+            @if ($room->pinned_tags)
+                <div class="flex items-center flex-wrap mt-4">
+                    @foreach ($room->pinned_tags as $tag)
+                        <a href="{{ route('dashboard.rooms.show', ['room' => $room->id, 'tag' => $tag->id]) }}" class="flex items-center text-xs text-gray-600 bg-blue-50 rounded h-5 px-2 hover:bg-brand hover:text-white transition ml-2 mb-2">{{ $tag->title }}</a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     @endforeach
 </div>

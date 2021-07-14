@@ -30,6 +30,8 @@ Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destr
 
 
 Route::resource('cases', 'CaseController', ['except' => 'create', 'store']);
+Route::put('cases/{case}/edit/tags', 'CaseController@tagsUpdate')->name('case.tags.update');
+
 Route::get('rooms/{room}/cases/create', 'CaseController@create')->name('room.cases.create');
 Route::post('rooms/{room}/cases', 'CaseController@store')->name('room.cases.store');
 
@@ -92,14 +94,17 @@ Route::put('centers/{center}/settings/session-platforms/{platform}', 'SessionPla
 Route::get('rooms/{room}/settings/session-platforms', 'SessionPlatformController@room')->name('room.setting.session-platforms');
 Route::put('rooms/{room}/settings/session-platforms/{platform}', 'SessionPlatformController@roomUpdate')->name('room.setting.session-platforms.update');
 
+Route::get('rooms/{room}/settings/pinned-tags', 'TagController@roomSetting')->name('room.setting.tags.show');
+Route::put('rooms/{room}/settings/pinned-tags', 'TagController@roomSettingUpdate')->name('room.setting.tags.update');
+
 Route::get('tags','TagController@index')->name('tags.index');
 
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
-    Route::get('/billings/items', 'LocalController@billingItems');
-    Route::get('/transactions', 'LocalController@transactions');
+    // Route::get('/billings/items', 'LocalController@billingItems');
+    // Route::get('/transactions', 'LocalController@transactions');
     // Route::get('/treasuries', 'LocalController@treasuries');
-    Route::get('/schedules', 'LocalController@schedules');
-    Route::get('/schedules/show', 'LocalController@schedulesShow');
-    Route::get('/transactions/create', 'LocalController@create');
+    // Route::get('/schedules', 'LocalController@schedules');
+    // Route::get('/schedules/show', 'LocalController@schedulesShow');
+    // Route::get('/transactions/create', 'LocalController@create');
 }

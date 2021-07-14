@@ -74,4 +74,16 @@ class CaseController extends Controller
         $this->data->case = $session->case;
         return $this->view($request, 'dashboard.cases.show.session-list');
     }
+
+    public function edit(Request $request, $case){
+        $case = $this->data->case = TherapyCase::apiShow($case);
+        $room = $this->data->room = $case->room;
+        $center = $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.cases.edit');
+    }
+
+    public function tagsUpdate(Request $request, $case){
+        $session = $this->data->session = TherapyCase::apiUpdateTags($case, $request->all());
+        return $session->response()->json();
+    }
 }

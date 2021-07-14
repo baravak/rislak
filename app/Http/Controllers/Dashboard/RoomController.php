@@ -6,6 +6,7 @@ use App\Center;
 use App\CenterUser;
 use App\Room;
 use App\RoomDashboard;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -58,9 +59,12 @@ class RoomController extends Controller
 
     public function show(Request $request, $room)
     {
+        if($request->tag){
+            $request->request->add(['tag' => explode(',', str_replace(' ', '', $request->tag))]);
+        }
         $cases = $this->data->cases = RoomDashboard::apiDashboard($room, $request->all());
+        $this->data->TagFilter = $cases->getFilter('tag') ? Tag::hydrate($cases->getFilter('tag')) : null;
         $room = $this->data->room = $cases->parentModel;
-        //
         $center = $this->data->center = $room->center;
         $this->data->global->title = __("Therapy room of :user in :center", ['user' => $room->manager->name, 'center' => $center->detail->title]);
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.rooms.caseItems-xhr' : 'dashboard.rooms.show');

@@ -20,6 +20,12 @@ class TherapyCase extends API
         $store = new static;
         return $store->execute(sprintf("rooms/%s/cases", $room ?: '-'), $params, 'post');
     }
+
+    public static function apiUpdateTags($case, array $params)
+    {
+        $store = new static;
+        return $store->execute(sprintf("case-tags/%s", $case ?: '-'), $params, 'put');
+    }
     public function _roomCases($id, array $params = [])
     {
         $this->parent = Room::class;

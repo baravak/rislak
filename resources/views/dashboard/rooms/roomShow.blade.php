@@ -34,12 +34,10 @@
                                     <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
                                     <span>@lang('Platform settings')</span>
                                 </a>
-                                @if (config('app.env') == 'local')
-                                    <a href="#" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                                        <i class="w-6 text-center fal fa-tags pb-1 pl-2"></i>
-                                        <span>@lang('Tags settings')</span>
-                                    </a>
-                                @endif
+                                <a href="{{ route('dashboard.room.setting.tags.show', $room->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                    <i class="w-6 text-center fal fa-tags pb-1 pl-2"></i>
+                                    <span>@lang('Tags settings')</span>
+                                </a>
                             </div>
                         </div>
                     @endcan

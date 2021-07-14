@@ -20,4 +20,15 @@ class TagController extends Controller
         }
         return $tags;
     }
+
+    public function roomSetting(Request $request, $room){
+        $this->data->tags = $tags = Tag::apiRoomSettings($room, $request->all());
+        $this->data->room = $room = $tags->parentModel;
+        $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.rooms.settings.tags');
+    }
+
+    public function roomSettingUpdate(Request $request, $room){
+        $tags = Tag::apiRoomSettingsUpdate($room, $request->all());
+    }
 }
