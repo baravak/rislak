@@ -259,3 +259,31 @@ Breadcrumbs::for('dashboard.client-reports.create', function ($trail, $data) {
     $trail->parent('dashboard.client-reports.index', $data);
     $trail->push(__('Create client report'), null);
 });
+
+
+Breadcrumbs::for('dashboard.center.setting.session-platforms', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+    $trail->push(__('Platform settings'), route('dashboard.center.setting.session-platforms', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.center.setting.session-platforms.create', function ($trail, $data) {
+    $trail->parent('dashboard.center.setting.session-platforms', $data);
+    $trail->push(__('Create session-platform'), route('dashboard.center.setting.session-platforms.create', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.center.setting.session-platforms.edit', function ($trail, $data) {
+    $trail->parent('dashboard.center.setting.session-platforms', $data);
+    $trail->push($data['platform']->title, route('dashboard.center.setting.session-platforms.edit', [$data['center']->id, $data['platform']->id]));
+});
+
+
+Breadcrumbs::for('dashboard.room.setting.session-platforms', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__('Platform settings'), route('dashboard.room.setting.session-platforms', $data['room']->id));
+});
+
+
+Breadcrumbs::for('dashboard.room.setting.tags.show', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__('Tags settings'), route('dashboard.room.setting.tags.show', $data['room']->id));
+});

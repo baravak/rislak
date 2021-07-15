@@ -1,4 +1,4 @@
-@if (count($breadcrumbs))
+@if (count($breadcrumbs) > 1)
     @foreach ($breadcrumbs as $breadcrumb)
         @if ($breadcrumb->url && !$loop->last)
             <a href="{{ $breadcrumb->url }}" class="text-sm ml-2 text-gray-500 hover:text-gray-700 transition">{{ $breadcrumb->title }}</a>

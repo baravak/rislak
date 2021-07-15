@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Assessment;
+use App\Center;
 use App\SessionPlatform;
 use App\SessionPlatformRoom;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class SessionPlatformController extends Controller
 
     public function create(Request $request, $id)
     {
-        $this->data->center = (object)['id' => $id];
+        $this->data->center = Center::apiShow($id);
         return $this->view($request, 'dashboard.centers.settings.create');
     }
 
