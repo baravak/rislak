@@ -17,7 +17,12 @@
     <div class="flex items-center justify-between border-t border-gray-100 bg-blue-50 px-4 py-3">
             <div class="text-xs text-gray-500">
                 <i class="fal fa-clock ml-1"></i>
-                <span>@time($case->created_at, '%A %d %B %y')</span>
+                <span>
+                    {{-- @if ($case->created_at->diffInMonths(\Carbon\Carbon::now()))
+                    @endif --}}
+                    {{ $case->created_at->diffForHumans(\Carbon\Carbon::now(), \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW) }}
+                    {{-- @time($case->created_at, '%A Y/m/d') --}}
+                </span>
             </div>
             <div class="text-xs text-gray-500">
                 <i class="fal fa-user-friends ml-1"></i>
