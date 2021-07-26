@@ -4,12 +4,19 @@
 @endphp
 @section('auth-form')
     <div class="flex justify-between items-center border border-gray-300 rounded p-2 mb-2 bg-gray-50">
-        <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden" title="@center($bulk->room->center)" aria-label="@center($bulk->room->center)">
-            @avatarOrName($bulk->room->center->detail)
-        </a>
+        @if ($bulk->room->type == 'personal_clinic')
+        @else
+            <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden" title="@center($bulk->room->center)" aria-label="@center($bulk->room->center)">
+                @avatarOrName($bulk->room->center->detail)
+            </a>
+        @endif
         <div class="text-center px-1">
-            <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="@center($bulk->room->center)">@center($bulk->room->center)</a>
-            <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="block text-xs text-gray-600 hover:text-brand transition mt-1" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])</a>
+            @if ($bulk->room->type == 'personal_clinic')
+            <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="{{ $bulk->room->manager->name }}">{{ $bulk->room->manager->name }}</a>
+            @else
+                <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="@center($bulk->room->center)">@center($bulk->room->center)</a>
+                <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="block text-xs text-gray-600 hover:text-brand transition mt-1" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])</a>
+            @endif
         </div>
         <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">
             @avatarOrName($bulk->room->manager)
