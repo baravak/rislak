@@ -16,7 +16,7 @@
                             <button type="button" class="flex items-center justify-center border border-gray-300 rounded-full h-9 w-9 hover:bg-gray-100 transition text-2xl text-gray-400 focus mr-2 dropdown-toggle">
                                 <i class="fal fa-ellipsis-v"></i>
                             </button>
-                            <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu min-w-max absolute left-0">
+                            <div class="rounded bg-white border border-gray-200 mt-2 shadow-md dropdown-menu w-48 absolute left-0">
                                 <a href="{{ route('dashboard.room.schedules.create', $room->id) }}" title="@lang('Define new schedule')" class="flex items-center text-sm text-gray-700 py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                                     <i class="w-6 text-center fal fa-calendar-alt pb-1"></i>
                                     <span class="mr-2">@lang('Define new schedule')</span>

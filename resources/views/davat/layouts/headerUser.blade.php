@@ -21,7 +21,7 @@
                 </div>
             </div>
         </button>
-        <div class="rounded bg-white border border-gray-200 mt-1 shadow-md dropdown-menu min-w-max absolute left-0">
+        <div class="rounded bg-white border border-gray-200 mt-1 shadow-md dropdown-menu absolute left-0">
             <a href="{{ route('dashboard.users.me') }}" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">مشاهده پروفایل</a>
             <a href="{{ route('dashboard.treasuries.index') }}" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">@lang('Financial treasuries')</a>
             <a href="{{ route('dashboard.billings.index') }}" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">@lang('Billings')</a>
