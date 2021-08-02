@@ -59,4 +59,8 @@
             @include('dashboard.users.forms.edit._publicKey')
         </div>
     </div>
+
+    @if (config('app.env') == 'local')
+        @include('helps.profileEdit')
+    @endif
 @endsection
