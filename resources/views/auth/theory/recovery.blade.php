@@ -16,5 +16,5 @@
         <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-blue-600 transition" title="{{ __('Register') }}" aria-label="{{ __('Register') }}">{{ __('Register') }}</a>
     </div>
 @endsection
-
+@include('helps.auth.newPassword')
 @extends('auth.theory')

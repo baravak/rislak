@@ -33,5 +33,5 @@
         </div>
     @endif
 @endsection
-
+@include('helps.auth.register')
 @extends('auth.theory')

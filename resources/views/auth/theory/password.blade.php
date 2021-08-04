@@ -13,5 +13,5 @@
 
     <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus" title="{{ __('Login') }}" aria-label="{{ __('Login') }}" role="button">{{ __('Login') }}</button>
 @endsection
-
+@include('helps.auth.password')
 @extends('auth.theory')

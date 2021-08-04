@@ -20,7 +20,7 @@
     </div>
 
 @endsection
-
+@include('helps.auth.login')
 @section('auth-nav')
     <div class="flex justify-center mt-8">
         @if (auth()->check())

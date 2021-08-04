@@ -52,9 +52,5 @@
             </div> --}}
         </div>
     </div>
-
-    @if (config('app.env') == 'local')
-        @include('helps.profile')
-    @endif
-
+    @include('helps.profile')
 @endsection
