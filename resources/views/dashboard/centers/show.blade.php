@@ -18,3 +18,4 @@
         @include('dashboard.centers.rooms')
 @endsection
 @extends('dashboard.centers.centerShow')
+@include('helps.centers.show')
