@@ -11,4 +11,5 @@
         @endif
     </div>
     @include('dashboard.centers.list')
+    @include('helps.centers.index')
 @endsection
