@@ -52,5 +52,5 @@
             </div> --}}
         </div>
     </div>
-    @include('helps.profile')
+    @include('helps.users.profile')
 @endsection

@@ -60,5 +60,5 @@
         </div>
     </div>
 
-    @include('helps.profileEdit')
+    @include('helps.users.profileEdit')
 @endsection
