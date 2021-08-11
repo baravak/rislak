@@ -56,36 +56,40 @@
                 </div>
             </a>
         </div>
-        <div class="flex items-center flex-wrap text-sm text-gray-700 mt-4 mb-2 cursor-default">
+        <div class="flex items-center flex-wrap text-sm text-gray-700 mt-4 mb-2 cursor-default leading-6 sm:leading-normal">
             <i class="fal fa-street-view ml-2 w-4"></i>
             <span class="variable-font-medium break-normal">@lang('بستر جلسه'):</span>
-            <span class="flex items-center bg-gray-100 text-gray-500 px-4 py-1 rounded mr-2 mt-2 sm:mt-0">انتخاب به عهده مراجع (مجازی): واتساپ</span>
+            <span class="flex items-center text-gray-500 mr-2">گوگل میت (مجازی)</span>
+            <span class="flex items-center text-gray-500 mx-2">|</span>
+            {{-- <span class="flex items-center text-gray-500">تهران، میدان آزادی، خیابان اندیشه، کوچه 40، ساختمان طلیعه سلامت</span> --}}
+            <a href="#" target="_blank" class="flex items-center text-blue-500 underline hover:text-blue-600">https://meet.google.com/nxo-jcjn-xsq</a>
+            {{-- <a href="tel:+989123456789" class="flex items-center text-blue-500 underline hover:text-blue-600 dir-ltr direct">09123456789</a> --}}
         </div>
     </div>
     <div class="p-4 border border-gray-300 rounded grid grid-cols-2 gap-2">
         <div class="grid grid-cols-1 grid-rows-4 gap-4 lg:gap-2">
             <div class="flex items-start text-sm text-gray-700">
                 <i class="fal fa-credit-card ml-2 w-4 pb-1"></i>
-                <span class="variable-font-medium">نوع پرداخت</span>
+                <span class="variable-font-medium text-xs">نوع پرداخت</span>
             </div>
             <div class="flex items-start text-sm text-gray-700">
                 <i class="fal fa-user-tag ml-2 w-4 pb-1"></i>
-                <span class="variable-font-medium">نوع مراجعین درخواست دهنده</span>
+                <span class="variable-font-medium text-xs">نوع مراجعین درخواست دهنده</span>
             </div>
             <div class="flex items-start text-sm text-gray-700">
                 <i class="fal fa-stopwatch ml-2 w-4"></i>
-                <span class="variable-font-medium">زمان شروع نوبت‌گیری</span>
+                <span class="variable-font-medium text-xs">زمان شروع نوبت‌گیری</span>
             </div>
             <div class="flex items-start text-sm text-gray-700">
                 <i class="fal fa-times-circle ml-2 w-4"></i>
-                <span class="variable-font-medium">زمان بستن نوبت‌گیری</span>
+                <span class="variable-font-medium text-xs">زمان بستن نوبت‌گیری</span>
             </div>
         </div>
         <div class="grid grid-cols-1 grid-rows-4 gap-4 lg:gap-2">
-            <div class="text-sm text-gray-500">نقدی</div>
-            <div class="text-sm text-gray-500">اعضاء ریسلو</div>
-            <div class="text-sm text-gray-500">سه‌شنبه، 19 مرداد 1400 - ساعت 18:30</div>
-            <div class="text-sm text-gray-500">پنج‌شنبه، 21 مرداد 1400 - ساعت 12:00</div>
+            <div class="text-xs text-gray-500">نقدی</div>
+            <div class="text-xs text-gray-500">اعضاء ریسلو</div>
+            <div class="text-xs text-gray-500">سه‌شنبه، 19 مرداد 1400 - ساعت 18:30</div>
+            <div class="text-xs text-gray-500">پنج‌شنبه، 21 مرداد 1400 - ساعت 12:00</div>
         </div>
     </div>
 </div>
