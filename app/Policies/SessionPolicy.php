@@ -19,6 +19,9 @@ class SessionPolicy
         }else{
             $room = isset($session->parentModel) ? $session->parentModel->room : $session->room;
         }
+        if($room->acceptation && $room->acceptation->position == 'manager'){
+            return true;
+        }
         if($mode == 'report'){
             if($room->acceptation && $room->acceptation->position == 'manager'){
                 return true;
