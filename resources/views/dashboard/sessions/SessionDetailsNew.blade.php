@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-4">
     <div class="lg:col-span-2 p-4 border border-gray-300 rounded">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div class="flex items-start text-sm text-gray-700">
@@ -52,34 +52,54 @@
                 <span class="mr-2 text-gray-500">{{ $session->clients->pluck('name')->join(' ، ') }}</span>
             </div>
         @endif
-        <div class="flex items-start text-sm text-gray-700 mt-4 mb-2 cursor-default">
-            <i class="fal fa-comment-alt-lines ml-2 w-4"></i>
-            <span class="variable-font-medium">@lang('Therapists')</span>
+
+        <div class="flex items-start text-sm text-gray-700 mt-4 cursor-default">
+            <i class="fal fa-pen-alt ml-2 w-4 pb-1"></i>
+            <span class="variable-font-medium">@lang('محور'):</span>
+            <span class="mr-2 text-gray-500">استرس‌های متداول</span>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <a href="{{$room->route('show')}}" class="inline-flex items-center group">
-                <div class="flex justify-center items-center flex-shrink-0 w-6 h-6 rounded-full overflow-hidden ml-2 bg-gray-200 text-gray-800 text-xs">
-                    @avatarOrName($room->manager)
-                </div>
-                <div class="flex items-center">
-                    <div class="font-medium text-sm text-gray-500 group-hover:text-blue-600">@displayName($room->manager)</div>
-                </div>
-            </a>
-        </div>
+
+        @if (false)
+            <div class="flex items-start text-sm text-gray-700 mt-4 mb-2 cursor-default">
+                <i class="fal fa-comment-alt-lines ml-2 w-4"></i>
+                <span class="variable-font-medium">@lang('Therapists')</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <a href="{{$room->route('show')}}" class="inline-flex items-center group">
+                    <div class="flex justify-center items-center flex-shrink-0 w-6 h-6 rounded-full overflow-hidden ml-2 bg-gray-200 text-gray-800 text-xs">
+                        @avatarOrName($room->manager)
+                    </div>
+                    <div class="flex items-center">
+                        <div class="font-medium text-sm text-gray-500 group-hover:text-blue-600">@displayName($room->manager)</div>
+                    </div>
+                </a>
+            </div>
+        @endif
+
         <div class="flex items-center flex-wrap text-sm text-gray-700 mt-4 mb-2 cursor-default">
             <i class="fal fa-street-view ml-2 w-4"></i>
             <span class="variable-font-medium break-normal">@lang('بستر جلسه'):</span>
-            <span class="flex items-center text-gray-500 mr-2">تماس تلفنی</span>
-            <span class="flex items-center text-gray-500 mx-2">|</span>
-            {{-- <span class="flex items-center text-gray-500">تهران، میدان آزادی، خیابان اندیشه، کوچه 40، ساختمان طلیعه سلامت</span> --}}
-            {{-- <a href="#" target="_blank" class="flex items-center text-blue-500 underline hover:text-blue-600">https://meet.google.com/nxo-jcjn-xsq</a> --}}
-            <a href="tel:+989123456789" class="flex items-center text-blue-500 underline hover:text-blue-600 dir-ltr direct">09123456789</a>
-            <a href="#" class="flex items-center justify-center text-gray-600 border rounded-full border-gray-400 hover:bg-gray-100 transition h-7 w-7 mr-4 mt-2 sm:mt-0 text-sm" title="@lang('Edit')">
-                <i class="fal fa-edit"></i>
-            </a>
+
+            {{-- ↓ ↓ ↓ در حالت ثابت ↓ ↓ ↓ --}}
+            <div class="flex items-center flex-wrap leading-8 sm:leading-normal">
+                <span class="flex items-center text-gray-500 mr-2">تماس تلفنی</span>
+                <span class="flex items-center text-gray-500 mx-2">|</span>
+                {{-- <span class="flex items-center text-gray-500">تهران، میدان آزادی، خیابان اندیشه، کوچه 40، ساختمان طلیعه سلامت</span> --}}
+                {{-- <a href="#" target="_blank" class="flex items-center text-blue-500 underline hover:text-blue-600">https://meet.google.com/nxo-jcjn-xsq</a> --}}
+                <a href="tel:+989123456789" class="flex items-center text-blue-500 underline hover:text-blue-600 dir-ltr direct">09123456789</a>
+            </div>
+
+            {{-- ↓ ↓ ↓ در حالت دراپ داون ↓ ↓ ↓ --}}
+            {{-- <select name="" id="" class="mt-2 sm:mt-0 w-full sm:w-auto border border-gray-300 rounded h-8 text-xs lijax mr-2">
+                <option>تماس تلفنی | 09123456789</option>
+                <option>حضوری | تهران، میدان آزادی، خیابان اندیشه، کوچه 40، ساختمان طلیعه سلامت</option>
+                <option>آنلاین | https://meet.google.com/nxo-jcjn-xsq</option>
+            </select> --}}
         </div>
+
+
     </div>
-    <div class="p-4 border border-gray-300 rounded grid grid-cols-2 gap-2">
+    <div class="p-4 border border-gray-300 rounded hidden xl:grid grid-cols-2 gap-2">
         <div class="grid grid-cols-1 grid-rows-4 gap-4 lg:gap-2">
             @if($session->payment_status)
                 <div class="flex items-start text-sm text-gray-700">
