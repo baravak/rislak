@@ -4,6 +4,7 @@ namespace App;
 
 class Session extends API
 {
+    use SessionTheme;
     public $with = [
         'client' => User::class,
         'clients' => User::class,

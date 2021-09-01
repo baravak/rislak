@@ -7,12 +7,15 @@
     </div>
     <div class="text-sm text-gray-500 mb-2 cursor-default">{{ $session->description }}</div>
     <div class="flex items-center justify-between">
+
         <div class="flex items-center">
             <div class="flex h-2 w-2 relative">
-                <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-brand opacity-80"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                @if ($session->status == 'session_awaiting')
+                    <span class="absolute animate-ping inline-flex h-full w-full rounded-full bg-brand opacity-80"></span>
+                @endif
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-{{ $session->session_status_color }}"></span>
             </div>
-            <div class="text-brand text-xs cursor-default mr-2">{{ __(ucfirst($session->status)) }}</div>
+            <div class="text-{{ $session->session_status_color }} text-xs cursor-default mr-2">{{ __(ucfirst($session->status)) }}</div>
         </div>
         <div>
             @can ('update', [\App\Session::class, $session])
@@ -56,7 +59,7 @@
         <div class="flex items-start text-sm text-gray-700 mt-4 cursor-default">
             <i class="fal fa-pen-alt ml-2 w-4 pb-1"></i>
             <span class="variable-font-medium">@lang('محور'):</span>
-            <span class="mr-2 text-gray-500">استرس‌های متداول</span>
+            <span class="mr-2 text-gray-500">{{ $session->clients && $session->clients->first() ? $session->clients->first()->field->title : '' }}</span>
         </div>
 
         @if (false)
@@ -79,15 +82,23 @@
         <div class="flex items-center flex-wrap text-sm text-gray-700 mt-4 mb-2 cursor-default">
             <i class="fal fa-street-view ml-2 w-4"></i>
             <span class="variable-font-medium break-normal">@lang('بستر جلسه'):</span>
-
+            @php
+                $sp = $session->clients && $session->clients->first() ? $session->clients->first()->session_platform : null;
+            @endphp
             {{-- ↓ ↓ ↓ در حالت ثابت ↓ ↓ ↓ --}}
-            <div class="flex items-center flex-wrap leading-8 sm:leading-normal">
-                <span class="flex items-center text-gray-500 mr-2">تماس تلفنی</span>
-                <span class="flex items-center text-gray-500 mx-2">|</span>
-                {{-- <span class="flex items-center text-gray-500">تهران، میدان آزادی، خیابان اندیشه، کوچه 40، ساختمان طلیعه سلامت</span> --}}
-                {{-- <a href="#" target="_blank" class="flex items-center text-blue-500 underline hover:text-blue-600">https://meet.google.com/nxo-jcjn-xsq</a> --}}
-                <a href="tel:+989123456789" class="flex items-center text-blue-500 underline hover:text-blue-600 dir-ltr direct">09123456789</a>
-            </div>
+            @if ($sp)
+                <div class="flex items-center flex-wrap leading-8 sm:leading-normal">
+                    <span class="flex items-center text-gray-500 mr-2">{{ $sp->title }}</span>
+                    <span class="flex items-center text-gray-500 mx-2">|</span>
+                    @if ($sp->identifier_type == 'phone')
+                        <a href="tel:{{ $sp->identifier }}" class="flex items-center text-blue-500 underline hover:text-blue-600 dir-ltr direct">{{ $sp->identifier }}</a>
+                    @elseif ($sp->identifier_type == 'uri')
+                        <a href="{{ $sp->identifier }}" target="_blank" class="flex items-center text-blue-500 underline hover:text-blue-600">{{ mb_substr($sp->identifier, 0, 30) }}</a>
+                    @else
+                    <span class="flex items-center text-gray-500">{{ $sp->identifier }}</span>
+                    @endif
+                </div>
+            @endif
 
             {{-- ↓ ↓ ↓ در حالت دراپ داون ↓ ↓ ↓ --}}
             {{-- <select name="" id="" class="mt-2 sm:mt-0 w-full sm:w-auto border border-gray-300 rounded h-8 text-xs lijax mr-2">

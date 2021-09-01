@@ -7,6 +7,7 @@ use App\Models\ApiResponse;
 
 class Schedule extends API
 {
+    use SessionTheme;
     public $parent = Center::class;
     protected $casts = [
         'started_at' => 'datetime',
