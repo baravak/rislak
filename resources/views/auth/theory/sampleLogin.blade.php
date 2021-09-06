@@ -35,11 +35,11 @@
         <span class="text-xs text-gray-600 mt-4">
             در این فرایند، آزمون‌های فوق برای شما فعال شده و می‌توانید آن‌ها را تکمیل کنید.
         </span>
-        @if (!$bulk->room->center->acceptation)
+        {{-- @if (!$bulk->room->center->acceptation)
             <span class="text-xs text-gray-600 mt-1">
                 پس از این مرحله، شما عضو این مرکز درمانی و اتاق درمان خواهید شد و مدیران قادر به دیدن شماره تماس شما می‌باشند.
             </span>
-        @endif
+        @endif --}}
 
         @if (!$bulk->room->center->acceptation)
         <div class="mt-4">
