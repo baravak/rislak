@@ -48,6 +48,11 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block cursor-default">@lang($billing->type)</span>
+            @can('pay', [\App\Billing::class, $billing])
+                <div class="mr-1 inline-block">
+                    <a href="{{ route('dashboard.billings.settled', $billing->id) }}" data-method="post" class="lijax inline-block px-3 py-1 text-xs text-brand hover:text-white border border-brand hover:bg-brand rounded-full transition">{{ __('Payment') }}</a>
+                </div>
+            @endcan
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
