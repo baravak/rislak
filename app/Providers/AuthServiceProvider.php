@@ -32,7 +32,9 @@ class AuthServiceProvider extends ServiceProvider
         \App\Practice::class => \App\Policies\PracticePolicy::class,
 
         \App\Schedule::class => \App\Policies\SchedulePolicy::class,
-        \App\PublicTransaction::class => \App\Policies\PublicTransaction::class
+        \App\PublicTransaction::class => \App\Policies\PublicTransaction::class,
+
+        \App\Billing::class => \App\Policies\BillingPolicy::class
 
     ];
 

@@ -57,9 +57,11 @@
                             <div class="inline-block mr-2">
                                 <a href="#" title="{{ __('Edition') }}"><i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i></a>
                             </div>
-                            <div class="inline-block">
-                                <a href="#" class="inline-block px-3 py-1 text-xs text-brand hover:text-white border border-brand hover:bg-brand rounded-full transition">{{ __('Payment') }}</a>
-                            </div>
+                            @can('pay', [\App\Billing::class, $transaction])
+                                <div class="inline-block">
+                                    <a href="{{ route('dashboard.billings.settled', $transaction->id) }}" data-method="post" class="lijax inline-block px-3 py-1 text-xs text-brand hover:text-white border border-brand hover:bg-brand rounded-full transition">{{ __('Payment') }}</a>
+                                </div>
+                            @endcan
                             @can('creditor', [$transaction, $center])
                                 <div class="inline-flex items-center text-right dir-rtl">
                                     <select class="text-xs text-gray-700 border border-gray-400 rounded-full py-1 px-8" name="id" data-lijax="change" data-action="{{ route('dashboard.billings.final', $transaction->id) }}" data-method="POST">

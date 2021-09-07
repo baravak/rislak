@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BillingController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('users/{user}/public-key', 'UserController@publicKey')->name('users.publicKey');
@@ -99,6 +100,7 @@ Route::put('rooms/{room}/settings/pinned-tags', 'TagController@roomSettingUpdate
 
 Route::get('tags','TagController@index')->name('tags.index');
 
+Route::post('billings/{billing}/settled', 'BillingController@settled')->name('billings.settled');
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');
