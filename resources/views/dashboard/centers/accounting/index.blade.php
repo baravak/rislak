@@ -1,5 +1,5 @@
-@extends('dashboard.create')
-@section('form-tag')
+@extends($layouts->dashboard)
+@section('content')
     <ul data-tabs>
         <li><a href="#contribution" data-tabby-default class="direct focus flex" title="{{ __('contribution') }}">{{ __('contribution') }}</a></li>
         <li><a href="#financial-balance" class="direct focus flex" title="{{ __('Financial-balance') }}">{{ __('Financial-balance') }}</a></li>
