@@ -101,6 +101,9 @@ Route::put('rooms/{room}/settings/pinned-tags', 'TagController@roomSettingUpdate
 Route::get('tags','TagController@index')->name('tags.index');
 
 Route::post('billings/{billing}/settled', 'BillingController@settled')->name('billings.settled');
+
+Route::get('centers/{center}/accounting', 'CenterAccountingController@index')->name('center.accounting.index');
+
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');

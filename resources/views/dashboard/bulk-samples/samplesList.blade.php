@@ -51,9 +51,7 @@
                             </td>
                         @endif
                         <td class="px-3 py-2 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($sample->status))</span>
-                            </div>
+                            @include('dashboard.samples.tables.status')
                         </td>
                         <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
                             @include('dashboard.samples.do')

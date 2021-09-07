@@ -8,7 +8,11 @@
         <div class="flex">
             <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $member->id]) }}" class="inline-flex items-center text-gray-600 hover:text-brand">
                 <i class="fal fa-user text-sm eading-normal ml-2"></i>
-                <span class="text-xs">{{ $member->name }}</span>
+                <span class="text-xs">{{ $member->name }}
+                    <span class="inline-block dir-ltr">
+                        ({{ $bulkSample->samples->where('client.id', $member->id)->whereIn('status', ['done', 'closed'])->count() == $bulkSample->scales->count() ? 'کامل' :  $bulkSample->samples->where('client.id', $member->id)->whereIn('status', ['done', 'closed'])->count()}})
+                    </span>
+                </span>
             </a>
         </div>
         @endforeach

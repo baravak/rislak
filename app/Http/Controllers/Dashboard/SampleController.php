@@ -70,6 +70,9 @@ class SampleController extends Controller
     public function scoring(Request $request, $serial)
     {
         $sample = $this->data->sample = Sample::scoring($serial);
+        if($request->has('inline')){
+            return $this->view($request, 'dashboard.samples.tables.statusScoring', $sample);
+        }
         if($sample->status == 'done'){
             return $this->show($request, $sample);
         }
