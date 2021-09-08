@@ -1,6 +1,6 @@
-<div x-data="{commission : {{ $center->detail->commission }}}">
+<div x-data="{commission : {{ $center->detail->commission }}, _commission : {{ $center->detail->commission }}}">
     <div class="m-auto w-full md:w-1/2 pt-4">
-        <form method="POST" action="{{ route('dashboard.center.commissions.update', $center->id) }}" x-on:jresp="if(event.detail.is_ok) commission = $el.querySelector('#commission').value">
+        <form method="POST" action="{{ route('dashboard.center.commissions.update', $center->id) }}" x-on:jresp="if(event.detail.is_ok) commission = $el.querySelector('#commission').value; _commission = event.detail.is_ok ? commission : _commission; commission = _commission">
             @method('PUT')
             <div class="border border-gray-300 rounded p-4">
                 <h2 class="text-center variable-font-bold text-green-700 mb-4 cursor-default">{{ __('تعیین سهم مرکز از اتاق‌های درمان') }}</h2>

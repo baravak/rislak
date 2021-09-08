@@ -19,9 +19,6 @@ class CenterAccountingController extends Controller
     public function commissionUpdate(Request $request, $center)
     {
         $this->data->update = $update = Commission::apiChildUpdate($center, $request->all());
-        return array_merge(['is_ok' => true], $request->all());
-        dd($update);
-        $this->data->center = $rooms->parentModel;
-        return $this->view($request, 'dashboard.centers.accounting.index');
+        return $update->response()->json();
     }
 }

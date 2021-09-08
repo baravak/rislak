@@ -57,7 +57,7 @@
         var back_value = $(context).val() || $(context).attr('data-value');
         if($(context).is(':checkbox'))
         {
-            back_value = $(context).is(':checked') ? 1 : 0;
+            // back_value = $(context).is(':checked') ? 1 : 0;
         }
         var Timeout = null;
         var fire = null;
@@ -89,6 +89,9 @@
 
         function send()
         {
+            if($(context).data('lijax-statio')){
+                $(context).data('lijax-statio').ajax.abort();
+            }
             var href = url.parse(location.href);
             var name = $(context).attr('data-name') || $(context).attr('name');
             if(href.get && href.get[name])
@@ -199,7 +202,7 @@
             }
             var uploadFile = $(context).is(':file') || ($(context).is('form') && ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length))  ? true : false;
             $(context).trigger('lijax:data', [data]);
-            new Statio({
+            var statio = new Statio({
                 type : state ? 'both' : 'render',
                 context: context,
                 ajax : {
@@ -219,6 +222,7 @@
                 },
                 url : action
             });
+            $(context).data('lijax-statio', statio);
             return false;
         }
         if (onFire)
