@@ -1,4 +1,4 @@
-<tr class="transition hover:bg-gray-50" x-data="{ pinned: Boolean({{ $room->commission_pinned }}) , room_commission : {{ $room->commission }}, _room_commission : {{ $room->commission }}}" x-ref="row_{{ $room->id }}">
+<tr class="transition hover:bg-gray-100 {{ ($loop->index % 2) ? 'bg-gray-50' : '' }}" x-data="{ pinned: Boolean({{ $room->commission_pinned }}) , room_commission : {{ $room->commission }}, _room_commission : {{ $room->commission }}}" x-ref="row_{{ $room->id }}">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 cursor-default">{{ $room->manager->name }}</span>

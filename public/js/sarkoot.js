@@ -148,7 +148,7 @@
                     }
                     if($(context).attr('data-merge')){
                         var merge = JSON.parse($(context).attr('data-merge'));
-                        console.log($.extend(data, merge));
+                        $.extend(data, merge)
                     }
                 }
             }
@@ -1064,7 +1064,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 		}).on('jresp', function (e, d) {
 			$('.is-invalid', this).removeClass('is-invalid');
 			$('.invalid-feedback', this).remove();
-			if (d.errors) {
+			if (d && d.errors) {
 				for (var id in d.errors) {
 					if(id.split('.').length > 1){
 						var sub_id = id.split('.');
