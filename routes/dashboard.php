@@ -103,6 +103,8 @@ Route::get('tags','TagController@index')->name('tags.index');
 Route::post('billings/{billing}/settled', 'BillingController@settled')->name('billings.settled');
 
 Route::get('centers/{center}/accounting', 'CenterAccountingController@index')->name('center.accounting.index');
+Route::get('centers/{center}/commissions', 'CenterAccountingController@commission')->name('center.commissions.index');
+Route::put('centers/{center}/commissions', 'CenterAccountingController@commissionUpdate')->name('center.commissions.update');
 
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');

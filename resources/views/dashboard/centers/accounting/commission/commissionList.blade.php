@@ -1,5 +1,4 @@
 <div data-xhr="centers-rooms">
-    {{-- @if () --}}
     <div class="overflow-x-auto">
         <div class="align-middle inline-block min-w-full">
             <div class="overflow-hidden border border-gray-200 rounded">
@@ -13,17 +12,12 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($ as $) --}}
-                            @include('dashboard.centers.accounting.contribution.contributionRaw')
-                        {{-- @endforeach --}}
+                        @foreach ($rooms as $room)
+                            @include('dashboard.centers.accounting.commission.commissionRaw')
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    {{-- {{method_exists($, 'links') ? $->links() : null}} --}}
-
-    {{-- @else --}}
-        {{-- <div class="border border-gray-200 rounded p-4 text-center text-sm text-gray-500">@lang('اتاق درمانی‌ای در مرکز ثبت نشده است.')</div> --}}
-    {{-- @endif --}}
 </div>
