@@ -2,6 +2,8 @@
 	function jresp(context, res)
 	{
 		context.trigger('jresp', [res]);
+		var event = new CustomEvent("jresp", {detail : res});
+        context[0].dispatchEvent(event);
 		if (res.message && !context.is('.d-notification'))
 		{
 			if (window.toastr)
@@ -332,7 +334,8 @@
 
 		$(document).trigger('statio:global:init', [options.context]);
 		options.context.trigger('statio:init');
-
+		var ex = new CustomEvent("statio-init");
+        options.context[0].dispatchEvent(ex);
 
 		var ajax_data = null;
 		var ajax_send_url = null;
@@ -387,6 +390,8 @@
 			render();
 			$(document).trigger('statio:global:done', [options.context]);
 			options.context.trigger('statio:done');
+			var ex = new CustomEvent("statio-done");
+        	options.context[0].dispatchEvent(ex);
 		}
 		else
 		{
@@ -400,6 +405,8 @@
 			}
 			$(document).trigger('statio:global:done', [options.context]);
 			options.context.trigger('statio:done');
+			var ex = new CustomEvent("statio-done");
+        	options.context[0].dispatchEvent(ex);
 		}
 
 		function ajx_complete(jqXHR, textStatus)
@@ -452,6 +459,8 @@
 			}
 			$(document).trigger('statio:global:done', [options.context, response.data, response.body, jqXHR]);
 			options.context.trigger('statio:done', [response.data, response.body, jqXHR]);
+			var ex = new CustomEvent("statio-done", {detail:response.data});
+        	options.context[0].dispatchEvent(ex);
 		}
 
 		function response_parse(){

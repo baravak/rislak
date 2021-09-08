@@ -17,10 +17,6 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     metarget();
     davat.clipboard();
     base.each(function () {
-        $('form', this).on('jresp', function(e, result){
-            var event = new CustomEvent("jresp", {detail : result});
-            window.dispatchEvent(event);
-        });
         davat.select2($('.select2-select', this));
         davat.avatar($('.input-avatar', this));
         davat.dropdown($('.dropdown', this));
