@@ -106,6 +106,7 @@ Route::get('centers/{center}/accounting', 'CenterAccountingController@index')->n
 Route::get('centers/{center}/commissions', 'CenterAccountingController@commission')->name('center.commissions.index');
 Route::put('centers/{center}/commissions', 'CenterAccountingController@commissionUpdate')->name('center.commissions.update');
 
+Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');

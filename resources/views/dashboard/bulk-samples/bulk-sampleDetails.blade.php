@@ -42,6 +42,9 @@
             <a href="{{ $bulkSample->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 py-1 rounded-full text-sm leading-normal transition ml-2">
                 <span class="text-xs">{{ __('Edit') }}</span>
             </a>
+            <button data-action="{{ route('dashboard.exportWorkers.store') }}" data-method="post" data-merge='{"type" : "bulk", "id" : "{{ $bulkSample->id }}"}' class="lijax flex justify-center items-center flex-shrink-0 border border-blue-800 text-gray-600 hover:bg-blue-100 px-4 py-1 rounded-full text-sm leading-normal transition ml-2">
+                <span class="text-xs">{{ __('خروجی تجمیعی') }}</span>
+            </button>
         </div>
     </div>
 </div>
