@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\AtomDetail;
+use App\Center;
 use App\Commission;
 use App\RoomBalance;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class CenterAccountingController extends Controller
 
     public function index(Request $request, $center)
     {
-        $this->data->center = (object) ['id' => $center];
+        $this->data->center = Center::apiShow($center);
         return $this->view($request, 'dashboard.centers.accounting.index');
     }
 

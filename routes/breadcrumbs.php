@@ -287,3 +287,18 @@ Breadcrumbs::for('dashboard.room.setting.tags.show', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
     $trail->push(__('Tags settings'), route('dashboard.room.setting.tags.show', $data['room']->id));
 });
+
+Breadcrumbs::for('dashboard.center.accounting.index', function ($trail, $data) {
+    $trail->parent('dashboard.centers.show', $data);
+    $trail->push(__('Accounting'), route('dashboard.center.accounting.index', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.center.commissions.index', function ($trail, $data) {
+    $trail->parent('dashboard.center.accounting.index', $data);
+    $trail->push(__('کمیسیون اتاق‌های مرکز'), route('dashboard.center.commissions.index', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.center.roomBalances.index', function ($trail, $data) {
+    $trail->parent('dashboard.center.accounting.index', $data);
+    $trail->push(__('تراز مالی اتاق‌های مرکز'), route('dashboard.center.roomBalances.index', $data['center']->id));
+});
