@@ -13,7 +13,7 @@
             <i class="fal fa-cash-register text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Checkout')</span>
         </a>
-        <a href="#" class="border border-gray-300 hover:border-gray-600 text-gray-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-gray-50 transition group focus-current ring-gray-500">
+        <a href="#" class="border border-gray-300 hover:border-gray-600 text-gray-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-gray-100 transition group focus-current ring-gray-500">
             <i class="fal fa-exchange text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Credit transfer')</span>
         </a>
