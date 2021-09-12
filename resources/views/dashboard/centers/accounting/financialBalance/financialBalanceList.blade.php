@@ -13,9 +13,9 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($rooms as $room) --}}
+                        @foreach ($rooms as $room)
                             @include('dashboard.centers.accounting.financialBalance.financialBalanceRaw')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Billing;
+use App\AtomDetail;
 use App\Commission;
+use App\RoomBalance;
 use Illuminate\Http\Request;
 
 class CenterAccountingController extends Controller
@@ -16,19 +17,21 @@ class CenterAccountingController extends Controller
     }
 
     public function commission(Request $request, $center){
-        $this->data->rooms = $rooms = Commission::apiChildIndex($center);
+        $this->data->rooms = $rooms = AtomDetail::apiChildIndex($center);
         $this->data->center = $rooms->parentModel;
         return $this->view($request, 'dashboard.centers.accounting.commission.index');
     }
 
-    public function financialBalance(Request $request){
+    public function roomBalance(Request $request, $center){
+        $this->data->rooms = $rooms = AtomDetail::apiChildIndex($center);
+        $this->data->center = $rooms->parentModel;
         return $this->view($request, 'dashboard.centers.accounting.financialBalance.index');
 
     }
 
     public function commissionUpdate(Request $request, $center)
     {
-        $this->data->update = $update = Commission::apiChildUpdate($center, $request->all());
+        $this->data->update = $update = AtomDetail::apiChildUpdate($center, $request->all());
         return $update->response()->json();
     }
 }
