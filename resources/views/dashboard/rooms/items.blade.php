@@ -3,5 +3,4 @@
         @include('dashboard.rooms.item')
     @endforeach
 </div>
-
-{{ $rooms->links() }}
+{{ $rooms instanceof \App\Models\ApiCollection ? null : $room->links() }}

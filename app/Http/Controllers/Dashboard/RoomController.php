@@ -69,4 +69,10 @@ class RoomController extends Controller
         $this->data->global->title = __("Therapy room of :user in :center", ['user' => $room->manager->name, 'center' => $center->detail->title]);
         return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.rooms.caseItems-xhr' : 'dashboard.rooms.show');
     }
+
+    public function centerIndex(Request $request, $center){
+        $this->data->rooms = $rooms = Room::apiIndex(['center' => $center]);
+        $this->data->center = $rooms->filters()->center;
+        return $this->view($request, 'dashboard.centers.rooms.index');
+    }
 }

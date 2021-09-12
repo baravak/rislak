@@ -2,7 +2,7 @@
         {{-- @include('dashboard.centers.myRooms') --}}
 
         <div class="flex justify-between items-center mt-8 mb-4">
-            <h2 class="heading" data-total="({{ $rooms->total() }})" data-xhr="total">{{ __('Rooms') }}</h2>
+            <h2 class="heading" data-total="({{ $rooms instanceof \App\Models\ApiCollection ? $rooms->count() : $room->total() }})" data-xhr="total">{{ __('Rooms') }}</h2>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">

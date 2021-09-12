@@ -50,6 +50,10 @@
                             <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
                             <span>@lang('Platform settings')</span>
                         </a>
+                        <a href="{{ route('dashboard.center.rooms.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                            <i class="w-6 text-center fal fa-loveseat pb-1 pl-2"></i>
+                            <span>@lang('Rooms')</span>
+                        </a>
                         <a href="{{ route('dashboard.center.accounting.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                             <i class="w-6 text-center fal fa-calculator pb-1 pl-2"></i>
                             <span>@lang('Accounting')</span>

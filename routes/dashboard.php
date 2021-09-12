@@ -25,6 +25,7 @@ Route::get('centers/{center}/schedules', 'ScheduleController@center')->name('cen
 
 Route::resource('rooms', 'RoomController', ['except' => ['store', 'create']]);
 Route::get('centers/{center}/rooms/create', 'RoomController@create')->name('center.rooms.create');
+Route::get('centers/{center}/rooms', 'RoomController@centerIndex')->name('center.rooms.index');
 Route::post('centers/{center}/rooms', 'RoomController@store')->name('center.rooms.store');
 
 Route::resource('rooms/{room}/users', 'RoomUserController', ['except' => ['destroy', 'show', 'edit'], 'as' => 'room']);
