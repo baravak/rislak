@@ -285,6 +285,7 @@
     "Chain": "زنجیره",
     "Financial treasuries": "کیف پول‌ها",
     "Treasurie": "کیف پول",
+    "Treasury of origin": "کیف پول مبدأ",
     "Select treasury": "انتخاب کیف پول",
     "English name": "نام انگلیسی",
     "Latest transaction": "آخرین تراکنش",
@@ -308,9 +309,11 @@
     "Number of items": "تعداد موارد",
     "From to": "از - به",
     "Transaction amount": "مبلغ تراکنش",
+    "Total transaction amount": "جمع مبلغ تراکنش",
     "Transaction type": "نوع تراکنش",
     "Transactions": "تراکنش‌ها",
     "Transactions cunt": "تعداد تراکنش‌ها",
+    "Transactions count selected": "تعداد تراکنش‌های انتخاب شده",
     "Description": "توضیحات",
     "Row": "ردیف",
     "Debtor": "بدهکار",
@@ -337,6 +340,8 @@
     "Transfer to payment gateway": "انتقال به درگاه پرداخت",
     "Payments log": "گزارش پرداخت‌ها",
     "Payment status": "وضعیت پرداخت",
+    "Payment method": "روش پرداخت",
+    "Determining the payment methods": "تعیین روش‌های پرداخت",
     "Verify and continue": "تأیید و ادامه",
     "Samples list": "لیست آزمون‌ها",
     "Define new schedule" : "تعریف برنامه درمانی",
@@ -398,10 +403,12 @@
     "Commission" : "سهم‌بندی",
     "Percentage Amount" : "مقدار سهم",
     "Percentage room" : "سهم اتاق",
+    "Total percentage room" : "جمع مبلغ سهم اتاق",
     "Percentage center" : "سهم مرکز",
     "Default" : "پیش‌فرض",
     "Checkout" : "تسویه حساب",
     "Credit transfer" : "جابجایی اعتبار",
-    "Report and settlement" : "گزارش و تسویه"
+    "Report and settlement" : "گزارش و تسویه",
+    "Calculation and payment" : "محاسبه و پرداخت"
 }
 
