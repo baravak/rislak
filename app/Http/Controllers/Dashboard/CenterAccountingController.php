@@ -32,7 +32,7 @@ class CenterAccountingController extends Controller
 
     public function commissionUpdate(Request $request, $center)
     {
-        $this->data->update = $update = AtomDetail::apiChildUpdate($center, $request->all());
+        $this->data->update = $update = Commission::apiChildUpdate($center, $request->all());
         return $update->response()->json();
     }
 }
