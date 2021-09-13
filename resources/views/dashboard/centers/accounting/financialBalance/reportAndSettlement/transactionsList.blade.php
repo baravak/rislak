@@ -18,7 +18,6 @@
                     <tbody class="divide-y divide-gray-200">
                         {{-- @foreach ($transactions as $transaction) --}}
                             @include('dashboard.centers.accounting.financialBalance.reportAndSettlement.transactionsRaw')
-                            {{-- @include('dashboard.centers.accounting.financialBalance.reportAndSettlement.transactionsResult') --}}
                         {{-- @endforeach --}}
                     </tbody>
                 </table>
