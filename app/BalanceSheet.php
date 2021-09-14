@@ -20,4 +20,9 @@ class BalanceSheet extends API
     {
         return (new static)->cache('rooms/' . $id .'/balance-sheets' , $params, 'get');
     }
+
+    public function _childPost($id, array $params = [])
+    {
+        return (new static)->execute('rooms/' . $id .'/balance-sheets' , $params, 'post');
+    }
 }

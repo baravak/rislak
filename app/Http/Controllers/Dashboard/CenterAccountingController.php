@@ -38,8 +38,15 @@ class CenterAccountingController extends Controller
 
     public function balanceSheetShow(Request $request, $room){
         $this->data->transactions = $transactions = BalanceSheet::apiChildIndex($room);
-        $this->data->room = $transactions->parentModel;
+        $this->data->room = $room = $transactions->parentModel;
+        $this->data->center = $center = $room->center;
         return $this->view($request, 'dashboard.centers.accounting.balanceSheets.reportAndSettlement.index');
+    }
 
+    public function balanceSheetStore(Request $request, $room){
+        $store = BalanceSheet::apiChildPost($room, $request->all());
+        return $store->response()->json([
+            'redirect' => route('dashboard.center.balanceSheets.show', $room)
+        ]);
     }
 }

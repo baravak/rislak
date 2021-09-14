@@ -6,7 +6,7 @@
         </p>
     </div>
 
-    <form action="" x-data='{"treasuries" : {{ json_encode($room->center->treasuries) }}}'>
+    <div action="" x-data='{"treasuries" : {{ json_encode($room->center->treasuries) }}}'>
         <template x-for="(treasury, index) in treasuries">
             <div class="flex flex-col xs:flex-row w-full md:w-2/3 2xl:w-1/2 mx-auto" :class='{"mt-4 xs:mt-2" : index !== 0}' x-data='{"bill_amount" : 0}'>
                 <select disabled class="border border-gray-400 h-8 rounded w-full text-xs focus disabled:bg-gray-100">
@@ -67,5 +67,5 @@
                 @lang('Calculation and payment')
             </button>
         </div>
-    </form>
+    </div>
 </div>

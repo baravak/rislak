@@ -109,6 +109,7 @@ Route::put('centers/{center}/commissions', 'CenterAccountingController@commissio
 
 Route::get('centers/{center}/balance-sheets', 'CenterAccountingController@balanceSheet')->name('center.balanceSheets.index');
 Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetShow')->name('center.balanceSheets.show');
+Route::post('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetStore')->name('center.balanceSheets.store');
 
 
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');

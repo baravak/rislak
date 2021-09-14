@@ -298,7 +298,12 @@ Breadcrumbs::for('dashboard.center.commissions.index', function ($trail, $data) 
     $trail->push(__('کمیسیون اتاق‌های مرکز'), route('dashboard.center.commissions.index', $data['center']->id));
 });
 
-Breadcrumbs::for('dashboard.center.roomBalances.index', function ($trail, $data) {
+Breadcrumbs::for('dashboard.center.balanceSheets.index', function ($trail, $data) {
     $trail->parent('dashboard.center.accounting.index', $data);
-    $trail->push(__('تراز مالی اتاق‌های مرکز'), route('dashboard.center.roomBalances.index', $data['center']->id));
+    $trail->push(__('تراز مالی اتاق‌های مرکز'), route('dashboard.center.balanceSheets.index', $data['center']->id));
+});
+
+Breadcrumbs::for('dashboard.center.balanceSheets.show', function ($trail, $data) {
+    $trail->parent('dashboard.center.balanceSheets.index', $data);
+    $trail->push($data['room']->manager->name, route('dashboard.center.balanceSheets.show', $data['room']->id));
 });
