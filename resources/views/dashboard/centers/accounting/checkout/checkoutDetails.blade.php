@@ -21,6 +21,36 @@
     </div>
 </div>
 <div class="mt-4">
+    <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('انتخاب یک روز در هفته')</label>
+    <div class="relative">
+        <select class="border border-gray-300 h-10 rounded w-full text-xs focus select-loading lijax-sending">
+            <option selected disabled>انتخاب کنید</option>
+            <option>شنبه</option>
+            <option>یک‌شنبه</option>
+            <option>دوشنبه</option>
+            <option>سه‌شنبه</option>
+            <option>چهارشنبه</option>
+            <option>پنج‌شنبه</option>
+            <option>جمعه</option>
+        </select>
+        <div class="spinner"></div>
+    </div>
+</div>
+<div class="mt-4">
+    <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('انتخاب یک روز در ماه')</label>
+    <div class="relative">
+        <select class="border border-gray-300 h-10 rounded w-full text-xs focus select-loading lijax-sending">
+            <option selected disabled>انتخاب کنید</option>
+            <option>1</option>
+            <option>...</option>
+            <option>28</option>
+            <option>یک روز مانده به روز آخر ماه</option>
+            <option>روز آخر ماه</option>
+        </select>
+        <div class="spinner"></div>
+    </div>
+</div>
+<div class="mt-4">
     <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('تسویه آنی')</label>
     <div class="flex flex-col xs:flex-row items-end xs:items-center">
         <div class="w-full relative xs:ml-2">
