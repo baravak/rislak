@@ -45,8 +45,8 @@
             <div class="flex flex-col">
                 <span class="text-xs text-gray-600 font-medium en">IR113900001000793178513446</span>
                 <div class="flex items-center mt-1">
-                    <span class="text-xs text-gray-500">محمدعلی نخلی</span>
-                    <span class="flex items-center text-xs text-white bg-yellow-500 px-2 h-5 rounded mr-2">@lang('Unverified')</span>
+                    <span class="text-xs text-gray-500">محمدعلی نخلی <small>(بانک رسالت)</small></span>
+                    {{-- <span class="flex items-center text-xs text-white bg-yellow-500 px-2 h-5 rounded mr-2">@lang('Unverified')</span> --}}
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="flex flex-col">
                 <span class="text-xs text-gray-600 font-medium en">IR227200005000883179651432</span>
                 <div class="flex items-center mt-1">
-                    <span class="text-xs text-gray-500">محمدعلی نخلی</span>
+                    <span class="text-xs text-gray-500">محمدعلی نخلی <small>(بانک ملت)</small></span>
                     <span class="flex items-center text-xs text-white bg-yellow-500 px-2 h-5 rounded mr-2">@lang('Unverified')</span>
                 </div>
             </div>
