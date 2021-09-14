@@ -6,7 +6,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 cursor-default">1</span>
+            <span class="text-xs text-gray-600 cursor-default">{{ $loop->index + 1 }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
