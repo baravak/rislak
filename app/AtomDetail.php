@@ -9,6 +9,7 @@ class AtomDetail extends API
     public $with = [
         'manager' => User::class,
         'acceptation' => RoomUser::class,
+        'center' => Center::class
     ];
     protected $casts = [
         'settled_at' => 'datetime',
