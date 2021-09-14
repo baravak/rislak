@@ -5,7 +5,7 @@
             <i class="fal fa-abacus text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Commission')</span>
         </a>
-        <a href="{{ route('dashboard.center.roomBalances.index', $center->id) }}" class="border border-gray-300 hover:border-yellow-500 text-yellow-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-yellow-50 transition group focus-current ring-yellow-500">
+        <a href="{{ route('dashboard.center.balanceSheets.index', $center->id) }}" class="border border-gray-300 hover:border-yellow-500 text-yellow-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-yellow-50 transition group focus-current ring-yellow-500">
             <i class="fal fa-balance-scale text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Financial-balance')</span>
         </a>

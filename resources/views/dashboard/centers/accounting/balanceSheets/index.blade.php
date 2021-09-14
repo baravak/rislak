@@ -4,6 +4,6 @@
         <div class="mt-8 mb-4">
             <h2 class="heading" data-total="({{ $rooms ? $rooms->count() : 0 }})" data-xhr="total">{{ __('تراز مالی اتاق‌های درمان') }}</h2>
         </div>
-        @include('dashboard.centers.accounting.financialBalance.financialBalanceList')
+        @include('dashboard.centers.accounting.balanceSheets.list')
     </div>
 @endsection

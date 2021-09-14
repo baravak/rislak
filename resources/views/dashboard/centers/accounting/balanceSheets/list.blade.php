@@ -14,7 +14,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200" x-data='{"table" : $el}' @drop="$dispatch('restartlist', [...$el.querySelectorAll('tr')])" x-init="$dispatch('restartlist', [...$el.querySelectorAll('tr')])">
                         @foreach ($rooms as $room)
-                            @include('dashboard.centers.accounting.financialBalance.financialBalanceRaw')
+                            @include('dashboard.centers.accounting.balanceSheets.raw')
                         @endforeach
                     </tbody>
                 </table>
