@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Billing;
 use App\BillingDashboard;
+use App\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -46,5 +47,28 @@ class BillingController extends Controller
                 throw $th;
             }
         }
+    }
+
+    public function create(Request $request, $action){
+        $model = null;
+        $action = strtoupper($action);
+        if(substr($action, 0, 2) == 'SE'){
+            $model = Session::apiShow($action, ['fillAccounting' => 1]);
+            $this->data->model = $this->data->session = $session = $model;
+            $this->data->room = $room = $session->room;
+            $this->data->center = $center = $room->center;
+            $this->data->users = $session->clients;
+            $this->data->treasuries = $center->treasuries;
+        }
+
+        return $this->view($request, 'dashboard.billings.create');
+    }
+
+    public function store(Request $request, $action){
+        $billing = Billing::apiChildPost($action, $request->all());
+        return $billing->response();
+        return $billing->response()->json([
+            'redirect' => route('dashboard.billings.show', $billing->id)
+        ]);
     }
 }

@@ -9,7 +9,7 @@
             <i class="fal fa-balance-scale text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Financial-balance')</span>
         </a>
-        <a href="#" class="border border-gray-300 hover:border-green-600 text-green-600 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-green-50 transition group focus-current ring-green-600">
+        <a href="{{ route('dashboard.center.bank.show', $center->id) }}" class="border border-gray-300 hover:border-green-600 text-green-600 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-green-50 transition group focus-current ring-green-600">
             <i class="fal fa-cash-register text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Checkout')</span>
         </a>

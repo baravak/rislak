@@ -3,7 +3,7 @@
         <h2 class="heading" data-total="" data-xhr="total">@lang('تسویه حساب')</h2>
     </div>
     <div class="border border-gray-300 rounded p-4">
-        @include('dashboard.centers.accounting.checkout.checkoutDetails')
-        {{-- @include('dashboard.centers.accounting.checkout.checkoutNotAvailable') --}}
+        @include('dashboard.centers.accounting.bank.checkoutDetails')
+        {{-- @include('dashboard.centers.accounting.bank.checkoutNotAvailable') --}}
     </div>
 </div>

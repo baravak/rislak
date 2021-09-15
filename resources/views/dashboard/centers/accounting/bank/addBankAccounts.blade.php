@@ -19,5 +19,5 @@
         </div>
     </div>
 
-    @include('dashboard.centers.accounting.checkout.bankAccounts')
+    @include('dashboard.centers.accounting.bank.bankAccounts')
 </div>

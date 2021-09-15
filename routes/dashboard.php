@@ -77,7 +77,7 @@ Route::get('/payments', 'PaymentController@index')->name('payments.index');
 Route::post('/payments', 'PaymentController@store')->name('payments.sotre');
 
 Route::post('/billings/{billing}/final', 'BillingController@doFinal')->name('billings.final');
-Route::resource('/billings', 'BillingController');
+Route::resource('/billings', 'BillingController', ['except' => ['create', 'store']]);
 
 Route::get('client-reports/all/{serial}', 'ClientReportController@index')->name('client-reports.index');
 Route::post('client-reports/{serial}', 'ClientReportController@store')->name('client-reports.store');
@@ -110,6 +110,11 @@ Route::put('centers/{center}/commissions', 'CenterAccountingController@commissio
 Route::get('centers/{center}/balance-sheets', 'CenterAccountingController@balanceSheet')->name('center.balanceSheets.index');
 Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetShow')->name('center.balanceSheets.show');
 Route::post('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetStore')->name('center.balanceSheets.store');
+
+Route::get('centers/{center}/bank', 'CenterAccountingController@bankShow')->name('center.bank.show');
+
+Route::get('billings/create/{action}', 'BillingController@create')->name('billings.create');
+Route::post('billings/{action}', 'BillingController@store')->name('billings.store');
 
 
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');

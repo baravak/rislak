@@ -307,3 +307,11 @@ Breadcrumbs::for('dashboard.center.balanceSheets.show', function ($trail, $data)
     $trail->parent('dashboard.center.balanceSheets.index', $data);
     $trail->push($data['room']->manager->name, route('dashboard.center.balanceSheets.show', $data['room']->id));
 });
+
+Breadcrumbs::for('dashboard.billings.create', function ($trail, $data) {
+    switch(get_class($data['model'])){
+        case 'App\Session' :
+            $trail->parent('dashboard.sessions.show', $data);
+            $trail->push(__('ساخت فاکتور'), route('dashboard.billings.create', $data['session']->id));
+    }
+});

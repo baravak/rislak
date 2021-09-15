@@ -49,4 +49,8 @@ class CenterAccountingController extends Controller
             'redirect' => route('dashboard.center.balanceSheets.show', $room)
         ]);
     }
+
+    public function bankShow(Request $request, $center){
+        return $this->view($request, 'dashboard.centers.accounting.bank.index');
+    }
 }

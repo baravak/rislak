@@ -90,7 +90,9 @@ class ScheduleController extends Controller
         ];
         $schedules = $this->data->schedules =  Schedule::center($center, $time, $request->all());
         $this->data->allowedFilters = $schedules->allowedFilters();
-        $this->data->allowedFilters->room = Room::hydrate($schedules->allowedFilter('room'));
+        if($schedules->parentModel->type != 'personal_clinic'){
+            $this->data->allowedFilters->room = Room::hydrate($schedules->allowedFilter('room'));
+        }
 
         $this->data->filters = $schedules->filters();
 
@@ -98,6 +100,7 @@ class ScheduleController extends Controller
         if($this->data->center->type == 'personal_clinic'){
             $this->data->room = $this->data->center;
         }
+
         return $this->view($request, 'dashboard.schedules.index');
     }
 
