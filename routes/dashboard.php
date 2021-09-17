@@ -112,6 +112,7 @@ Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceShe
 Route::post('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetStore')->name('center.balanceSheets.store');
 
 Route::get('centers/{center}/bank', 'CenterAccountingController@bankShow')->name('center.bank.show');
+Route::post('centers/{center}/bank', 'CenterAccountingController@bankStore')->name('center.bank.store');
 
 Route::get('billings/create/{action}', 'BillingController@create')->name('billings.create');
 Route::post('billings/{action}', 'BillingController@store')->name('billings.store');

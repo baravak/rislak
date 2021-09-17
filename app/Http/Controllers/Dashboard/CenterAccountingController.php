@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\AtomDetail;
 use App\BalanceSheet;
+use App\Bank;
 use App\Center;
 use App\Commission;
 use App\RoomBalance;
@@ -51,6 +52,11 @@ class CenterAccountingController extends Controller
     }
 
     public function bankShow(Request $request, $center){
+        $this->data->bank = $bank = Bank::apiChildIndex($center, $request->all());
+        $this->data->center = $bank->parentModel;
         return $this->view($request, 'dashboard.centers.accounting.bank.index');
+    }
+    public function bankStore(Request $request, $center){
+        Bank::apiChildPost($center, $request->all());
     }
 }
