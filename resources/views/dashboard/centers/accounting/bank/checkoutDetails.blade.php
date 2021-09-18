@@ -1,4 +1,4 @@
-<form action="{{ route('dashboard.banks.settleds.store') }}" x-data='{"type" : "immediate"}' method="POST">
+<form action="{{ route('dashboard.banks.settleds.store') }}" x-data='{"type" : "{{ $bank->scheduling ? $bank->scheduling->type : 'immediate' }}", "value" : "{{$bank->scheduling ? $bank->scheduling->value : '' }}"}' method="POST">
     <div>
         <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('انتخاب حساب بانکی جهت تسویه')</label>
         <div class="relative">
@@ -26,13 +26,13 @@
         <div class="relative">
             <select name="weekday" class="border border-gray-300 h-10 rounded w-full text-xs focus" :disabled="type != 'weekly'">
                 <option selected disabled>انتخاب کنید</option>
-                <option value="0">شنبه</option>
-                <option value="1">یک‌شنبه</option>
-                <option value="2">دوشنبه</option>
-                <option value="3">سه‌شنبه</option>
-                <option value="4">چهارشنبه</option>
-                <option value="5">پنج‌شنبه</option>
-                <option value="6">جمعه</option>
+                <option value="0" :selected="value == $el.value">شنبه</option>
+                <option value="1" :selected="value == $el.value">یک‌شنبه</option>
+                <option value="2" :selected="value == $el.value">دوشنبه</option>
+                <option value="3" :selected="value == $el.value">سه‌شنبه</option>
+                <option value="4" :selected="value == $el.value">چهارشنبه</option>
+                <option value="5" :selected="value == $el.value">پنج‌شنبه</option>
+                <option value="6" :selected="value == $el.value">جمعه</option>
             </select>
             <div class="spinner"></div>
         </div>
@@ -43,10 +43,10 @@
             <select name="day" class="border border-gray-300 h-10 rounded w-full text-xs focus" :disabled="type != 'monthly'">
                 <option selected disabled>انتخاب کنید</option>
                 @for ($i = 1; $i < 29; $i++)
-                    <option value="{{ $i }}">{{ $i }}</option>
+                    <option value="{{ $i }}" :selected="value == $el.value">{{ $i }}</option>
                 @endfor
-                <option value="before_last">یک روز مانده به روز آخر ماه</option>
-                <option value="last_day">روز آخر ماه</option>
+                <option value="before_last" :selected="value == $el.value">یک روز مانده به روز آخر ماه</option>
+                <option value="last_day" :selected="value == $el.value">روز آخر ماه</option>
             </select>
             <div class="spinner"></div>
         </div>

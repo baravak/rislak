@@ -57,6 +57,7 @@ class CenterAccountingController extends Controller
         return $this->view($request, 'dashboard.centers.accounting.bank.index');
     }
     public function bankStore(Request $request, $center){
-        Bank::apiChildPost($center, $request->all());
+        $this->data->item = Bank::apiChildPost($center, $request->all());
+        return $this->view($request, 'dashboard.centers.accounting.bank.bankAccountsItems');
     }
 }

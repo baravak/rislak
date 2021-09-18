@@ -524,6 +524,22 @@
 							$("[data-xhr='" + base + "']").addClass(fold.substr(1));
 						}
 					}
+
+					var bind = $(this).attr('data-xhr-bind');
+					if(bind)
+					{
+						changed.push(this);
+						$(this).appendTo($("[data-xhr='"+bind+"']"));
+						var fold = $(this).attr('data-xhr-fold');
+						if (!fold)
+						{
+							$(this).addClass('statio-fold');
+						}
+						else if (fold.substr(0, 1) == '.')
+						{
+							$(this).addClass(fold.substr(1));
+						}
+					}
 				});
 				$(document).trigger('statio:global:renderResponse', [$(changed), options.context, response.data, response.body]);
 				options.context.trigger('statio:renderResponse', [$(changed), response.data, response.body]);
