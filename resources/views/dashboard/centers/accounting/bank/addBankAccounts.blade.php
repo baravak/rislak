@@ -21,6 +21,7 @@
             </div>
         </form>
     </div>
-
-    @include('dashboard.centers.accounting.bank.bankAccounts')
+    @if ($bank->items)
+        @include('dashboard.centers.accounting.bank.bankAccounts')
+    @endif
 </div>

@@ -22,4 +22,8 @@ class Bank extends API
     public function _childPost($region, array $params = []){
         return (new static)->execute('bank/' . $region , $params, 'post');
     }
+
+    public static function settledPost(array $params = []){
+        return (new static)->execute('bank/settleds', $params, 'post');
+    }
 }
