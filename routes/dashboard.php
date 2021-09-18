@@ -119,6 +119,8 @@ Route::post('bank/settleds', 'SettledController@store')->name('banks.settleds.st
 Route::get('billings/create/{action}', 'BillingController@create')->name('billings.create');
 Route::post('billings/{action}', 'BillingController@store')->name('billings.store');
 
+Route::get('accounting', 'UserAccountingController@index')->name('me.accounting.index');
+Route::get('bank', 'UserAccountingController@bank')->name('me.accounting.bank');
 
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');

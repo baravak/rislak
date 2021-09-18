@@ -54,9 +54,10 @@
     <div class="mt-4" x-show="type == 'immediate'">
         <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('مبلغ')</label>
         <div class="flex flex-col xs:flex-row items-end xs:items-center">
-            <div class="w-full relative xs:ml-2">
-                <input type="number" name="amount" id="amount" :disabled="type != 'immediate'" class="border border-gray-300 h-10 rounded pr-4 pl-14 w-full text-xs dir-ltr focus">
+            <div class="w-full relative xs:ml-2" x-data='{"amount" : "0"}'>
+                <input type="number" name="amount" id="amount" x-model="amount" x-effect="amount = amount.replace(/^0/g, '')" :value="amount" :disabled="type != 'immediate'" class="border border-gray-300 h-10 rounded pr-4 pl-14 w-full text-xs dir-ltr focus">
                 <span class="absolute left-4 top-1 text-xs flex items-center h-8 cursor-default">@lang('Toman')</span>
+                <span x-text="(amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0') + 'تومان'"></span>
             </div>
         </div>
     </div>
