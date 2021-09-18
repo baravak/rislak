@@ -263,6 +263,7 @@
     "Create new sample in scale :scale": "ساخت نمونه در مقیاس :scale",
     "jump to empty test": "پرش روی تست‌های خالی",
     "Return": "بازگشت",
+    "Return to dashboard": "بازگشت به داشبورد",
     "Group link": "لینک گروهی",
     "Count of users": "تعداد اعضاء",
     "information": "اطلاعات",
@@ -294,12 +295,15 @@
     "English name": "نام انگلیسی",
     "Latest transaction": "آخرین تراکنش",
     "Add transaction": "افزودن تراکنش",
+    "Successful transaction": "تراکنش با موفقیت انجام شد",
+    "Unsuccessful transaction": "تراکنش ناموفق",
     "Credit": "اعتبار",
     "Balance": "باقی‌مانده",
     "Toman": "تومان",
     "Financial balance": "مبلغ باقی‌مانده",
     "Increase credit": "افزایش اعتبار",
     "Continue": "ادامه",
+    "Continue the process": "ادامه فرآیند",
     "Check password": "بررسی کلمه عبور",
     "Check out sample and go to next sample": "اتمام و انتقال به نمونه بعدی",
     "Without_case": "بدون پرونده",
@@ -341,6 +345,7 @@
     "Clients & Session": "مراجعین و جلسه",
     "Draft": "پیش‌نویس",
     "Payment": "پرداخت",
+    "Payment successful": "پرداخت موفقیت آمیز",
     "Transfer to payment gateway": "انتقال به درگاه پرداخت",
     "Payments log": "گزارش پرداخت‌ها",
     "Payment status": "وضعیت پرداخت",
@@ -414,6 +419,8 @@
     "Credit transfer" : "جابجایی اعتبار",
     "Report and settlement" : "گزارش و تسویه",
     "Settlement" : "تسویه",
-    "Calculation and payment" : "محاسبه و پرداخت"
+    "Calculation and payment" : "محاسبه و پرداخت",
+    "Bank" : "بانک",
+    "Tracking number" : "شماره پیگیری"
 }
 
