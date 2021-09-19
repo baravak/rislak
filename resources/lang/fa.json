@@ -316,6 +316,8 @@
     "Last settle": "آخرین تسویه",
     "Number of items": "تعداد موارد",
     "From to": "از - به",
+    "From": "از",
+    "To": "به",
     "Transaction amount": "مبلغ تراکنش",
     "Total transaction amount": "جمع مبلغ تراکنش",
     "Transaction type": "نوع تراکنش",
