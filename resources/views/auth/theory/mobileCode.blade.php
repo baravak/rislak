@@ -6,10 +6,10 @@
     <div class="mb-4">
         <div class="w-full relative">
             <input autofocus type="text" class="w-full h-10 text-sm placeholder-gray-400 border border-gray-300 rounded" id="code" name="code" placeholder="{{ __('SMS code')}}" autocomplete="off">
-            @if (config('app.env') == 'local')
+            {{-- @if (config('app.env') == 'local')
                 <span class="flex items-center justify-center text-sm absolute left-2 top-2 bg-blue-100 text-brand h-6 w-14 rounded cursor-default">01:34</span>
-                {{-- <a href="" class="flex items-center justify-center text-sm absolute left-2 top-2 bg-blue-100 text-brand hover:text-white hover:bg-brand transition px-4 h-6 rounded">ارسال مجدد کد</a> --}}
-            @endif
+                <a href="" class="flex items-center justify-center text-sm absolute left-2 top-2 bg-blue-100 text-brand hover:text-white hover:bg-brand transition px-4 h-6 rounded">ارسال مجدد کد</a>
+            @endif --}}
         </div>
         <div class="flex text-xs text-gray-400 mt-2 cursor-default leading-relaxed">
             <i class="fal fa-info-circle ml-1 mt-0.5"></i>
