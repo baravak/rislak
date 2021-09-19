@@ -16,7 +16,8 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 enabled: true
             }
         });
-        davat.samplsta();
+        davat.liveCheck('data-samplsta', '/dashboard/live/samples-status-check', 'samples');
+        davat.liveCheck('data-workersta', '/dashboard/live/workers-status-check', 'workers');
         if($(this).has('[data-tabs]').length){
             window.tabs = new Tabby('[data-tabs]');
         }

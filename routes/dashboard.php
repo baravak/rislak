@@ -46,6 +46,7 @@ Route::get('samples/{sample}/scoring', 'SampleController@scoreResult')->middlewa
 Route::put('samples/{sample}/close', 'SampleController@close')->middleware('auth')->name('samples.close');
 Route::put('samples/{sample}/open', 'SampleController@open')->middleware('auth')->name('samples.open');
 Route::get('live/samples-status-check', 'SampleController@statuCheck')->middleware('auth');
+Route::get('live/workers-status-check', 'ExportWorkerController@statuCheck')->middleware('auth');
 
 Route::resource('sessions', 'SessionController', ['except' => ['create']]);
 Route::get('sessions/{session}/users/create', 'SessionController@createUser')->name('session.users.create');

@@ -13,13 +13,13 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($exports as $export) --}}
+                        @foreach ($exports as $export)
                             @include('dashboard.exports.listRaw')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    {{-- {{$exports->links()}} --}}
+    {{$exports->links()}}
 </div>

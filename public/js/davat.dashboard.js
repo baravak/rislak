@@ -30,7 +30,8 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 enabled: true
             }
         });
-        davat.samplsta();
+        davat.liveCheck('data-samplsta', '/dashboard/live/samples-status-check', 'samples');
+        davat.liveCheck('data-workersta', '/dashboard/live/workers-status-check', 'workers');
         if($(this).has('[data-tabs]').length){
             window.tabs = new Tabby('[data-tabs]');
         }
@@ -191,39 +192,38 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 })(davat);
 
 (function(davat){
-    var xhr = undefined;
-    var timeout = null;
-    var samplsta = function(){
+    var liveCheck = function(selector, url, name){
+        var xhr = undefined;
+        var timeout = null;
         if(xhr) return;
+        var send = function(){
+            var ids = [];
+            $('['+selector+']').each(function(){
+                ids.push($(this).attr(selector));
+            });
+            if(! ids.length){
+                xhr = undefined;
+                return;
+            }
+            xhr = true;
+            var data = {};
+            data[name] = ids;
+            new Statio({
+                type : 'render',
+                url : url,
+                ajax : {
+                    data : data,
+                    complete : function(){
+                        if(timeout) clearTimeout(timeout);
+                        timeout = setTimeout(send, 5000);
+                    }
+                }
+            });
+        }
         send();
     }
-    var send = function(){
-        var samples = [];
-        $('[data-samplsta]').each(function(){
-            samples.push($(this).attr('data-samplsta'));
-        });
-        if(! samples.length){
-            xhr = undefined;
-            return;
-        }
-        xhr = true;
-        new Statio({
-            type : 'render',
-            url : '/dashboard/live/samples-status-check',
-            ajax : {
-                data : {samples : samples},
-                complete : function(){
-                    if(timeout) clearTimeout(timeout);
-                    timeout = setTimeout(send, 5000);
-                }
-            }
-        });
-    }
-    davat.samplsta = function(element){
-        samplsta.call();
-    }
-    davat.samplsta.profileShow = function(serial){
-
+    davat.liveCheck = function(selector, url, name){
+        return new liveCheck(selector, url, name);
     }
 })(window.davat);
 
