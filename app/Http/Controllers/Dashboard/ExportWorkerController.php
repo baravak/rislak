@@ -19,7 +19,7 @@ class ExportWorkerController extends Controller
     }
 
     public function statuCheck(Request $request){
-        $dones = $this->data->exports = ExportWorker::statusCheck((array) $request->workers)->whereIn('status', ['done', 'closed']);
+        $dones = $this->data->exports = ExportWorker::statusCheck((array) $request->workers)->whereIn('status', ['done', 'failed']);
         if(!$dones->count()){
             return [];
         }
