@@ -50,5 +50,9 @@ th {
         .min-w-64 {
             min-width: 16rem;
         }
+
+        .edit-table-row {
+            @apply ring-2 ring-inset ring-brand ring-opacity-40;
+        }
     }
 }

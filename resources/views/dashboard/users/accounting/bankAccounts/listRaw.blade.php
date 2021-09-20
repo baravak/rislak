@@ -112,10 +112,9 @@
     </td>
 </tr>
 
-<tr class="transition hover:bg-gray-50">
+<tr class="transition hover:bg-gray-50 edit-table-row">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="w-1 h-10 bg-yellow-300 rounded-full ml-2"></span>
             <span class="text-xs text-gray-600 block text-right dir-ltr en cursor-default">IR0696000000010324200001</span>
         </div>
     </td>
@@ -159,10 +158,9 @@
     </td>
 </tr>
 
-<tr class="transition hover:bg-gray-50">
+<tr class="transition hover:bg-gray-50 edit-table-row">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="w-1 h-10 bg-yellow-300 rounded-full ml-2"></span>
             <span class="text-xs text-gray-600 block text-right dir-ltr en cursor-default">IR0696000000010324200001</span>
         </div>
     </td>
@@ -213,10 +211,9 @@
     </td>
 </tr>
 
-<tr class="transition hover:bg-gray-50">
+<tr class="transition hover:bg-gray-50 edit-table-row">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="w-1 h-10 bg-yellow-300 rounded-full ml-2"></span>
             <span class="text-xs text-gray-600 block text-right dir-ltr en cursor-default">IR0696000000010324200001</span>
         </div>
     </td>
