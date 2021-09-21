@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Bank extends API
 {
     public $with = [
-        'items' => Bank::class
+        'items' => Bank::class,
+        'center' => Center::class,
+        'user' => User::class,
+        'creator' => User::class,
+        'bank' => Bank::class
     ];
     public $casts = [
         'expires_at' => 'datetime'
@@ -19,6 +23,14 @@ class Bank extends API
         return (new static)->execute('bank/' . $region , $params, 'get');
     }
 
+    public static function adminIndex(array $params = []){
+        return (new static)->execute('admin/banks', $params, 'get');
+    }
+
+    public static function adminUpdate($bank, array $params = []){
+        return (new static)->execute('admin/banks/' . $bank, $params, 'put');
+    }
+
     public function _childPost($region, array $params = []){
         return (new static)->execute('bank/' . $region , $params, 'post');
     }
@@ -26,4 +38,5 @@ class Bank extends API
     public static function settledPost(array $params = []){
         return (new static)->execute('bank/settleds', $params, 'post');
     }
+
 }

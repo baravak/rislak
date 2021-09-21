@@ -17,7 +17,6 @@
                     <span class="variable-font-semibold">{{ number_format($theory->response()->amount) }} @lang('Toman')</span>
                 </div>
             </div>
-            <a href="bisloo://dashboard/payments#Intent;scheme=risloo;package=com.majazeh.risloo;end" class="direct">click</a>
             <a href="{{ Cache::get(request()->route('key'), ['url' => route('dashboard.payments.index')])['url'] }}" class="direct flex items-center text-white text-sm bg-green-500 hover:bg-green-600 transition rounded-full h-8 px-12 mt-8 focus-current ring-green-600 spinner" data-mobileLink>@lang('Continue the process')</a>
         </div>
     @else

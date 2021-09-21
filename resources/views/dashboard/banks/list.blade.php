@@ -6,16 +6,14 @@
                     <thead class="bg-gray-50 cursor-default">
                         <tr>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Sheba')</th>
-                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('User') - @lang('Therapy center')</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('بستر') - @lang('درخواست‌دهنده') </th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Status')</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col"></th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($ as $) --}}
-                            @include('dashboard.users.accounting.bankAccounts.listRaw')
-                        {{-- @endforeach --}}
+                    <tbody class="divide-y divide-gray-200" x-data='{"banks" : {!! json_encode($banks->response()->data) !!}}'>
+                            @include('dashboard.banks.listRaw')
                     </tbody>
                 </table>
             </div>

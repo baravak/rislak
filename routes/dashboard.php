@@ -123,6 +123,9 @@ Route::post('billings/{action}', 'BillingController@store')->name('billings.stor
 Route::get('accounting', 'UserAccountingController@index')->name('me.accounting.index');
 Route::get('bank', 'UserAccountingController@bank')->name('me.accounting.bank');
 
+Route::get('admin/banks', 'BankController@index')->name('admin.banks.index');
+Route::put('admin/banks/{bank}', 'BankController@update')->name('admin.banks.update');
+
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
 if(config('app.env') == 'local'){

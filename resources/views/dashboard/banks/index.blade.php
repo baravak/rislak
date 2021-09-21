@@ -12,6 +12,7 @@
                 <span class="hidden sm:inline">{{ __('Create new bank account') }}</span>
             </a> --}}
         </div>
-        @include('dashboard.users.accounting.bankAccounts.list')
+        @include('dashboard.banks.list')
+        {{ $banks->links() }}
     </div>
 @endsection
