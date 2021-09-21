@@ -16,8 +16,7 @@
             var isAndroid = navigator.userAgent.match('Android');
             alert(isAndroid);
             if(isAndroid){
-                window.setTimeout(function (){ window.location.replace(mobileUrl); }, 1);
-                return false;
+                this.href = mobileUrl;
             }
         })
     }
