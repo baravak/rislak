@@ -14,6 +14,7 @@
         links.on('click', function(){
             var mobileUrl = this.href.replace(/^https?/i, location.host == 'risloo.ir' ?'risloo' : 'bisloo') + '#Intent;scheme=risloo;package=com.majazeh.risloo;end';
             var isAndroid = navigator.userAgent.match('Android');
+            alert(isAndroid);
             if(isAndroid){
                 window.setTimeout(function (){ window.location.replace(mobileUrl); }, 1);
                 return false;
