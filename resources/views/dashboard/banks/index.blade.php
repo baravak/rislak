@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" data-total="(213)" data-xhr="total">@lang('Bank accounts')</h3>
+            <h3 class="heading" data-total="({{ $banks && $banks->total() ? $banks->total() : 0 }})" data-xhr="total">@lang('Bank accounts')</h3>
         </div>
 
         <div class="flex items-center mb-4">
