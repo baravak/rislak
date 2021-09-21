@@ -194,10 +194,9 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     davat.mobileLink = function(){
         var links = $('[data-mobileLink]', this);
         links.addClass('direct')
-        links.on('click', function(){
-            var mobileUrl = this.href.replace(/^https?/i, location.host == 'risloo.ir' ?'risloo' : 'bisloo') + '#Intent;scheme=risloo;package=com.majazeh.risloo;end';
-            var isAndroid = navigator.userAgent.match('Android');
-            alert(isAndroid);
+        var isAndroid = navigator.userAgent.match('Android');
+        links.each(function(){
+            var mobileUrl = this.href.replace(/^https?:\/\/[^\/]*\/?/i, location.host == 'risloo.ir' ?'risloo://' : 'bisloo://') + '#Intent;scheme=risloo;package=com.majazeh.risloo;end';
             if(isAndroid){
                 this.href = mobileUrl;
             }
