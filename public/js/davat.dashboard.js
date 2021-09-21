@@ -196,7 +196,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         links.addClass('direct')
         var isAndroid = navigator.userAgent.match('Android');
         links.each(function(){
-            var mobileUrl = this.href.replace(/^https?:\/\/[^\/]*\/?/i, location.host == 'risloo.ir' ?'risloo://' : 'bisloo://') + '#Intent;scheme=risloo;package=com.majazeh.risloo;end';
+            var mobileUrl = this.href.replace(/^https?:\/\/[^\/]*\/?/i, location.host == 'risloo.ir' ?'risloo://' : 'bisloo://') + '#Intent;scheme='+(location.host == 'risloo.ir' ? 'risloo': 'bisloo')+';package=com.majazeh.risloo;end';
             if(isAndroid){
                 this.href = mobileUrl;
             }
