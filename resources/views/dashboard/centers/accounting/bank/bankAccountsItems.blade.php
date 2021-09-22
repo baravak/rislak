@@ -1,6 +1,7 @@
 <div class="relative flex items-center justify-center xs:justify-between border border-gray-300 rounded p-4" data-xhr-bind="accounts">
     <div class="flex items-center cursor-default flex-col xs:flex-row">
         <div class="flex items-center justify-center border border-gray-200 rounded-full w-10 h-10 p-2 ml-2">
+            <i class="fal fa-university text-gray-300"></i>
             {{-- <img src="https://next.zarinpal.com/images/Resalat.png" alt=""> --}}
         </div>
         <div class="flex flex-col mt-2 xs:mt-0 text-center xs:text-right">
