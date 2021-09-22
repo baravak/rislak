@@ -60,7 +60,11 @@
                     </div>
                     <div>
                         <label for="bank-${bank.id}`" class="block mb-1 text-xs text-gray-700 variable-font-medium">@lang('نام بانک')</label>
-                        <input type="text" :name="`bank${bank.id}`" :id="`bank-${bank.id}`" :value="bank.bank.bank_id" x-model="bank.bank.bank_id" autocomplete="off" class="w-40 border border-gray-400 text-xs text-gray-600 h-8 rounded px-2 focus ml-2">
+                        <select name="" id="" class="w-40 border border-gray-400 text-xs text-gray-600 h-8 rounded px-2 focus">
+                            <option value="">بانک ملی</option>
+                            <option value="">بانک ملت</option>
+                        </select>
+                        {{-- <input type="text" :name="`bank${bank.id}`" :id="`bank-${bank.id}`" :value="bank.bank.bank_id" x-model="bank.bank.bank_id" autocomplete="off" class="w-40 border border-gray-400 text-xs text-gray-600 h-8 rounded px-2 focus"> --}}
                     </div>
                 </div>
             </td>
