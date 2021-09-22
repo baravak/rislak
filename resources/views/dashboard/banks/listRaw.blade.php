@@ -61,8 +61,42 @@
                     <div>
                         <label for="bank-${bank.id}`" class="block mb-1 text-xs text-gray-700 variable-font-medium">@lang('نام بانک')</label>
                         <select name="" id="" class="w-40 border border-gray-400 text-xs text-gray-600 h-8 rounded px-2 focus">
-                            <option value="">بانک ملی</option>
-                            <option value="">بانک ملت</option>
+                            <option>بانک انصار</option>
+                            <option>بانک آینده</option>
+                            <option>بانک دی</option>
+                            <option>بانک اقتصاد نوین</option>
+                            <option>بانک قوامین</option>
+                            <option>بانک حکمت ایرانیان</option>
+                            <option>بانک ایران زمین</option>
+                            <option>بانک کارآفرین</option>
+                            <option>بانک کشاورزی</option>
+                            <option>بانک خاورمیانه</option>
+                            <option>بانک کوثر</option>
+                            <option>بانک مرکزی</option>
+                            <option>بانک مسکن</option>
+                            <option>بانک مهر اقتصاد</option>
+                            <option>بانک مهر ایران</option>
+                            <option>موسسه اعتباری ملل</option>
+                            <option>بانک ملت</option>
+                            <option>بانک ملی ایران</option>
+                            <option>موسسه اعتباری نور</option>
+                            <option>بانک پارسیان</option>
+                            <option>بانک پاسارگاد</option>
+                            <option>پست بانک ایران</option>
+                            <option>بانک رفاه</option>
+                            <option>بانک رسالت</option>
+                            <option>بانک صادرات</option>
+                            <option>بانک سامان</option>
+                            <option>بانک صنعت و معدن</option>
+                            <option>بانک سرمایه</option>
+                            <option>بانک سپه</option>
+                            <option>بانک شهر</option>
+                            <option>بانک سینا</option>
+                            <option>بانک توسعه تعاون</option>
+                            <option>بانک تجارت</option>
+                            <option>موسسه اعتباری توسعه</option>
+                            <option>بانک توسعه صادرات</option>
+                            <option>بانک گردشگری</option>
                         </select>
                         {{-- <input type="text" :name="`bank${bank.id}`" :id="`bank-${bank.id}`" :value="bank.bank.bank_id" x-model="bank.bank.bank_id" autocomplete="off" class="w-40 border border-gray-400 text-xs text-gray-600 h-8 rounded px-2 focus"> --}}
                     </div>
