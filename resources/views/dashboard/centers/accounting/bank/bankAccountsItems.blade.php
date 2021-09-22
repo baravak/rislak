@@ -9,7 +9,7 @@
             <div class="flex flex-col xs:flex-row items-center mt-1">
                 <span class="text-xs text-gray-500">{{ $item->owner ?: __('نامشخص') }}</span>
                 @if ($item->status != 'verified')
-                    <span class="flex items-center text-xs text-yellow-600 bg-yellow-50 px-2 h-5 rounded mt-2 xs:mt-0 xs:mr-2">@lang(ucfirst($item->status))</span>
+                    <span class="flex items-center text-xs {{$item->status =='awaiting' ? 'text-yellow-600 bg-yellow-50' : 'text-red-500 bg-red-50'}} px-2 h-5 rounded mt-2 xs:mt-0 xs:mr-2">@lang(ucfirst($item->status))</span>
                 @endif
             </div>
         </div>
