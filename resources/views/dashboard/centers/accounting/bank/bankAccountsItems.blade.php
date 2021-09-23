@@ -2,14 +2,14 @@
     <div class="relative flex items-center justify-center xs:justify-between" data-xhr-bind="accounts">
         <div class="flex items-center cursor-default flex-col xs:flex-row">
             <div class="flex items-center justify-center border border-gray-200 rounded-full w-10 h-10 p-2 ml-2">
-                {{-- @if () --}}
+                @if (!$item->bank->id)
                     <i class="fal fa-university text-gray-300"></i>
-                {{-- @else --}}
-                    {{-- <img src="https://next.zarinpal.com/images/Resalat.png" alt=""> --}}
-                {{-- @endif --}}
+                @else
+                    <img src="{{ asset('images/banks/'.$item->bank->id.'.png') }}" alt="{{ $item->bank->title }}">
+                @endif
             </div>
             <div class="flex flex-col mt-2 xs:mt-0 text-center xs:text-right">
-                <span class="text-xs text-gray-600 font-medium en">{{ $item->isbn }}</span>
+                <span class="text-xs text-gray-600 font-medium en">{{ $item->iban }}</span>
                 <div class="flex flex-col xs:flex-row items-center mt-1">
                     <span class="text-xs text-gray-500">{{ $item->owner ?: __('نامشخص') }}</span>
                     @if ($item->status != 'verified')
@@ -24,7 +24,9 @@
             </a>
         </div>
     </div>
-    <p class="text-xs text-gray-500 variable-font-light leading-5 bg-gray-100 p-2 mt-4 border-r-2 border-red-500 cursor-default">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-    </p>
+    @if ($item->notic)
+        <p class="text-xs text-gray-500 variable-font-light leading-5 bg-gray-100 p-2 mt-4 border-r-2 border-red-500 cursor-default">
+            {{ $item->notic }}
+        </p>
+    @endif
 </div>

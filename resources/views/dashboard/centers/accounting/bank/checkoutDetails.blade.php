@@ -1,23 +1,23 @@
 <form action="{{ route('dashboard.banks.settleds.store') }}" x-data='{"type" : "{{ $bank->scheduling ? $bank->scheduling->type : 'immediate' }}", "value" : "{{$bank->scheduling ? $bank->scheduling->value : '' }}"}' method="POST">
     <div class="flex items-center justify-between flex-col xs:flex-row p-2 rounded border border-dashed border-green-600 bg-green-50 tex-center mb-4 cursor-default">
         <span class="text-xs text-gray-500">@lang('موجودی حساب'):</span>
-        <span class="text-sm text-green-600 variable-font-semibold relative top-0.5">135,000 <small>@lang('Toman')</small></span>
+        <span class="text-sm text-green-600 variable-font-semibold relative top-0.5">{{ number_format($bank->balance) }} <small>@lang('Toman')</small></span>
     </div>
     <div>
         <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('انتخاب حساب بانکی جهت تسویه')</label>
-        <select class="border border-gray-300 h-10 rounded w-full text-xs focus" name="isbn_id">
+        <select class="border border-gray-300 h-10 rounded w-full text-xs focus" name="iban_id">
             @foreach ($bank->items->where('status', 'verified') as $item)
-                <option value="{{ $item->id }}">{{ $item->isbn }} - {{ $item->owner }} ({{ $item->bank->title }})</option>
+                <option value="{{ $item->id }}">{{ $item->iban }} - {{ $item->owner }} ({{ $item->bank->title }})</option>
             @endforeach
         </select>
     </div>
     <div class="mt-4">
         <label class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('نحوه تسویه حساب')</label>
         <select class="border border-gray-300 h-10 rounded w-full text-sm focus" name="type" x-model="type">
-            <option selected value="immediate">تسویه آنی</option>
-            <option value="daliy">زمان‌بندی: روزانه</option>
-            <option value="weekly">زمان‌بندی: هفتگی</option>
-            <option value="monthly">زمان‌بندی: ماهانه</option>
+            <option selected value="immediate" :selected="type == 'immediate'">تسویه آنی</option>
+            <option value="daily" :selected="type == 'daily'">زمان‌بندی: روزانه</option>
+            <option value="weekly" :selected="type == 'weekly'">زمان‌بندی: هفتگی</option>
+            <option value="monthly" :selected="type == 'monthly'">زمان‌بندی: ماهانه</option>
         </select>
     </div>
     <div class="mt-4" x-show="type == 'weekly'">
@@ -58,7 +58,9 @@
     <div class="mt-4">
         <button class="bg-green-600 rounded-full h-9 px-8 text-white text-sm hover:bg-green-700 transition focus-current ring-green-600" x-text="type == 'immediate' ? 'تسویه آنی' : 'ثبت زمان‌بندی'"></button>
     </div>
-    <p class="text-xs text-yellow-600 leading-5 bg-yellow-50 p-2 mt-4 border-r-2 border-yellow-400 cursor-default">
-        در حال حاضر، تسویه حساب زمان‌بندی شده فعال <span class="underline">نیست</span>. در صورت تمایل آن را فعال کنید.
-    </p>
+    @if (!$bank->scheduling)
+        <p class="text-xs text-yellow-600 leading-5 bg-yellow-50 p-2 mt-4 border-r-2 border-yellow-400 cursor-default">
+            در حال حاضر، تسویه حساب زمان‌بندی شده فعال <span class="underline">نیست</span>. در صورت تمایل آن را فعال کنید.
+        </p>
+    @endif
 </form>

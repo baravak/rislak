@@ -2,7 +2,7 @@
     <div class="mb-4">
         <h2 class="heading" data-total="" data-xhr="total">@lang('تسویه حساب')</h2>
     </div>
-    <div class="border border-gray-300 px-4 py-2 mb-2 bg-gray-100 rounded">
+    {{-- <div class="border border-gray-300 px-4 py-2 mb-2 bg-gray-100 rounded">
         <div class="text-xs text-gray-600 cursor-default leading-6">
             <span>آخرین تسویه حساب شما به صورت</span>
             <span class="variable-font-semibold">روزانه</span>
@@ -14,7 +14,7 @@
             <span class="variable-font-semibold">IR0111123</span>
             <span>درخواست داده شده است.</span>
         </div>
-    </div>
+    </div> --}}
     <div class="border border-gray-300 rounded p-4">
         @if ($bank->items && $bank->items->where('status', 'verified')->count())
             @include('dashboard.centers.accounting.bank.checkoutDetails')
