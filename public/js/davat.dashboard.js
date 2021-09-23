@@ -191,16 +191,28 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
     //                              'itms-apps://itunes.apple.com/app/my-app/idxxxxxxxx?mt=8' ;
     // }
     // window.setTimeout(function (){ window.location.replace(fallbackLink); }, 1);
+    // davat.mobileLink = function(){
+    //     var links = $('[data-mobileLink]', this);
+    //     links.addClass('direct')
+    //     var isAndroid = navigator.userAgent.match('Android');
+    //     links.each(function(){
+    //         var mobileUrl = this.href.replace(/^https?:\/\/[^\/]*\/?/i, location.host == 'risloo.ir' ?'risloo://' : 'bisloo://') + '#Intent;scheme='+(location.host == 'risloo.ir' ? 'risloo': 'bisloo')+';package=com.majazeh.risloo;end';
+    //         if(isAndroid){
+    //             this.href = mobileUrl;
+    //         }
+    //     })
+    // }
     davat.mobileLink = function(){
         var links = $('[data-mobileLink]', this);
         links.addClass('direct')
-        var isAndroid = navigator.userAgent.match('Android');
-        links.each(function(){
-            var mobileUrl = this.href.replace(/^https?:\/\/[^\/]*\/?/i, location.host == 'risloo.ir' ?'risloo://' : 'bisloo://') + '#Intent;scheme='+(location.host == 'risloo.ir' ? 'risloo': 'bisloo')+';package=com.majazeh.risloo;end';
-            if(isAndroid){
-                this.href = mobileUrl;
-            }
-        })
+        links.on('click',function(){
+            var _self = this;
+                window.location = $(this).attr('data-mobileLink');
+                setTimeout(function(){
+                    window.location = $(_self).attr('href');
+                });
+                return false;
+        });
     }
   })();
 

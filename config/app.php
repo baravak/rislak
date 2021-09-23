@@ -53,6 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'mobileUrl' => env('APP_ENV', 'production') ? 'rislo://' : 'bisloo://',
     'server' => rtrim(env('SERVER_URL', 'http://localhost'), '/'),
     'publi_server' => rtrim(env('PUBLIC_SERVER_URL', rtrim(env('SERVER_URL', 'http://localhost'), '/')), '/'),
 
