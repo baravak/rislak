@@ -210,7 +210,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 window.location = $(this).attr('data-mobileLink');
                 setTimeout(function(){
                     window.location = $(_self).attr('href');
-                });
+                }, 500);
                 return false;
         });
     }
