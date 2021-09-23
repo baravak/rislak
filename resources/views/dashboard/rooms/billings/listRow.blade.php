@@ -32,7 +32,7 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <a href="#" class="text-xs text-blue-500 hover:text-blue-600 underline">کیف پول مرکز RS96666Z2</a>
+            <a href="#" class="text-xs text-blue-600 hover:text-blue-700 underline">کیف پول مرکز RS96666Z2</a>
         </div>
     </td>
 </tr>
