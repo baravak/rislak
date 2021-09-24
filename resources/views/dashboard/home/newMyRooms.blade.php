@@ -8,9 +8,11 @@
                 </div>
                 <div class="flex flex-col mr-2">
                     <span class="text-xs font-semibold text-brand transition">@center($room->center)</span>
-                    <span class="text-xs font-semibold text-brand transition">
-                        <a href="{{ route('dashboard.room.billings.index', $room->id) }}" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-white border border-gray-400 hover:bg-gray-400 rounded-full transition ml-1">@lang('صورت‌حساب‌های اتاق')</a>
-                    </span>
+                    @if ($room->type == 'room')
+                        <span class="text-xs font-semibold text-brand transition">
+                            <a href="{{ route('dashboard.room.billings.index', $room->id) }}" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-white border border-gray-400 hover:bg-gray-400 rounded-full transition ml-1">@lang('صورت‌حساب‌های اتاق')</a>
+                        </span>
+                    @endif
 
                 </div>
             </a>

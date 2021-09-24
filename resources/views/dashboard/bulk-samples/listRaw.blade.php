@@ -1,5 +1,5 @@
 <tr data-xhr="sample-list-id" class="transition hover:bg-gray-50">
-    <td class="px-3 py-2 whitespace-nowrap">
+    <td class="px-3 py-2 whitespace-nowrap hidden 2xl:table-cell">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $bulkSample->id }}</span>
         </div>
@@ -9,27 +9,28 @@
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">{{ $bulkSample->title }}</span>
         </div>
     </td>
-    <td class="px-3 py-2 whitespace-nowrap">
+    <td class="px-3 py-2 whitespace-nowrap hidden sm:table-cell">
         <div class="flex items-center">
-            <div class="flex">
+            <div class="flex flex-col">
                 <a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="text-xs text-gray-600 underline hover:text-blue-500">
                     @if ($bulkSample->room->center->type == 'personal_clinic')
                         @lang('Personal clinic of :user', ['user' => $bulkSample->room->manager->name])
                     @else
                         {{ $bulkSample->room->center->detail->title }}
+                        <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="mt-1 block text-xs text-gray-600 underline hover:text-blue-500">{{ $bulkSample->room->manager->name }}</a>
                     @endif
                 </a>
             </div>
         </div>
     </td>
-    <td class="px-3 py-2 whitespace-nowrap">
+    {{-- <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <div class="flex">
                 <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="text-xs text-gray-600 underline hover:text-blue-500">{{ $bulkSample->room->manager->name }}</a>
             </div>
         </div>
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
+    </td> --}}
+    <td class="px-3 py-2 whitespace-nowrap hidden 2xl:table-cell">
         <div class="flex items-center">
             <div class="flex">
                 <span class="text-xs text-gray-600">
@@ -38,7 +39,7 @@
             </div>
         </div>
     </td>
-    <td class="px-3 py-2 whitespace-nowrap">
+    <td class="px-3 py-2 whitespace-nowrap hidden md:table-cell">
         <div class="flex items-center">
             <div class="flex">
                 <span class="text-xs text-gray-600 cursor-default">
@@ -47,7 +48,7 @@
             </div>
         </div>
     </td>
-    <td class="px-3 py-2 whitespace-nowrap">
+    <td class="px-3 py-2 whitespace-nowrap hidden xl:table-cell">
         <div class="flex items-center">
             <span class="text-xs text-gray-500 cursor-default">@lang(ucfirst($bulkSample->status))</span>
         </div>

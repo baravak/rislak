@@ -8,6 +8,7 @@
         $('body').toggleClass('aside-open');
     });
     $('#aside a').on('click', function(){
-        $('body', document).trigger('click');
+        $('body').removeClass('aside-open');
+            // $('body', document).trigger('click');
     });
 });
