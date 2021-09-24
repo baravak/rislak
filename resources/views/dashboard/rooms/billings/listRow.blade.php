@@ -43,9 +43,9 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
-            @if ($billing->alloment > 0)
+            @if ($billing->amount > 0)
                 <span class="text-xs text-green-600 block cursor-default">@amount($billing->alloment)</span>
-            @elseif($billing->alloment < 0)
+            @elseif($billing->amount < 0)
                 <span class="text-xs text-red-600 block cursor-default">@amount($billing->alloment)</span>
             @else
                 <span class="text-xs text-gray-600 block cursor-default">0</span>

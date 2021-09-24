@@ -16,7 +16,7 @@
         $(document).on('click', function(e){
             var target = $(e.target);
             var parent = target.parents('.dropdown-open').eq(0);
-            if(e.target == $('.datepicker-container')[0] || $(e.target).parents('.datepicker-container').length){
+            if(e.target == $('.datepicker-container')[0] || $(e.target).parents('.datepicker-container, .datepicker-navigator').length){
                 return;
             }
             if(!parent.length && $('.dropdown-open').length){
