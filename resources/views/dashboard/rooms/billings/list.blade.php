@@ -11,15 +11,17 @@
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Amount') <small>(@lang('Toman'))</small></th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Percentage Amount')</th>
                             <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Treasurie')</th>
+                            <th class="px-3 py-2 text-right text-xs variable-font-medium text-gray-500" scope="col">@lang('Settled At')</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($ as $) --}}
+                        @foreach ($billings as $billing)
                             @include('dashboard.rooms.billings.listRow')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
+            {{ $billings->links() }}
         </div>
     </div>
 </div>

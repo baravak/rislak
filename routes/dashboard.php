@@ -127,6 +127,7 @@ Route::get('admin/banks', 'BankController@index')->name('admin.banks.index');
 Route::put('admin/banks/{bank}', 'BankController@update')->name('admin.banks.update');
 Route::get('admin/settlements', 'BankController@indexSettlement')->name('admin.settlements.index');
 
+Route::get('rooms/{room}/billings', 'RoomBillingController@index')->name('room.billings.index');
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
 if(config('app.env') == 'local'){
