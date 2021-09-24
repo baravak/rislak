@@ -81,16 +81,15 @@ class SessionPolicy
         }else{
             $room = isset($session->parentModel) ? $session->parentModel->room : $session->room;
         }
+
         if($user->isAdmin()){
             return true;
         }
-        if(isset($session->case)){
-            if($room->manager->id == $user->id){
-                return true;
-            }
-            if($user->centers && $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
-                return true;
-            }
+        if($room->manager->id == $user->id){
+            return true;
+        }
+        if($user->centers && $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+            return true;
         }
         return false;
     }

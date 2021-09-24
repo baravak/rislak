@@ -1,7 +1,10 @@
 <tr data-xhr="room-billing-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $billing->id }}</span>
+        <div class="flex items-center flex-col">
+            <a href="{{ route('dashboard.billings.show', $billing->id) }}" class="text-xs text-blue-700 underline block text-right dir-ltr en">{{ $billing->id }}</a>
+            @if ($billing->type == 'creditor')
+                <span class="text-xs text-gray-600 block">پیش‌فاکتور</span>
+            @endif
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -19,7 +22,7 @@
                     @endif
                 </span>
             </span>
-            <span class="text-xs text-gray-500 block cursor-default mt-1">
+            <span class="text-xs text-gray-700 block cursor-default mt-1">
                 @if ($billing->session)
                     @time($billing->session->started_at, '%A، %d %B %y ساعت H:i')
                 @endif
@@ -52,8 +55,8 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex flex-col">
-            <span class="text-xs text-red-600 hover:text-blue-700 block">{{ $billing->debtor->title  }}</span>
-            <span class="text-xs text-green-600 hover:text-blue-700 block">{{ $billing->creditor->title  }}</span>
+            <span class="text-xs text-red-600 block">{{ $billing->debtor->title  }}</span>
+            <span class="text-xs text-green-600 block">{{ $billing->creditor->title  }}</span>
         </div>
     </td>
     <td>

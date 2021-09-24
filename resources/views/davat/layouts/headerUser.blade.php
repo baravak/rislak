@@ -1,4 +1,4 @@
-<div class="flex" data-xhr="user-header-nav">
+<div class="flex" >
     <div class="relative dropdown">
         <button type="button" class="flex items-center border border-gray-300 rounded px-3 h-12 hover:bg-gray-50 transition dropdown-toggle focus">
             <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-3 bg-brand text-white border border-gray-200 text-xs" data-xhr="short-avatar">
