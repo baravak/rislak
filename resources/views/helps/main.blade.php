@@ -1,4 +1,4 @@
-<div data-xhr="help-content">
+{{-- <div data-xhr="help-content">
     <div class="fixed bottom-4 left-4 z-50">
         <div class="relative dropdown">
             <button type="button" class="block bg-white border border-gray-300 rounded-full h-9 w-9 hover:bg-gray-100 transition text-gray-400 focus dropdown-toggle shadow-md text-xl leading-10">؟</button>
@@ -8,4 +8,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
