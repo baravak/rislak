@@ -8,17 +8,14 @@
                 </div>
                 <div class="flex flex-col mr-2">
                     <span class="text-xs font-semibold text-brand transition">@center($room->center)</span>
-                    @if ($room->type == 'room')
-                        <span class="text-xs font-semibold text-brand transition">
-                            <a href="{{ route('dashboard.room.billings.index', $room->id) }}" class="inline-block px-3 py-1 text-xs text-gray-500 hover:text-white border border-gray-400 hover:bg-gray-400 rounded-full transition ml-1">@lang('صورت‌حساب‌های اتاق')</a>
-                        </span>
-                    @endif
-
                 </div>
             </a>
             <div class="flex flex-col absolute left-4 top-4">
-                <a href="{{ route('dashboard.rooms.show', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-brand hover:bg-brand-600 transition rounded-md text-white text-sm"><i class="fal fa-eye"></i></a>
-                <a href="{{ route('dashboard.room.schedules.index', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-green-500 hover:bg-green-700 transition rounded-md text-white mt-1"><i class="fal fa-calendar-alt"></i></a>
+                {{-- <a href="{{ route('dashboard.rooms.show', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-brand hover:bg-brand-600 transition rounded-md text-white text-sm"><i class="fal fa-eye"></i></a> --}}
+                <a href="{{ route('dashboard.room.schedules.index', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-green-600 hover:bg-green-700 transition rounded-md text-white mt-1" title="@lang('برنامه درمانی اتاق')" aria-label="@lang('برنامه درمانی اتاق')"><i class="fal fa-calendar-alt"></i></a>
+                @if ($room->type == 'room')
+                    <a href="{{ route('dashboard.room.billings.index', $room->id) }}" class="flex items-center justify-center w-7 h-7 bg-purple-600 hover:bg-purple-700 transition rounded-md text-white mt-1" title="@lang('صورت‌حساب‌های اتاق')" aria-label="@lang('صورت‌حساب‌های اتاق')"><i class="fal fa-file-invoice"></i></a>
+                @endif
             </div>
             @if ($room->pinned_tags)
                 <div class="flex items-center flex-wrap mt-4">
