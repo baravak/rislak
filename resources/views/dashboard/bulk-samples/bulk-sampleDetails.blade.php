@@ -42,9 +42,20 @@
             <a href="{{ $bulkSample->route('edit') }}" class="flex justify-center items-center flex-shrink-0 border border-gray-500 text-gray-600 hover:bg-gray-100 px-4 py-1 rounded-full text-sm leading-normal transition ml-2">
                 <span class="text-xs">{{ __('Edit') }}</span>
             </a>
-            <button data-action="{{ route('dashboard.exportWorkers.store') }}" data-method="post" data-merge='{"type" : "bulk", "id" : "{{ $bulkSample->id }}"}' class="lijax flex justify-center items-center flex-shrink-0 border border-blue-800 text-gray-600 hover:bg-blue-100 px-4 py-1 rounded-full text-sm leading-normal transition ml-2">
+
+            <button data-action="{{ route('dashboard.exportWorkers.store') }}" data-method="post" data-merge='{"type" : "bulk", "id" : "{{ $bulkSample->id }}"}' class="lijax flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 py-1 rounded-full text-sm transition focus ml-2">
                 <span class="text-xs">{{ __('خروجی تجمیعی') }}</span>
             </button>
+
+            <div class="relative dropdown">
+                <button type="button" class="flex justify-center items-center flex-shrink-0 border border-brand text-brand hover:bg-blue-50 px-4 h-9 rounded-full text-sm transition focus ml-2 dropdown-toggle">
+                    <span class="text-xs">{{ __('خروجی تجمیعی') }}</span>
+                </button>
+                <div class="rounded bg-white border border-gray-200 mt-1 shadow-md dropdown-menu absolute left-0 w-44">
+                    <button data-action="{{ route('dashboard.exportWorkers.store') }}" data-method="post" data-merge='{"type" : "bulk", "id" : "{{ $bulkSample->id }}"}' class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">درخواست خروجی جدید</button>
+                    <a href="#" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">دریافت آخرین خروجی<br> تاریخ 1400.06.31</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
