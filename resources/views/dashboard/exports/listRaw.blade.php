@@ -35,6 +35,10 @@
                 <span class="spinner-alone" data-workersta="{{ $export->id }}"></span>
                 <span class="text-xs text-gray-500 cursor-default mr-2">در حال ساخت خروجی</span>
             @endif
+
+            @if (false)
+                <span class="text-xs text-gray-500" >@lang("منقضی شده در") 1400.08.20</span>
+            @endif
         </div>
     </td>
 </tr>
