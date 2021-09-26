@@ -1,9 +1,9 @@
 <tr data-xhr="room-billing-list-id" class="transition hover:bg-gray-50">
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center flex-col">
-            <a href="{{ route('dashboard.billings.show', $billing->id) }}" class="text-xs text-blue-700 underline block text-right dir-ltr en">{{ $billing->id }}</a>
+        <div class="flex items-center">
+            <a href="{{ route('dashboard.billings.show', $billing->id) }}" class="text-xs text-blue-500 hover:text-bule-700 transition underline block text-right dir-ltr en relative -top-0.5">{{ $billing->id }}</a>
             @if ($billing->type == 'creditor')
-                <span class="text-xs text-gray-600 block">پیش‌فاکتور</span>
+                <span class="flex items-center text-xs text-yellow-600 mr-2 bg-yellow-100 px-2 h-5 rounded cursor-default">@lang('پیش‌فاکتور')</span>
             @endif
         </div>
     </td>
@@ -54,15 +54,17 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex flex-col">
+        <div class="flex flex-col cursor-default">
             <span class="text-xs text-red-600 block">{{ $billing->debtor->title  }}</span>
-            <span class="text-xs text-green-600 block">{{ $billing->creditor->title  }}</span>
+            <span class="text-xs text-green-600 block mt-1">{{ $billing->creditor->title  }}</span>
         </div>
     </td>
     <td>
         <span class="text-xs text-gray-600 block cursor-default mt-1">
             @if ($billing->settled_at)
                 @time($billing->settled_at, '%A، %d %B %y ساعت H:i')
+            @else
+                -
             @endif
         </span>
     </td>
