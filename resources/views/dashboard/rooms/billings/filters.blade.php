@@ -29,16 +29,16 @@
         </button>
         <div class="rounded-xl border border-gray-200 mt-2 shadow-lg dropdown-menu absolute left-0 w-72">
                 <div class="px-4 py-3">
-                    <label for="specific-date" class="inline-block mb-2 text-sm text-gray-700 variable-font-medium">@lang('از تاریخ')</label>
+                    <label for="from-date" class="inline-block mb-2 text-sm text-gray-700 variable-font-medium">@lang('از تاریخ')</label>
                     <div class="relative">
                         <input type="hidden" id="from" name="from" x-ref="from">
                         <input type="hidden" id="to" name="to" x-ref="to">
-                        <input type="text" id="specific-date" data-picker-alt="from" dpicker-format="YYYY/MM/DD" class="border border-gray-400 text-gray-700 h-10 rounded pl-8 pr-4 w-full text-sm focus date-picker dir-ltr text-left">
+                        <input type="text" id="from-date" data-picker-alt="from" dpicker-format="YYYY/MM/DD" class="border border-gray-400 text-gray-700 h-10 rounded pl-8 pr-4 w-full text-sm focus date-picker dir-ltr text-left">
                         <i class="fal fa-calendar-alt text-lg absolute left-2 top-1 text-gray-400 cursor-default"></i>
                     </div>
-                    <label for="specific-date" class="inline-block mt-4 mb-2 text-sm text-gray-700 variable-font-medium">@lang('تا تاریخ')</label>
+                    <label for="to-date" class="inline-block mt-4 mb-2 text-sm text-gray-700 variable-font-medium">@lang('تا تاریخ')</label>
                     <div class="relative">
-                        <input type="text" id="specific-date" data-picker-alt="to" dpicker-format="YYYY/MM/DD" class="border border-gray-400 text-gray-700 h-10 rounded pl-8 pr-4 w-full text-sm focus date-picker dir-ltr text-left">
+                        <input type="text" id="to-date" data-picker-alt="to" dpicker-format="YYYY/MM/DD" class="border border-gray-400 text-gray-700 h-10 rounded pl-8 pr-4 w-full text-sm focus date-picker dir-ltr text-left">
                         <i class="fal fa-calendar-alt text-lg absolute left-2 top-1 text-gray-400 cursor-default"></i>
                     </div>
                 </div>
