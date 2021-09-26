@@ -15,8 +15,14 @@
                 {{-- @endif --}}
             </div>
         {{-- @endif --}}
-        <div class="absolute left-2 top-2 w-6 h-6 bg-brand text-white text-sm variable-font-semibold flex items-center justify-center rounded-full">
+        <div class="absolute right-2 top-2 w-6 h-6 bg-brand text-white text-sm variable-font-semibold flex items-center justify-center rounded-full">
             <span class="relative top-0.5">1</span>
+        </div>
+        <div class="absolute left-2 top-2">
+            <div class="relative inline-block w-8 mr-2 align-middle select-none transition ease-in-out duration-700" title="فعال / غیر فعال">
+                <input checked type="checkbox" name="available" id="enable-disable" data-method="" data-action="" data-xhrbase="" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer lijax platform-available-input">
+                <label for="enable-disable" class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
         </div>
     </div>
     <div class="relative border rounded transition p-2 cursor-move border-brand bg-blue-50">
@@ -36,8 +42,14 @@
                 {{-- @endif --}}
             </div>
         {{-- @endif --}}
-        <div class="absolute left-2 top-2 w-6 h-6 bg-brand text-white text-sm variable-font-semibold flex items-center justify-center rounded-full">
+        <div class="absolute right-2 top-2 w-6 h-6 bg-brand text-white text-sm variable-font-semibold flex items-center justify-center rounded-full">
             <span class="relative top-0.5">2</span>
+        </div>
+        <div class="absolute left-2 top-2">
+            <div class="relative inline-block w-8 mr-2 align-middle select-none transition ease-in-out duration-700" title="فعال / غیر فعال">
+                <input type="checkbox" name="available" id="enable-disable1" data-method="" data-action="" data-xhrbase="" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer lijax platform-available-input">
+                <label for="enable-disable1" class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
         </div>
     </div>
     <div class="flex items-center justify-center border rounded transition p-2 cursor-move border-gray-400 border-dashed">
