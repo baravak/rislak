@@ -75,4 +75,8 @@ class RoomController extends Controller
         $this->data->center = $rooms->filters()->center;
         return $this->view($request, 'dashboard.centers.rooms.index');
     }
+
+    public function update(Request $request, $room){
+        return Room::apiUpdate($room, $request->all())->response()->json();
+    }
 }
