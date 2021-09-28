@@ -38,8 +38,8 @@ class SamplePolicy
         {
             return true;
         }
-
-        $currentCenter = $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->first();
+        if(!$user->centers) return false;
+        $currentCenter = $user->centers->where('id', $room->center ? $room->center->id : $room->id)->whereIn('acceptation.position', ['operator', 'manager'])->first();
         if($currentCenter)
         {
             return true;
@@ -55,7 +55,7 @@ class SamplePolicy
         }
         $room = $sample->room ?: $room;
         if(!$sample->client) return false;
-        $center = $user->centers->where('id', $room->center->id)->first();
+        $center = $user->centers->where('id', $room->center ? $room->center->id : $room->id)->first();
         if(!$center) return false;
         $acceptation = $center->acceptation;
         if(!$acceptation) return false;
