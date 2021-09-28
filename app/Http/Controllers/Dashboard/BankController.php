@@ -19,6 +19,11 @@ class BankController extends Controller
     }
 
     public function indexSettlement(Request $request){
+        $this->data->settlements = Bank::adminSettlement($request->all());
         return $this->view($request, 'dashboard.settlements.index');
+    }
+
+    public function updateSettlement(Request $request, $id){
+        return Bank::adminSettlementUpdate($id, $request->all())->response()->json();
     }
 }

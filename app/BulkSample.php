@@ -11,6 +11,7 @@ class BulkSample extends API
         'case' => TherapyCase::class,
         'cases' => TherapyCase::class,
         'scales' => Assessment::class,
-        'samples' => Sample::class
+        'samples' => Sample::class,
+        'last_export' => ExportWorker::class,
     ];
 }

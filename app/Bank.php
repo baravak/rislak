@@ -31,6 +31,14 @@ class Bank extends API
         return (new static)->execute('admin/banks/' . $bank, $params, 'put');
     }
 
+    public static function adminSettlement(array $params = []){
+        return (new static)->execute('admin/settlements', $params, 'get');
+    }
+    public static function adminSettlementUpdate($id, array $params = []){
+        return (new static)->execute('admin/settlements/' . $id, $params, 'put');
+    }
+
+
     public function _childPost($region, array $params = []){
         return (new static)->execute('bank/' . $region , $params, 'post');
     }

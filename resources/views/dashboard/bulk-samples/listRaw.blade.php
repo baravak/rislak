@@ -12,14 +12,12 @@
     <td class="px-3 py-2 whitespace-nowrap hidden sm:table-cell">
         <div class="flex items-center">
             <div class="flex flex-col">
-                <a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="text-xs text-gray-600 underline hover:text-blue-500">
-                    @if ($bulkSample->room->center->type == 'personal_clinic')
-                        @lang('Personal clinic of :user', ['user' => $bulkSample->room->manager->name])
-                    @else
-                        {{ $bulkSample->room->center->detail->title }}
-                        <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="mt-1 block text-xs text-gray-600 underline hover:text-blue-500">{{ $bulkSample->room->manager->name }}</a>
+                    @if ($bulkSample->room->type != 'personal_clinic')
+                        <a href="{{ route('dashboard.centers.show', $bulkSample->room->center->id) }}" class="text-xs text-gray-600 underline hover:text-blue-500">
+                                {{ $bulkSample->room->center->detail->title }}
+                        </a>
                     @endif
-                </a>
+                    <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="mt-1 block text-xs text-gray-600 underline hover:text-blue-500">{{ $bulkSample->room->manager->name }}</a>
             </div>
         </div>
     </td>

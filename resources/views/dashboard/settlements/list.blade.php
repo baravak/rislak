@@ -14,12 +14,13 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @foreach ($ as $) --}}
+                        @foreach ($settlements as $settlement)
                             @include('dashboard.settlements.listRow')
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        {{ $settlements->links() }}
     </div>
 </div>
