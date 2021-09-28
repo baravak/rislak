@@ -244,20 +244,19 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 })(davat);
 
 (function(davat){
+    var _name = {};
     var liveCheck = function(selector, url, name){
-        var xhr = undefined;
-        var timeout = null;
-        if(xhr) return;
+        if(_name[name]) return;
         var send = function(){
             var ids = [];
             $('['+selector+']').each(function(){
                 ids.push($(this).attr(selector));
             });
-            if(! ids.length){
-                xhr = undefined;
-                return;
+            if(!ids.length){
+            _name[name] = undefined;
+            return ;
             }
-            xhr = true;
+            _name[name] = true;
             var data = {};
             data[name] = ids;
             new Statio({
@@ -266,8 +265,14 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
                 ajax : {
                     data : data,
                     complete : function(){
-                        if(timeout) clearTimeout(timeout);
-                        timeout = setTimeout(send, 5000);
+                        if($('['+selector+']').length){
+                            timeout = setTimeout(function(){
+                                _name[name] = undefined;
+                                send();
+                            }, 5000);
+                        }else{
+                            _name[name] = undefined;
+                        }
                     }
                 }
             });
