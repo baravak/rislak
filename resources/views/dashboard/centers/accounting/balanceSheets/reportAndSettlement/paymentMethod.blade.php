@@ -52,7 +52,7 @@
 
         <div class="flex items-center justify-end w-full md:w-2/3 2xl:w-1/2 mx-auto text-xs mt-4 xs:mt-2 cursor-default">
             <span class="text-gray-500">@lang('Balance'):</span>
-            <span class="text-red-600 variable-font-medium mr-2"><span x-model="room_amount" x-text="room_amount - pay_balance">{{ array_sum($transactions->pluck('amount')->toArray()) }}</span> <small>@lang('Toman')</small></span>
+            <span class="text-red-600 variable-font-medium mr-2"><span x-model="room_amount" x-text="(room_amount - pay_balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0'">{{ array_sum($transactions->pluck('amount')->toArray()) }}</span> <small>@lang('Toman')</small></span>
             {{-- <span class="text-gray-500 variable-font-medium mr-2">0 <small>@lang('Toman')</small></span> --}}
         </div>
 

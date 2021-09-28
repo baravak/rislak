@@ -12,15 +12,15 @@
         <div class="flex flex-col items-center xs:items-end">
             <div class="flex items-center">
                 <span class="text-xs text-gray-500">@lang('Total transaction amount'):</span>
-                <span class="xs:w-40 text-sm text-gray-700 mr-4"><span x-model="total_amount" x-text="total_amount"></span> <small>@lang('Toman')</small></span>
+                <span class="xs:w-40 text-sm text-gray-700 mr-4"><span x-model="total_amount" x-text="total_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0'"></span> <small>@lang('Toman')</small></span>
             </div>
             <div class="flex items-center mt-2">
                 <span class="text-xs text-gray-500">@lang('میانگین درصد سهم اتاق'):</span>
-                <span class="xs:w-40 text-sm text-gray-700 mr-4" x-model="avg_percentage" x-text="avg_percentage">15%</span>
+                <span class="xs:w-40 text-sm text-gray-700 mr-4" x-model="avg_percentage" x-text="Math.round(avg_percentage.replace('%', '')) + '%'">15%</span>
             </div>
             <div class="flex items-center mt-2">
                 <span class="text-xs text-gray-500">@lang('Total percentage room'):</span>
-                <span class="xs:w-40 text-sm text-gray-700 variable-font-medium mr-4"><span x-model="room_amount" x-text="room_amount">{{ array_sum($transactions->pluck('amount')->toArray()) }}</span> <small>@lang('Toman')</small></span>
+                <span class="xs:w-40 text-sm text-gray-700 variable-font-medium mr-4"><span x-model="room_amount" x-text="room_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0'">{{ array_sum($transactions->pluck('amount')->toArray()) }}</span> <small>@lang('Toman')</small></span>
             </div>
         </div>
     </div>
