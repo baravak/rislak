@@ -1,5 +1,5 @@
-<div class="border border-gray-300 rounded p-4">
-    <div class="relative flex items-center justify-center xs:justify-between" data-xhr-bind="accounts">
+<div class="border border-gray-300 rounded p-4" data-xhr-bind="accounts">
+    <div class="relative flex items-center justify-center xs:justify-between">
         <div class="flex items-center cursor-default flex-col xs:flex-row">
             <div class="flex items-center justify-center border border-gray-200 rounded-full w-10 h-10 p-2 ml-2">
                 @if (!$item->bank->id)
@@ -18,11 +18,11 @@
                 </div>
             </div>
         </div>
-        <div>
+        {{-- <div>
             <a class="absolute left-2 top-2 xs:relative xs:top-0.5 xs:left-auto flex items-center justify-center text-gray-400 hover:text-red-600 transition text-sm h-6 w-6 rounded-full focus:text-red-600 focus-current ring-red-600">
                 <i class="fal fa-trash-alt"></i>
             </a>
-        </div>
+        </div> --}}
     </div>
     @if ($item->notic)
         <p class="text-xs text-gray-500 variable-font-light leading-5 bg-gray-100 p-2 mt-4 border-r-2 border-red-500 cursor-default">

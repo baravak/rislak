@@ -62,11 +62,13 @@
                 <i class="fal fa-edit text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i>
             </a>
         </div> --}}
-        <div class="inline-flex border border-brand rounded-full text-xs text-brand">
-            <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-1 hover:bg-brand hover:text-white transition rounded-l-full">{{ __('Registration link') }}</a>
-            <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-1 cursor-pointer border-l border-brand border-opacity-30 hover:bg-brand hover:text-white transition rounded-r-full" title="{{ __('Copy') }}">
-                <i class="fal fa-copy relative top-0.5"></i>
+        @if ($bulkSample->status != 'blocked')
+            <div class="inline-flex border border-brand rounded-full text-xs text-brand">
+                <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-1 hover:bg-brand hover:text-white transition rounded-l-full">{{ __('Registration link') }}</a>
+                <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-1 cursor-pointer border-l border-brand border-opacity-30 hover:bg-brand hover:text-white transition rounded-r-full" title="{{ __('Copy') }}">
+                    <i class="fal fa-copy relative top-0.5"></i>
+                </div>
             </div>
-        </div>
+        @endif
     </td>
 </tr>
