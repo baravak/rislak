@@ -1,4 +1,4 @@
-<div class="flex items-center mb-4 mt-8">
+<div class="flex items-center mb-4">
     <h3 class="text-gray-700 variable-font-bold cursor-default">@lang('Therapy Schedules')</h3>
     {{-- <a href="#" class="flex items-center justify-center bg-green-600 text-white text-xs rounded-full px-2 mr-2 w-5 sm:w-auto h-5 hover:bg-green-700 transition" title="@lang('Define new schedule')">
         <i class="fal fa-plus text-xs"></i>
