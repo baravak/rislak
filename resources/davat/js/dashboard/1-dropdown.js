@@ -15,6 +15,10 @@
         });
         $(document).on('click', function(e){
             var target = $(e.target);
+            if(target.is('.single-click')){
+                $('.dropdown-open').fadeOut('fast').removeClass('dropdown-open');
+                return;
+            }
             var parent = target.parents('.dropdown-open').eq(0);
             if(e.target == $('.datepicker-container')[0] || $(e.target).parents('.datepicker-container, .datepicker-navigator').length){
                 return;
@@ -29,9 +33,6 @@
                     $(this).fadeOut('fast').removeClass('dropdown-open');
                 }
             });
-            // if(e.target != $('.dropdown-toggle', _self)[0] && $(e.target).parents('.dropdown-toggle')[0] != $('.dropdown-toggle', _self)[0]){
-            //     $('button + div.dropdown-open', _self).fadeOut('fast').removeClass('dropdown-open');
-            // }
         });
     }
 })(davat);

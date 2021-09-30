@@ -33,7 +33,7 @@
             <span class="font-semibold text-sm">{{ $bulkSample->id }}</span>
         </div>
         <div class="inline-flex dir-ltr text-left">
-            @if ($bulkSample->status != 'blocked')
+            @if (!in_array($bulkSample->status, ['blocked', 'closed']))
                 <div class="inline-flex items-center border border-gray-600 rounded-full text-xs text-gray-600">
                     <a href="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" target="_blank" class="pl-3 pr-2 py-2 hover:bg-gray-100 transition rounded-l-full">{{ __('Registration link') }}</a>
                     <div data-clipboard-text="{{ route('auth', ['authorized_key' => $bulkSample->link]) }}" class="pr-3 pl-2 py-2 cursor-pointer border-l border-gray-300 hover:bg-gray-100 transition rounded-r-full">
