@@ -200,8 +200,8 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 
 (function(){
     // var fallbackLink = 'http://example.com/my-web-app/'+window.location.search+window.location.hash;
-    // var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
-    //     isAndroid = navigator.userAgent.match('Android');
+    var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
+        isAndroid = navigator.userAgent.match('Android');
     // if (isiOS || isAndroid) {
     //   document.getElementById('loader').src = 'custom-protocol://my-app'+window.location.search+window.location.hash;
     //   fallbackLink = isAndroid ? 'https://play.google.com/store/apps/details?id=com.mycompany.myapp' :
@@ -223,6 +223,7 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
         var links = $('[data-mobileLink]', this);
         links.addClass('direct')
         links.on('click',function(){
+            if(!isAndroid) return true;
             var _self = this;
                 window.location = $(this).attr('data-mobileLink');
                 setTimeout(function(){
