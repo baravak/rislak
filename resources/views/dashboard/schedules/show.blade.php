@@ -17,8 +17,9 @@
         @if ($session->description)
             <div class="text-sm variable-font-light text-gray-500 mt-2 cursor-default">{{ $session->description }}</div>
         @endif
-
-        <a href="#" class="text-xs text-gray-600 border border-gray-300 rounded-full px-4 h-7 inline-flex items-center hover:text-white hover:bg-brand transition mt-4">@lang('Edit session')</a>
+        @can('admin', $room)
+            <a href="{{ route('dashboard.sessions.edit', $session->id) }}" class="text-xs text-gray-600 border border-gray-300 rounded-full px-4 h-7 inline-flex items-center hover:text-white hover:bg-brand transition mt-4">@lang('Edit session')</a>
+        @endcan
     </div>
     @include('dashboard.sessions.createUserForm')
 @endsection
