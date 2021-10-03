@@ -51,7 +51,7 @@
                 <div class="rounded bg-white border border-gray-200 mt-1 shadow-md dropdown-menu absolute left-0 w-44">
                     <button data-action="{{ route('dashboard.exportWorkers.store') }}" data-method="post" data-merge='{"type" : "bulk", "id" : "{{ $bulkSample->id }}"}' class="lijax block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">درخواست خروجی جدید</button>
                     @if ($bulkSample->last_export)
-                    <a href="{{ $bulkSample->last_export->file->url }}" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">دریافت آخرین خروجی<br> تاریخ @time($bulkSample->last_export->cooked_at, "Y-m-d H:i")</a>
+                    <a href="{{ $bulkSample->last_export->file->url }}" target="_blank" class="block text-sm text-gray-700 text-center py-3 px-4 hover:bg-gray-100 border-b border-gray-100 transition">دریافت آخرین خروجی<br> تاریخ @time($bulkSample->last_export->cooked_at, "Y-m-d H:i")</a>
                     @endif
                 </div>
             </div>
