@@ -21,7 +21,7 @@ class RoomController extends Controller
                 });
         return $this->view($request, $view);
     }
-        $this->data->center = $rooms->getFilter('center');
+        // $this->data->center = $rooms->getFilter('center');
         switch($request->header('data-xhr-base')){
             case 'select2':
                 $view = 'dashboard.rooms.select2';
