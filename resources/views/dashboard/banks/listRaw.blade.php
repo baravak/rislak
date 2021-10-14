@@ -7,7 +7,7 @@
             </td>
             <td class="px-3 py-2 whitespace-nowrap">
                 <div class="flex flex-col justify-center">
-                    <span class="text-xs text-gray-600 variable-font-medium cursor-default" x-text="bank.user ? bank.user.name : bank.center.detail.title"></span>
+                    <span class="text-xs text-gray-600 variable-font-medium cursor-default" x-text="bank.user ? (bank.user.name || bank.user.mobile) : bank.center.detail.title"></span>
                     <span class="text-xs text-gray-500 cursor-default mt-1" x-text="bank.creator.name"></span>
                 </div>
             </td>
