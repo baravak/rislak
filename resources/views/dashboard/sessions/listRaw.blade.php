@@ -64,7 +64,11 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap text-left dir-ltr">
         <div class="inline-block mr-4">
-            <x-link-show :link="$session->route('show')"/>
+            @can('booking', [$session, true])
+                <a href="{{ route('dashboard.schedules.show', $session->id) }}" class="inline-block px-3 py-1 text-xs text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 rounded-full transition">@lang('رزرو')</a>
+            @else
+                <x-link-show :link="$session->route('show')"/>
+            @endcan
         </div>
         <div class="inline-block">
             <a href="{{ $session->route('edit') }}" title="{{ __('Edition') }}">

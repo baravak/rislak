@@ -94,4 +94,14 @@ class SessionPolicy
         return false;
     }
 
+    public function booking(User $user, Session $session, $justUser = false){
+        if($session->status != 'registration_awaiting'){
+            return false;
+        }
+        if($justUser && $this->manager($user, $session)){
+            return false;
+        }
+        return true;
+    }
+
 }
