@@ -70,10 +70,12 @@
                 <x-link-show :link="$session->route('show')"/>
             @endcan
         </div>
-        <div class="inline-block">
-            <a href="{{ $session->route('edit') }}" title="{{ __('Edition') }}">
-                <i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i>
-            </a>
-        </div>
+        @can('manager', $session)
+            <div class="inline-block">
+                <a href="{{ $session->route('edit') }}" title="{{ __('Edition') }}">
+                    <i class="fal fa-edit text-sm leading-relaxed text-gray-600 hover:text-blue-600"></i>
+                </a>
+            </div>
+        @endcan
     </td>
 </tr>
