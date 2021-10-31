@@ -20,7 +20,11 @@
     <button class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mb-8 focus" title="{{ __('Verify Mobile') }}" aria-label="{{ __('Verify Mobile') }}" role="button">{{ __('Verify Mobile') }}</button>
 @endsection
 @section('auth-nav')
-
+    <div class="flex justify-center">
+        <a href="{{ route('auth') }}" class="text-sm text-gray-700 hover:text-blue-600 transition" title="{{ __('Login') }}" aria-label="{{ __('Login') }}">{{ __('Login') }}</a>
+        <span class="px-4 text-gray-500">|</span>
+        <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-blue-600 transition" title="{{ __('Register') }}" aria-label="{{ __('Register') }}">{{ __('Register') }}</a>
+    </div>
 @endsection
 @include('helps.auth.mobileCode')
 @extends('auth.theory')
