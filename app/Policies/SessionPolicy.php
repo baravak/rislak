@@ -88,7 +88,8 @@ class SessionPolicy
         if($room->manager->id == $user->id){
             return true;
         }
-        if($user->centers && $user->centers->where('id', $room->center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
+        $center = $room->center ? $room->center : $room;
+        if($user->centers && $user->centers->where('id', $center->id)->whereIn('acceptation.position', ['operator', 'manager'])->count()){
             return true;
         }
         return false;

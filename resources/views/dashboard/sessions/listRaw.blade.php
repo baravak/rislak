@@ -11,15 +11,17 @@
                     @lang('Therapy room of :user', ['user' => $session->room->manager->name])
                 </a>
             </div>
-            <div class="flex mt-1">
-                <a href="{{ $session->room->center->route('show') }}" class="text-xs text-gray-500 hover:text-blue-500 underline transition">
-                    @if ($session->room->center->type == 'personal_clinic')
-                        @lang('Personal clinic')
-                    @else
-                        {{ $session->room->center->detail->title }}
-                    @endif
-                </a>
-            </div>
+            @if ($session->room->center)
+                <div class="flex mt-1">
+                    <a href="{{ route('dashboard.centers.show', $session->room->center->id) }}" class="text-xs text-gray-500 hover:text-blue-500 underline transition">
+                        @if ($session->room->center->type == 'personal_clinic')
+                            @lang('Personal clinic')
+                        @else
+                            {{ $session->room->center->detail->title }}
+                        @endif
+                    </a>
+                </div>
+            @endif
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
