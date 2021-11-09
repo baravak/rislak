@@ -41,12 +41,12 @@
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="text-xs text-gray-600">@lang($user->problem)</span>
+                                        <span class="text-xs text-gray-600">{{ $user->problem }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
                                     <div class="flex items-center cursor-default">
-                                        <span class="text-xs text-gray-600">@lang($user->description)</span>
+                                        <span class="text-xs text-gray-600">{{ $user->description }}</span>
                                     </div>
                                 </td>
                                 <td class="px-3 py-2 whitespace-nowrap">
