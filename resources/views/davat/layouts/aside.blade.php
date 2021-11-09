@@ -118,17 +118,6 @@
             </li>
             @endif
             <li class="mb-1">
-                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" class="flex justify-between items-center py-2 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
-                    <div class="flex">
-                        <i class="fal fa-balance-scale ml-3 mt-0.5"></i>
-                        <div>
-                            <div class="variable-font-medium">{{ __('Assessments') }}</div>
-                            <div class="text-xs variable-font-light">آزمون‌های روان‌شناختی موجود در سامانه</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mb-1">
                 <a href="{{ route('dashboard.samples.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/samples.*" class="flex justify-between items-center py-2 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
                     <div class="flex">
                         <i class="fal fa-vial ml-2"></i>
@@ -149,6 +138,19 @@
                     </ul>
                 @endif
             </li>
+            @if (auth()->isAdmin() || (auth()->centers() && auth()->centers()->whereIn('acceptation.position', ['manager', 'operator', 'psychologist'])->first()))
+            <li class="mb-1">
+                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" class="flex justify-between items-center py-2 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
+                    <div class="flex">
+                        <i class="fal fa-balance-scale ml-3 mt-0.5"></i>
+                        <div>
+                            <div class="variable-font-medium">{{ __('Assessments') }}</div>
+                            <div class="text-xs variable-font-light">آزمون‌های روان‌شناختی موجود در سامانه</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            @endif
             @if (false)
                 <li class="mb-1">
                     <a href="{{ route('dashboard.documents.index') }}" data-metarget="samples" data-metarget-pattern="^/dashboard/documents.*" class="flex justify-between items-center py-2 px-6 rounded text-gray-900 hover:bg-gray-200 transition">
