@@ -25,7 +25,7 @@
     @can('management', [$sample, isset($room) ? $room : null])
         <span class="text-xs text-gray-500">
             <form action="{!! urldecode(route('dashboard.samples.scoring', ['sample' => $sample->id, 'inline' => 1])) !!}" method="POST"  class="inline-block" data-lijax-preload="______">
-                <button type="submit" class="inline-flex items-center justify-center w-24 h-7 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">
+                <button type="submit" class="inline-flex items-center justify-center w-24 h-7 text-xs text-white bg-blue-600 hover:bg-blue-700 rounded-full transition">
                     {{ __("Scoring") }}
                 </button>
             </form>
