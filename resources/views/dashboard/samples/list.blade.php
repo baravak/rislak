@@ -1,28 +1,16 @@
 <div data-xhr="sample-items">
     @if ($samples->count())
-        <div class="overflow-x-auto">
-            <div class="align-middle inline-block min-w-full">
-                <div class="overflow-hidden border border-gray-200 rounded">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Serial') }}</th>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Scale') }}</th>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Client') }}</th>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Therapy room') }}</th>
-                                <th class="px-3 py-2 text-right text-xs font-medium text-gray-500" scope="col">{{ __('Status') }}</th>
-                                <th class="px-3 py-2" scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            @foreach ($samples as $sample)
-                                @include('dashboard.samples.listRaw')
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="flex items-center cursor-default px-2 text-xs variable-font-medium text-gray-600 bg-gray-100 py-2 rounded">
+            <div class="w-24 hidden lg:flex">@lang('Serial')</div>
+            <div class="flex-1 px-2">@lang('Scale')</div>
+            <div class="flex-1 px-2 hidden md:flex">@lang('Client')</div>
+            <div class="flex-1 px-2 hidden sm:flex">@lang('Therapy room')</div>
+            <div class="flex-1 px-2 hidden sm:flex">@lang('Status')</div>
+            <div class="flex-1 px-2"></div>
         </div>
+        @foreach ($samples as $sample)
+            @include('dashboard.samples.listRaw')
+        @endforeach
         {{ method_exists($samples, 'links') ? $samples->links() : null }}
     @else
         @include('dashboard.samples.emptyList')

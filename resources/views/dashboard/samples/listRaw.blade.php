@@ -1,51 +1,57 @@
-<tr data-xhr="sample-list-{{ $sample->id }}" class="transition hover:bg-gray-50">
-    <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default en">{{ $sample->id }}</span>
-        </div>
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex flex-col">
-            <div class="flex"><span class="text-xs font-medium text-gray-700 cursor-default">{{ $sample->scale->title }}</span></div>
-            <div class="flex mt-1"><span class="text-gray-400 font-light text-xs cursor-default">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span></div>
-            @if ($sample->chain)
-                <div class="flex mt-1">
-                    <a href="{{ route('dashboard.samples.index', ['chain' => $sample->chain->id]) }}" class="text-gray-400 hover:text-brand font-light text-xs transition underline">
-                        <i class="fal fa-link"></i>
-                        {{-- <span>{{ substr($sample->chain, 0, 6) }}...{{ substr($sample->chain, strlen($sample->chain) -6 , 6) }}</span> --}}
-                        <span>نمو‌نه‌های زنجیره‌ای این نمونه</span>
-                    </a>
-                </div>
-            @endif
-        </div>
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            @if ($sample->client)
-                <span href="#" class="text-xs text-gray-700 cursor-default">@displayName($sample->client)</span>
-            @else
-                <span href="#" class="text-xs text-gray-700 cursor-default">{{ $sample->code }}</span>
-            @endif
-        </div>
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex flex-col">
+<div data-xhr="sample-list-{{ $sample->id }}" class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-3 sm:py-2 p-2 rounded mt-2">
+    <a href="{{ urldecode(route('dashboard.samples.show', $sample->id)) }}" class="w-24 text-xs text-gray-600 hover:text-blue-600 transition hidden lg:flex">
+        <span class="text-right dir-ltr en">{{ $sample->id }}</span>
+    </a>
+    <div class="flex-1 px-2 flex flex-col">
+        <a href="{{ urldecode(route('dashboard.samples.show', $sample->id)) }}" class="group text-xs text-gray-600 hover:text-blue-600 transition border-r-2 border-gray-400 sm:border-none hover:border-blue-600 pr-2 sm:pr-0">
+            <span class="block">{{ $sample->scale->title }}</span>
+            <span class="block text-gray-400 font-light group-hover:text-blue-600">{{$sample->edition ? __('Edition :title', ['title' => $sample->edition]) .' - ' : ''}} {{ __('Version :ver', ['ver' => $sample->version]) }}</span>
+        </a>
+        <div class="mt-4 sm:hidden flex flex-col">
             <div class="flex">
-                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-700 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
             </div>
             @if ($sample->case)
-                <div class="flex mt-1">
-                    <a class="text-xs text-gray-500 hover:text-blue-500 underline" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+                <div class="flex">
+                    <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
                 </div>
             @endif
+            @if ($sample->client)
+                <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: @displayName($sample->client)</span>
+            @else
+                <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: {{ $sample->code }}</span>
+            @endif
         </div>
-    </td>
-    <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
+        <div class="mt-2 sm:hidden flex items-center">
+            <span class="text-xs text-gray-500 ml-1 cursor-default">@lang('Status'): </span>
             @include('dashboard.samples.tables.status')
         </div>
-    </td>
-    <td class="px-3 p-3 whitespace-nowrap text-left dir-ltr">
+        <div class="sm:hidden flex items-center dir-ltr mt-4">
+            @include('dashboard.samples.do')
+        </div>
+    </div>
+    <div class="flex-1 px-2 hidden md:flex">
+        @if ($sample->client)
+            <span class="text-xs text-gray-600 cursor-default">@displayName($sample->client)</span>
+        @else
+            <span class="text-xs text-gray-600 cursor-default">{{ $sample->code }}</span>
+        @endif
+    </div>
+    <div class="flex-1 px-2 hidden sm:flex flex-col">
+        <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+        @if ($sample->case)
+            <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+        @endif
+        @if ($sample->client)
+            <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: @displayName($sample->client)</span>
+        @else
+            <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: {{ $sample->code }}</span>
+        @endif
+    </div>
+    <div class="flex-1 px-2 hidden sm:flex">
+        @include('dashboard.samples.tables.status')
+    </div>
+    <div class="flex-1 px-2 text-left dir-ltr hidden sm:flex">
         @include('dashboard.samples.do')
-    </td>
-</tr>
+    </div>
+</div>
