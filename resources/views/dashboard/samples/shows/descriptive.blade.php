@@ -1,0 +1,2 @@
+<label for="item-{{$loop->index}}" class="block mb-2 text-sm text-gray-700 font-medium">{{$loop->index + 1}} - {{isset($item->text) ? $item->text : ''}}</label>
+<textarea data-action="{{urldecode(route('samples.storeItems', $sample->id, 1))}}" data-method="post" data-item="{{$loop->index + 1}}" data-name="items[{{$loop->index}}][1]" data-merge='{"items[{{$loop->index}}][0]" : {{$loop->index + 1}}}' data-lijax="change" id="item-{{$loop->index}}" placeholder="&nbsp;" disabled>{{ $sample->user_answered }}</textarea>
