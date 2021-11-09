@@ -1,10 +1,10 @@
-{{-- @can('management', [$sample, isset($room) ? $room : null])
+@can('management', [$sample, isset($room) ? $room : null])
     <div class="inline-block mr-4">
         <a href="{{ urldecode(route('dashboard.samples.show', $sample->id)) }}" title="@lang('View')" aria-label="@lang('View')">
             <i class="fal fa-eye text-sm text-gray-600 hover:text-blue-600 relative top-0.5"></i>
         </a>
     </div>
-@endcan --}}
+@endcan
 
 @if ($sample->chain)
     <div class="inline-block mr-6">
