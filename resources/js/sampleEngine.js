@@ -101,9 +101,9 @@
             }
         }
     });
-    $('input', '[data-type="item"]').on('change', function(){
+    $('input, textarea', '[data-type="item"]').on('change', function(){
         var data = JSON.parse($(this).attr('data-merge'));
-        if($(this).is(':radio')){
+        if($(this).is(':radio') || $(this).is('textarea')){
             data[1] = $(this).val();
             $(this).parents('[data-type="item"]').attr('data-answer', $(this).val());
         }
@@ -141,6 +141,7 @@
             dataType: "json",
             url: '/$/'+sample_id+'/items',
             method: 'post',
+            scriptCharset: "utf-8",
             data: {items : data}
         }).always(function (response, status){
             if (status != 'success')
