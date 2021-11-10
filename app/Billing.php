@@ -47,6 +47,10 @@ class Billing extends API
         $store = new static;
         return $store->execute(sprintf("rooms/%s/billings", $room ?: '-'), $params, 'get');
     }
+    public static function roomExport($room, array $params){
+        $request = new static;
+        return $request->execute(sprintf("rooms/%s/billings/export", $room ?: '-'), $params, 'post');
+    }
 
     public function parentClass($parent)
     {

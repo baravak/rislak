@@ -130,6 +130,7 @@ Route::get('admin/settlements', 'BankController@indexSettlement')->name('admin.s
 Route::put('admin/settlements/{settlement}', 'BankController@updateSettlement')->name('admin.settlements.update');
 
 Route::get('rooms/{room}/billings', 'RoomBillingController@index')->name('room.billings.index');
+Route::post('rooms/{room}/billings/export', 'RoomBillingController@export')->name('room.billings.export');
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
 if(config('app.env') == 'local'){

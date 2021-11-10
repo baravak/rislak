@@ -307,6 +307,11 @@ Breadcrumbs::for('dashboard.center.balanceSheets.show', function ($trail, $data)
     $trail->parent('dashboard.center.balanceSheets.index', $data);
     $trail->push($data['room']->manager->name, route('dashboard.center.balanceSheets.show', $data['room']->id));
 });
+Breadcrumbs::for('dashboard.room.billings.index', function ($trail, $data) {
+    $trail->parent('dashboard.center.balanceSheets.index', $data);
+    $trail->push($data['room']->manager->name, route('dashboard.room.billings.index', $data['room']->id));
+});
+
 
 Breadcrumbs::for('dashboard.billings.create', function ($trail, $data) {
     switch(get_class($data['model'])){
