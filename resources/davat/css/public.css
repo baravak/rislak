@@ -24,3 +24,30 @@ html[lang="fa"] {
         font-variation-settings: "wght" 400, "FANU" 1;
     }
 }
+
+.dir-rtl {
+	direction: rtl;
+}
+
+.dir-ltr {
+	direction: ltr;
+}
+
+@layer utilities {
+    @variants responsive {
+        .focus {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+        }
+
+        .focus-current {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60;
+        }
+    }
+}
+
+.rsl-intro-bg-img {
+    @apply absolute left-0 top-0 bg-white z-0;
+    width: 45%;
+    height: 31rem;
+    border-radius: 0% 4px 53% 75% / 0 0 100% 1%;
+}
