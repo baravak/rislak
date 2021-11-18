@@ -11,7 +11,7 @@
                         <div class="border-r border-white border-opacity-20 pr-4">
                             <span class="hidden xs:block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
                             <span class="block xs:hidden text-sm text-white">نسخه آزمایشی</span>
-                            <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-1">جهت انتقال به نسخه اصلی کلیک کنید</span>
+                            <span class="block text-xs variable-font-light text-opacity-70 text-white text-right">جهت انتقال به نسخه اصلی کلیک کنید</span>
                         </div>
                     </a>
                 @endif

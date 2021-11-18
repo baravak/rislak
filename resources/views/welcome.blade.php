@@ -97,7 +97,7 @@
                                 <i class="fad fa-tools text-2xl text-white ml-4"></i>
                                 <div class="border-r border-white border-opacity-20 pr-4">
                                     <span class="block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
-                                    <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-1">جهت انتقال به نسخه اصلی کلیک کنید</span>
+                                    <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-0.5">جهت انتقال به نسخه اصلی کلیک کنید</span>
                                 </div>
                             </a>
                             <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
