@@ -3,11 +3,18 @@
 
 @section('main')
     <div class="flex-1 bg-gray-50">
-        @if (config('app.env') == 'local')
-            <div class="flex items-center justify-center bg-red-600 text-sm text-white py-3 px-2">شما هم اکنون در نسخه آزمایشی ریسلو هستید. هیچ اطلاعاتی در این نسخه حقیقی و ماندگار نیست.</div>
-        @endif
         <div class="flex justify-center">
             <div class="rounded w-full sm:w-80 mx-4 sm:mx-auto relative top-20">
+                @if (config('app.env') == 'local')
+                    <a href="https://risloo.ir/" class="direct w-full inline-flex items-center bg-red-600 rounded py-2 px-4 mb-6 hover:shadow-md transition">
+                        <i class="fad fa-tools text-2xl text-white ml-4"></i>
+                        <div class="border-r border-white border-opacity-20 pr-4">
+                            <span class="hidden xs:block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
+                            <span class="block xs:hidden text-sm text-white">نسخه آزمایشی</span>
+                            <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-1">جهت انتقال به نسخه اصلی کلیک کنید</span>
+                        </div>
+                    </a>
+                @endif
                 @if (auth()->check() && auth()->user())
                     <div class="mb-4">
                         <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="flex justify-center items-center mx-auto w-16 h-16 rounded overflow-hidden border border-gray-200 direct flex-shrink-0 bg-gray-300 text-gray-600 text-sm">

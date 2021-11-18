@@ -10,7 +10,7 @@
     <title>Risloo | ریسلو</title>
 </head>
 
-@if (!config('app.env') == 'local')
+@if (config('app.env') !== 'local')
     <body class="flex flex-col text-gray-900">
         <main class="flex-1 pt-32" style="padding-bottom: 4rem;">
             <nav class="bg-white shadow py-4 fixed top-0 right-0 left-0 w-full">
@@ -100,10 +100,6 @@
                                     <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-1">جهت انتقال به نسخه اصلی کلیک کنید</span>
                                 </div>
                             </a>
-                            {{-- <div class="inline-flex items-center justify-center bg-red-500 rounded py-2 px-4 mb-6">
-                                <i class="fad fa-tools text-xl text-white"></i>
-                                <span class="text-sm text-white mr-2">شما در نسخه آزمایشی هستید</span>
-                            </div> --}}
                             <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
                             <p class="w-96 mx-auto text-sm variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
                                 مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
