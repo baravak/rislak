@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import "base/fonts.css";
-
+@import "vendors/fontawesome-all.css";
 @import "utilities/variable-font.css";
 
 html {
@@ -50,4 +50,8 @@ html[lang="fa"] {
     width: 45%;
     height: 31rem;
     border-radius: 0% 4px 53% 75% / 0 0 100% 1%;
+}
+
+.title {
+    @apply text-xl text-gray-800 variable-font-bold;
 }
