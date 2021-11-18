@@ -2,7 +2,25 @@
     <h3 class="heading" data-total="({{ $bulkSample->samples && $bulkSample->samples->count() ? $bulkSample->samples->count() : 0 }})" data-xhr="total">{{ __('Samples') }}</h3>
 </div>
 
-<div class="overflow-x-auto">
+<div data-xhr="sample-items">
+    @if ($bulkSample->samples->count())
+        <div class="hidden sm:flex items-center cursor-default px-2 text-xs variable-font-medium text-gray-600 bg-gray-100 py-2 rounded">
+            <div class="w-24 hidden lg:flex">@lang('Serial')</div>
+            <div class="flex-1 px-2">@lang('Scale')</div>
+            <div class="flex-1 px-2 hidden md:flex">@lang('Client')</div>
+            <div class="flex-1 px-2">@lang('Therapy room')/ @lang('Case')</div>
+            <div class="flex-1 px-2">@lang('Status')</div>
+            <div class="flex-1 px-2"></div>
+        </div>
+        @foreach ($bulkSample->samples as $sample)
+            @include('dashboard.samples.listRaw')
+        @endforeach
+    @else
+        @include('dashboard.samples.emptyList')
+    @endif
+</div>
+
+{{-- <div class="overflow-x-auto">
     <div class="align-middle inline-block min-w-full">
         <div class="overflow-hidden border border-gray-300 rounded">
             <table class="min-w-full divide-y divide-gray-200">
@@ -62,4 +80,4 @@
             </table>
         </div>
     </div>
-</div>
+</div> --}}
