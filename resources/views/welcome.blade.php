@@ -10,6 +10,7 @@
     <title>Risloo | ریسلو</title>
 </head>
 
+@if (false)
 <body class="flex flex-col text-gray-900">
     <main class="flex-1 pt-32" style="padding-bottom: 4rem;">
         <nav class="bg-white shadow py-4 fixed top-0 right-0 left-0 w-full">
@@ -60,8 +61,9 @@
         </div>
     </footer>
 </body>
+@endif
 
-@if (false)
+{{-- @if (false) --}}
 
 @if (config('app.env') == 'local')
     <body class="flex flex-col text-gray-900">
@@ -79,41 +81,99 @@
                     </nav>
                 </div>
                 <div class="flex items-center">
-                    <a href="/auth" class="text-sm text-gray-700 ml-6">@lang('ورود به پیش‌خوان')</a>
-                    <a href="/register" class="flex items-center text-sm text-white bg-brand px-6 h-8 rounded-lg">@lang('Register')</a>
+                    <a href="/auth" class="text-sm text-gray-700 ml-6 pt-0.5">@lang('ورود به پیش‌خوان')</a>
+                    <a href="/register" class="flex items-center text-sm text-white bg-brand px-6 h-9 rounded-lg">@lang('Register')</a>
                 </div>
             </div>
         </header>
-        <main class="flex flex-col bg-brand pt-14">
-            <div class="rsl-intro-bg-img"></div>
-            <div class="container mx-auto grid grid-cols-5 gap-4 px-8">
-                <div class="pt-24 pb-28 col-span-3 flex flex-col items-center justify-center">
-                    <div class="text-white cursor-default text-center">
-                        <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
-                        <p class="w-96 mx-auto text-xs variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
-                            مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
+        <main class="flex flex-col">
+            <div class="bg-brand pt-14">
+                <div class="rsl-intro-bg-img"></div>
+                <div class="container mx-auto grid grid-cols-5 gap-4 px-8">
+                    <div class="pt-24 pb-28 col-span-3 flex flex-col items-center justify-center">
+                        <div class="text-white cursor-default text-center">
+                            <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
+                            <p class="w-96 mx-auto text-sm variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
+                                مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
+                        </div>
+                        <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
+                            <img src="{{ asset('/images/public/risloo-intro-registerbox-user.png') }}" alt="آیکون ثبت شماره موبایل" class="w-12">
+                            <span class="text-xs text-gray-800 mt-2">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
+                            <form action="#" class="flex items-center w-60 mx-auto mt-4">
+                                <input type="text" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
+                                <button style="background-color: #16A34A;" class="w-28 h-9 rounded-md text-white text-sm mr-1 focus-current ring-green-600">@lang('Register')</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
-                        <img src="{{ asset('/images/public/risloo-intro-registerbox-user.png') }}" alt="آیکون ثبت شماره موبایل" class="w-12">
-                        <span class="text-xs text-gray-800 mt-2">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
-                        <form action="#" class="flex items-center w-60 mx-auto mt-4">
-                            <input type="text" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
-                            <button style="background-color: #16A34A;" class="w-28 h-9 rounded-md text-white text-sm mr-1 focus-current ring-green-600">@lang('Register')</button>
-                        </form>
+                    <div class="col-span-2 flex flex-col items-center justify-center">
+                        <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
                     </div>
                 </div>
-                <div class="col-span-2 flex flex-col items-center justify-center">
-                    <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
+                <div class="relative overflow-hidden w-full h-16">
+                    <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
                 </div>
             </div>
-            <div class="relative overflow-hidden w-full h-32">
-                <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
-                {{-- <div class="container mx-auto">1</div> --}}
+            <div class="container mx-auto px-8">
+                <h3 class="title mb-20 cursor-default">نظر متخصصان</h3>
+                <div class="flex items-center justify-center">
+                    <div class="grid grid-cols-11 gap-6 mx-auto">
+                        <div class="flex items-center justify-end">
+                            
+                        </div>
+                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                            <div class="flex flex-col items-center justify-center px-4 relative -top-8">
+                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
+                                    <img class="w-full h-full" src="{{ asset('/images/public/janbozorgi.png') }}" alt="دکتر مسعود جان‌بزرگی">
+                                </div>
+                                <h4 class="variable-font-medium text-gray-700 mt-3">دکتر مسعود جان‌بزرگی</h4>
+                                <span class="text-center text-xs text-gray-400 mt-1">مدیریت مرکز مشاوره طلیعه سلامت</span>
+                            </div>
+                            <div class="relative -top-2 px-8">
+                                <i class="fas fa-quote-right text-4xl absolute right-4 -top-4 z-0 text-gray-50"></i>
+                                <p class="text-sm text-gray-500 relative z-10">
+                                    مرکز درمانی خودم را با ریسلو مدیریت می‌کنم و بسیار راضی هستم. خدمات و پشتیبانی بسیار عالی توسط یه تیم حرفه‌ای انجام می‌شود. بخش تحلیل آزمون‌ها و ارائه نیمرخ‌‎‎ها هیجان‌ انگیزترین بخش ریسلو هست که هرکسی رو به وجد می‌آورد.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                            <div class="flex flex-col items-center px-4 relative -top-8">
+                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
+                                    <img class="w-full h-full" src="{{ asset('/images/public/alizadeh.png') }}" alt="دکتر پروا حاج علیزاده">
+                                </div>
+                                <h4 class="variable-font-medium text-gray-700 mt-3">دکتر پروا حاج علیزاده</h4>
+                                <span class="text-center text-xs text-gray-400 mt-1">مدیریت گروه خدمات روان‌شناسی مهر</span>
+                            </div>
+                            <div class="relative -top-2 px-8">
+                                <i class="fas fa-quote-right text-4xl absolute right-4 -top-4 z-0 text-gray-50"></i>
+                                <p class="text-sm text-gray-500 relative z-10">
+                                    در استفاده از ریسلو بسیار لذت بردم. خدمات ریسلو بسیار کاربردی است. برای مدیریت یک مرکز درمانی و یا مدیریت کلینیک شخصی و همچنین مدیریت مالی آن‌ها بسیار توصیه می‌شود.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                            <div class="flex flex-col items-center px-4 relative -top-8">
+                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
+                                    <img class="w-full h-full" src="{{ asset('/images/public/sadeghi.png') }}" alt="دکتر فاطمه صادقی">
+                                </div>
+                                <h4 class="variable-font-medium text-gray-700 mt-3">دکتر فاطمه صادقی</h4>
+                                <span class="text-center text-xs text-gray-400 mt-1">روان‌شناس و پژوهشگر</span>
+                            </div>
+                            <div class="relative -top-2 px-8">
+                                <i class="fas fa-quote-right text-4xl absolute right-4 -top-4 z-0 text-gray-50"></i>
+                                <p class="text-sm text-gray-500 relative z-10">
+                                    من از آزمون‌های موجود در ریسلو و سیستم سریع و خوب تست، جهت جمع آوری پرسشنامه‌های پژوهش خود استفاده می‌کنم. خروجی‌هایی که از آزمون‌ها و اطلاعات کاملی که به من می‌دهد بسیار عالی است. بنده به شخصه از تیم ریسلو تشکر میکنم.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center bg-blue-300">></div>
+                    </div>
+                </div>
             </div>
+            <div class="h-96"></div>
         </main>
     </body>
 @endif
 
-@endif
+{{-- @endif --}}
 
 </html>
