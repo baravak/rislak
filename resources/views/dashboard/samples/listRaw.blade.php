@@ -21,9 +21,11 @@
             </div>
         @endcan
         <div class="mt-4 sm:hidden flex flex-col">
-            <div class="flex">
-                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
-            </div>
+            @if ($sample->room)
+                <div class="flex">
+                    <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+                </div>
+            @endif
             @if ($sample->case)
                 <div class="flex">
                     <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
@@ -51,7 +53,9 @@
         @endif
     </div>
     <div class="flex-1 px-2 hidden sm:flex flex-col">
-        <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+        @if ($sample->room)
+            <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+        @endif
         @if ($sample->case)
             <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
         @endif
