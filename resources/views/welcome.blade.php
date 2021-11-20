@@ -105,8 +105,8 @@
                                 مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
                         </div>
                         <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
-                            <img src="{{ asset('/images/public/risloo-intro-registerbox-user.png') }}" alt="آیکون ثبت شماره موبایل" class="w-12">
-                            <span class="text-xs text-gray-800 mt-2">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
+                            <i class="fal fa-user-check text-2xl text-green-600"></i>
+                            <span class="text-xs text-gray-800 mt-3">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
                             <form action="#" class="flex items-center w-60 mx-auto mt-4">
                                 <input type="text" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
                                 <button style="background-color: #16A34A;" class="w-28 h-9 rounded-md text-white text-sm mr-1 focus-current ring-green-600">@lang('Register')</button>
@@ -239,8 +239,8 @@
                             <img src="{{ asset('/images/public/advantages.png') }}" alt="مزایای استفاده از ریسلو">
                         </div>
                     </div>
-                    <div class="col-span-6">
-                        <h3 class="title mb-8 mt-2 cursor-default">مزایای استفاده از ریسلو</h3>
+                    <div class="col-span-6 cursor-default">
+                        <h3 class="title mb-8 mt-2">مزایای استفاده از ریسلو</h3>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="flex items-center">
                                 <i class="fas fa-check-circle text-green-600"></i>
@@ -296,7 +296,7 @@
                 </div>
             </div>
             <div class="bg-gray-50">
-                <div class="container mx-auto px-8 py-16">
+                <div class="container mx-auto px-8 pt-16 pb-20">
                     <h3 class="title text-center mb-12 cursor-default">چرا باید به ریسلو اعتماد کنیم؟</h3>
                     <div class="grid grid-cols-4 gap-4">
                         <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
@@ -319,6 +319,152 @@
                             <h4 class="text-brand variable-font-semibold mt-1">علمی و پژوهشی</h4>
                             <p class="text-sm text-gray-500 mt-2 text-center"> ما برای ترویج علم و پژوهش در حوزه روان‌شناسی تلاش می‌کنیم، پس نگران نباشید، هدف اصلی ریسلو علم و پژوهش است و در این راستا حرکت می‌کند.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mx-auto px-8 py-14 cursor-default">
+                <h3 class="title text-center mb-16">چه کسانی از ریسلو استفاده می‌کنند؟</h3>
+                <div class="grid grid-cols-12 gap-12">
+                    <div class="col-span-3 space-y-8 pt-6">
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">روان‌درمان‌گرها</h5>
+                        </div>
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">روان‌شناس‌ها</h5>
+                        </div>
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">روان‌سنج‌ها</h5>
+                        </div>
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">دانشجوها</h5>
+                        </div>
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">مراکز مشاوره و درمانی</h5>
+                        </div>
+                        <div class="flex items-center dir-ltr">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 ml-4">مراجعین مراکز درمانی</h5>
+                        </div>
+                    </div>
+                    <div class="col-span-6">
+                        <img src="{{ asset('/images/public/who-use.png') }}" alt="چه کسانی از ریسلو استفاده می‌کنند؟">
+                    </div>
+                    <div class="col-span-3 space-y-8 pt-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">افراد عادی برای مهارت‌افزایی</h5>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">مشاوران</h5>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">راهنمایان مدارس</h5>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">مدارس</h5>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">دانشگاه‌‌ها</h5>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
+                            <h5 class="text-gray-600 mr-4">پژوهشگران</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mx-auto px-8 mt-8 cursor-default">
+                <div class="bg-brand px-10 pt-6 pb-5 rounded-2xl flex items-center justify-between">
+                    <div class="text-white">
+                        <h5 class="variable-font-semibold text-xl">به سادگی در ریسلو عضو شوید</h5>
+                        <p class="variable-font-light text-sm mt-1">به سادگی و با ثبت شماره موبایل خود، می‌توانید در ریسلو عضو شوید.</p>
+                    </div>
+                    <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white">@lang('Register')</a>
+                </div>
+            </div>
+            <div class="container mx-auto px-8 mt-20 cursor-default">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-2"></div>
+                    <div class="col-span-4">
+                        <img src="{{ asset('/images/public/android-app.png') }}" alt="اپلیکیشن ریسلو">
+                    </div>
+                    <div class="col-span-4">
+                        <div class="pt-20">
+                            <h3 class="title">از اپلیکیشن ریسلو استفاده کنید</h3>
+                            <p class="text-gray-500 text-sm mt-2">جهت سهولت انجام فعالیت‌ها، اپلیکیشن ریسلو را دریافت نمایید.</p>
+                            <div class="flex items-center mt-8 space-x-2 space-x-reverse">
+                                <a href="https://play.google.com/store/apps/details?id=com.majazeh.risloo "><img src="{{ asset('/images/public/google-play.png') }}" alt="دریافت از گوگل پلی"></a>
+                                <a href="#"><img src="{{ asset('/images/public/direct-download.png') }}" alt="دریافت مستقیم"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-2"></div>
+                </div>
+            </div>
+            <div class="bg-gray-100">
+                <div class="container mx-auto px-8 py-8 cursor-default">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="flex">
+                            <div>
+                                <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">با ریسلو</h5>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">درباره ما</a>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">ارتباط با ما</a>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition">مرکز راهنما</a>
+                            </div>
+                            <div class="mr-24">
+                                <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">خدمات</h5>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">پرسش‌های متداول</a>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">شرایط و قوانین</a>
+                                <a href="#" class="block text-xs text-gray-600 hover:text-brand transition">حریم خصوصی</a>
+                            </div>
+                        </div>
+                        <div class="flex dir-ltr">
+                            <div class="flex">
+                                <a href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
+                                    <img src="{{ asset('/images/public/eNamad.png') }}" alt="نماد اعتماد الکترونیکی">
+                                </a>
+                                <a href="#" class="ml-4">
+                                    <img src="{{ asset('/images/public/Rezayat.png') }}" alt="ساماندهی">
+                                </a>
+                            </div>
+                            <div class="ml-24 dir-rtl">
+                                <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">با ما همراه باشید</h5>
+                                <div class="flex items-center space-x-1 space-x-reverse">
+                                    <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-600">
+                <div class="container mx-auto px-8 pt-4 pb-3 cursor-default">
+                    <div class="flex items-center justify-center text-white text-xs">
+                        <i class="fal fa-copyright pb-0.5 ml-2"></i>
+                        <span>تمامی حقوق این وب‌سایت متعلق به <b>شرکت ریس اعتماد ایرانیان</b> می‌باشد.</span>
                     </div>
                 </div>
             </div>
