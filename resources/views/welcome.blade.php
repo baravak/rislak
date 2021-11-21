@@ -65,17 +65,18 @@
 
 @if (config('app.env') == 'local')
     <body class="flex flex-col text-gray-900">
-        <header class="bg-black bg-opacity-5 w-full fixed top-0 z-10">
+        <header class="bg-white shadow-md lg:shadow-none lg:bg-black lg:bg-opacity-5 w-full fixed top-0 z-10">
             <div class="container mx-auto flex items-center justify-between h-14 px-8">
                 <div class="flex items-center">
-                    <h1 class="text-2xl variable-font-black text-white ml-16">
+                    <h1 class="text-2xl variable-font-black text-brand lg:text-white ml-16">
                         <a href="/">ریسلو</a>
                     </h1>
-                    <nav class="flex items-center text-sm variable-font-medium">
-                        <a href="#" class="px-3 ml-2 py-1 rounded text-white hover:bg-white hover:bg-opacity-10 transition">@lang('معرفی')</a>
-                        <a href="#" class="px-3 ml-2 py-1 rounded text-white hover:bg-white hover:bg-opacity-10 transition">@lang('نظر متخصصان')</a>
-                        <a href="#" class="px-3 ml-2 py-1 rounded text-white hover:bg-white hover:bg-opacity-10 transition">@lang('خدمات')</a>
-                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-10 transition">@lang('مزیا')</a>
+                    <nav class="hidden lg:flex items-center text-sm variable-font-medium space-x-2 space-x-reverse">
+                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('معرفی')</a>
+                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('نظر متخصصان')</a>
+                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('خدمات')</a>
+                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('مزایا')</a>
+                        <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('اپلیکیشن')</a>
                     </nav>
                 </div>
                 <div class="flex items-center">
@@ -88,20 +89,24 @@
             </div>
         </header>
         <main class="flex flex-col">
-            <div class="bg-brand pt-14">
-                <div class="rsl-intro-bg-img"></div>
-                <div class="container mx-auto grid grid-cols-5 gap-4 px-8">
+            {{-- <div class="bg-brand {{ config('app.env') == 'local' ? 'pt-14' : 'pt-28' }}"> --}}
+            <div class="bg-brand pt-28">
+                <div class="rsl-intro-bg-img hidden lg:flex"></div>
+                <div class="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4 px-8">
                     <div class="pt-10 pb-28 col-span-3 flex flex-col items-center justify-center">
                         <div class="text-white cursor-default text-center">
-                            <a href="https://risloo.ir/" class="inline-flex items-center bg-red-500 rounded py-2 px-4 mb-6 hover:shadow-md transition">
-                                <i class="fad fa-tools text-2xl text-white ml-4"></i>
-                                <div class="border-r border-white border-opacity-20 pr-4">
-                                    <span class="block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
-                                    <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-0.5">جهت انتقال به نسخه اصلی کلیک کنید</span>
-                                </div>
-                            </a>
+                            {{-- @if (config('app.env') == 'local')
+                                <a href="https://risloo.ir/" class="inline-flex items-center bg-red-500 rounded py-2 px-4 mb-6 hover:shadow-md transition">
+                                    <i class="fad fa-tools text-2xl text-white ml-4"></i>
+                                    <div class="border-r border-white border-opacity-20 pr-4">
+                                        <span class="block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
+                                        <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-0.5">جهت انتقال به نسخه اصلی کلیک کنید</span>
+                                    </div>
+                                </a>
+                            @endif --}}
+                            <div></div>
                             <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
-                            <p class="w-96 mx-auto text-sm variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
+                            <p class="w-full xs:w-96 mx-auto text-sm variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
                                 مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
                         </div>
                         <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
@@ -113,7 +118,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-span-2 flex flex-col items-center justify-center">
+                    <div class="col-span-2 hidden lg:flex flex-col items-center justify-center">
                         <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
                     </div>
                 </div>
@@ -124,16 +129,16 @@
             <div class="container mx-auto px-8">
                 <h3 class="title text-center mb-20 cursor-default">نظر متخصصان</h3>
                 <div class="flex flex-col items-center">
-                    <div class="grid grid-cols-11 gap-6 mx-auto">
-                        <div class="flex items-center justify-center">
-                            <a href="#"><i class="fal fa-angle-right text-gray-400 text-2xl"></i></a>
+                    <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-11 gap-16 md:gap-6 mx-auto mb-4">
+                        <div class="hidden lg:flex items-center justify-center">
+                            {{-- <a href="#"><i class="fal fa-angle-right text-gray-400 text-2xl"></i></a> --}}
                         </div>
-                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                        <div class="flex flex-col items-center md:col-span-4 lg:col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
                             <div class="flex flex-col items-center justify-center px-4 relative -top-8">
-                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
-                                    <img class="w-full h-full" src="{{ asset('/images/public/janbozorgi.png') }}" alt="دکتر مسعود جان‌بزرگی">
+                                <div class="flex flex-shrink-0 w-16 h-16 rounded-full border border-gray-100">
+                                    <img class="w-full h-full rounded-full" src="{{ asset('/images/public/janbozorgi.png') }}" alt="دکتر مسعود جان‌بزرگی">
                                 </div>
-                                <h4 class="variable-font-semibold text-gray-700 mt-3">دکتر مسعود جان‌بزرگی</h4>
+                                <h4 class="variable-font-semibold text-gray-700 text-center mt-3">دکتر مسعود جان‌بزرگی</h4>
                                 <span class="text-center text-xs text-gray-400 mt-1">مدیریت مرکز مشاوره طلیعه سلامت</span>
                             </div>
                             <div class="relative -top-2 px-8">
@@ -143,12 +148,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                        <div class="flex flex-col items-center md:col-span-4 lg:col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
                             <div class="flex flex-col items-center px-4 relative -top-8">
-                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
-                                    <img class="w-full h-full" src="{{ asset('/images/public/alizadeh.png') }}" alt="دکتر پروا حاج علیزاده">
+                                <div class="flex flex-shrink-0 w-16 h-16 rounded-full border border-gray-100">
+                                    <img class="w-full h-full rounded-full" src="{{ asset('/images/public/alizadeh.png') }}" alt="دکتر پروا حاج علیزاده">
                                 </div>
-                                <h4 class="variable-font-semibold text-gray-700 mt-3">دکتر پروا حاج علیزاده</h4>
+                                <h4 class="variable-font-semibold text-gray-700 text-center mt-3">دکتر پروا حاج علیزاده</h4>
                                 <span class="text-center text-xs text-gray-400 mt-1">مدیریت گروه خدمات روان‌شناسی مهر</span>
                             </div>
                             <div class="relative -top-2 px-8">
@@ -158,12 +163,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="flex flex-col items-center col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
+                        <div class="flex flex-col items-center md:col-span-4 lg:col-span-3 border border-gray-300 rounded-xl cursor-default pb-4">
                             <div class="flex flex-col items-center px-4 relative -top-8">
-                                <div class="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
-                                    <img class="w-full h-full" src="{{ asset('/images/public/sadeghi.png') }}" alt="دکتر فاطمه صادقی">
+                                <div class="flex flex-shrink-0 w-16 h-16 rounded-full border border-gray-100">
+                                    <img class="w-full h-full rounded-full" src="{{ asset('/images/public/sadeghi.png') }}" alt="دکتر فاطمه صادقی">
                                 </div>
-                                <h4 class="variable-font-semibold text-gray-700 mt-3">دکتر فاطمه صادقی</h4>
+                                <h4 class="variable-font-semibold text-gray-700 text-center mt-3">دکتر فاطمه صادقی</h4>
                                 <span class="text-center text-xs text-gray-400 mt-1">روان‌شناس و پژوهشگر</span>
                             </div>
                             <div class="relative -top-2 px-8">
@@ -173,16 +178,16 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <a href="#"><i class="fal fa-angle-left text-gray-400 text-2xl"></i></a>
+                        <div class="hidden lg:flex items-center justify-center">
+                            {{-- <a href="#"><i class="fal fa-angle-left text-gray-400 text-2xl"></i></a> --}}
                         </div>
                     </div>
-                    <div class="flex items-center justify-center mt-10 space-x-2 space-x-reverse">
+                    {{-- <div class="flex items-center justify-center mt-10 space-x-2 space-x-reverse">
                         <a href="#" class="w-2 h-2 rounded-full border border-gray-300"></a>
                         <span class="w-2 h-2 rounded-full" style="background-color: #EA6B13"></span>
                         <a href="#" class="w-2 h-2 rounded-full border border-gray-300"></a>
                         <a href="#" class="w-2 h-2 rounded-full border border-gray-300"></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="bg-gray-50">
