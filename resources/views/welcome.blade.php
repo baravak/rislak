@@ -65,7 +65,7 @@
 
 @if (config('app.env') == 'local')
     <body class="flex flex-col text-gray-900">
-        <header class="bg-white shadow-md lg:shadow-none lg:bg-black lg:bg-opacity-5 w-full fixed top-0 z-10">
+        <header class="bg-white shadow-md lg:shadow-none lg:bg-black lg:bg-opacity-5 w-full fixed top-0 z-50">
             <div class="container mx-auto flex items-center justify-between h-14 px-8">
                 <div class="flex items-center">
                     <h1 class="text-2xl variable-font-black text-brand lg:text-white ml-16">
@@ -196,10 +196,10 @@
                 </div>
                 <div class="container mx-auto px-8 pb-16">
                     <h3 class="title text-center mt-14 mb-16 cursor-default">خدمات</h3>
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="col-span-1"></div>
-                        <div class="col-span-6">
-                            <div class="grid grid-cols-2 gap-8 services-item cursor-default">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                        <div class="hidden lg:flex col-span-1"></div>
+                        <div class="col-span-full lg:col-span-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 services-item cursor-default">
                                 <div>
                                     <i class="fad fa-cogs text-2xl" style="color: #EA6B13;"></i>
                                     <h4 class="variable-font-semibold text-gray-700 mt-1">اتوماسیون اداری</h4>
@@ -227,26 +227,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-4">
-                            <div class="flex justify-center">
+                        <div class="lg:col-span-4 mt-8 lg:mt-0">
+                            <div class="flex justify-center w-full xs:w-72 sm:w-full mx-auto">
                                 <img class="relative -top-4" src="{{ asset('/images/public/services.png') }}" alt="خدمات ریسلو">
                             </div>
                         </div>
-                        <div class="col-span-1"></div>
+                        <div class="hidden lg:flex col-span-1"></div>
                     </div>
                 </div>
             </div>
             <div class="container mx-auto px-8 py-16">
-                <div class="grid grid-cols-12 gap-16">
-                    <div class="col-span-1"></div>
-                    <div class="col-span-4">
-                        <div class="flex">
+                <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-16 place-content-center">
+                    <div class="hidden lg:flex col-span-1"></div>
+                    <div class="lg:col-span-4 mt-12 lg:mt-0">
+                        <div class="flex justify-center items-center w-full h-full xs:w-72 sm:w-full mx-auto">
                             <img src="{{ asset('/images/public/advantages.png') }}" alt="مزایای استفاده از ریسلو">
                         </div>
                     </div>
-                    <div class="col-span-6 cursor-default">
-                        <h3 class="title mb-8 mt-2">مزایای استفاده از ریسلو</h3>
-                        <div class="grid grid-cols-2 gap-4">
+                    <div class="lg:col-span-6 cursor-default">
+                        <h3 class="title mb-12 lg:mb-8 lg:mt-2">مزایای استفاده از ریسلو</h3>
+                        <div class="grid grid-cols-1 xs:grid-cols-2 gap-4">
                             <div class="flex items-center">
                                 <i class="fas fa-check-circle text-green-600"></i>
                                 <h5 class="text-gray-600 mr-4">سرعت</h5>
@@ -297,31 +297,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-1"></div>
+                    <div class="hidden lg:flex col-span-1"></div>
                 </div>
             </div>
             <div class="bg-gray-50">
                 <div class="container mx-auto px-8 pt-16 pb-20">
                     <h3 class="title text-center mb-12 cursor-default">چرا باید به ریسلو اعتماد کنیم؟</h3>
-                    <div class="grid grid-cols-4 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                             <img class="w-20" src="{{ asset('/images/public/privacy.gif') }}" alt="حریم خصوصی">
-                            <h4 class="text-brand variable-font-semibold mt-1">حریم خصوصی</h4>
+                            <h4 class="text-center text-brand variable-font-semibold mt-1">حریم خصوصی</h4>
                             <p class="text-sm text-gray-500 mt-2 text-center"> اگر حریم خصوصی در یک پروژه رعایت نشود، دلیلی نیست که به آن پروژه اعتماد کنیم. ریسلو به حریم خصوصی مخاطبین خود احترام قائل است.</p>
                         </div>
                         <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                             <img class="w-20" src="{{ asset('/images/public/security1.gif') }}" alt="امنیت">
-                            <h4 class="text-brand variable-font-semibold mt-1">امنیت</h4>
+                            <h4 class="text-center text-brand variable-font-semibold mt-1">امنیت</h4>
                             <p class="text-sm text-gray-500 mt-2 text-center">امنیت مهم‌ترین مسئله در سیستم‌های تحت اینترنت است و نبود آن، به تنهایی کافی است که کاربر به یک سیستم اعتماد نکند؛ لذا اگر ریسلو بخواهد کاربر خود را جذب و نگه دارد، باید امنیت برای او در اولویت باشد.</p>
                         </div>
                         <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                             <img class="w-20" src="{{ asset('/images/public/ethics.gif') }}" alt="اخلاق حرفه‌ای روان‌شناسی">
-                            <h4 class="text-brand variable-font-semibold mt-1">اخلاق حرفه‌ای روان‌شناسی</h4>
+                            <h4 class="text-center text-brand variable-font-semibold mt-1">اخلاق حرفه‌ای روان‌شناسی</h4>
                             <p class="text-sm text-gray-500 mt-2 text-center">پایبندی به اصول اخلاق حرفه‌ای روان‌شناسی،‌ یعنی مراجع و روان‌شناس با خیال آسوده از نرم‌افزار استفاده کند و نگران اطلاعات شخصی و پایبندی به اصول اخلاقی نیست.</p>
                         </div>
                         <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                             <img class="w-20" src="{{ asset('/images/public/research1.gif') }}" alt="علمی و پژوهشی">
-                            <h4 class="text-brand variable-font-semibold mt-1">علمی و پژوهشی</h4>
+                            <h4 class="text-center text-brand variable-font-semibold mt-1">علمی و پژوهشی</h4>
                             <p class="text-sm text-gray-500 mt-2 text-center"> ما برای ترویج علم و پژوهش در حوزه روان‌شناسی تلاش می‌کنیم، پس نگران نباشید، هدف اصلی ریسلو علم و پژوهش است و در این راستا حرکت می‌کند.</p>
                         </div>
                     </div>
@@ -329,37 +329,39 @@
             </div>
             <div class="container mx-auto px-8 py-14 cursor-default">
                 <h3 class="title text-center mb-16">چه کسانی از ریسلو استفاده می‌کنند؟</h3>
-                <div class="grid grid-cols-12 gap-12">
-                    <div class="col-span-3 space-y-8 pt-6">
-                        <div class="flex items-center dir-ltr">
+                <div class="flex flex-col xs:flex-row xs:items-center xs:justify-center lg:grid grid-cols-12 lg:gap-12">
+                    <div class="order-1 lg:col-span-3 space-y-4 xs:space-y-8 lg:pt-6 xs:-ml-3 lg:ml-0">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">روان‌درمان‌گرها</h5>
+                            <h5 class="text-gray-600">روان‌درمان‌گرها</h5>
                         </div>
-                        <div class="flex items-center dir-ltr">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">روان‌شناس‌ها</h5>
+                            <h5 class="text-gray-600">روان‌شناس‌ها</h5>
                         </div>
-                        <div class="flex items-center dir-ltr">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">روان‌سنج‌ها</h5>
+                            <h5 class="text-gray-600">روان‌سنج‌ها</h5>
                         </div>
-                        <div class="flex items-center dir-ltr">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">دانشجوها</h5>
+                            <h5 class="text-gray-600">دانشجوها</h5>
                         </div>
-                        <div class="flex items-center dir-ltr">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">مراکز مشاوره و درمانی</h5>
+                            <h5 class="text-gray-600">مراکز مشاوره و درمانی</h5>
                         </div>
-                        <div class="flex items-center dir-ltr">
+                        <div class="flex flex-row-reverse xs:flex-row items-center dir-ltr space-x-4 xs:space-x-4 space-x-reverse">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
-                            <h5 class="text-gray-600 ml-4">مراجعین مراکز درمانی</h5>
+                            <h5 class="text-gray-600">مراجعین مراکز درمانی</h5>
                         </div>
                     </div>
-                    <div class="col-span-6">
-                        <img src="{{ asset('/images/public/who-use.png') }}" alt="چه کسانی از ریسلو استفاده می‌کنند؟">
+                    <div class="hidden lg:order-2 lg:block lg:col-span-6">
+                        <div class="flex justify-center items-center w-full h-full xs:w-72 sm:w-full mx-auto">
+                            <img src="{{ asset('/images/public/who-use.png') }}" alt="چه کسانی از ریسلو استفاده می‌کنند؟">
+                        </div>
                     </div>
-                    <div class="col-span-3 space-y-8 pt-6">
+                    <div class="order-2 lg:col-span-3 space-y-4 xs:space-y-8 lg:pt-6 mt-4 xs:mt-0">
                         <div class="flex items-center">
                             <i class="fas fa-square-full transform rotate-45 text-xs" style="color: #EA6B13"></i>
                             <h5 class="text-gray-600 mr-4">افراد عادی برای مهارت‌افزایی</h5>
@@ -385,6 +387,9 @@
                             <h5 class="text-gray-600 mr-4">پژوهشگران</h5>
                         </div>
                     </div>
+                </div>
+                <div class="flex lg:hidden justify-center items-center w-full h-full xs:w-80 mx-auto mt-8">
+                    <img src="{{ asset('/images/public/who-use.png') }}" alt="چه کسانی از ریسلو استفاده می‌کنند؟">
                 </div>
             </div>
             <div class="container mx-auto px-8 mt-8 cursor-default">
