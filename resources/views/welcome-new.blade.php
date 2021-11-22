@@ -6,7 +6,7 @@
                     <a href="/">ریسلو</a>
                 </h1>
                 <nav class="hidden lg:flex items-center text-sm variable-font-medium space-x-2 space-x-reverse" id="nav-header">
-                    <a class="menu-item active" href="#intro">@lang('معرفی')</a>
+                    <a class="menu-item" href="#intro">@lang('معرفی')</a>
                     <a class="menu-item" href="#testimonial">@lang('نظر متخصصان')</a>
                     <a class="menu-item" href="#services">@lang('خدمات')</a>
                     <a class="menu-item" href="#advantages">@lang('مزایا')</a>
@@ -45,6 +45,7 @@
                         <i class="fal fa-user-check text-2xl text-green-600"></i>
                         <span class="text-xs text-gray-800 mt-3">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
                         <form action="{{ route('auth') }}" method="GET" class="flex items-center w-60 mx-auto mt-4">
+                            <input type="hidden" name="previousUrl" value="{{ route('dashboard.home') }}">
                             <input type="text" name="authorized_key" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
                             <button style="background-color: #16A34A;" class="w-28 h-9 rounded-md text-white text-sm mr-1 focus-current ring-green-600">@lang('Register')</button>
                         </form>
@@ -52,14 +53,13 @@
                 </div>
                 <div class="col-span-2 hidden lg:flex flex-col items-center justify-center">
                     <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
-                    <div id="testimonial" class="scrollspy"></div>
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-16">
                 <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
             </div>
         </div>
-        <div class="container mx-auto px-8">
+        <div id="testimonial" class="container mx-auto px-8 scrollspy">
             <h3 class="title text-center mb-20 cursor-default">نظر متخصصان</h3>
             <div class="flex flex-col items-center">
                 <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-11 gap-16 md:gap-6 mx-auto mb-4">
@@ -325,7 +325,7 @@
                 <img src="{{ asset('/images/public/who-use.png') }}" alt="چه کسانی از ریسلو استفاده می‌کنند؟">
             </div>
         </div>
-        <div class="container mx-auto px-8 mt-8 cursor-default">
+        <div id="app" class="container mx-auto px-8 mt-8 cursor-default scrollspy">
             <div class="bg-brand px-10 pt-6 pb-5 rounded-2xl flex flex-col md:flex-row items-center justify-between">
                 <div class="text-white text-center md:text-right">
                     <h5 class="variable-font-semibold text-xl">به سادگی در ریسلو عضو شوید</h5>
@@ -334,7 +334,7 @@
                 <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
             </div>
         </div>
-        <div id="app" class="container mx-auto px-8 mt-20 cursor-default scrollspy">
+        <div class="container mx-auto px-8 mt-20 cursor-default">
             <div class="flex flex-col-reverse items-center lg:grid lg:grid-cols-12 gap-8">
                 <div class="hidden lg:block col-span-2"></div>
                 <div class="lg:col-span-4">
