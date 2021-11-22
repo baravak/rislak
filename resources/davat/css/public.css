@@ -79,3 +79,13 @@ header nav a {
 header.r-sticky nav a {
     @apply text-gray-600 hover:bg-black hover:bg-opacity-5;
 }
+
+@media (max-width: 1024px) {
+    header {
+        @apply bg-white bg-opacity-100 shadow-md;
+    }
+
+    header h1 {
+        @apply text-brand;
+    }
+}
