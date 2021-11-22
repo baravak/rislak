@@ -5,12 +5,12 @@
                 <h1 class="text-2xl variable-font-black ml-16">
                     <a href="/">ریسلو</a>
                 </h1>
-                <nav class="hidden lg:flex items-center text-sm variable-font-medium space-x-2 space-x-reverse">
-                    <a href="#intro">@lang('معرفی')</a>
-                    <a href="#testimonial">@lang('نظر متخصصان')</a>
-                    <a href="#services">@lang('خدمات')</a>
-                    <a href="#advantages">@lang('مزایا')</a>
-                    <a href="#app">@lang('اپلیکیشن')</a>
+                <nav class="hidden lg:flex items-center text-sm variable-font-medium space-x-2 space-x-reverse" id="nav-header">
+                    <a class="menu-item active" href="#intro">@lang('معرفی')</a>
+                    <a class="menu-item" href="#testimonial">@lang('نظر متخصصان')</a>
+                    <a class="menu-item" href="#services">@lang('خدمات')</a>
+                    <a class="menu-item" href="#advantages">@lang('مزایا')</a>
+                    <a class="menu-item" href="#app">@lang('اپلیکیشن')</a>
                 </nav>
             </div>
             <div class="flex items-center">
@@ -23,7 +23,7 @@
         </div>
     </header>
     <main class="flex flex-col">
-        <div id="intro" class="bg-brand {{ config('app.env') == 'local' ? 'pt-14' : 'pt-28' }}">
+        <div id="intro" class="bg-brand {{ config('app.env') == 'local' ? 'pt-14' : 'pt-28' }} scrollspy">
             <div class="rsl-intro-bg-img hidden lg:flex"></div>
             <div class="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4 px-8">
                 <div class="pt-10 pb-28 col-span-3 flex flex-col items-center justify-center">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-span-2 hidden lg:flex flex-col items-center justify-center">
                     <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
-                    <div id="testimonial"></div>
+                    <div id="testimonial" class="scrollspy"></div>
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-16">
@@ -123,7 +123,7 @@
                 </div> --}}
             </div>
         </div>
-        <div id="services" class="bg-gray-50">
+        <div id="services" class="bg-gray-50 scrollspy">
             <div class="relative overflow-hidden w-full h-16">
                 <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 bottom-0" style="border-radius: 50%; width: 250%;"></div>
             </div>
@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div id="advantages" class="container mx-auto px-8 py-16">
+        <div id="advantages" class="container mx-auto px-8 py-16 scrollspy">
             <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-16 place-content-center">
                 <div class="hidden lg:flex col-span-1"></div>
                 <div class="lg:col-span-4 mt-12 lg:mt-0">
@@ -334,7 +334,7 @@
                 <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
             </div>
         </div>
-        <div id="app" class="container mx-auto px-8 mt-20 cursor-default">
+        <div id="app" class="container mx-auto px-8 mt-20 cursor-default scrollspy">
             <div class="flex flex-col-reverse items-center lg:grid lg:grid-cols-12 gap-8">
                 <div class="hidden lg:block col-span-2"></div>
                 <div class="lg:col-span-4">
