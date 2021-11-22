@@ -393,37 +393,40 @@
                 </div>
             </div>
             <div class="container mx-auto px-8 mt-8 cursor-default">
-                <div class="bg-brand px-10 pt-6 pb-5 rounded-2xl flex items-center justify-between">
-                    <div class="text-white">
+                <div class="bg-brand px-10 pt-6 pb-5 rounded-2xl flex flex-col md:flex-row items-center justify-between">
+                    <div class="text-white text-center md:text-right">
                         <h5 class="variable-font-semibold text-xl">به سادگی در ریسلو عضو شوید</h5>
                         <p class="variable-font-light text-sm mt-1">به سادگی و با ثبت شماره موبایل خود، می‌توانید در ریسلو عضو شوید.</p>
                     </div>
-                    <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white">@lang('Register')</a>
+                    <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
                 </div>
             </div>
             <div class="container mx-auto px-8 mt-20 cursor-default">
-                <div class="grid grid-cols-12 gap-8">
-                    <div class="col-span-2"></div>
-                    <div class="col-span-4">
-                        <img src="{{ asset('/images/public/android-app.png') }}" alt="اپلیکیشن ریسلو">
+                <div class="flex flex-col-reverse items-center lg:grid lg:grid-cols-12 gap-8">
+                    <div class="hidden lg:block col-span-2"></div>
+                    <div class="lg:col-span-4">
+                        <img class="mt-6 lg:mt-0" src="{{ asset('/images/public/android-app.png') }}" alt="اپلیکیشن ریسلو">
                     </div>
-                    <div class="col-span-4">
-                        <div class="pt-20">
+                    <div class="lg:col-span-5">
+                        <div class="flex flex-col justify-center items-center lg:items-start lg:h-full">
                             <h3 class="title">از اپلیکیشن ریسلو استفاده کنید</h3>
-                            <p class="text-gray-500 text-sm mt-2">جهت سهولت انجام فعالیت‌ها، اپلیکیشن ریسلو را دریافت نمایید.</p>
-                            <div class="flex items-center mt-8 space-x-2 space-x-reverse">
+                            <p class="text-gray-500 text-sm mt-2 text-center lg:text-right">جهت سهولت انجام فعالیت‌ها، اپلیکیشن ریسلو را دریافت نمایید.</p>
+                            <div class="flex items-center mt-4 lg:mt-6 space-x-2 space-x-reverse">
                                 <a href="https://play.google.com/store/apps/details?id=com.majazeh.risloo "><img src="{{ asset('/images/public/google-play.png') }}" alt="دریافت از گوگل پلی"></a>
-                                <a href="#"><img src="{{ asset('/images/public/direct-download.png') }}" alt="دریافت مستقیم"></a>
+                                <a href="/dashboard" class="flex items-center justify-center h-10 border border-gray-500 text-gray-600 hover:bg-gray-50 transition rounded px-4 sm:px-6">
+                                    <i class="fal fa-browser text-xl ml-2"></i>
+                                    <span class="text-sm pt-0.5">@lang('نسخه وب')</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2"></div>
+                    <div class="hidden lg:block col-span-1"></div>
                 </div>
             </div>
             <div class="bg-gray-100">
                 <div class="container mx-auto px-8 py-8 cursor-default">
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="flex">
+                    <div class="flex justify-between">
+                        {{-- <div class="flex">
                             <div>
                                 <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">با ریسلو</h5>
                                 <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">درباره ما</a>
@@ -436,17 +439,9 @@
                                 <a href="#" class="block text-xs text-gray-600 hover:text-brand transition mb-3">شرایط و قوانین</a>
                                 <a href="#" class="block text-xs text-gray-600 hover:text-brand transition">حریم خصوصی</a>
                             </div>
-                        </div>
-                        <div class="flex dir-ltr">
-                            <div class="flex">
-                                <a href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
-                                    <img src="{{ asset('/images/public/eNamad.png') }}" alt="نماد اعتماد الکترونیکی">
-                                </a>
-                                <a href="#" class="ml-4">
-                                    <img src="{{ asset('/images/public/Rezayat.png') }}" alt="ساماندهی">
-                                </a>
-                            </div>
-                            <div class="ml-24 dir-rtl">
+                        </div> --}}
+                        {{-- <div class="flex dir-ltr"> --}}
+                            <div>
                                 <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">با ما همراه باشید</h5>
                                 <div class="flex items-center space-x-1 space-x-reverse">
                                     <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
@@ -466,13 +461,21 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                            <div class="flex flex-shrink-0">
+                                <a href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
+                                    <img src="{{ asset('/images/public/eNamad.png') }}" alt="نماد اعتماد الکترونیکی">
+                                </a>
+                                {{-- <a href="#" class="ml-4">
+                                    <img src="{{ asset('/images/public/Rezayat.png') }}" alt="ساماندهی">
+                                </a> --}}
+                            </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
             <div class="bg-gray-600">
                 <div class="container mx-auto px-8 pt-4 pb-3 cursor-default">
-                    <div class="flex items-center justify-center text-white text-xs">
+                    <div class="flex md:items-center justify-center text-white text-xs">
                         <i class="fal fa-copyright pb-0.5 ml-2"></i>
                         <span>تمامی حقوق این وب‌سایت متعلق به <b>شرکت ریس اعتماد ایرانیان</b> می‌باشد.</span>
                     </div>
