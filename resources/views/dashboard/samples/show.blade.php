@@ -3,7 +3,7 @@
 @section('content')
     <div id="sample-show" data-status="{{$sample->status}}" data-sample="{{$sample->id}}">
         <div class="border border-gray-200 rounded p-4">
-            <h3 class="font-bold text-gray-900 cursor-default">{{ $sample->scale->title }}</h3>
+            <h3 class="font-bold text-gray-900 cursor-default">{{ $sample->scale->title }} {{ $sample->edition ? ' - ویرایش ' . $sample->edition : ''}}</h3>
             <div class="flex items-center text-sm text-gray-500 cursor-default mt-4">
                 @if ($sample->client)
                     <a href="{{ route('dashboard.center.users.show', ['center' => $center->id, 'user' => $sample->client->id]) }}">
