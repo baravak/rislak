@@ -462,8 +462,8 @@
                                 </div>
                             </div>
                             <div class="flex flex-shrink-0">
-                                <a href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
-                                    <img src="{{ asset('/images/public/eNamad.png') }}" alt="نماد اعتماد الکترونیکی">
+                                <a target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" title="نماد اعتماد الکترونیکی ریسلو" aria-label="نماد اعتماد الکترونیکی ریسلو">
+                                    <img src="{{ asset('/images/public/eNamad.png') }}" alt="نماد اعتماد الکترونیکی ریسلو">
                                 </a>
                                 {{-- <a href="#" class="ml-4">
                                     <img src="{{ asset('/images/public/Rezayat.png') }}" alt="ساماندهی">
