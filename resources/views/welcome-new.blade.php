@@ -1,16 +1,16 @@
 <body class="flex flex-col text-gray-900">
-    <header class="bg-white shadow-md lg:shadow-none lg:bg-black lg:bg-opacity-5 w-full fixed top-0 z-50">
+    <header class="">
         <div class="container mx-auto flex items-center justify-between h-14 px-8">
             <div class="flex items-center">
-                <h1 class="text-2xl variable-font-black text-brand lg:text-white ml-16">
+                <h1 class="text-2xl variable-font-black ml-16">
                     <a href="/">ریسلو</a>
                 </h1>
                 <nav class="hidden lg:flex items-center text-sm variable-font-medium space-x-2 space-x-reverse">
-                    <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('معرفی')</a>
-                    <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('نظر متخصصان')</a>
-                    <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('خدمات')</a>
-                    <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('مزایا')</a>
-                    <a href="#" class="px-3 py-1 rounded text-white hover:bg-white hover:bg-opacity-5 transition">@lang('اپلیکیشن')</a>
+                    <a href="#intro">@lang('معرفی')</a>
+                    <a href="#testimonial">@lang('نظر متخصصان')</a>
+                    <a href="#services">@lang('خدمات')</a>
+                    <a href="#advantages">@lang('مزایا')</a>
+                    <a href="#app">@lang('اپلیکیشن')</a>
                 </nav>
             </div>
             <div class="flex items-center">
@@ -23,7 +23,7 @@
         </div>
     </header>
     <main class="flex flex-col">
-        <div class="bg-brand {{ config('app.env') == 'local' ? 'pt-14' : 'pt-28' }}">
+        <div id="intro" class="bg-brand {{ config('app.env') == 'local' ? 'pt-14' : 'pt-28' }}">
             <div class="rsl-intro-bg-img hidden lg:flex"></div>
             <div class="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-4 px-8">
                 <div class="pt-10 pb-28 col-span-3 flex flex-col items-center justify-center">
@@ -39,8 +39,7 @@
                         @endif
                         <div></div>
                         <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
-                        <p class="w-full xs:w-96 mx-auto text-sm variable-font-light mt-4">رزرواسیون، اتوماسیون، نمره‌دهی، تحلیل آنی و نموداری آزمون‌ها، تشکیل پرونده،
-                            مدیریت جلسات مشاوره، سیستم حسابداری و ...</p>
+                        <p class="w-full xs:w-96 mx-auto text-sm variable-font-light mt-4">سرویس آنلاین و یکپاچه مدیریت مراکز روان‌شناسی و کلینیک‌های شخصی، حساب‌داری، نوبت‌دهی، دریافت و نمردهی آزمون‌ها و ...</p>
                     </div>
                     <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
                         <i class="fal fa-user-check text-2xl text-green-600"></i>
@@ -55,7 +54,7 @@
                     <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
                 </div>
             </div>
-            <div class="relative overflow-hidden w-full h-16">
+            <div id="testimonial" class="relative overflow-hidden w-full h-16">
                 <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
             </div>
         </div>
@@ -123,7 +122,7 @@
                 </div> --}}
             </div>
         </div>
-        <div class="bg-gray-50">
+        <div id="services" class="bg-gray-50">
             <div class="relative overflow-hidden w-full h-16">
                 <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 bottom-0" style="border-radius: 50%; width: 250%;"></div>
             </div>
@@ -136,32 +135,32 @@
                             <div>
                                 <i class="fad fa-cogs text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">اتوماسیون اداری</h4>
-                                <p class="text-sm text-gray-500 mt-2">تشکیل جلسه درمانی و مدیریت جلسات و پرونده‌ها، گزارش جلسه و ازینجور چیزا؛ تحلیل آماری</p>
+                                <p class="text-sm text-gray-500 mt-2">پرونده جامع آنلاین مراجعین، مدیریت جلسات مشاوره، مدیریت کلینیک با سطوح دسترسی متفاوت</p>
                             </div>
                             <div>
                                 <i class="fad fa-calendar-day text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">رزرواسیون</h4>
-                                <p class="text-sm text-gray-500 mt-2">برنامه درمانی و تقویم و این موضوعات</p>
+                                <p class="text-sm text-gray-500 mt-2">بستری مناسب برای ساخت الگوهای نوبت‌دهی و برنامه درمانی درمانگران، با ویژگی ارسال پیامک روزانه به درمانگرها و مراجعین برای یادآوری جلسات درمانی؛ دریافت آنلاین و هماهنگ با سیستم یکپارچه حساب‌داری</p>
                             </div>
                             <div>
                                 <i class="fad fa-chart-pie text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">نمره‌گذاری و تفسیر آزمون‌ها</h4>
-                                <p class="text-sm text-gray-500 mt-2">اجرای آزمون‌ها و نمره‌گذاری و نیمرخ‌ها و توضیح در مورد اینکه چه مقدار آزمون داریم و ...</p>
+                                <p class="text-sm text-gray-500 mt-2">وجود بیش از ۵۰ آزمون روان‌شناسی؛ آزمون‌گیری آنلاین، نمردهی لحظه‌ای و آنلاین با خروجی‌های متنوعی چون PDF, XSLX, PNG, JSON , ...؛ قابلیت آزمون‌گیری برای پایان‌نامه‌ها و خروجی مناسب نرم‌افزارهای آماری از قبیل SPSS</p>
                             </div>
                             <div>
                                 <i class="fad fa-cash-register text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">مدیریت مالی</h4>
-                                <p class="text-sm text-gray-500 mt-2">تسویه ها و گزارشات کامل پرداخت‌ها و تسویه با اتاق‌های درمان و ..</p>
+                                <p class="text-sm text-gray-500 mt-2">حساب‌داری یکپارچه و متصل به سیستم رزرواسیون و آزمون‌ها، قابلیت عودت آنلاین و مبالغ به مراجعین، قابلیت ساخت چندین کیف پول و مدیریت آن‌ها؛ حساب‌داری هوشمند جلسات درما‌ن‌گرها همراه با محاسبه حق مرکز و ...</p>
                             </div>
                             <div>
                                 <i class="fad fa-search text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">پژوهش</h4>
-                                <p class="text-sm text-gray-500 mt-2">آزمون‌های گروهی، تسهیل پژوهش پژوهشگران و تحلیل</p>
+                                <p class="text-sm text-gray-500 mt-2">قابلیت انجام آزمون‌های گروهی مورد نیاز جلسات گروهی، پژوهش‌ها و پایان‌نامه‌ها با خروجی یکپارچه مناسب برای نرم‌افزارهای آماری از قبیل SPSS</p>
                             </div>
                         </div>
                     </div>
                     <div class="lg:col-span-4 mt-8 lg:mt-0">
-                        <div class="flex justify-center w-full xs:w-72 sm:w-full mx-auto">
+                        <div class="flex justify-center lg:items-center lg:h-full w-full xs:w-72 sm:w-full mx-auto">
                             <img class="relative -top-4" src="{{ asset('/images/public/services.png') }}" alt="خدمات ریسلو">
                         </div>
                     </div>
@@ -169,7 +168,7 @@
                 </div>
             </div>
         </div>
-        <div class="container mx-auto px-8 py-16">
+        <div id="advantages" class="container mx-auto px-8 py-16">
             <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-16 place-content-center">
                 <div class="hidden lg:flex col-span-1"></div>
                 <div class="lg:col-span-4 mt-12 lg:mt-0">
@@ -240,22 +239,22 @@
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/privacy.gif') }}" alt="حریم خصوصی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">حریم خصوصی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center"> اگر حریم خصوصی در یک پروژه رعایت نشود، دلیلی نیست که به آن پروژه اعتماد کنیم. ریسلو به حریم خصوصی مخاطبین خود احترام قائل است.</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">هسته مرکزی تیم ریسلو متشکل از متخصصین فنی و روان‌شناسان خبره می‌باشد که سعی شده تماما طبق اصول حرفه‌ای روان‌شناسی به حریم خصوصی مورد اعتماد استفاده‌کنندگان باشد</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/security1.gif') }}" alt="امنیت">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">امنیت</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">امنیت مهم‌ترین مسئله در سیستم‌های تحت اینترنت است و نبود آن، به تنهایی کافی است که کاربر به یک سیستم اعتماد نکند؛ لذا اگر ریسلو بخواهد کاربر خود را جذب و نگه دارد، باید امنیت برای او در اولویت باشد.</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">تمام سعی ما بر این است که با استفاده از متدهای مدرن و به روز بودن دائمی امنیت ریسلو را با تمام توان حفظ کنیم؛ این را بدانید که اگر امنیت برای شما مهم است، برای ما حیاتی‌ست</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/ethics.gif') }}" alt="اخلاق حرفه‌ای روان‌شناسی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">اخلاق حرفه‌ای روان‌شناسی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">پایبندی به اصول اخلاق حرفه‌ای روان‌شناسی،‌ یعنی مراجع و روان‌شناس با خیال آسوده از نرم‌افزار استفاده کند و نگران اطلاعات شخصی و پایبندی به اصول اخلاقی نیست.</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">تمامی ویژگی‌هایی که در ریسلو مشاهده می‌کنید، یا دارای مستند علمی روان‌شناسی می‌باشد و یا حداقل مستند متضادی با آن در منابع علمی روان‌شناسی وجود ندارد؛ ما با تشکیل کارگروه علمی روان‌شناسی در ریسلو به صورت حرفه‌ای خدمات روان‌شناسی را ارائه می‌دهیم</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/research1.gif') }}" alt="علمی و پژوهشی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">علمی و پژوهشی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center"> ما برای ترویج علم و پژوهش در حوزه روان‌شناسی تلاش می‌کنیم، پس نگران نباشید، هدف اصلی ریسلو علم و پژوهش است و در این راستا حرکت می‌کند.</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">هرآن‌چه که یک پژوهشگر یا پژوهشکده در بستر دانش روان‌شناسی نیاز دارد را تأمین می‌کنیم و تا زمانی که زنده باشیم، شما می‌توانید گزارشات متفاوت و متنوعی از سال‌های درمانی و پژوهشی خودتان داشته باشید</p>
                     </div>
                 </div>
             </div>
@@ -334,7 +333,7 @@
                 <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
             </div>
         </div>
-        <div class="container mx-auto px-8 mt-20 cursor-default">
+        <div id="app" class="container mx-auto px-8 mt-20 cursor-default">
             <div class="flex flex-col-reverse items-center lg:grid lg:grid-cols-12 gap-8">
                 <div class="hidden lg:block col-span-2"></div>
                 <div class="lg:col-span-4">
