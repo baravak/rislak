@@ -415,4 +415,5 @@
             </div>
         </div>
     </main>
+    <div class="navity" id="navity-shock"></div>
 </body>
