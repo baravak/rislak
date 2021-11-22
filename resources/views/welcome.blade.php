@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Risloo | ریسلو">
     <link rel="stylesheet" href="@staticVersion('/css/public.css')">
+    <script src="@staticVersion('/js/public.js')" defer></script>
     <title>Risloo | ریسلو</title>
 </head>
 

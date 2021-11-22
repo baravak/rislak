@@ -1,5 +1,5 @@
 <body class="flex flex-col text-gray-900">
-    <header class="">
+    <header class="" id="header">
         <div class="container mx-auto flex items-center justify-between h-14 px-8">
             <div class="flex items-center">
                 <h1 class="text-2xl variable-font-black ml-16">
