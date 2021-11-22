@@ -133,11 +133,6 @@
                     <div class="col-span-full lg:col-span-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 services-item cursor-default">
                             <div>
-                                <i class="fad fa-cogs text-2xl" style="color: #EA6B13;"></i>
-                                <h4 class="variable-font-semibold text-gray-700 mt-1">اتوماسیون اداری</h4>
-                                <p class="text-sm text-gray-500 mt-2">پرونده جامع آنلاین مراجعین، مدیریت جلسات مشاوره، مدیریت کلینیک با سطوح دسترسی متفاوت</p>
-                            </div>
-                            <div>
                                 <i class="fad fa-calendar-day text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">رزرواسیون</h4>
                                 <p class="text-sm text-gray-500 mt-2">بستری مناسب برای ساخت الگوهای نوبت‌دهی و برنامه درمانی درمانگران، با ویژگی ارسال پیامک روزانه به درمانگرها و مراجعین برای یادآوری جلسات درمانی؛ دریافت آنلاین و هماهنگ با سیستم یکپارچه حساب‌داری</p>
@@ -151,6 +146,11 @@
                                 <i class="fad fa-cash-register text-2xl" style="color: #EA6B13;"></i>
                                 <h4 class="variable-font-semibold text-gray-700 mt-1">مدیریت مالی</h4>
                                 <p class="text-sm text-gray-500 mt-2">حساب‌داری یکپارچه و متصل به سیستم رزرواسیون و آزمون‌ها، قابلیت عودت آنلاین و مبالغ به مراجعین، قابلیت ساخت چندین کیف پول و مدیریت آن‌ها؛ حساب‌داری هوشمند جلسات درما‌ن‌گرها همراه با محاسبه حق مرکز و ...</p>
+                            </div>
+                            <div>
+                                <i class="fad fa-cogs text-2xl" style="color: #EA6B13;"></i>
+                                <h4 class="variable-font-semibold text-gray-700 mt-1">اتوماسیون اداری</h4>
+                                <p class="text-sm text-gray-500 mt-2">پرونده جامع آنلاین مراجعین، مدیریت جلسات مشاوره، مدیریت کلینیک با سطوح دسترسی متفاوت</p>
                             </div>
                             <div>
                                 <i class="fad fa-search text-2xl" style="color: #EA6B13;"></i>
