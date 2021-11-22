@@ -11,6 +11,5 @@ document.addEventListener('scroll', function(e) {
 scrollSpy('#nav-header', {
     sectionClass: '.scrollspy',
     menuActiveTarget: '.menu-item',
-    offset: 100,
     smoothScroll: true
   })
