@@ -52,9 +52,10 @@
                 </div>
                 <div class="col-span-2 hidden lg:flex flex-col items-center justify-center">
                     <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
+                    <div id="testimonial"></div>
                 </div>
             </div>
-            <div id="testimonial" class="relative overflow-hidden w-full h-16">
+            <div class="relative overflow-hidden w-full h-16">
                 <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
             </div>
         </div>
