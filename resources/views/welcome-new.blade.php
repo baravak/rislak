@@ -45,8 +45,8 @@
                     <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
                         <i class="fal fa-user-check text-2xl text-green-600"></i>
                         <span class="text-xs text-gray-800 mt-3">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
-                        <form action="#" class="flex items-center w-60 mx-auto mt-4">
-                            <input type="text" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
+                        <form action="{{ route('auth') }}" method="GET" class="flex items-center w-60 mx-auto mt-4">
+                            <input type="text" name="authorized_key" placeholder="شماره موبایل" class="w-full bg-black bg-opacity-10 border-none rounded-md h-9 text-sm text-gray-600 text-left dir-ltr placeholder-gray-400 focus">
                             <button style="background-color: #16A34A;" class="w-28 h-9 rounded-md text-white text-sm mr-1 focus-current ring-green-600">@lang('Register')</button>
                         </form>
                     </div>
