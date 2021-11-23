@@ -32,7 +32,7 @@
                             <a href="https://risloo.ir/" class="inline-flex items-center bg-red-500 rounded py-2 px-4 mb-6 hover:shadow-md transition">
                                 <i class="fad fa-tools text-2xl text-white ml-4"></i>
                                 <div class="border-r border-white border-opacity-20 pr-4">
-                                    <span class="block text-sm text-white">شما هم‌اکنون در نسخه آزمایشی هستید</span>
+                                    <span class="block text-sm text-white text-right">شما در نسخه آزمایشی هستید</span>
                                     <span class="block text-xs variable-font-light text-opacity-70 text-white text-right mt-0.5">جهت انتقال به نسخه اصلی کلیک کنید</span>
                                 </div>
                             </a>
@@ -41,7 +41,7 @@
                         <h2 class="text-3xl variable-font-bold">مدیریت هوشمند و یکپارچه مراکز مشاوره</h2>
                         <p class="w-full xs:w-96 mx-auto text-sm variable-font-light mt-4">سرویس آنلاین و یکپاچه مدیریت مراکز روان‌شناسی و کلینیک‌های شخصی، حساب‌داری، نوبت‌دهی، دریافت و نمردهی آزمون‌ها و ...</p>
                     </div>
-                    <div class="bg-white rounded-xl w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
+                    <div class="bg-white rounded-xl w-72 xs:w-80 pt-4 pb-6 flex flex-col items-center justify-center mt-8">
                         <i class="fal fa-user-check text-2xl text-green-600"></i>
                         <span class="text-xs text-gray-800 mt-3">جهت عضویت سریع شماره موبایل خود را وارد کنید</span>
                         <form action="{{ route('auth') }}" method="GET" class="flex items-center w-60 mx-auto mt-4">
@@ -55,8 +55,8 @@
                     <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
                 </div>
             </div>
-            <div class="relative overflow-hidden w-full h-16">
-                <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-0" style="border-radius: 50%; width: 250%;"></div>
+            <div class="relative overflow-hidden w-full h-20">
+                <div class="h-full bg-white absolute left-1/2 transform -translate-x-1/2 top-2" style="border-radius: 50%; width: 250%;"></div>
             </div>
         </div>
         <div id="testimonial" class="container mx-auto px-8 scrollspy">
@@ -124,8 +124,8 @@
             </div>
         </div>
         <div id="services" class="bg-gray-50 scrollspy">
-            <div class="relative overflow-hidden w-full h-16">
-                <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 bottom-0" style="border-radius: 50%; width: 250%;"></div>
+            <div class="relative overflow-hidden w-full h-20">
+                <div class="h-full bg-white absolute left-1/2 transform -translate-x-1/2 bottom-2" style="border-radius: 50%; width: 250%;"></div>
             </div>
             <div class="container mx-auto px-8 pb-16">
                 <h3 class="title text-center mt-14 mb-16 cursor-default">خدمات</h3>
@@ -331,7 +331,7 @@
                     <h5 class="variable-font-semibold text-xl">به سادگی در ریسلو عضو شوید</h5>
                     <p class="variable-font-light text-sm mt-1">به سادگی و با ثبت شماره موبایل خود، می‌توانید در ریسلو عضو شوید.</p>
                 </div>
-                <a href="/register" class="text-brand bg-white rounded-full px-8 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
+                <a href="/register" class="text-brand bg-white rounded-full text-center w-28 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
             </div>
         </div>
         <div class="container mx-auto px-8 mt-20 cursor-default">
