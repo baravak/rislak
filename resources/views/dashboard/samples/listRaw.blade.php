@@ -21,15 +21,17 @@
             </div>
         @endcan
         <div class="mt-4 sm:hidden flex flex-col">
-            @if ($sample->room)
-                <div class="flex">
-                    <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
-                </div>
-            @endif
-            @if ($sample->case)
-                <div class="flex">
-                    <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
-                </div>
+            @if ((isset($bulkSample) && $bulkSample->case_status == 'personal') || !isset($bulkSample))
+                @if ($sample->room)
+                    <div class="flex">
+                        <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+                    </div>
+                @endif
+                @if ($sample->case)
+                    <div class="flex">
+                        <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+                    </div>
+                @endif
             @endif
             @if ($sample->client)
                 <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: @displayName($sample->client)</span>
@@ -52,19 +54,25 @@
             <span class="text-xs text-gray-600 cursor-default">{{ $sample->code }}</span>
         @endif
     </div>
-    <div class="flex-1 px-2 hidden sm:flex flex-col">
-        @if ($sample->room)
-            <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
-        @endif
-        @if ($sample->case)
-            <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
-        @endif
-        @if ($sample->client)
-            <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: @displayName($sample->client)</span>
-        @else
-            <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: {{ $sample->code }}</span>
-        @endif
-    </div>
+
+
+    @if ((isset($bulkSample) && $bulkSample->case_status == 'personal') || !isset($bulkSample))
+        <div class="flex-1 px-2 hidden sm:flex flex-col">
+            @if ($sample->room)
+                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $sample->room->manager->name]) }}</a>
+            @endif
+            @if ($sample->case)
+                <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
+            @endif
+            @if ($sample->client)
+                <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: @displayName($sample->client)</span>
+            @else
+                <span class="md:hidden text-xs text-gray-400 cursor-default mt-2">مراجع: {{ $sample->code }}</span>
+            @endif
+        </div>
+    @endif
+
+
     <div class="flex-1 px-2 hidden sm:flex">
         @include('dashboard.samples.tables.status')
     </div>
