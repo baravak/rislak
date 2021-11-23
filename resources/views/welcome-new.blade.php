@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-20">
-                <div class="h-full bg-white absolute left-1/2 transform -translate-x-1/2 top-2" style="border-radius: 50%; width: 250%;"></div>
+                <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 top-2" style="border-radius: 50%; width: 250%;"></div>
             </div>
         </div>
         <div id="testimonial" class="container mx-auto px-8 scrollspy">
@@ -125,7 +125,7 @@
         </div>
         <div id="services" class="bg-gray-50 scrollspy">
             <div class="relative overflow-hidden w-full h-20">
-                <div class="h-full bg-white absolute left-1/2 transform -translate-x-1/2 bottom-2" style="border-radius: 50%; width: 250%;"></div>
+                <div class="h-96 bg-white absolute left-1/2 transform -translate-x-1/2 bottom-2" style="border-radius: 50%; width: 250%;"></div>
             </div>
             <div class="container mx-auto px-8 pb-16">
                 <h3 class="title text-center mt-14 mb-16 cursor-default">خدمات</h3>
