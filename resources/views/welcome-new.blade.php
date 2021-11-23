@@ -240,22 +240,22 @@
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/privacy.gif') }}" alt="حریم خصوصی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">حریم خصوصی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">هسته مرکزی تیم ریسلو متشکل از متخصصین فنی و روان‌شناسان خبره می‌باشد که سعی شده تماما طبق اصول حرفه‌ای روان‌شناسی به حریم خصوصی مورد اعتماد استفاده‌کنندگان باشد</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">هسته مرکزی تیم ریسلو متشکل از متخصصین فنی و روان‌شناسان خبره می‌باشد که خود را دستیاری برای درمان‌گرها می‌داند، که این امر موجب می‌شود تا با حفظ حریم خصوصی مورد اعتماد استفاده کنندگان باشد.</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/security1.gif') }}" alt="امنیت">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">امنیت</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">تمام سعی ما بر این است که با استفاده از متدهای مدرن و به روز بودن دائمی امنیت ریسلو را با تمام توان حفظ کنیم؛ این را بدانید که اگر امنیت برای شما مهم است، برای ما حیاتی‌ست</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">با استفاده از متدهای مدرن و به روز، امنیت ریسلو را با تمام توان حفظ می‌کنیم؛ این را بدانید که اگر امنیت برای شما مهم است، برای ما حیاتی‌ست.</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/ethics.gif') }}" alt="اخلاق حرفه‌ای روان‌شناسی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">اخلاق حرفه‌ای روان‌شناسی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">تمامی ویژگی‌هایی که در ریسلو مشاهده می‌کنید، یا دارای مستند علمی روان‌شناسی می‌باشد و یا حداقل مستند متضادی با آن در منابع علمی روان‌شناسی وجود ندارد؛ ما با تشکیل کارگروه علمی روان‌شناسی در ریسلو به صورت حرفه‌ای خدمات روان‌شناسی را ارائه می‌دهیم</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">تمامی ویژگی‌هایی که در ریسلو مشاهده می‌کنید، یا دارای مستند علمی روان‌شناسی می‌باشد و یا حداقل مستند متضادی با آن در منابع علمی روان‌شناسی وجود ندارد؛ ما با تشکیل کارگروه علمی روان‌شناسی در ریسلو، به صورت حرفه‌ای خدمات روان‌شناسی را ارائه می‌دهیم.</p>
                     </div>
                     <div class="flex flex-col items-center bg-white shadow-sm rounded-lg pt-6 pb-8 px-8 cursor-default">
                         <img class="w-20" src="{{ asset('/images/public/research1.gif') }}" alt="علمی و پژوهشی">
                         <h4 class="text-center text-brand variable-font-semibold mt-1">علمی و پژوهشی</h4>
-                        <p class="text-sm text-gray-500 mt-2 text-center">هرآن‌چه که یک پژوهشگر یا پژوهشکده در بستر دانش روان‌شناسی نیاز دارد را تأمین می‌کنیم و تا زمانی که زنده باشیم، شما می‌توانید گزارشات متفاوت و متنوعی از سال‌های درمانی و پژوهشی خودتان داشته باشید</p>
+                        <p class="text-sm text-gray-500 mt-2 text-center">هرآن‌چه که یک پژوهشگر یا پژوهشکده در بستر دانش روان‌شناسی نیاز دارد را تأمین می‌کنیم و هرلحظه و برای همیشه، شما می‌توانید گزارشات متفاوت و متنوعی از سال‌های درمانی و پژوهشی خودتان داشته باشید.</p>
                     </div>
                 </div>
             </div>
