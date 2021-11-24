@@ -14,6 +14,10 @@ html[lang="fa"], .fa {
     font-family: dana;
 }
 
+.datepicker-persian {
+    font-family: dana!important;
+}
+
 .fa-static {
     font-family: dana!important;
 }
