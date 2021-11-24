@@ -439,6 +439,10 @@
     "Tracking number" : "شماره پیگیری",
     "Bank accounts" : "حساب‌های بانکی",
     "Create new bank account" : "افزودن حساب بانکی جدید",
-    "Sheba" : "شماره شبا"
+    "Sheba" : "شماره شبا",
+    "Gifts" : "کدهای تخفیف",
+    "Gift" : "کد تخفیف",
+    "Create gift" : "افزودن کد تخفیف",
+    "Code" : "کد"
 }
 
