@@ -133,6 +133,8 @@ Route::get('rooms/{room}/billings', 'RoomBillingController@index')->name('room.b
 Route::post('rooms/{room}/billings/export', 'RoomBillingController@export')->name('room.billings.export');
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
+
+Route::resource('centers/{center}/gifts', GiftController::class);
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');
