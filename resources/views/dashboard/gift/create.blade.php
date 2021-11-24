@@ -8,23 +8,28 @@
         <div class="grid grid-cols-1 xs:grid-cols-2 gap-4 mt-4">
             <div>
                 <label for="type" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('نوع مقدار') }}</label>
-                <select class="border border-gray-400 h-10 rounded w-full text-sm text-gray-600 focus" name="type" x-model="type">
-                    <option selected disabled>انتخاب کنید</option>
-                    <option>درصد</option>
-                    <option>مبلغ ثابت</option>
-                </select>
+                <div class="flex items-center radio-select">
+                    <input checked type="radio" name="type" id="percentage" class="sr-only">
+                    <label for="percentage" class="w-1/2 flex items-center justify-center h-10 border border-l-0 border-gray-400 rounded rounded-l-none text-sm text-gray-600 cursor-pointer">
+                        @lang('Percentage')
+                    </label>
+                    <input type="radio" name="type" id="fixed-amount" class="sr-only">
+                    <label for="fixed-amount" class="w-1/2 flex items-center justify-center h-10 border border-r-0 border-gray-400 rounded rounded-r-none text-sm text-gray-600 cursor-pointer">
+                        @lang('مبلغ ثابت')
+                    </label>
+                </div>
             </div>
             <div>
                 <label for="amount" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('مقدار تخفیف') }}</label>
-                <div class="w-full relative">
+                {{-- <div class="w-full relative">
                     <input type="number" name="amount" id="amount" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus">
                     <span class="absolute left-1 top-1 bg-gray-200 px-3 rounded text-xs flex items-center h-8 cursor-default">@lang('Toman')</span>
                     <span class="block text-xs text-gray-500 text-left mt-2 cursor-default" x-text="(amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0') + ' تومان'">0 تومان</span>
-                </div>
-                {{-- <div class="w-full relative">
+                </div> --}}
+                <div class="w-full relative">
                     <input type="number" name="amount" id="amount" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus">
                     <span class="absolute left-1 top-1 bg-gray-200 px-3 rounded text-xs flex items-center h-8 cursor-default">@lang('Percentage')</span>
-                </div> --}}
+                </div>
             </div>
         </div>
 

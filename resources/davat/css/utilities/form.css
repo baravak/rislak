@@ -17,3 +17,7 @@
 .toggle-checkbox:checked:hover, .toggle-checkbox:checked:focus {
     @apply bg-green-600;
 }
+
+.radio-select input:checked + label {
+    @apply bg-brand text-white border-brand;
+}
