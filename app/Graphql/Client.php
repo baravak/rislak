@@ -14,7 +14,7 @@ class Client{
         ]);
         $response = Http::withHeaders([
             'authorization' => 'Bearer '. User::token()
-        ])->withBody($json, 'application/json')->post('http://graph.local/graphql');
+        ])->withBody($json, 'application/json')->post(env('GRAPH_URL'));
         $result = $response->object(false);
         if(isset($result->errors)){
             dd($result->errors);
