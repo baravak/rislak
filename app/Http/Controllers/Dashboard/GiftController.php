@@ -16,8 +16,16 @@ class GiftController extends Controller
                         total, hasMorePages, count
                     }
                     data{
-                        id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count
+                        id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count, status
                     }
+                }
+                region(id: \$region){
+                    id
+                    type
+                    detail{
+                        title
+                    }
+                    acceptation{position}
                 }
             }
           QUERY;
@@ -25,6 +33,8 @@ class GiftController extends Controller
             'region' => $center,
             'page' => $request->page ?: 1
         ]);
+        $this->data->query = $index;
+        $this->data->region = $index->region;
         $this->data->gifts = $index->gifts;
         return $this->view($request, 'dashboard.gifts.index');
     }

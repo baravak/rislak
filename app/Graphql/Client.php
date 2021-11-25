@@ -3,6 +3,7 @@ namespace App\Graphql;
 
 use App\User;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class Client{
     public static function query(String $query, $variable = []): object
@@ -19,6 +20,7 @@ class Client{
         if(isset($result->errors)){
             dd($result->errors);
         }
-        return $result->data;
+        $model = new Result($result->data);
+        return $model;
     }
 }
