@@ -15,10 +15,10 @@ class Client{
         $response = Http::withHeaders([
             'authorization' => 'Bearer '. User::token()
         ])->withBody($json, 'application/json')->post('http://graph.local/graphql');
-        $result = (object) $response->json();
+        $result = $response->object(false);
         if(isset($result->errors)){
             dd($result->errors);
         }
-        return (object) $result->data;
+        return $result->data;
     }
 }

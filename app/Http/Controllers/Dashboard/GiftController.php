@@ -9,6 +9,23 @@ class GiftController extends Controller
 {
     public function index(Request $request, $center){
         $this->data->center = $center;
+        $query = <<<QUERY
+            query (\$page: Int, \$region: RegionID!){
+                gifts(page:\$page, first: 10, region:\$region){
+                    paginatorInfo{
+                        total, hasMorePages, count
+                    }
+                    data{
+                        id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count
+                    }
+                }
+            }
+          QUERY;
+          $index = Client::query($query, [
+            'region' => $center,
+            'page' => $request->page ?: 1
+        ]);
+        $this->data->gifts = $index->gifts;
         return $this->view($request, 'dashboard.gifts.index');
     }
     public function create(Request $request, $center){
@@ -17,22 +34,6 @@ class GiftController extends Controller
     }
 
     public function store(Request $request, $center){
-        $inputs = [];
-        $inputs['title'] = "\"{$request->title}\"";
-        $inputs['description'] = "\"{$request->description}\"";
-        $inputs['type'] = strtoupper($request->type);
-        $inputs['value'] = $request->value;
-        $inputs['started_at'] = $request->started_at;
-        $inputs['expires_at'] = $request->expires_at;
-        $inputs['disposable'] = $request->has('disposable');
-        $inputs = array_map(function($value, $key){
-            $value = $value === null ? 'null' : $value;
-            if($value === false || $value === true){
-                $value = $value ? 'true' : 'false';
-            }
-            return "$key: $value";
-        }, $inputs, array_keys($inputs));
-        $inputs = join(", ", $inputs);
         $store = <<<Query
         mutation(\$center: CenterID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean){
             CreateGift(region:\$center, input: {
