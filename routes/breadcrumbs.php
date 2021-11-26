@@ -321,7 +321,12 @@ Breadcrumbs::for('dashboard.billings.create', function ($trail, $data) {
     }
 });
 
-Breadcrumbs::for('dashboard.gifts.create', function ($trail, $data) {
+Breadcrumbs::for('dashboard.gifts.index', function ($trail, $data) {
     $trail->parent('dashboard.center.accounting.index', $data);
+    $trail->push(__('Gifts'), route('dashboard.gifts.index', ['center' => $data['center']]));
+});
+
+Breadcrumbs::for('dashboard.gifts.create', function ($trail, $data) {
+    $trail->parent('dashboard.gifts.index', $data);
     $trail->push(__('ساخت کد تخفیف'), route('dashboard.gifts.create', ['center' => $data['center']]));
 });

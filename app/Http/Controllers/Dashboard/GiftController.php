@@ -10,7 +10,6 @@ class GiftController extends Controller
 {
     public function index(Request $request, $center){
 
-        $this->data->center = $center;
         $query = 'query ($page: Int, $region: RegionID!){
                 gifts(page:$page, first: 15, region:$region){
                     paginatorInfo{
@@ -34,7 +33,7 @@ class GiftController extends Controller
             'page' => (int) ($request->page ?: 1)
         ]);
         $this->data->query = $index;
-        $this->data->region = $index->region;
+        $this->data->region = $this->data->center  = $index->region;
         $this->data->gifts = $index->gifts;
         return $this->view($request, 'dashboard.gifts.index');
     }
@@ -53,7 +52,7 @@ class GiftController extends Controller
 
     public function store(Request $request, $center){
         $store = <<<Query
-        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean){
+        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int){
             CreateGift(region:\$center, input: {
                 title: \$title
                 description: \$description
@@ -62,6 +61,7 @@ class GiftController extends Controller
                 started_at: \$started_at
                 expires_at: \$expires_at
                 disposable: \$disposable
+                threshold: \$threshold
             }){
               id,code,started_at
             }
@@ -72,7 +72,10 @@ class GiftController extends Controller
             'title' => $request->title,
             'type' => $request->type,
             'value' => (int) $request->value,
-            'started_at' => $request->started_at
+            'started_at' => $request->started_at,
+            'expires_at' => $request->expires_at,
+            'disposable' => (boolean) $request->disposable,
+            'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
         ]);
         dd($create);
     }

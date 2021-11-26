@@ -22,6 +22,9 @@ class Client{
         $result = $response->object(false);
         if(isset($result->errors) || isset($result->exception)){
             dd($result);
+        }elseif(!$result){
+            echo $response->body();
+            exit();
         }
         $model = new Result($result->data);
         return $model;
