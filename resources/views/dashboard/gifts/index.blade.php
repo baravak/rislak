@@ -3,11 +3,11 @@
 @section('content')
     <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" data-total="({{$gifts ? $gifts->paginatorInfo->total : 0 }})" data-xhr="total">@lang('Gifts')</h3>
+            <h3 class="heading" data-total="({{$gifts ? $gifts->total() : 0 }})" data-xhr="total">@lang('Gifts')</h3>
         </div>
 
         <div class="flex justify-between items-center flex-wrap mb-4">
-            @if ($gifts->paginatorInfo->total)
+            @if ($gifts->total())
                 @include('layouts.quick_search')
             @endif
             @can('create', [App\Gift::class, $region])

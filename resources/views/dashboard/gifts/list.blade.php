@@ -1,5 +1,5 @@
 <div data-xhr="gift-items">
-    @if ($gifts && $gifts->paginatorInfo->count)
+    @if ($gifts && $gifts->count())
         <div class="hidden sm:flex items-center cursor-default px-2 text-xs variable-font-medium text-gray-600 bg-gray-100 py-2 rounded">
             <div class="w-40 pl-2">@lang('Code')</div>
             <div class="flex-1 px-2">@lang('Title')</div>
@@ -19,10 +19,9 @@
         @foreach ($gifts as $gift)
             @include('dashboard.gifts.listRaw')
         @endforeach
-        @include('dashboard.graphPaginator', ['model' => $gifts])
-        {{-- @if (method_exists($gifts, 'links'))
+        @if (method_exists($gifts, 'links'))
             {{ method_exists($gifts, 'links') ? $gifts->links() : null }}
-        @endif --}}
+        @endif
     @else
         @include('dashboard.gifts.emptyList')
     @endif

@@ -20,8 +20,8 @@ class Client{
             'authorization' => 'Bearer '. User::token()
         ])->withBody($json, 'application/json')->post(env('GRAPH_URL'));
         $result = $response->object(false);
-        if(isset($result->errors)){
-            dd($result->errors);
+        if(isset($result->errors) || isset($result->exception)){
+            dd($result);
         }
         $model = new Result($result->data);
         return $model;

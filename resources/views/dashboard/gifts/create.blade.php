@@ -1,6 +1,6 @@
 @extends($layouts->dashboard)
 @section('content')
-<form class="m-auto w-full md:w-1/2" action="{{ route('dashboard.gifts.store', $center) }}" method="POST">
+<form class="m-auto w-full md:w-1/2" action="{{ route('dashboard.gifts.store', $center->id) }}" method="POST">
     <div class="border border-gray-300 rounded p-4 mt-8">
         <div>
             <label for="title" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Title') }}</label>

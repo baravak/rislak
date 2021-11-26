@@ -320,3 +320,8 @@ Breadcrumbs::for('dashboard.billings.create', function ($trail, $data) {
             $trail->push(__('ساخت فاکتور'), route('dashboard.billings.create', $data['session']->id));
     }
 });
+
+Breadcrumbs::for('dashboard.gifts.create', function ($trail, $data) {
+    $trail->parent('dashboard.center.accounting.index', $data);
+    $trail->push(__('ساخت کد تخفیف'), route('dashboard.gifts.create', ['center' => $data['center']]));
+});

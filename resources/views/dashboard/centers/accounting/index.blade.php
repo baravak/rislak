@@ -25,7 +25,7 @@
             <i class="fal fa-balance-scale text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Financial-balance')</span>
         </a>
-        <a href="#" class="border border-gray-300 hover:border-pink-500 text-pink-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-pink-50 transition group focus-current ring-pink-500">
+        <a href="{{ route('dashboard.gifts.index', $center) }}" class="border border-gray-300 hover:border-pink-500 text-pink-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-pink-50 transition group focus-current ring-pink-500">
             <i class="fal fa-badge-percent text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Gift')</span>
         </a>
