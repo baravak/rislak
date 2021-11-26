@@ -19,6 +19,7 @@
         @foreach ($gifts as $gift)
             @include('dashboard.gifts.listRaw')
         @endforeach
+        @include('dashboard.graphPaginator', ['model' => $gifts])
         {{-- @if (method_exists($gifts, 'links'))
             {{ method_exists($gifts, 'links') ? $gifts->links() : null }}
         @endif --}}

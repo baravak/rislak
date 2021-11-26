@@ -9,17 +9,16 @@ class GiftController extends Controller
 {
     public function index(Request $request, $center){
         $this->data->center = $center;
-        $query = <<<QUERY
-            query (\$page: Int, \$region: RegionID!){
-                gifts(page:\$page, first: 10, region:\$region){
+        $query = 'query ($page: Int, $region: RegionID!){
+                gifts(page:$page, first: 10, region:$region){
                     paginatorInfo{
-                        total, hasMorePages, count
+                        total, hasMorePages, count, currentPage
                     }
                     data{
                         id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count, status
                     }
                 }
-                region(id: \$region){
+                region(id: $region){
                     id
                     type
                     detail{
@@ -27,11 +26,10 @@ class GiftController extends Controller
                     }
                     acceptation{position}
                 }
-            }
-          QUERY;
+            }';
           $index = Client::query($query, [
             'region' => $center,
-            'page' => $request->page ?: 1
+            'page' => (int) ($request->page ?: 1)
         ]);
         $this->data->query = $index;
         $this->data->region = $index->region;
