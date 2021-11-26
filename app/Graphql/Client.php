@@ -14,7 +14,7 @@ class Client{
             'variables' => $variable
         ]);
         $response = Http::withOptions([
-            'verify' => true
+            'verify' => false
         ])
         ->withHeaders([
             'authorization' => 'Bearer '. User::token()
