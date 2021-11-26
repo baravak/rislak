@@ -13,7 +13,10 @@ class Client{
             'query' => $query,
             'variables' => $variable
         ]);
-        $response = Http::withHeaders([
+        $response = Http::withOptions([
+            'verify' => true
+        ])
+        ->withHeaders([
             'authorization' => 'Bearer '. User::token()
         ])->withBody($json, 'application/json')->post(env('GRAPH_URL'));
         $result = $response->object(false);
