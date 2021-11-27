@@ -47,9 +47,16 @@
                 <input type="hidden" name="started_at" id="started_at" >
             </div>
             <div x-data='{"expires_at" : false}'>
-                <div class="block mb-1">
+                {{-- <div class="block mb-1">
                     <input type="checkbox" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" x-model="expires_at">
                     <label for="expires_at-input" class=" text-sm text-gray-700 variable-font-medium cursor-default">{{ __('End date') }}</label>
+                </div> --}}
+                <div class="flex items-center justify-between mb-2">
+                    <label for="expires_at-input" class=" text-sm text-gray-700 variable-font-medium cursor-default">{{ __('End date') }}</label>
+                    <div class="relative inline-block w-8 align-middle select-none transition ease-in-out duration-700">
+                        <input type="checkbox" name="end-date-available" id="end-date-available" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer lijax platform-available-input">
+                        <label for="end-date-available" class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
                 </div>
                 <input type="text" id="expires_at-input" data-picker-alt="expires_at" dpicker-format="YYYY/MM/DD" class="border border-gray-400 h-10 rounded px-4 w-full text-sm text-gray-600 focus date-picker dir-ltr text-left" :disabled="!expires_at" :class='{"opacity-40" : !expires_at}'>
                 <input type="hidden" name="expires_at" id="expires_at"  :disabled="!expires_at">
