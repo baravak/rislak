@@ -7,7 +7,7 @@
             <input type="text" name="title" id="title" autocomplete="off" placeholder="مثال: یلدا 1400" class="border border-gray-400 h-10 rounded px-4 w-full text-sm text-gray-600 placeholder-gray-300 focus">
         </div>
 
-        <div class="grid grid-cols-1 xs:grid-cols-2 gap-4 mt-4" x-data='{type : "percent", "value_n" : 0}'>
+        <div class="grid grid-cols-1 xs:grid-cols-2 gap-4 mt-4" x-data='{type : "percent", "value_n" : null}'>
             <div>
                 <label class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('نوع مقدار') }}</label>
                 <div class="flex items-center radio-select">
@@ -27,7 +27,7 @@
                         <div class="w-full relative">
                             <input type="number" :disabled="type != 'numeral'" name="value" id="value-n" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus" x-model="value_n">
                             <span class="absolute left-1 top-1 bg-gray-200 px-3 rounded text-xs flex items-center h-8 cursor-default">@lang('Toman')</span>
-                            <span class="block text-xs text-gray-500 text-left mt-2 cursor-default" x-text="(value_n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0') + ' تومان'">0 تومان</span>
+                            <span class="block text-xs text-gray-500 text-left mt-2 cursor-default" x-text="((value_n || '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0') + ' تومان'">0 تومان</span>
                         </div>
                 </div>
                 <div x-show="type == 'percent'">
