@@ -1,14 +1,4 @@
-<div>
-    <label class="block mb-2 text-sm text-gray-700 font-medium">انتخاب محور جلسه</label>
-    <select class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60" name="field">
-        @if ($session->fields->count() > 1)
-        <option></option>
-        @endif
-            @foreach ($session->fields as $field)
-                <option value="{{ $field->id }}">{{ $field->title }} | @lang(':amount T', ['amount' => $field->amount])</option>
-            @endforeach
-    </select>
-</div>
+@include('dashboard.sessions.selectField')
 <div class="mt-4">
     <label class="block mb-2 text-sm text-gray-700 font-medium">@lang('محل برگزاری جلسه')</label>
     <select id="session_platform" name="session_platform" class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus">

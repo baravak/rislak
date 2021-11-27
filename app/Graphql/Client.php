@@ -21,7 +21,13 @@ class Client{
         ])->withBody($json, 'application/json')->post(env('GRAPH_URL'));
         $result = $response->object(false);
         if(isset($result->errors) || isset($result->exception)){
-            dd($result);
+            if(isset($result->errors)){
+                $first = $result->errors[0];
+                if($first->extensions->category == 'authorization'){
+                    abort(403, 'دسترسی غیر مجاز');
+                }
+                abort(500, $result->errors[0]->message);
+            }
         }elseif(!$result){
             echo $response->body();
             exit();

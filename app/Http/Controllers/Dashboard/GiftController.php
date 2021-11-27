@@ -9,7 +9,6 @@ use Illuminate\Pagination\Paginator;
 class GiftController extends Controller
 {
     public function index(Request $request, $center){
-
         $query = 'query ($page: Int, $region: RegionID!){
                 gifts(page:$page, first: 15, region:$region){
                     paginatorInfo{
@@ -78,5 +77,17 @@ class GiftController extends Controller
             'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
         ]);
         dd($create);
+    }
+
+    public function check(Request $request, $code){
+        $query = 'query ($code: String!, $region: RegionID, $amount: Int){
+            giftCheck(code:$code, region:$region, amount: $amount){title type value amount}
+        }';
+      $index = Client::query($query, [
+        'code' => $code,
+        'region' => $request->region,
+        'amount' => (int) $request->amount,
+    ]);
+    return $index->giftCheck->toArray();
     }
 }

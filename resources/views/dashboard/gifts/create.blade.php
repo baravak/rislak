@@ -25,7 +25,7 @@
                 <div x-show="type == 'numeral'">
                         <label for="value-n" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('مقدار تخفیف') }}</label>
                         <div class="w-full relative">
-                            <input type="number" name="value" id="value-n" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus" x-model="value_n">
+                            <input type="number" :disabled="type != 'numeral'" name="value" id="value-n" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus" x-model="value_n">
                             <span class="absolute left-1 top-1 bg-gray-200 px-3 rounded text-xs flex items-center h-8 cursor-default">@lang('Toman')</span>
                             <span class="block text-xs text-gray-500 text-left mt-2 cursor-default" x-text="(value_n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') || '0') + ' تومان'">0 تومان</span>
                         </div>
@@ -33,7 +33,7 @@
                 <div x-show="type == 'percent'">
                         <label for="value-p" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('مقدار تخفیف') }}</label>
                         <div class="w-full relative">
-                        <input type="number" name="value" id="value-p" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus">
+                        <input type="number"  :disabled="type != 'percent'" name="value" id="value-p" class="border border-gray-400 h-10 rounded pr-4 pl-16 w-full text-sm text-gray-600 dir-ltr focus">
                         <span class="absolute left-1 top-1 bg-gray-200 px-3 rounded text-xs flex items-center h-8 cursor-default">@lang('Percentage')</span>
                     </div>
                 </div>

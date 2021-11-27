@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\Dashboard\BillingController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('users/{user}/public-key', 'UserController@publicKey')->name('users.publicKey');
@@ -134,7 +132,9 @@ Route::post('rooms/{room}/billings/export', 'RoomBillingController@export')->nam
 Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorkers.store');
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
 
-Route::resource('centers/{center}/gifts', GiftController::class);
+Route::resource('centers/{center}/gifts', 'GiftController');
+
+Route::get('giftCheck/{code}', 'GiftController@check')->name('giftCheck');
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');
