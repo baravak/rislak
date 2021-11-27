@@ -1,5 +1,5 @@
 <div data-xhr="gift-list-id" class="flex flex-col sm:flex-row sm:items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2">
-    <div class="w-40 hidden sm:flex items-center pl-2">
+    <div class="w-32 hidden sm:flex items-center pl-2">
         <a href="#" title="@lang('کپی کردن کد')"><i class="fal fa-copy text-sm text-gray-600 hover:text-blue-600 transition ml-2 sm:pt-0.5"></i></a>
         <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default">{{ $gift->code }}</span>
     </div>
@@ -9,13 +9,14 @@
             <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default pb-0.5 font-medium">{{ $gift->code }}</span>
         </div>
         <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
+        <div class="text-xs text-gray-600 lg:hidden mt-1">25.000 <small>تومان</small></div>
         <div class="text-xs text-gray-600 lg:hidden mt-1">شروع اعتبار: @time($gift->started_at, "Y/m/d")</div>
         <div class="text-xs text-gray-500 lg:hidden mt-1">
             انقضا:
             @if ($gift->expires_at)
                 @time($gift->expires_at, "Y/m/d")
             @else
-                ∞
+                <i class="far fa-infinity relative sm:top-0.5 text-sx" title="@lang('نامحدود')"></i>
             @endif
         </div>
         <div class="text-xs lg:hidden mt-1">
@@ -34,8 +35,17 @@
         </div>
         <div class="text-xs text-gray-600 mt-1 sm:hidden">تعداد کاربران استفاده کننده: {{ number_format($gift->user_count) }}</div>
         <div class="text-xs text-gray-600 mt-1 sm:hidden">کاربر خاص: @lang($gift->exclusive ? 'دارد' : 'ندارد')</div>
-        <div class="text-xs text-gray-600 mt-1 sm:hidden">تعداد مجاز: {{ $gift->threshold ? number_format($gift->threshold) : '∞' }}</div>
+        <div class="text-xs text-gray-600 mt-1 sm:hidden">تعداد مجاز:
+            @if ($gift->threshold)
+                <span>{{ number_format($gift->threshold) }}</span>
+            @else
+                <i class="far fa-infinity relative top-0.5 text-sx" title="@lang('نامحدود')"></i>
+            @endif
+        </div>
         <div class="text-xs text-gray-600 mt-1 sm:hidden">تعداد استفاده شده: {{ number_format($gift->usage_count) }}</div>
+    </div>
+    <div class="flex-1 px-2 cursor-default hidden lg:block">
+        <div class="text-xs text-gray-600">25.000 <small>تومان</small></div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden lg:block">
         <div class="text-xs text-gray-600">@time($gift->started_at, "Y/m/d")</div>
@@ -43,18 +53,30 @@
             @if ($gift->expires_at)
                 @time($gift->expires_at, "Y/m/d")
             @else
-                ∞
+                <i class="far fa-infinity relative top-0.5 text-sx" title="@lang('نامحدود')"></i>
             @endif
         </div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden lg:block">
-        <div class="text-xs text-gray-600">{{ $gift->threshold ? number_format($gift->threshold) : '∞' }}</div>
+        <div class="text-xs text-gray-600">
+            @if ($gift->threshold)
+                <span>{{ number_format($gift->threshold) }}</span>
+            @else
+                <i class="far fa-infinity relative top-0.5 text-sx" title="@lang('نامحدود')"></i>
+            @endif
+        </div>
         <div class="text-xs text-gray-600 mt-1">{{ number_format($gift->usage_count) }}</div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden sm:block">
         <div class="text-xs text-gray-600">{{ number_format($gift->user_count) }}</div>
         <div class="text-xs text-gray-600 mt-1 lg:hidden">کاربر خاص: @lang($gift->exclusive ? 'دارد' : 'ندارد')</div>
-        <div class="text-xs text-gray-600 mt-1 lg:hidden">تعداد مجاز: {{ $gift->threshold ? number_format($gift->threshold) : '∞' }}</div>
+        <div class="text-xs text-gray-600 mt-1 lg:hidden">تعداد مجاز:
+            @if ($gift->threshold)
+                <span>{{ number_format($gift->threshold) }}</span>
+            @else
+                <i class="far fa-infinity relative top-0.5 text-sx" title="@lang('نامحدود')"></i>
+            @endif
+        </div>
         <div class="text-xs text-gray-600 mt-1 lg:hidden">تعداد استفاده شده: {{ number_format($gift->usage_count) }}</div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden lg:block">

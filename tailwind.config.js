@@ -12,6 +12,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      fontSize: {
+        'sx': '.625rem',
+      },
       colors: {
         brand: {
           DEFAULT: '#007BA4',
