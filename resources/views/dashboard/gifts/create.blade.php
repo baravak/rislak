@@ -46,13 +46,13 @@
                 <input type="text" id="started_at-input" data-picker-alt="started_at" dpicker-format="YYYY/MM/DD" class="border border-gray-400 h-10 rounded px-4 w-full text-sm text-gray-600 focus date-picker dir-ltr text-left">
                 <input type="hidden" name="started_at" id="started_at" >
             </div>
-            <div x-data='{"disable" : true}'>
+            <div x-data='{"expires_at" : false}'>
                 <div class="block mb-1">
-                    <input type="checkbox" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" x-model="disable">
+                    <input type="checkbox" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" x-model="expires_at">
                     <label for="expires_at-input" class=" text-sm text-gray-700 variable-font-medium cursor-default">{{ __('End date') }}</label>
                 </div>
-                <input type="text" id="expires_at-input" data-picker-alt="expires_at" dpicker-format="YYYY/MM/DD" class="border border-gray-400 h-10 rounded px-4 w-full text-sm text-gray-600 focus date-picker dir-ltr text-left" :disabled="disable" :class='{"opacity-40" : disable}'>
-                <input type="hidden" name="expires_at" id="expires_at"  :disabled="disable">
+                <input type="text" id="expires_at-input" data-picker-alt="expires_at" dpicker-format="YYYY/MM/DD" class="border border-gray-400 h-10 rounded px-4 w-full text-sm text-gray-600 focus date-picker dir-ltr text-left" :disabled="!expires_at" :class='{"opacity-40" : !expires_at}'>
+                <input type="hidden" name="expires_at" id="expires_at"  :disabled="!expires_at">
             </div>
         </div>
 
