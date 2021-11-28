@@ -6,13 +6,48 @@
             <div class="col-span-1"></div>
             <div class="col-span-3 flex flex-col">
                 <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-5">
-                    <a href="#" class="absolute left-2 top-2 text-lg text-gray-600 hover:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg"><i class="fal fa-share-alt"></i></a>
+                    <div class="absolute left-2 top-2">
+                        <div class="relative">
+                            <div>
+                                <button class="text-lg text-gray-600 hover:bg-white focus:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg focus-current ring-gray-500"><i class="fal fa-share-alt"></i></a>
+                            </div>
+                            <div class="absolute w-60 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
+                                <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-green-500 transition px-3 py-2">
+                                    <i class="fab fa-whatsapp text-lg"></i>
+                                    <span class="mr-2 text-sm pt-0.5">واتس‌اپ</span>
+                                </a>
+                                <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-blue-500 transition px-3 py-2">
+                                    <i class="fal fa-paper-plane"></i>
+                                    <span class="mr-2 text-sm pt-0.5">تلگرام</span>
+                                </a>
+                                <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-pink-500 transition px-3 py-2">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                    <span class="mr-2 text-sm pt-0.5">اینستاگرام</span>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
+                                    <div class="flex items-center">
+                                        <i class="fal fa-badge-percent text-lg"></i>
+                                        <span class="mr-2 text-sm pt-0.5">صفحه کد تخفیف</span>
+                                    </div>
+                                    <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
+                                </a>
+                                <a href="#" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
+                                    <div class="flex items-center">
+                                        <i class="fal fa-image-polaroid text-lg"></i>
+                                        <span class="mr-2 text-sm pt-0.5">عکس کد تخفیف</span>
+                                    </div>
+                                    <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <i class="fal fa-gift text-green-600 text-5xl"></i>
                     <div class="cursor-default text-center mt-2">
                         <span class="text-xs text-gray-600">@lang('Gift')</span>
                         <h3 class="variable-font-bold text-gray-800">یلدا 1400</h3>
                     </div>
                     <div class="flex items-center mt-2">
+                        {{-- <span class="text-2xl variable-font-bold text-green-700 cursor-default">15%</span> --}}
                         <span class="text-2xl variable-font-bold text-green-700 cursor-default">25,000</span>
                         <span class="text-sm variable-font-semibold text-green-700 cursor-default mr-1">تومان</span>
                     </div>
@@ -33,10 +68,12 @@
                         <div>
                             <span class="block text-xs text-gray-500">تاریخ انقضا</span>
                             <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
+                            {{-- <span class="block text-gray-700 variable-font-medium mt-1">1400/09/06</span> --}}
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد مجاز</span>
                             <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
+                            {{-- <span class="block text-gray-700 variable-font-medium mt-1">1400/09/06</span> --}}
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد استفاده شده</span>
@@ -51,9 +88,9 @@
                             <span class="block text-gray-700 variable-font-medium mt-1">دارد</span>
                         </div>
                         <div>
-                            <span class="block text-xs text-gray-500">استفاده بیش از یکبار توسط هر کاربر</span>
-                            {{-- <i class="fas fa-check text-xs text-green-600 variable-font-medium mt-2"></i> --}}
-                            <i class="fas fa-times text-xs text-red-600 variable-font-medium mt-2"></i>
+                            <span class="block text-xs text-gray-500">تعداد استفاده توسط هر کاربر</span>
+                            {{-- <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">فقط یک‌بار</span> --}}
+                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">بیش از یک‌بار</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">وضعیت</span>
@@ -69,17 +106,26 @@
                     <i class="fal fa-edit"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('ویرایش کد تخفیف')</span>
                 </a>
+                <div class="relative mt-3">
+                    <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 gift-change-link-ring">
+                        <i class="far fa-exchange"></i>
+                        <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
+                    </a>
+                    <div class="absolute w-full left-1/2 transform -translate-x-1/2 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
+                        <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
+                        <div class="flex flex-col justify-center text-xs mt-3">
+                            <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8">@lang('تغییر کد')</button>
+                            <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 mt-2">@lang('انصراف')</button>
+                        </div>
+                    </div>
+                </div>
                 <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-green-600 hover:border-green-600 hover:bg-green-50 hover:bg-opacity-20 transition h-14 mt-3">
-                    <i class="fal fa-layer-plus"></i>
+                    <i class="fal fa-layer-plus text-lg"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('افزودن کد تخفیف جدید')</span>
                 </a>
                 <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-pink-500 hover:border-pink-500 hover:bg-pink-50 hover:bg-opacity-20 transition h-14 mt-3">
-                    <i class="fal fa-badge-percent"></i>
+                    <i class="fal fa-badge-percent text-lg"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('لیست کدهای تخفیف')</span>
-                </a>
-                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 mt-3">
-                    <i class="fal fa-user-tag"></i>
-                    <span class="text-sm mr-3 pt-0.5">@lang('افزودن کاربر به این کد')</span>
                 </a>
             </div>
             <div class="col-span-1"></div>
@@ -90,7 +136,17 @@
             <div class="col-span-10">
                 <div class="mt-8 mb-2">
                     <h3 class="heading ml-40 mb-4" data-total="(5)">کاربران استفاده کننده</h3>
-                    @include('layouts.quick_search')
+                    <div class="flex justify-between items-center flex-wrap mb-4">
+                        {{-- @if ($gifts->total()) --}}
+                            @include('layouts.quick_search')
+                        {{-- @endif --}}
+                        {{-- @can('create', [App\Gift::class, $region]) --}}
+                            <a href="#" title="@lang('افزودن کاربر')" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 hover:bg-green-50 hover:bg-opacity-20 rounded-full transition mr-4 focus-current ring-green-700">
+                                <i class="fal fa-plus sm:ml-2"></i>
+                                <span class="hidden sm:inline">@lang('افزودن کاربر')</span>
+                            </a>
+                        {{-- @endcan --}}
+                    </div>
                 </div>
                 <div>
                     <div class="hidden sm:flex items-center cursor-default px-2 text-xs variable-font-medium text-white bg-brand py-2 rounded">
@@ -100,7 +156,7 @@
                         <div class="flex-1 px-2">@lang('وضعیت')</div>
                         <div class="w-12 px-2"></div>
                     </div>
-                    <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2">
+                    <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2 delete-ring">
                         <div class="flex-1 px-2 cursor-default text-gray-600 text-xs">محمدعلی نخلی</div>
                         <div class="flex-1 px-2 cursor-default text-gray-600 text-xs">2</div>
                         <div class="flex-1 px-2 cursor-default text-gray-600 text-xs dir-ltr text-right">1400/09/06 - 23:14</div>
@@ -109,10 +165,17 @@
                             <span class="text-gray-600">@lang('استفاده نشده')</span>
                             {{-- <span class="text-red-600">@lang('منقضی شده')</span> --}}
                         </div>
-                        <div class="w-12 px-2 dir-ltr text-left">
-                            <button class="text-gray-600 hover:text-red-600 transition">
-                                <i class="fal fa-trash-alt text-sm relative top-0.5"></i>
+                        <div class="w-12 px-2 dir-ltr text-left relative">
+                            <button class="text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600 focus:text-red-600">
+                                <i class="fal fa-trash-alt text-sm"></i>
                             </button>
+                            <div class="absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 flex flex-col items-center justify-center z-50">
+                                <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
+                                <div class="flex items-center text-xs mt-3">
+                                    <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 mr-2">@lang('انصراف')</button>
+                                    <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8">@lang('حذف')</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {{-- @if (method_exists($gifts, 'links'))
