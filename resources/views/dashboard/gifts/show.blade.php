@@ -7,7 +7,7 @@
             <div class="col-span-3 flex flex-col">
                 <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-4">
                     <a href="#" class="absolute left-2 top-2 text-lg text-gray-600 hover:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg"><i class="fal fa-share-alt"></i></a>
-                    <i class="fad fa-badge-percent text-green-600 text-5xl"></i>
+                    <i class="fal fa-gift text-green-600 text-5xl"></i>
                     <div class="cursor-default text-center mt-2">
                         <span class="text-xs text-gray-600">@lang('Gift')</span>
                         <h3 class="variable-font-bold text-lg text-gray-800">یلدا 1400</h3>
@@ -24,7 +24,7 @@
                 <span class="block mt-2 text-xs text-center text-gray-400 cursor-default">برای کپی کردن، روی کد کلیک کنید</span>
             </div>
             <div class="col-span-5 flex flex-col">
-                <div class="bg-gray-100 bg-opacity-50 rounded-lg p-4">
+                <div class="bg-gray-100 bg-opacity-50 border border-gray-200 rounded-lg p-4">
                     <div class="grid grid-cols-2 gap-4 cursor-default">
                         <div>
                             <span class="block text-xs text-gray-500">تاریخ شروع اعتبار</span>
