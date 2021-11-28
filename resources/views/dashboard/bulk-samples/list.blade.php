@@ -3,7 +3,7 @@
         <div class="hidden sm:flex items-center cursor-default px-2 text-xs variable-font-medium text-gray-600 bg-gray-100 py-2 rounded">
             <div class="w-24 hidden xl:flex">@lang('Serial')</div>
             <div class="flex-1 px-2">@lang('Title')</div>
-            <div class="flex-1 px-2">@lang('Therapy room')</div>
+            <div class="flex-1 px-2">@lang('Psychologist')</div>
             <div class="flex-1 px-2 hidden lg:flex">@lang('Case')</div>
             <div class="flex-1 px-2 hidden lg:flex">@lang('Users')</div>
             <div class="flex-1 px-2 hidden md:flex">@lang('Status')</div>

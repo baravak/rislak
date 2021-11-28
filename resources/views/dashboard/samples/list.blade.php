@@ -9,7 +9,7 @@
                     @isset($bulkSample)
                         @lang('Case')
                     @else
-                        @lang('Therapy room')
+                        @lang('Psychologist')
                     @endisset
                 </div>
             @endif
