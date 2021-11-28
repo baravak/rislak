@@ -24,14 +24,14 @@
                                     <i class="fab fa-instagram text-lg"></i>
                                     <span class="mr-2 text-sm pt-0.5">اینستاگرام</span>
                                 </a>
-                                <a href="#" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
+                                <a href="#" target="_blank" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
                                     <div class="flex items-center">
                                         <i class="fal fa-badge-percent text-lg"></i>
                                         <span class="mr-2 text-sm pt-0.5">صفحه کد تخفیف</span>
                                     </div>
                                     <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
                                 </a>
-                                <a href="#" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
+                                <a href="#" target="_blank" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
                                     <div class="flex items-center">
                                         <i class="fal fa-image-polaroid text-lg"></i>
                                         <span class="mr-2 text-sm pt-0.5">عکس کد تخفیف</span>
