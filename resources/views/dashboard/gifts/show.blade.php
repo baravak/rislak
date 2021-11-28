@@ -3,15 +3,15 @@
 @section('content')
     <div>
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-1"></div>
-            <div class="col-span-3 flex flex-col">
+            <div class="col-span-1 hidden lg:block"></div>
+            <div class="col-span-full sm:col-span-5 lg:col-span-3 flex flex-col">
                 <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-5">
                     <div class="absolute left-2 top-2">
                         <div class="relative">
                             <div>
                                 <button class="text-lg text-gray-600 hover:bg-white focus:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg focus-current ring-gray-500"><i class="fal fa-share-alt"></i></a>
                             </div>
-                            <div class="absolute w-60 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
+                            <div class="absolute w-56 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
                                 <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-green-500 transition px-3 py-2">
                                     <i class="fab fa-whatsapp text-lg"></i>
                                     <span class="mr-2 text-sm pt-0.5">واتس‌اپ</span>
@@ -58,7 +58,7 @@
                 </a>
                 <span class="block mt-2 text-xs text-center text-gray-400 cursor-default">برای کپی کردن، روی کد کلیک کنید</span>
             </div>
-            <div class="col-span-5 flex flex-col">
+            <div class="col-span-full sm:col-span-7 lg:col-span-5 flex flex-col">
                 <div class="bg-gray-100 bg-opacity-50 border border-gray-200 rounded-lg p-4">
                     <div class="grid grid-cols-2 gap-4 cursor-default">
                         <div>
@@ -101,17 +101,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2">
+            <div class="hidden lg:block lg:col-span-2 space-y-3">
                 <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-blue-600 hover:border-blue-600 hover:bg-blue-50 hover:bg-opacity-20 transition h-14">
                     <i class="fal fa-edit"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('ویرایش کد تخفیف')</span>
                 </a>
-                <div class="relative mt-3">
+                <div class="relative">
                     <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 gift-change-link-ring">
                         <i class="far fa-exchange"></i>
                         <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
                     </a>
-                    <div class="absolute w-full left-1/2 transform -translate-x-1/2 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
+                    <div class="absolute w-56 left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
                         <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
                         <div class="flex flex-col justify-center text-xs mt-3">
                             <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
@@ -119,23 +119,51 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-green-600 hover:border-green-600 hover:bg-green-50 hover:bg-opacity-20 transition h-14 mt-3">
+                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-green-600 hover:border-green-600 hover:bg-green-50 hover:bg-opacity-20 transition h-14">
                     <i class="fal fa-layer-plus text-lg"></i>
-                    <span class="text-sm mr-3 pt-0.5">@lang('افزودن کد تخفیف جدید')</span>
+                    <span class="text-sm mr-3 pt-0.5">@lang('کد تخفیف جدید')</span>
                 </a>
-                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-pink-500 hover:border-pink-500 hover:bg-pink-50 hover:bg-opacity-20 transition h-14 mt-3">
+                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-pink-500 hover:border-pink-500 hover:bg-pink-50 hover:bg-opacity-20 transition h-14">
                     <i class="fal fa-badge-percent text-lg"></i>
-                    <span class="text-sm mr-3 pt-0.5">@lang('لیست کدهای تخفیف')</span>
+                    <span class="text-sm mr-3 pt-0.5">@lang('کدهای تخفیف')</span>
                 </a>
             </div>
-            <div class="col-span-1"></div>
+            <div class="col-span-1 hidden lg:block"></div>
+        </div>
+
+        <div class="lg:hidden grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-blue-600 hover:border-blue-600 hover:bg-blue-50 hover:bg-opacity-20 transition h-14">
+                <i class="fal fa-edit"></i>
+                <span class="text-sm mr-3 pt-0.5">@lang('ویرایش کد تخفیف')</span>
+            </a>
+            <div class="relative">
+                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 gift-change-link-ring">
+                    <i class="far fa-exchange"></i>
+                    <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
+                </a>
+                <div class="absolute w-full left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
+                    <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
+                    <div class="flex flex-col justify-center text-xs mt-3">
+                        <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
+                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mt-2">@lang('انصراف')</button>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-green-600 hover:border-green-600 hover:bg-green-50 hover:bg-opacity-20 transition h-14">
+                <i class="fal fa-layer-plus text-lg"></i>
+                <span class="text-sm mr-3 pt-0.5">@lang('کد تخفیف جدید')</span>
+            </a>
+            <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-pink-500 hover:border-pink-500 hover:bg-pink-50 hover:bg-opacity-20 transition h-14">
+                <i class="fal fa-badge-percent text-lg"></i>
+                <span class="text-sm mr-3 pt-0.5">@lang('کدهای تخفیف')</span>
+            </a>
         </div>
 
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-1"></div>
-            <div class="col-span-10">
+            <div class="hidden lg:block col-span-1"></div>
+            <div class="col-span-full lg:col-span-10">
                 <div class="mt-8 mb-2">
-                    <h3 class="heading ml-40 mb-4" data-total="(5)">کاربران استفاده کننده</h3>
+                    <h3 class="heading mb-4" data-total="(5)">کاربران استفاده کننده</h3>
                     <div class="flex justify-between items-center flex-wrap mb-4">
                         {{-- @if ($gifts->total()) --}}
                             @include('layouts.quick_search')
@@ -156,11 +184,30 @@
                         <div class="flex-1 px-2">@lang('وضعیت')</div>
                         <div class="w-12 px-2"></div>
                     </div>
-                    <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2 delete-ring">
-                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs">محمدعلی نخلی</div>
-                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs">2</div>
-                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs dir-ltr text-right">1400/09/06 - 23:14</div>
-                        <div class="flex-1 px-2 cursor-default text-xs">
+                    <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-2 p-2 rounded mt-2 delete-ring">
+                        <div class="flex-1 flex flex-col sm:flex-row sm:items-center px-2 cursor-default">
+                            <div class="flex items-center text-gray-600 text-xs">
+                                <i class="fal fa-user text-sm ml-2 sm:hidden"></i>
+                                <span>محمدعلی نخلی</span>
+                            </div>
+                            <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
+                                <span>تعداد استفاده: </span>
+                                <span class="variable-font-medium mr-2">2</span>
+                            </div>
+                            <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
+                                <span>آخرین استفاده: </span>
+                                <span class="variable-font-medium mr-2 dir-ltr text-right">1400/09/06 - 23:14</span>
+                            </div>
+                            <div class="mt-1 flex items-center sm:hidden text-xs">
+                                <span>وضعیت:</span>
+                                {{-- <span class="variable-font-medium mr-2 dir-ltr text-right text-green-600">فعال</span> --}}
+                                <span class="variable-font-medium mr-2 dir-ltr text-right text-gray-600">استفاده نشده</span>
+                                {{-- <span class="variable-font-medium mr-2 dir-ltr text-right text-red-600">منقضی شده</span> --}}
+                            </div>
+                        </div>
+                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs hidden sm:block">2</div>
+                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs dir-ltr text-right hidden sm:block">1400/09/06 - 23:14</div>
+                        <div class="flex-1 px-2 cursor-default text-xs hidden sm:block">
                             {{-- <span class="text-green-600">@lang('فعال')</span> --}}
                             <span class="text-gray-600">@lang('استفاده نشده')</span>
                             {{-- <span class="text-red-600">@lang('منقضی شده')</span> --}}
@@ -183,7 +230,7 @@
                     @endif --}}
                 </div>
             </div>
-            <div class="col-span-1"></div>
+            <div class="hidden lg:block col-span-1"></div>
         </div>
     </div>
 @endsection
