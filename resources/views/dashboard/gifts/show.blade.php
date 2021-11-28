@@ -5,15 +5,15 @@
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-1"></div>
             <div class="col-span-3 flex flex-col">
-                <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-4">
+                <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-5">
                     <a href="#" class="absolute left-2 top-2 text-lg text-gray-600 hover:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg"><i class="fal fa-share-alt"></i></a>
                     <i class="fal fa-gift text-green-600 text-5xl"></i>
                     <div class="cursor-default text-center mt-2">
                         <span class="text-xs text-gray-600">@lang('Gift')</span>
-                        <h3 class="variable-font-bold text-lg text-gray-800">یلدا 1400</h3>
+                        <h3 class="variable-font-bold text-gray-800">یلدا 1400</h3>
                     </div>
                     <div class="flex items-center mt-2">
-                        <span class="text-xl variable-font-bold text-green-700 cursor-default">25,000</span>
+                        <span class="text-2xl variable-font-bold text-green-700 cursor-default">25,000</span>
                         <span class="text-sm variable-font-semibold text-green-700 cursor-default mr-1">تومان</span>
                     </div>
                 </div>
@@ -88,7 +88,10 @@
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-1"></div>
             <div class="col-span-10">
-                <h3 class="heading mt-8 mb-4" data-total="(5)">کاربران استفاده کننده</h3>
+                <div class="mt-8 mb-2">
+                    <h3 class="heading ml-40 mb-4" data-total="(5)">کاربران استفاده کننده</h3>
+                    @include('layouts.quick_search')
+                </div>
                 <div>
                     <div class="hidden sm:flex items-center cursor-default px-2 text-xs variable-font-medium text-white bg-brand py-2 rounded">
                         <div class="flex-1 px-2">@lang('کاربر')</div>
@@ -112,6 +115,9 @@
                             </button>
                         </div>
                     </div>
+                    {{-- @if (method_exists($gifts, 'links'))
+                        {{ method_exists($gifts, 'links') ? $gifts->links() : null }}
+                    @endif --}}
                 </div>
             </div>
             <div class="col-span-1"></div>
