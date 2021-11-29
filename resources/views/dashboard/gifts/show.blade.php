@@ -7,11 +7,11 @@
             <div class="col-span-full sm:col-span-5 lg:col-span-3 flex flex-col">
                 <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-5">
                     <div class="absolute left-2 top-2">
-                        <div class="relative">
-                            <div>
-                                <button class="text-lg text-gray-600 hover:bg-white focus:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg focus-current ring-gray-500"><i class="fal fa-share-alt"></i></a>
-                            </div>
-                            <div class="absolute w-56 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
+                        <div class="relative dropdown">
+                            <button type="button" class="dropdown-toggle text-lg text-gray-600 hover:bg-white focus:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg focus-current ring-gray-500">
+                                <i class="fal fa-share-alt"></i>
+                            </button>
+                            <div class="dropdown-menu absolute w-56 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
                                 <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-green-500 transition px-3 py-2">
                                     <i class="fab fa-whatsapp text-lg"></i>
                                     <span class="mr-2 text-sm pt-0.5">واتس‌اپ</span>
@@ -24,20 +24,20 @@
                                     <i class="fab fa-instagram text-lg"></i>
                                     <span class="mr-2 text-sm pt-0.5">اینستاگرام</span>
                                 </a>
-                                <a href="#" target="_blank" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
-                                    <div class="flex items-center">
+                                <div class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
+                                    <a href="#" target="_blank" class="flex items-center">
                                         <i class="fal fa-badge-percent text-lg"></i>
                                         <span class="mr-2 text-sm pt-0.5">صفحه کد تخفیف</span>
-                                    </div>
+                                    </a>
                                     <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
-                                </a>
-                                <a href="#" target="_blank" class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
-                                    <div class="flex items-center">
+                                </div>
+                                <div class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
+                                    <a href="#" target="_blank" class="flex items-center">
                                         <i class="fal fa-image-polaroid text-lg"></i>
                                         <span class="mr-2 text-sm pt-0.5">عکس کد تخفیف</span>
-                                    </div>
+                                    </a>
                                     <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,10 +52,10 @@
                         <span class="text-sm variable-font-semibold text-green-700 cursor-default mr-1">تومان</span>
                     </div>
                 </div>
-                <a href="#" class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 h-16 text-center">
+                <button class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 h-16 text-center focus-current ring-green-300">
                     <span class="block dir-ltr en text-xs text-gray-500">RS966666Q-</span>
                     <h4 class="font-bold en text-xl text-center text-green-600">96654TD3NH</h4>
-                </a>
+                </button>
                 <span class="block mt-2 text-xs text-center text-gray-400 cursor-default">برای کپی کردن، روی کد کلیک کنید</span>
             </div>
             <div class="col-span-full sm:col-span-7 lg:col-span-5 flex flex-col">
@@ -106,16 +106,18 @@
                     <i class="fal fa-edit"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('ویرایش کد تخفیف')</span>
                 </a>
-                <div class="relative">
-                    <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 gift-change-link-ring">
+                <div class="relative dropdown w-full">
+                    <button type="button" class="dropdown-toggle flex items-center w-full border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 focus-current ring-purple-600">
                         <i class="far fa-exchange"></i>
                         <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
-                    </a>
-                    <div class="absolute w-56 left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
-                        <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
-                        <div class="flex flex-col justify-center text-xs mt-3">
-                            <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
-                            <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mt-2">@lang('انصراف')</button>
+                    </button>
+                    <div class="dropdown-menu absolute w-56 left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 z-50">
+                        <div class="flex flex-col items-center justify-center">
+                            <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
+                            <div class="flex flex-col justify-center text-xs mt-3">
+                                <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
+                                <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mt-2">@lang('انصراف')</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,16 +138,18 @@
                 <i class="fal fa-edit"></i>
                 <span class="text-sm mr-3 pt-0.5">@lang('ویرایش کد تخفیف')</span>
             </a>
-            <div class="relative">
-                <a href="#" class="flex items-center border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 gift-change-link-ring">
+            <div class="relative dropdown w-full">
+                <button type="button" class="dropdown-toggle flex items-center w-full border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 focus-current ring-purple-600">
                     <i class="far fa-exchange"></i>
                     <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
-                </a>
-                <div class="absolute w-full left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 flex flex-col items-center justify-center z-50">
-                    <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
-                    <div class="flex flex-col justify-center text-xs mt-3">
-                        <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
-                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mt-2">@lang('انصراف')</button>
+                </button>
+                <div class="dropdown-menu absolute w-56 left-0 top-16 bg-white rounded-md shadow-md px-2 py-4 z-50">
+                    <div class="flex flex-col items-center justify-center">
+                        <span class="text-sm text-gray-700 cursor-default text-center">از تغییر عبارت کد تخفیف و لینک آن مطمئن هستید؟</span>
+                        <div class="flex flex-col justify-center text-xs mt-3">
+                            <button class="flex items-center bg-purple-600 text-white hover:bg-purple-700 transition rounded-full h-7 px-8 focus-current ring-purple-600">@lang('تغییر کد')</button>
+                            <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mt-2">@lang('انصراف')</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,15 +216,17 @@
                             <span class="text-gray-600">@lang('استفاده نشده')</span>
                             {{-- <span class="text-red-600">@lang('منقضی شده')</span> --}}
                         </div>
-                        <div class="w-12 px-2 dir-ltr text-left relative">
-                            <button class="text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600 focus:text-red-600">
+                        <div class="w-12 px-2 dir-ltr text-left relative dropdown">
+                            <button class="dropdown-toggle text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600">
                                 <i class="fal fa-trash-alt text-sm"></i>
                             </button>
-                            <div class="absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 flex flex-col items-center justify-center z-50">
-                                <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
-                                <div class="flex items-center text-xs mt-3">
-                                    <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mr-2">@lang('انصراف')</button>
-                                    <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('حذف')</button>
+                            <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
+                                <div class="flex flex-col items-center justify-center">
+                                    <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
+                                    <div class="flex items-center text-xs mt-3">
+                                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mr-2">@lang('انصراف')</button>
+                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('حذف')</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
