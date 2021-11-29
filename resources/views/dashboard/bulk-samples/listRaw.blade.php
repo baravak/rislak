@@ -13,7 +13,7 @@
         <span class="flex md:hidden text-xs text-gray-400 cursor-default mt-2">@lang('Status'): @lang(ucfirst($bulkSample->status))</span>
         <div class="sm:hidden flex flex-col mt-3">
             <div class="flex">
-                <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $bulkSample->room->manager->name]) }}</a>
+                <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ $bulkSample->room->manager->name }}</a>
             </div>
             @if ($bulkSample->room->type != 'personal_clinic')
                 <div class="flex">
@@ -38,7 +38,7 @@
     </div>
     <div class="flex-1 px-2 hidden sm:flex flex-col">
         <div class="flex">
-            <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ __('Therapy room of :user', ['user' => $bulkSample->room->manager->name]) }}</a>
+            <a href="{{ route('dashboard.rooms.show', $bulkSample->room->id) }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ $bulkSample->room->manager->name }}</a>
         </div>
         @if ($bulkSample->room->type != 'personal_clinic')
             <div class="flex">
