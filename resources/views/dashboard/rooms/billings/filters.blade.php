@@ -1,6 +1,6 @@
 <div class="flex items-center justify-end mb-4 flex-wrap">
     {{-- <div class="dropdown ml-2 mt-2 sm:mt-0" style="display: none">
-        <button type="button" class="flex i tems-center border rounded-full px-4 h-8 transition dropdown-toggle focus text-xs border-gray-300 border-brand text-brand bg-blue-50">
+        <button type="button" class="flex i tems-center border rounded-full px-4 h-8 transition dropdown-toggle focus text-xs border-brand text-brand bg-blue-50">
             <a href="#" class="relative top-0.5 ml-2"><i class="fas fa-times-circle"></i></a>
             <span class="text-sm">@lang('اتاق درمان')</span>
             <span class="text-xs mr-1">(1)</span>
