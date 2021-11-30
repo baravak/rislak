@@ -44,17 +44,20 @@
                     <i class="fal fa-gift text-green-600 text-5xl"></i>
                     <div class="cursor-default text-center mt-2">
                         <span class="text-xs text-gray-600">@lang('Gift')</span>
-                        <h3 class="variable-font-bold text-gray-800">یلدا 1400</h3>
+                        <h3 class="variable-font-bold text-gray-800">{{ $gift->title }}</h3>
                     </div>
                     <div class="flex items-center mt-2">
-                        {{-- <span class="text-2xl variable-font-bold text-green-700 cursor-default">15%</span> --}}
-                        <span class="text-2xl variable-font-bold text-green-700 cursor-default">25,000</span>
-                        <span class="text-sm variable-font-semibold text-green-700 cursor-default mr-1">تومان</span>
+                        @if ($gift->type == 'percent')
+                            <span class="text-2xl variable-font-bold text-green-700 cursor-default">{{ $gift->value }}%</span>
+                        @else
+                            <span class="text-2xl variable-font-bold text-green-700 cursor-default">@amount($gift->value)</span>
+                            <span class="text-sm variable-font-semibold text-green-700 cursor-default mr-1">تومان</span>
+                        @endif
                     </div>
                 </div>
-                <button class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 h-16 text-center focus-current ring-green-300">
-                    <span class="block dir-ltr en text-xs text-gray-500">RS966666Q-</span>
-                    <h4 class="font-bold en text-xl text-center text-green-600">96654TD3NH</h4>
+                <button class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 h-16 text-center focus-current ring-green-300" data-clipboard-text="{{ $gift->code }}">
+                    <span class="block dir-ltr en text-xs text-gray-500">{{ $gift->region->id }}-</span>
+                    <h4 class="font-bold en text-xl text-center text-green-600">{{ substr($gift->code, 10) }}</h4>
                 </button>
                 <span class="block mt-2 text-xs text-center text-gray-400 cursor-default">برای کپی کردن، روی کد کلیک کنید</span>
             </div>
@@ -63,40 +66,53 @@
                     <div class="grid grid-cols-2 gap-4 cursor-default">
                         <div>
                             <span class="block text-xs text-gray-500">تاریخ شروع اعتبار</span>
-                            <span class="block text-gray-700 variable-font-medium mt-1">1400/09/06</span>
+                            <span class="block text-gray-700 variable-font-medium mt-1">@time($gift->started_at, 'Y/m/d')</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تاریخ انقضا</span>
-                            <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
-                            {{-- <span class="block text-gray-700 variable-font-medium mt-1">1400/09/06</span> --}}
+                            @if ($gift->expires_at)
+                                <span class="block text-gray-700 variable-font-medium mt-1">@time($gift->expires_at, 'Y/m/d')</span>
+                            @else
+                                <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
+                            @endif
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد مجاز</span>
-                            <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
-                            {{-- <span class="block text-gray-700 variable-font-medium mt-1">1400/09/06</span> --}}
+                            @if ($gift->threshold)
+                                <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->threshold }}</span>
+                            @else
+                                <i class="far fa-infinity text-xs text-gray-700 variable-font-medium mt-2" title="@lang('نامحدود')"></i>
+                            @endif
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد استفاده شده</span>
-                            <span class="block text-gray-700 variable-font-medium mt-1">2</span>
+                            <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->usage_count }}</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد کاربران استفاده کننده</span>
-                            <span class="block text-gray-700 variable-font-medium mt-1">5</span>
+                            <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->user_count }}</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">کاربر خاص</span>
-                            <span class="block text-gray-700 variable-font-medium mt-1">دارد</span>
+                            <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->exclusive ? 'دارد' : 'ندارد' }}</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد استفاده توسط هر کاربر</span>
-                            {{-- <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">فقط یک‌بار</span> --}}
-                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">بیش از یک‌بار</span>
+                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">{{ $gift->disposable ? 'بیش از یک‌بار' : 'فقط یک‌بار' }}</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">وضعیت</span>
-                            {{-- <span class="block text-sm text-green-600 variable-font-medium mt-1.5">فعال</span> --}}
-                            <span class="block text-sm text-yellow-500 variable-font-medium mt-1.5">در انتظار</span>
-                            {{-- <span class="block text-sm text-red-600 variable-font-medium mt-1.5">منقضی شده</span> --}}
+                            @switch($gift->status)
+                                @case('open')
+                                    <span class="block text-sm text-green-600 variable-font-medium mt-1.5">فعال</span>
+                                    @break
+                                @case('awaiting')
+                                    <span class="block text-sm text-yellow-500 variable-font-medium mt-1.5">در انتظار</span>
+                                    @break
+                                @case('expires')
+                                        <span class="block text-sm text-red-600 variable-font-medium mt-1.5">منقضی شده</span>
+                                    @break
+                            @endswitch
                         </div>
                     </div>
                 </div>
@@ -167,17 +183,15 @@
             <div class="hidden lg:block col-span-1"></div>
             <div class="col-span-full lg:col-span-10">
                 <div class="mt-8 mb-2">
-                    <h3 class="heading mb-4" data-total="(5)">کاربران استفاده کننده</h3>
+                    <h3 class="heading mb-4" data-total="({{ $gift->users->total() }})">کاربران استفاده کننده</h3>
                     <div class="flex justify-between items-center flex-wrap mb-4">
-                        {{-- @if ($gifts->total()) --}}
+                        @if ($gift->users->total())
                             @include('layouts.quick_search')
-                        {{-- @endif --}}
-                        {{-- @can('create', [App\Gift::class, $region]) --}}
-                            <a href="#" title="@lang('افزودن کاربر')" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 hover:bg-green-50 hover:bg-opacity-20 rounded-full transition mr-4 focus-current ring-green-700">
-                                <i class="fal fa-plus sm:ml-2"></i>
-                                <span class="hidden sm:inline">@lang('افزودن کاربر')</span>
-                            </a>
-                        {{-- @endcan --}}
+                        @endif
+                        <a href="#" title="@lang('افزودن کاربر')" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 hover:bg-green-50 hover:bg-opacity-20 rounded-full transition mr-4 focus-current ring-green-700">
+                            <i class="fal fa-plus sm:ml-2"></i>
+                            <span class="hidden sm:inline">@lang('افزودن کاربر')</span>
+                        </a>
                     </div>
                 </div>
                 <div>
@@ -188,52 +202,70 @@
                         <div class="flex-1 px-2">@lang('وضعیت')</div>
                         <div class="w-12 px-2"></div>
                     </div>
-                    <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-2 p-2 rounded mt-2 delete-ring">
-                        <div class="flex-1 flex flex-col sm:flex-row sm:items-center px-2 cursor-default">
-                            <div class="flex items-center text-gray-600 text-xs">
-                                <i class="fal fa-user text-sm ml-2 sm:hidden"></i>
-                                <span>محمدعلی نخلی</span>
+                    @foreach ($gift->users as $user)
+                        <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-2 p-2 rounded mt-2 delete-ring">
+                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center px-2 cursor-default">
+                                <div class="flex items-center text-gray-600 text-xs">
+                                    <i class="fal fa-user text-sm ml-2 sm:hidden"></i>
+                                    <span>{{ $user->ghost->name ?: $user->ghost->mobile }}</span>
+                                </div>
+                                <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
+                                    <span>تعداد استفاده: </span>
+                                    <span class="variable-font-medium mr-2">{{ $user->usage_count }}</span>
+                                </div>
+                                <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
+                                    <span>آخرین استفاده: </span>
+                                    <span class="variable-font-medium mr-2 dir-ltr text-right">
+                                        @if ($user->used_at)
+                                            @time($user->used_at, 'Y/m/d H:i')
+                                        @endif
+                                    </span>
+                                </div>
+                                <div class="mt-1 flex items-center sm:hidden text-xs">
+                                    <span>وضعیت:</span>
+                                    @if (!$user->used_at)
+                                        <span class="variable-font-medium mr-2 dir-ltr text-right text-gray-600">استفاده نشده</span>
+                                    @elseif($user->status == 'open')
+                                        <span class="variable-font-medium mr-2 dir-ltr text-right text-green-600">فعال</span>
+                                    @elseif($user->status == 'expires')
+                                        <span class="variable-font-medium mr-2 dir-ltr text-right text-red-600">منقضی شده</span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
-                                <span>تعداد استفاده: </span>
-                                <span class="variable-font-medium mr-2">2</span>
+                            <div class="flex-1 px-2 cursor-default text-gray-600 text-xs hidden sm:block">{{ $user->usage_count }}</div>
+                            <div class="flex-1 px-2 cursor-default text-gray-600 text-xs dir-ltr text-right hidden sm:block">
+                                @if ($user->used_at)
+                                    @time($user->used_at, 'Y/m/d H:i')
+                                @endif
                             </div>
-                            <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
-                                <span>آخرین استفاده: </span>
-                                <span class="variable-font-medium mr-2 dir-ltr text-right">1400/09/06 - 23:14</span>
+                            <div class="flex-1 px-2 cursor-default text-xs hidden sm:block">
+                                @if (!$user->used_at)
+                                    <span class="text-green-600">@lang('فعال')</span>
+                                    @elseif($user->status == 'open')
+                                    <span class="text-gray-600">@lang('استفاده نشده')</span>
+                                @elseif($user->status == 'expires')
+                                    <span class="text-red-600">@lang('منقضی شده')</span>
+                                @endif
                             </div>
-                            <div class="mt-1 flex items-center sm:hidden text-xs">
-                                <span>وضعیت:</span>
-                                {{-- <span class="variable-font-medium mr-2 dir-ltr text-right text-green-600">فعال</span> --}}
-                                <span class="variable-font-medium mr-2 dir-ltr text-right text-gray-600">استفاده نشده</span>
-                                {{-- <span class="variable-font-medium mr-2 dir-ltr text-right text-red-600">منقضی شده</span> --}}
-                            </div>
-                        </div>
-                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs hidden sm:block">2</div>
-                        <div class="flex-1 px-2 cursor-default text-gray-600 text-xs dir-ltr text-right hidden sm:block">1400/09/06 - 23:14</div>
-                        <div class="flex-1 px-2 cursor-default text-xs hidden sm:block">
-                            {{-- <span class="text-green-600">@lang('فعال')</span> --}}
-                            <span class="text-gray-600">@lang('استفاده نشده')</span>
-                            {{-- <span class="text-red-600">@lang('منقضی شده')</span> --}}
-                        </div>
-                        <div class="w-12 px-2 dir-ltr text-left relative dropdown">
-                            <button class="dropdown-toggle text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600">
-                                <i class="fal fa-trash-alt text-sm"></i>
-                            </button>
-                            <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
-                                <div class="flex flex-col items-center justify-center">
-                                    <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
-                                    <div class="flex items-center text-xs mt-3">
-                                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mr-2">@lang('انصراف')</button>
-                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('حذف')</button>
+                            <div class="w-12 px-2 dir-ltr text-left relative dropdown">
+                                <button class="dropdown-toggle text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600">
+                                    <i class="fal fa-trash-alt text-sm"></i>
+                                </button>
+                                <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
+                                        <div class="flex items-center text-xs mt-3">
+                                            <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mr-2">@lang('انصراف')</button>
+                                            <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('حذف')</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{-- @if (method_exists($gifts, 'links'))
-                        {{ method_exists($gifts, 'links') ? $gifts->links() : null }}
-                    @endif --}}
+                    @endforeach
+                    @if (method_exists($gift->users, 'links'))
+                        {{ method_exists($gift->users, 'links') ? $gift->users->links() : null }}
+                    @endif
                 </div>
             </div>
             <div class="hidden lg:block col-span-1"></div>
