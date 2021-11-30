@@ -5,7 +5,7 @@
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-1 hidden lg:block"></div>
             <div class="col-span-full sm:col-span-5 lg:col-span-3 flex flex-col">
-                <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-8 pb-5">
+                <div class="relative bg-green-50 rounded-lg flex flex-col items-center justify-center pt-7 pb-5">
                     <div class="absolute left-2 top-2">
                         <div class="relative dropdown">
                             <button type="button" class="dropdown-toggle text-lg text-gray-600 hover:bg-white focus:bg-white transition flex items-center justify-center w-8 h-8 rounded-lg focus-current ring-gray-500">
@@ -55,11 +55,11 @@
                         @endif
                     </div>
                 </div>
-                <button class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 h-16 text-center focus-current ring-green-300" data-clipboard-text="{{ $gift->code }}">
-                    <span class="block dir-ltr en text-xs text-gray-500">{{ $gift->region->id }}-</span>
-                    <h4 class="font-bold en text-xl text-center text-green-600">{{ substr($gift->code, 10) }}</h4>
+                <button class="flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 pt-1 h-16 text-center focus-current ring-green-300" data-clipboard-text="{{ $gift->code }}">
+                    {{-- <span class="block dir-ltr en text-xs text-gray-500">{{ $gift->region->id }}-</span> --}}
+                    <h4 class="font-bold en text-2xl text-center text-green-600">{{ substr($gift->code, 10) }}</h4>
+                    <span class="block text-xs text-gray-400">برای کپی کردن کد، کلیک کنید</span>
                 </button>
-                <span class="block mt-2 text-xs text-center text-gray-400 cursor-default">برای کپی کردن، روی کد کلیک کنید</span>
             </div>
             <div class="col-span-full sm:col-span-7 lg:col-span-5 flex flex-col">
                 <div class="bg-gray-100 bg-opacity-50 border border-gray-200 rounded-lg p-4">
@@ -203,7 +203,7 @@
                         <div class="w-12 px-2"></div>
                     </div>
                     @foreach ($gift->users as $user)
-                        <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-2 p-2 rounded mt-2 delete-ring">
+                        <div class="flex items-center bg-gray-50 hover:bg-gray-100 transition py-2 p-2 rounded mt-2">
                             <div class="flex-1 flex flex-col sm:flex-row sm:items-center px-2 cursor-default">
                                 <div class="flex items-center text-gray-600 text-xs">
                                     <i class="fal fa-user text-sm ml-2 sm:hidden"></i>
