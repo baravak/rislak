@@ -81,13 +81,35 @@ class GiftController extends Controller
 
     public function check(Request $request, $code){
         $query = 'query ($code: String!, $region: RegionID, $amount: Int){
-            giftCheck(code:$code, region:$region, amount: $amount){title type value amount}
+            gift(code:$code, region:$region, amount: $amount, check:true){title type value amount}
         }';
       $index = Client::query($query, [
         'code' => $code,
         'region' => $request->region,
         'amount' => (int) $request->amount,
     ]);
-    return $index->giftCheck->toArray();
+    return $index->gift->toArray();
+    }
+
+    public function show(Request $request, $center, $gift){
+        $query = 'query ($id: GiftID!){
+            gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status
+                region{id detail{title}}
+                users(first:10){
+                    paginatorInfo{ count currentPage total perPage}
+                    data{
+                        usage_count status used_at
+                        ghost{
+                            id name mobile
+                        }
+                    }
+                }
+            }
+        }';
+        $index = Client::query($query, [
+            'id' => $gift
+        ]);
+        $this->data->gift = $index->gift;
+        return $this->view($request, 'dashboard.gifts.show');
     }
 }

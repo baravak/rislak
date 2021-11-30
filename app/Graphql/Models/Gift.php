@@ -7,4 +7,8 @@ class Gift extends Model{
         'started_at' => 'datetime',
         'expires_at' => 'datetime',
     ];
+    protected $with = [
+        'users' => GiftUsers::class
+    ];
+
 }
