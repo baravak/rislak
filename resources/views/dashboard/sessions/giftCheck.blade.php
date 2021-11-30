@@ -3,7 +3,7 @@
         <label for="gift_code" class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('Gift')</label>
         <div class="flex flex-col xs:flex-row">
             <div class="w-full relative">
-                <input type="text" placeholder="محل درج کد تخفیف"id="gift_code" class="border border-gray-500 h-10 rounded pr-4 w-full text-sm dir-ltr focus placeholder-gray-300" style="padding-left: 6.5rem;" x-on:change="document.querySelector('#giftCheck').dispatchEvent(new CustomEvent('link'))" x-model="gift_code" value="{{ isset($callbackPayment->gift_code) ? substr($callbackPayment->gift_code, 10) : '' }}">
+                <input type="text" placeholder="محل درج کد تخفیف"id="gift_code" class="border border-gray-500 h-10 rounded pr-4 w-full text-sm dir-ltr focus placeholder-gray-300" style="padding-left: 6.5rem;" x-on:change="gift_code = (gift_code || '').replace(/^[^\-]{9}-/, ''); document.querySelector('#giftCheck').dispatchEvent(new CustomEvent('link'))" x-model="gift_code" value="{{ isset($callbackPayment->gift_code) ? substr($callbackPayment->gift_code, 10) : '' }}">
                 <span class="absolute left-1 top-1 px-2 rounded text-sm text-gray-500 flex items-center h-8 cursor-default dir-ltr text-left pt-0.5">{{ $center->id }} -</span>
             </div>
             <input type="hidden" name="gift_code" value="{{ isset($callbackPayment->gift_code) ? $callbackPayment->gift_code : ''}}" :value="gift_code ? '{{ $center->id }}-' + gift_code : ''">

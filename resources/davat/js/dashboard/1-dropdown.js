@@ -1,11 +1,14 @@
 ;(function(davat){
     function dropdown(){
         var _self = this;
+        $(_self).attr('data-dropdown', 'closed');
         $('.dropdown-toggle', this).on('click', function(){
             if(!$('button + div', _self).is('.dropdown-open')){
                 $('button + div', _self).fadeIn('fast').addClass('dropdown-open');
+                $(_self).attr('data-dropdown', 'open');
             }else{
                 $('button + div.dropdown-open', _self).fadeOut('fast').removeClass('dropdown-open');
+                $(_self).attr('data-dropdown', 'closed');
             }
         });
     }
@@ -16,7 +19,7 @@
         $(document).on('click', function(e){
             var target = $(e.target);
             if(target.is('.single-click')){
-                $('.dropdown-open').fadeOut('fast').removeClass('dropdown-open');
+                $('.dropdown-open').fadeOut('fast').removeClass('dropdown-open').attr('data-dropdown', 'closed');
                 return;
             }
             var parent = target.parents('.dropdown-open').eq(0);
@@ -30,7 +33,7 @@
             }
             $('button + div.dropdown-open').each(function(){
                 if($(this)[0] != parent[0]){
-                    $(this).fadeOut('fast').removeClass('dropdown-open');
+                    $(this).fadeOut('fast').removeClass('dropdown-open').attr('data-dropdown', 'closed');
                 }
             });
         });
