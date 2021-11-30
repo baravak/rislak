@@ -12,11 +12,11 @@
                                 <i class="fal fa-share-alt"></i>
                             </button>
                             <div class="dropdown-menu absolute w-56 left-0 top-9 bg-white rounded-md shadow-md flex flex-col z-50 divide-y divide-gray-200">
-                                <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-green-500 transition px-3 py-2">
+                                <a href="https://api.whatsapp.com/send?text={!! $gift->whatsapp !!}" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-green-500 transition px-3 py-2" target="_blank">
                                     <i class="fab fa-whatsapp text-lg"></i>
                                     <span class="mr-2 text-sm pt-0.5">واتس‌اپ</span>
                                 </a>
-                                <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-blue-500 transition px-3 py-2">
+                                <a href="https://t.me/share/url?text={!! $gift->telegram !!}" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-blue-500 transition px-3 py-2" target="_blank">
                                     <i class="fal fa-paper-plane"></i>
                                     <span class="mr-2 text-sm pt-0.5">تلگرام</span>
                                 </a>

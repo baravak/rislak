@@ -110,6 +110,15 @@ class GiftController extends Controller
             'id' => $gift
         ]);
         $this->data->gift = $index->gift;
+        $region = $index->gift->region->detail->title;
+        $value = $index->gift->type == 'percent' ? '%'. $index->gift->value : number_format($index->gift->value) . 'تومانی';
+        $link = [];
+        $link[] = 'سلام';
+        $link[] = "شما یک کد تخفیف $value از سمت $region دارید. با وارد کردن کد زیر در صفحه رزرواسیون جلسه، از تخفیف این کد بهره‌مند شوید";
+        $link[] = $index->gift->code;
+        $index->gift->whatsapp = join("\n", $link);
+        $index->gift->whatsapp = urlencode($index->gift->whatsapp);
+        $index->gift->telegram = urlencode($index->gift->whatsapp);
         return $this->view($request, 'dashboard.gifts.show');
     }
 }
