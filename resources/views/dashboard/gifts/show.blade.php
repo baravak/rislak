@@ -136,9 +136,7 @@
                 <div class="mt-8 mb-2">
                     <h3 class="heading mb-4" data-total="({{ $gift->users->total() }})">کاربران استفاده کننده</h3>
                     <div class="flex justify-between items-center flex-wrap mb-4">
-                        @if ($gift->users->total())
-                            @include('layouts.quick_search')
-                        @endif
+                        @include('layouts.quick_search')
                         <a href="#" title="@lang('افزودن کاربر')" class="flex items-center justify-center flex-shrink-0 w-9 sm:w-auto h-9 sm:px-4 text-sm text-green-700 border border-green-700 hover:bg-green-50 hover:bg-opacity-20 rounded-full transition mr-4 focus-current ring-green-700">
                             <i class="fal fa-plus sm:ml-2"></i>
                             <span class="hidden sm:inline">@lang('افزودن کاربر')</span>
@@ -214,6 +212,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="flex items-center justify-center bg-gray-50 transition py-4 p-2 rounded mt-2 text-sm text-gray-400 cursor-default">
+                        @lang('کاربری موجود نیست')
+                    </div>
                     @if (method_exists($gift->users, 'links'))
                         {{ method_exists($gift->users, 'links') ? $gift->users->links() : null }}
                     @endif
