@@ -52,7 +52,7 @@ class GiftController extends Controller
     public function store(Request $request, $center){
         $store = <<<Query
         mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int){
-            CreateGift(region:\$center, input: {
+            createGift(region:\$center, input: {
                 title: \$title
                 description: \$description
                 type: \$type
@@ -76,7 +76,9 @@ class GiftController extends Controller
             'disposable' => (boolean) $request->disposable,
             'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
         ]);
-        dd($create);
+        return[
+            'redirect' => route('dashboard.gifts.show', [$center, $create->createGift->id])
+        ];
     }
 
     public function check(Request $request, $code){
@@ -155,8 +157,8 @@ class GiftController extends Controller
     }
 
     public function appendUser(Request $request, $center, $gift){
-        $mutation = "mutation(\$id:GiftID!, \$ghosts:[GhostID!]!){
-            appendUserGift(id:\$id, ghosts:\$ghosts){
+        $mutation = "mutation(\$id:GiftID!, \$users:[GhostID!]!){
+            appendUserGift(id:\$id, users:\$users){
                 gift{
                     id
                 }
@@ -164,7 +166,7 @@ class GiftController extends Controller
         }";
         Client::query($mutation, [
             'id' => $gift,
-            'ghosts' => $request->user_id
+            'users' => $request->user_id
         ]);
         return [
             'redirect' => route('dashboard.gifts.show', [$center, $gift])
@@ -183,5 +185,39 @@ class GiftController extends Controller
         $this->data->gift = $gift = $index->gift;
         $this->data->center = $gift->region;
         return $this->view($request, 'dashboard.gifts.create');
+    }
+
+    public function update(Request $request, $center, $gift){
+        $store = <<<Query
+        mutation(\$id: GiftID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$status:GiftUpdateStatus){
+            updateGift(id:\$id, input: {
+                title: \$title
+                description: \$description
+                type: \$type
+                value: \$value
+                started_at: \$started_at
+                expires_at: \$expires_at
+                disposable: \$disposable
+                threshold: \$threshold
+                status: \$status
+            }){
+              id,code,started_at
+            }
+        }
+        Query;
+        $create = Client::query($store, [
+            'id' => $gift,
+            'title' => $request->title,
+            'type' => $request->type,
+            'value' => (int) $request->value,
+            'started_at' => $request->started_at,
+            'expires_at' => $request->expires_at,
+            'disposable' => (boolean) $request->disposable,
+            'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
+            'status' => $request->status ? 'open' : 'expires'
+        ]);
+        return[
+            'redirect' => route('dashboard.gifts.show', [$center, $create->updateGift->id])
+        ];
     }
 }

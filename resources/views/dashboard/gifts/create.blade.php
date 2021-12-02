@@ -7,7 +7,7 @@
             @if ($gift->status == 'expires')
                 <div class="flex px-4 py-3 bg-red-50 text-red-600 rounded mb-4">
                     <i class="fal fa-engine-warning ml-3 text-lg"></i>
-                    @if ($gift->expires_at && $gift->expires_at->timestamp() >= time())
+                    @if ($gift->expires_at && $gift->expires_at->timestamp <= time())
                         <span class="pt-1 text-sm">این کد تخفیف به دلیل سررسید زمان تعیین شده برای انقضاء، منقضی شده است.</span>
                     @elseif($gift->threshold && $gift->usage_count >= $gift->threshold)
                         <span class="pt-1 text-sm">این کد تخفیف به دلیل رسیدن به مقدار حداکثری تعیین شده برای استفاده، منقضی شده است.</span>
@@ -86,12 +86,12 @@
             </label>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4" x-data='{exclusive : {{ isset($gift) && $gift->exclusive ? 'true'  : 'false' }}}'>
             <label for="exclusive_users_active" class="inline-flex items-center mb-2 group">
-                <input type="checkbox" name="exclusive_users_active" id="exclusive_users_active" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->disposable, true)>
+                <input type="checkbox" name="exclusive_users_active" id="exclusive_users_active" x-model="exclusive" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->exclusive, true)>
                 <span class="text-sm text-gray-700 variable-font-medium mr-2 group-hover:text-blue-600 pt-0.5">{{ __('محدودیت کاربر') }}</span>
             </label>
-            <select name="exclusive_users" id="exclusive_users" data-placeholder="{{ __('کاربری انتخاب نشده است') }}" class="select2-select"></select>
+            <select name="exclusive_users" id="exclusive_users" data-placeholder="{{ __('کاربری انتخاب نشده است') }}" class="select2-select" :disabled="!exclusive"></select>
             <div class="flex text-xs text-gray-400 mt-2 cursor-default">
                 <i class="fal fa-info-circle ml-1"></i>
                 <span>شما می‌توانید با جستجو از طریق شماره موبایل و یا نام، کاربرانی که فقط آن‌ها مجاز به استفاده از این کد می‌باشند را انتخاب کنید. در صورتی که می‌خواهید همه از این کد استفاده کنند، این بخش را خالی بگذارید.</span>
@@ -102,17 +102,18 @@
             <label for="description" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Description') }}</label>
             <textarea id="description" name="description"  rows="3" class="resize-none border border-gray-500 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus">{{ isset($gift) ? $gift->description : '' }}</textarea>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <div class="bg-gray-50 px-4 py-2 rounded">
-                <span class="text-sm ml-2 text-gray-600 cursor-default">منقضی</span>
-                <div class="relative inline-block w-10 align-middle select-none transition ease-in-out duration-700">
-                    <input checked type="checkbox" id="gift_avalible" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" x-model="expires_at">
-                    <label for="gift_avalible" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+        @isset($gift)
+            <div class="flex items-center justify-end mt-4">
+                <div class="bg-gray-50 px-4 py-2 rounded">
+                    <span class="text-sm ml-2 text-gray-600 cursor-default">منقضی</span>
+                    <div class="relative inline-block w-10 align-middle select-none transition ease-in-out duration-700">
+                        <input {{ $gift->status != 'expires' ? 'checked' : '' }} name="status" type="checkbox" id="gift_avalible" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer">
+                        <label for="gift_avalible" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                    <span class="text-sm mr-2 text-gray-600 cursor-default">فعال</span>
                 </div>
-                <span class="text-sm mr-2 text-gray-600 cursor-default">فعال</span>
             </div>
-        </div>
+        @endisset
     </div>
     <div class="mt-6">
         <button type="submit" class="inline-flex justify-center items-center h-9 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 transition ml-4 focus" title="@lang(isset($gift) ? 'ویرایش کد تخفیف': 'ساخت کد تخفیف')" aria-label="@lang(isset($gift) ? 'ویرایش کد تخفیف': 'ساخت کد تخفیف')" role="button">
