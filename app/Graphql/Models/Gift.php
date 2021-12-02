@@ -6,6 +6,7 @@ class Gift extends Model{
         'id' => 'string',
         'started_at' => 'datetime',
         'expires_at' => 'datetime',
+        'last_renew_at' => 'datetime',
     ];
     protected $with = [
         'users' => GiftUsers::class

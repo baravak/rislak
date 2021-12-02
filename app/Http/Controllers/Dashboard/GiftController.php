@@ -92,10 +92,10 @@ class GiftController extends Controller
     }
 
     public function show(Request $request, $center, $gift){
-        $query = 'query ($id: GiftID!){
-            gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status
+        $query = 'query ($id: GiftID!, $page:Int, $search: String){
+            gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
                 region{id detail{title}}
-                users(first:10){
+                users(first:10, page:$page, search:$search){
                     paginatorInfo{ count currentPage total perPage}
                     data{
                         usage_count status used_at
@@ -107,9 +107,14 @@ class GiftController extends Controller
             }
         }';
         $index = Client::query($query, [
-            'id' => $gift
+            'id' => $gift,
+            'page' => ctype_digit($request->page) ? (int) $request->page : 1,
+            'search' => $request->q
         ]);
         $this->data->gift = $index->gift;
+        if((ctype_digit($request->page) || $request->header('Data-xhr-base') == 'quick_search') && $request->ajax()){
+            return $this->view($request, 'dashboard.gifts.listUsers');
+        }
         $region = $index->gift->region->detail->title;
         $value = $index->gift->type == 'percent' ? '%'. $index->gift->value : number_format($index->gift->value) . 'تومانی';
         $link = [];
@@ -120,5 +125,62 @@ class GiftController extends Controller
         $index->gift->whatsapp = urlencode($index->gift->whatsapp);
         $index->gift->telegram = urlencode($index->gift->whatsapp);
         return $this->view($request, 'dashboard.gifts.show');
+    }
+
+    public function renew(Request $request, $center, $gift){
+        $mutation = "mutation(\$id:GiftID!){
+            renewGift(id:\$id){
+                id title code description type value status renew_count last_renew_at
+            }
+        }";
+        $renew = Client::query($mutation, [
+            'id' => $gift
+        ]);
+        $this->data->gift = $renew->renewGift;
+        return $this->view($request, 'dashboard.gifts.renewResult');
+    }
+
+    public function appendUserForm(Request $request, $center, $gift){
+        $query = 'query ($id: GiftID!){
+            gift(id:$id){id title
+                region{id detail{title}}
+            }
+        }';
+        $index = Client::query($query, [
+            'id' => $gift
+        ]);
+        $this->data->gift = $gift = $index->gift;
+        $this->data->center = $gift->region;
+        return $this->view($request, 'dashboard.gifts.addUser');
+    }
+
+    public function appendUser(Request $request, $center, $gift){
+        $mutation = "mutation(\$id:GiftID!, \$ghosts:[GhostID!]!){
+            appendUserGift(id:\$id, ghosts:\$ghosts){
+                gift{
+                    id
+                }
+            }
+        }";
+        $renew = Client::query($mutation, [
+            'id' => $gift,
+            'ghosts' => $request->user_id
+        ]);
+        $this->data->gift = $renew->renewGift;
+        return $this->view($request, 'dashboard.gifts.renewResult');
+    }
+
+    public function edit(Request $request, $center, $gift){
+        $query = 'query ($id: GiftID!){
+            gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
+                region{id detail{title}}
+            }
+        }';
+        $index = Client::query($query, [
+            'id' => $gift,
+        ]);
+        $this->data->gift = $gift = $index->gift;
+        $this->data->center = $gift->region;
+        return $this->view($request, 'dashboard.gifts.create');
     }
 }

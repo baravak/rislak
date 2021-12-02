@@ -24,9 +24,9 @@ class Client{
             if(isset($result->errors)){
                 $first = $result->errors[0];
                 if($first->extensions->category == 'authorization'){
-                    abort(403, 'دسترسی غیر مجاز');
+                    abort(403, $first->message);
                 }
-                abort(500, $result->errors[0]->message);
+                abort(500, $first->message);
             }
         }elseif(!$result){
             echo $response->body();

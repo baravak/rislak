@@ -133,7 +133,9 @@ Route::post('export-workers', 'ExportWorkerController@store')->name('exportWorke
 Route::get('export-workers', 'ExportWorkerController@index')->name('exportWorkers.index');
 
 Route::resource('centers/{center}/gifts', 'GiftController');
-
+Route::put('centers/{center}/gifts/{gift}/renew', 'GiftController@renew')->name('gifts.renew');
+Route::get('centers/{center}/gifts/{gift}/users/append', 'GiftController@appendUserForm')->name('gifts.appendUserForm');
+Route::post('centers/{center}/gifts/{gift}/users/append', 'GiftController@appendUser')->name('gifts.appendUser');
 Route::get('giftCheck/{code}', 'GiftController@check')->name('giftCheck');
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
