@@ -162,12 +162,13 @@ class GiftController extends Controller
                 }
             }
         }";
-        $renew = Client::query($mutation, [
+        Client::query($mutation, [
             'id' => $gift,
             'ghosts' => $request->user_id
         ]);
-        $this->data->gift = $renew->renewGift;
-        return $this->view($request, 'dashboard.gifts.renewResult');
+        return [
+            'redirect' => route('dashboard.gifts.show', [$center, $gift])
+        ];
     }
 
     public function edit(Request $request, $center, $gift){
