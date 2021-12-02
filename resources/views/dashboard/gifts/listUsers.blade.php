@@ -56,7 +56,7 @@
                                     <span class="text-sm text-gray-700 cursor-default">از حذف این کاربر مطمئن هستید؟</span>
                                     <div class="flex items-center text-xs mt-3">
                                         <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-8 focus-current ring-gray-600 mr-2 single-click">@lang('انصراف')</button>
-                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('حذف')</button>
+                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600" data-lijax="" data-method="DELETE" data-action="{{ route('dashboard.gifts.deleteUser', [$gift->region->id, $gift->id]) }}" data-name="user" data-value="{{ $user->ghost->id }}">@lang('حذف')</button>
                                     </div>
                                 </div>
                             </div>

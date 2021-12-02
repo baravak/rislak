@@ -87,11 +87,11 @@
         </div>
 
         <div class="mt-4" x-data='{exclusive : {{ isset($gift) && $gift->exclusive ? 'true'  : 'false' }}}'>
-            <label for="exclusive_users_active" class="inline-flex items-center mb-2 group">
-                <input type="checkbox" name="exclusive_users_active" id="exclusive_users_active" x-model="exclusive" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->exclusive, true)>
+            <label for="exclusive" class="inline-flex items-center mb-2 group">
+                <input type="checkbox" name="exclusive" id="exclusive" x-model="exclusive" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->exclusive, true)>
                 <span class="text-sm text-gray-700 variable-font-medium mr-2 group-hover:text-blue-600 pt-0.5">{{ __('محدودیت کاربر') }}</span>
             </label>
-            <select name="exclusive_users" id="exclusive_users" data-placeholder="{{ __('کاربری انتخاب نشده است') }}" class="select2-select" :disabled="!exclusive"></select>
+            <select class="select2-select" multiple data-template="users" name="exclusive_users[]" data-title="user.name id" data-id="id" id="exclusive_users" data-url="{{ route('dashboard.center.users.index', ['center' => $center->id]) }}" data-avatar="user.avatar.tiny.url user.avatar.small.url" data-placeholder="{{ __('کاربری انتخاب نشده است') }}" :disabled="!exclusive"></select>
             <div class="flex text-xs text-gray-400 mt-2 cursor-default">
                 <i class="fal fa-info-circle ml-1"></i>
                 <span>شما می‌توانید با جستجو از طریق شماره موبایل و یا نام، کاربرانی که فقط آن‌ها مجاز به استفاده از این کد می‌باشند را انتخاب کنید. در صورتی که می‌خواهید همه از این کد استفاده کنند، این بخش را خالی بگذارید.</span>

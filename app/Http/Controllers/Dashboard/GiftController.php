@@ -189,7 +189,7 @@ class GiftController extends Controller
 
     public function update(Request $request, $center, $gift){
         $store = <<<Query
-        mutation(\$id: GiftID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$status:GiftUpdateStatus){
+        mutation(\$id: GiftID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$status:GiftUpdateStatus, \$exclusive: Boolean, , \$exclusive_users: [GhostID!]){
             updateGift(id:\$id, input: {
                 title: \$title
                 description: \$description
@@ -200,6 +200,8 @@ class GiftController extends Controller
                 disposable: \$disposable
                 threshold: \$threshold
                 status: \$status
+                exclusive: \$exclusive
+                exclusive_users: \$exclusive_users
             }){
               id,code,started_at
             }
@@ -214,10 +216,36 @@ class GiftController extends Controller
             'expires_at' => $request->expires_at,
             'disposable' => (boolean) $request->disposable,
             'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
-            'status' => $request->status ? 'open' : 'expires'
+            'status' => $request->status ? 'open' : 'expires',
+            'exclusive' => $request->exclusive ? true : false,
+            'exclusive_users' => $request->exclusive_users ?: [],
         ]);
         return[
             'redirect' => route('dashboard.gifts.show', [$center, $create->updateGift->id])
         ];
+    }
+
+    public function deleteUser(Request $request, $center, $gift){
+        $mutation = 'mutation($id: GiftID!, $users:[GhostID!]!){
+            deleteUserGift(id:$id, users:$users){
+                id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
+                region{id detail{title}}
+                users(first:10){
+                    paginatorInfo{ count currentPage total perPage}
+                    data{
+                        usage_count status used_at
+                        ghost{
+                            id name mobile
+                        }
+                    }
+                }
+            }
+          }';
+          $response = Client::query($mutation, [
+            'id' => $gift,
+            'users' => [$request->user],
+        ]);
+        $this->data->gift = $response->deleteUserGift;
+        return $this->view($request, 'dashboard.gifts.listUsers');
     }
 }
