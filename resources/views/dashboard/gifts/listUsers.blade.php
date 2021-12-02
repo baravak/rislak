@@ -61,6 +61,21 @@
                                 </div>
                             </div>
                         </div>
+                    @else
+                        <div class="relative dropdown">
+                            <button class="dropdown-toggle text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600" title="@lang('منقضی شود')">
+                                <i class="fal fa-calendar-times"></i>
+                            </button>
+                            <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
+                                <div class="flex flex-col items-center justify-center">
+                                    <span class="text-sm text-gray-700 text-center cursor-default">از منقضی کردن وضعیت این کاربر مطمئن هستید؟</span>
+                                    <div class="flex items-center text-xs mt-3">
+                                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-4 focus-current ring-gray-600 mr-2 single-click">@lang('انصراف')</button>
+                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('منقضی شود')</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
                 </div>
