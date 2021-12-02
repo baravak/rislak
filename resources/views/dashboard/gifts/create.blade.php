@@ -5,15 +5,16 @@
     <div class="border border-gray-300 rounded p-4 mt-8">
         @isset($gift)
             @if ($gift->status == 'expires')
-            <span class="block text-sm text-red-600 variable-font-medium mt-1.5">
+            <div class="flex px-4 py-3 bg-red-50 text-red-600 rounded mb-4">
+                <i class="fal fa-engine-warning ml-3 text-lg"></i>
                 @if ($gift->expires_at && $gift->expires_at->timestamp() >= time())
-                    این کارت به دلیل سررسید زمان تعیین شده برای انقضاء، منقضی شده است
+                    <span class="pt-1 text-sm">این کد تخفیف به دلیل سررسید زمان تعیین شده برای انقضاء، منقضی شده است.</span>
                 @elseif($gift->threshold && $gift->usage_count >= $gift->threshold)
-                    این کارت به دلیل رسیدن به مقدار حداکثری تعیین شده برای استفاده، منقضی شده است
+                    <span class="pt-1 text-sm">این کد تخفیف به دلیل رسیدن به مقدار حداکثری تعیین شده برای استفاده، منقضی شده است.</span>
                 @else
-                    این کارت به صورت دستی به حالت انقضاء درآمده است
+                    <span class="pt-1 text-sm">این کد تخفیف به صورت دستی، منقضی شده است.</span>
                 @endif
-        </span>
+            </div>
             @endif
         @endisset
         <div>
