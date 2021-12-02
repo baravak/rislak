@@ -25,7 +25,10 @@ html[lang="fa"], .fa {
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
-        font-variation-settings: "wght" 400, "FANU" 1;
+        font-variation-settings: "wght" 400;
+        -moz-font-feature-settings: "ss02";
+        -webkit-font-feature-settings: "ss02";
+        font-feature-settings: "ss02";
     }
 }
 
