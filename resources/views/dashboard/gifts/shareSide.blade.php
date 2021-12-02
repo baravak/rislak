@@ -20,7 +20,7 @@
                             <span class="mr-2 text-sm pt-0.5">اینستاگرام</span>
                         </a>
                         <div class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
-                            <a href="#" target="_blank" class="flex items-center">
+                            <a href="{{ route('gifts.public', $gift->code) }}" target="_blank" class="flex items-center">
                                 <i class="fal fa-badge-percent text-lg"></i>
                                 <span class="mr-2 text-sm pt-0.5">صفحه کد تخفیف</span>
                             </a>

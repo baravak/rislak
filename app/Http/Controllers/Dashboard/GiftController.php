@@ -248,4 +248,17 @@ class GiftController extends Controller
         $this->data->gift = $response->deleteUserGift;
         return $this->view($request, 'dashboard.gifts.listUsers');
     }
+
+    public function all(Request $request, $code){
+        $query = 'query($code:String){
+            gift(code: $code){
+                id status title value type region{detail{title}}
+            }
+        }';
+        $response = Client::query($query, [
+            'code' => $code
+        ]);
+        $this->data->gift = $response->gift;
+        return $this->view($request, 'dashboard.gifts.public');
+    }
 }
