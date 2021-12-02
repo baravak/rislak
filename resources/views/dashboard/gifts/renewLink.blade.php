@@ -1,9 +1,9 @@
 <div data-xhr="renewCode" class="w-full">
-    @if ($gift->renew_count && ($gift->renew_count >= 10 || \Carbon\Carbon::now()->diffInMinutes($gift->last_renew_at) < 30))
-    <button type="button" disabled class="flex items-center w-full border border-gray-200 rounded-lg px-3 text-gray-300 transition h-14">
-        <i class="far fa-exchange"></i>
-        <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
-    </button>
+    @if (($gift->renew_count && ($gift->renew_count >= 10 || \Carbon\Carbon::now()->diffInMinutes($gift->last_renew_at) < 30)) || $gift->status == 'expires')
+        <div type="button" disabled class="flex items-center w-full border border-gray-200 rounded-lg px-3 text-gray-300 h-14 cursor-default">
+            <i class="far fa-exchange"></i>
+            <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
+        </div>
     @else
         <div class="relative dropdown w-full" data-xhr="renewCode">
             <button type="button" class="dropdown-toggle flex items-center w-full border border-gray-300 rounded-lg px-3 text-gray-500 hover:text-purple-600 hover:border-purple-600 hover:bg-purple-50 hover:bg-opacity-20 transition h-14 focus-current ring-purple-600">
