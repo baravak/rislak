@@ -1,6 +1,6 @@
 <div data-xhr="gift-list-id" class="flex flex-col sm:flex-row sm:items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2">
     <div class="w-32 hidden sm:flex items-center pl-2 relative copied-container">
-        <button title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 sm:pt-1 focus-none ring-transparent"><i class="fal fa-copy pb-0.5"></i></button>
+        <button title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 sm:pt-1 focus-none ring-transparent" data-clipboard-text="{{ substr($gift->code, 10) }}"><i class="fal fa-copy pb-0.5"></i></button>
         <div class="copied-tooltip absolute -right-5 -top-7">@lang('کپی شد')</div>
         <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default">{{ substr($gift->code, 10) }}</span>
     </div>
@@ -10,7 +10,13 @@
             <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default pb-0.5 font-medium">{{ substr($gift->code, 10) }}</span>
         </div>
         <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
-        <div class="text-xs text-gray-600 lg:hidden mt-1">25.000 <small>تومان</small></div>
+        <div class="text-xs text-gray-600 lg:hidden mt-1">
+            @if ($gift->type == 'percent')
+                <small>٪</small>{{ $gift->value }}
+            @else
+                @amount($gift->value) <small>تومانءءء</small>
+            @endif
+        </div>
         <div class="text-xs text-gray-600 lg:hidden mt-1">شروع اعتبار: @time($gift->started_at, "Y/m/d")</div>
         <div class="text-xs text-gray-500 lg:hidden mt-1">
             انقضا:
@@ -46,7 +52,13 @@
         <div class="text-xs text-gray-600 mt-1 sm:hidden">تعداد استفاده شده: {{ number_format($gift->usage_count) }}</div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden lg:block">
-        <div class="text-xs text-gray-600">25.000 <small>تومان</small></div>
+        <div class="text-xs text-gray-600">
+            @if ($gift->type == 'percent')
+                <small>٪</small>{{ $gift->value }}
+            @else
+                @amount($gift->value) <small>تومانءءء</small>
+            @endif
+        </div>
     </div>
     <div class="flex-1 px-2 cursor-default hidden lg:block">
         <div class="text-xs text-gray-600">@time($gift->started_at, "Y/m/d")</div>

@@ -4,7 +4,10 @@
         destroy();
         clipboardData = new ClipboardJS('[data-clipboard-text]');
         clipboardData.on('success', function(e) {
-            $(e.trigger).addClass('bg-red');
+            $(e.trigger).addClass('clipboard-copied');
+            setTimeout(function(){
+                $(e.trigger).removeClass('clipboard-copied');
+            }, $(e.trigger).attr('data-clipboard-delay') | 3000);
         });
     }
     destroy = function(e){

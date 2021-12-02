@@ -130,7 +130,7 @@ class GiftController extends Controller
     public function renew(Request $request, $center, $gift){
         $mutation = "mutation(\$id:GiftID!){
             renewGift(id:\$id){
-                id title code description type value status renew_count last_renew_at
+                id title code description type value status renew_count last_renew_at started_at expires_at type
             }
         }";
         $renew = Client::query($mutation, [

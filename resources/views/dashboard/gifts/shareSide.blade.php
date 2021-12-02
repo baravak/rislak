@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="relative copied-container">
-        <button data-clipboard-text="{{ $gift->code }}" class="w-full flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 pt-1 h-16 text-center focus-current ring-green-300">
+        <button data-clipboard-text="{{ substr($gift->code, 10) }}" class="w-full flex flex-col items-center justify-center border-2 border-green-600 border-dashed bg-green-50 rounded-lg mt-1 p-2 pt-1 h-16 text-center focus-current ring-green-300">
             {{-- <span class="block dir-ltr en text-xs text-gray-500">{{ $gift->region->id }}-</span> --}}
             <h4 class="font-bold en text-2xl text-center text-green-600">{{ substr($gift->code, 10) }}</h4>
             <span class="block text-xs text-gray-400">برای کپی کردن کد، کلیک کنید</span>
