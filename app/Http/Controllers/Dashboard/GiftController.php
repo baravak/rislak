@@ -37,6 +37,7 @@ class GiftController extends Controller
         ]);
         $this->data->query = $index;
         $this->data->region = $this->data->center  = $index->region;
+        $index->gifts->appends($request->all('q', 'expires', 'open', 'awaiting'));
         $this->data->gifts = $index->gifts;
 
         $this->data->global->title = 'لیست کدهای تخفیف';
