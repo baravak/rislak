@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="flex items-center">
-        <a href="{{ isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->sat->timestamp -1 ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->sat->timestamp -1 ]) }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
+        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->sat->timestamp -1 ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->sat->timestamp -1 ]), 'GET', array_merge(request()->all(), []))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
             <i class="fal fa-chevron-right"></i>
             <span class="hidden sm:block mr-2">هفته قبل</span>
         </a>
@@ -55,27 +55,25 @@
                 <a href="#" class="dropdown-item text-sm block w-full px-1 py-2 text-center rounded text-gray-600 hover:text-brand hover:bg-gray-100 pt-2 border-b border-gray-200">۰۴/۱۰ تا ۰۴/۱۷</a>
             </div> --}}
         </div>
-        <a href="{{ isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]) }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
+        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]), 'GET', array_merge(request()->all(), []))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
             <span class="hidden sm:block ml-2">هفته بعد</span>
             <i class="fal fa-chevron-left"></i>
         </a>
     </div>
 </div>
-@if (config('app.env') == 'local')
-    @if (isset($filters->room) || isset($filters->status))
-        <div class="flex items-center flex-wrap mt-4">
-            @isset($filters->room)
-            <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
-                <span class="text-xs text-gray-800 ml-2 cursor-default">{{ $filters->room->manager->name }}</span>
-                <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['room' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
-            </div>
-            @endisset
-            @isset($filters->status)
-            <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
-                <span class="text-xs text-gray-800 ml-2 cursor-default">@lang(ucfirst($filters->status))</span>
-                <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['status' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
-            </div>
-            @endisset
+@if (isset($filters->room) || isset($filters->status))
+    <div class="flex items-center flex-wrap mt-4">
+        @isset($filters->room)
+        <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
+            <span class="text-xs text-gray-800 ml-2 cursor-default">{{ $filters->room->manager->name }}</span>
+            <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['room' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
         </div>
-    @endif
+        @endisset
+        @isset($filters->status)
+        <div class="flex items-center bg-gray-200 px-2 h-7 rounded ml-2 mt-2">
+            <span class="text-xs text-gray-800 ml-2 cursor-default">@lang(ucfirst($filters->status))</span>
+            <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['status' => null]))->getUri() }}" class="inline-flex items-center text-xs justify-center text-gray-600 w-3 h-3 rounded-full focus:outline-none hover:text-red-600"><i class="fal fa-times"></i></a>
+        </div>
+        @endisset
+    </div>
 @endif

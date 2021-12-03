@@ -9,8 +9,8 @@ use Illuminate\Pagination\Paginator;
 class GiftController extends Controller
 {
     public function index(Request $request, $center){
-        $query = 'query ($page: Int, $region: RegionID!){
-                gifts(page:$page, first: 15, region:$region){
+        $query = 'query ($page: Int, $region: RegionID!, $status:[GiftStatus!], $search:String){
+                gifts(page:$page, first: 15, region:$region, status:$status, search:$search){
                     paginatorInfo{
                         total, hasMorePages, count, currentPage, perPage
                     }
@@ -29,13 +29,22 @@ class GiftController extends Controller
             }';
           $index = Client::query($query, [
             'region' => $center,
-            'page' => (int) ($request->page ?: 1)
+            'page' => (int) ($request->page ?: 1),
+            'status' => array_keys(array_filter($request->all('open', 'expires', 'awaiting'), function($value){
+                return $value;
+            })),
+            'search' => $request->q
         ]);
         $this->data->query = $index;
         $this->data->region = $this->data->center  = $index->region;
         $this->data->gifts = $index->gifts;
 
         $this->data->global->title = 'لیست کدهای تخفیف';
+        if($request->header('data-xhr-base') == 'quick_search'){
+            return $this->view($request, 'dashboard.gifts.quick_search-xhr');
+        }elseif($request->header('data-xhr-base') == 'filters'){
+            return $this->view($request, 'dashboard.gifts.listFilters-xhr');
+        }
         return $this->view($request, 'dashboard.gifts.index');
     }
     public function create(Request $request, $center){
