@@ -137,6 +137,10 @@ Breadcrumbs::for('dashboard.cases.show', function ($trail, $data) {
     $trail->push(__('Case'), null);
     $trail->push($data['case']->id, $data['case']->route('show'));
 });
+Breadcrumbs::for('dashboard.cases.edit', function ($trail, $data) {
+    $trail->parent('dashboard.cases.show', $data);
+    $trail->push('ویرایش پرونده', $data['case']->route('edit'));
+});
 
 Breadcrumbs::for('dashboard.case.users.create', function ($trail, $data) {
     $trail->parent('dashboard.cases.show', $data);
