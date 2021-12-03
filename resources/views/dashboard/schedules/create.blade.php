@@ -1,3 +1,10 @@
+@php
+if(isset($session)){
+    $callbackCancel = route('dashboard.sessions.show', $session);
+}else{
+    $callbackCancel = route('dashboard.rooms.show', $room);
+}
+@endphp
 @section('form_action'){{ isset($session) ? route('dashboard.sessions.update', $session->id) : route('dashboard.room.schedules.store',$room->id) }}@endsection
 @extends('dashboard.create')
 @section('form_content')
