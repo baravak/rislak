@@ -323,10 +323,23 @@ Breadcrumbs::for('dashboard.billings.create', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.gifts.index', function ($trail, $data) {
     $trail->parent('dashboard.center.accounting.index', $data);
-    $trail->push(__('Gifts'), route('dashboard.gifts.index', ['center' => $data['center']]));
+    $trail->push(__('Gifts'), route('dashboard.gifts.index', ['center' => $data['center']->id]));
 });
 
 Breadcrumbs::for('dashboard.gifts.create', function ($trail, $data) {
     $trail->parent('dashboard.gifts.index', $data);
-    $trail->push(__('ساخت کد تخفیف'), route('dashboard.gifts.create', ['center' => $data['center']]));
+    $trail->push(__('ساخت کد تخفیف'), route('dashboard.gifts.create', ['center' => $data['center']->id]));
+});
+
+Breadcrumbs::for('dashboard.gifts.show', function ($trail, $data) {
+    $trail->parent('dashboard.gifts.index', $data);
+    $trail->push($data['gift']->title, route('dashboard.gifts.show', ['center' => $data['center'], 'gift'=> $data['gift']->id]));
+});
+Breadcrumbs::for('dashboard.gifts.edit', function ($trail, $data) {
+    $trail->parent('dashboard.gifts.show', $data);
+    $trail->push(__('ویرایش'), route('dashboard.gifts.edit', ['center' => $data['center'], 'gift'=> $data['gift']->id]));
+});
+Breadcrumbs::for('dashboard.gifts.appendUserForm', function ($trail, $data) {
+    $trail->parent('dashboard.gifts.show', $data);
+    $trail->push(__('افزودن کاربر'), route('dashboard.gifts.appendUserForm', ['center' => $data['center'], 'gift'=> $data['gift']->id]));
 });

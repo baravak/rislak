@@ -9,7 +9,8 @@ class Gift extends Model{
         'last_renew_at' => 'datetime',
     ];
     protected $with = [
-        'users' => GiftUsers::class
+        'users' => GiftUsers::class,
+        'region' => Region::class
     ];
 
 }

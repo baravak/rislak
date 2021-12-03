@@ -34,6 +34,8 @@ class GiftController extends Controller
         $this->data->query = $index;
         $this->data->region = $this->data->center  = $index->region;
         $this->data->gifts = $index->gifts;
+
+        $this->data->global->title = 'لیست کدهای تخفیف';
         return $this->view($request, 'dashboard.gifts.index');
     }
     public function create(Request $request, $center){
@@ -46,6 +48,8 @@ class GiftController extends Controller
             'id' => $center
         ]);
         $this->data->center = $response->region;
+
+        $this->data->global->title = 'ساخت کد تخفیف جدید';
         return $this->view($request, 'dashboard.gifts.create');
     }
 
@@ -113,7 +117,12 @@ class GiftController extends Controller
             'page' => ctype_digit($request->page) ? (int) $request->page : 1,
             'search' => $request->q
         ]);
-        $this->data->gift = $index->gift;
+        $this->data->gift = $gift = $index->gift;
+        $this->data->center = $gift->region;
+
+        $this->data->global->title = 'کد تخفیف '. $gift->title;
+
+
         if((ctype_digit($request->page) || $request->header('Data-xhr-base') == 'quick_search') && $request->ajax()){
             return $this->view($request, 'dashboard.gifts.listUsers');
         }
@@ -153,6 +162,8 @@ class GiftController extends Controller
         ]);
         $this->data->gift = $gift = $index->gift;
         $this->data->center = $gift->region;
+
+        $this->data->global->title = 'افزودن کاربر به کد تخفیف '. $gift->title;
         return $this->view($request, 'dashboard.gifts.addUser');
     }
 
@@ -184,6 +195,9 @@ class GiftController extends Controller
         ]);
         $this->data->gift = $gift = $index->gift;
         $this->data->center = $gift->region;
+
+        $this->data->global->title = 'ویرایش کد تخفیف '. $gift->title;
+
         return $this->view($request, 'dashboard.gifts.create');
     }
 
