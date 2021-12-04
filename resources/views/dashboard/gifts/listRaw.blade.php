@@ -12,9 +12,9 @@
         <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
         <div class="text-xs text-gray-600 lg:hidden mt-1">
             @if ($gift->type == 'percent')
-                <small>٪</small>{{ $gift->value }}
+                <span class="block dir-ltr text-right">% {{ $gift->value }}</span>
             @else
-                @amount($gift->value) <small>تومانءءء</small>
+                <span>@amount($gift->value) تومانءءء</span>
             @endif
         </div>
         <div class="text-xs text-gray-600 lg:hidden mt-1">شروع اعتبار: @time($gift->started_at, "Y/m/d")</div>
@@ -54,9 +54,9 @@
     <div class="flex-1 px-2 cursor-default hidden lg:block">
         <div class="text-xs text-gray-600">
             @if ($gift->type == 'percent')
-                <small>٪</small>{{ $gift->value }}
+                <span class="block dir-ltr text-right">% {{ $gift->value }}</span>
             @else
-                @amount($gift->value) <small>تومانءءء</small>
+                <div>@amount($gift->value) <span class="text-sx">تومانءءء</span></div>
             @endif
         </div>
     </div>
