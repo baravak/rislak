@@ -6,7 +6,7 @@
     </div>
     <div class="flex-1 px-2 cursor-default">
         <div class="flex sm:hidden items-center">
-            <button href="#" title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 focus-current ring-blue-600 rounded-full w-5 h-5 flex items-center justify-center"><i class="fal fa-copy pb-0.5"></i></button>
+            <div title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 focus-current ring-blue-600 rounded-full w-5 h-5 flex items-center justify-center" data-clipboard-text="{{ substr($gift->code, 10) }}"><i class="fal fa-copy pb-0.5"></i></div>
             <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default pb-0.5 font-medium">{{ substr($gift->code, 10) }}</span>
         </div>
         <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
