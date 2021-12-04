@@ -14,14 +14,6 @@ html[lang="fa"], .fa {
     font-family: dana;
 }
 
-.datepicker-persian {
-    font-family: dana!important;
-}
-
-.fa-static {
-    font-family: dana!important;
-}
-
 @supports (font-variation-settings: normal) {
     html[lang="fa"], .fa {
         font-family: 'dana VF';
@@ -32,12 +24,20 @@ html[lang="fa"], .fa {
     }
 }
 
+.datepicker-persian {
+    font-family: dana!important;
+}
+
+.fa-static {
+    font-family: dana!important;
+}
+
 kbd {
     font-family: 'dana VF', dana!important;
 }
 
 th {
-    @apply font-medium;
+    @apply variable-font-medium;
 }
 
 @layer utilities {
