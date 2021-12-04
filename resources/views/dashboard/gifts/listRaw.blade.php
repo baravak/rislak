@@ -10,11 +10,11 @@
             <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default pb-0.5 font-medium">{{ substr($gift->code, 10) }}</span>
         </div>
         <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
-        <div class="text-xs text-gray-600 lg:hidden mt-1">
+        <div class="flex text-xs text-gray-600 lg:hidden mt-1">
             @if ($gift->type == 'percent')
-                <span class="block dir-ltr text-right">% {{ $gift->value }}</span>
+                مقدار تخفیف: <span class="block dir-ltr text-right mr-1">% {{ $gift->value }}</span>
             @else
-                <span>@amount($gift->value) تومانءءء</span>
+                مقدار تخفیف: <div class="mr-1">@amount($gift->value) <span class="text-sx">تومانءءء</span></div>
             @endif
         </div>
         <div class="text-xs text-gray-600 lg:hidden mt-1">شروع اعتبار: @time($gift->started_at, "Y/m/d")</div>
