@@ -1,8 +1,10 @@
 <div data-xhr="renewCode" class="w-full">
     @if (($gift->renew_count && ($gift->renew_count >= 10 || \Carbon\Carbon::now()->diffInMinutes($gift->last_renew_at) < 30)) || $gift->status == 'expires')
-        <div type="button" disabled class="flex items-center w-full border border-gray-200 rounded-lg px-3 text-gray-300 h-14 cursor-default">
+        <div class="flex items-center w-full border border-gray-200 rounded-lg px-3 text-gray-300 h-14 cursor-default relative">
             <i class="far fa-exchange"></i>
             <span class="text-sm mr-3 pt-0.5">@lang('تغییر کد و لینک')</span>
+            {{-- <span class="absolute top-16 left-0 block variable-font-light bg-gray-700 text-white rounded-md p-2 text-sm text-center w-full">برای تغییر کد، 30 دقیقه دیگر تلاش کنید.</span> --}}
+            <span class="absolute top-16 left-0 block variable-font-light bg-gray-700 text-white rounded-md p-2 text-sm text-center w-full z-50">شما این کد را به تعداد 10 بار تغییر داده‌اید و دیگر امکان تغییر آن وجود ندارد.</span>
         </div>
     @else
         <div class="relative dropdown w-full" data-xhr="renewCode">
