@@ -67,11 +67,11 @@ th {
         }
 
         .copied-tooltip {
-            @apply text-xs text-white bg-green-600 rounded px-2 py-1 cursor-default block opacity-0;
+            @apply text-xs text-white bg-green-600 rounded px-2 py-1 cursor-default block opacity-0 transition duration-300 ease-out;
         }
 
-        .copied-container button:focus + .copied-tooltip {
-            @apply opacity-100 transition duration-300 ease-in delay-150;
+        .clipboard-copied + .copied-tooltip {
+            @apply opacity-100 transition duration-300 ease-in;
         }
     }
 }

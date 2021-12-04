@@ -1,6 +1,6 @@
 <div data-xhr="gift-list-id" class="flex flex-col sm:flex-row sm:items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2">
-    <div class="w-32 hidden sm:flex items-center pl-2 relative copied-container">
-        <button title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 sm:pt-1 focus-none ring-transparent" data-clipboard-text="{{ substr($gift->code, 10) }}"><i class="fal fa-copy pb-0.5"></i></button>
+    <div class="w-32 hidden sm:flex items-center pl-2 relative">
+        <div title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 sm:pt-1 cursor-pointer" data-clipboard-text="{{ substr($gift->code, 10) }}"><i class="fal fa-copy pb-0.5"></i></div>
         <div class="copied-tooltip absolute -right-5 -top-7">@lang('کپی شد')</div>
         <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default">{{ substr($gift->code, 10) }}</span>
     </div>

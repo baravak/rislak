@@ -22,11 +22,11 @@
         </div>
     @endif
     <div class="bg-brand bg-opacity-20 h-screen flex flex-col items-center justify-center">
-        <button href="#">
-            <img src="{{ asset('/images/gift-sample.png') }}" alt="">
-        </button>
+        <div class="relative">
+            <div data-clipboard-text="{{ substr($gift->code, 10) }}" class="cursor-pointer"><img src="{{ asset('/images/gift-sample.png') }}" alt=""></div>
+            <div class="copied-tooltip absolute right-1/2 transform translate-x-1/2 -top-6">@lang('کپی شد')</div>
+        </div>
         <div class="text-gray-600 mt-4 cursor-default">برای کپی کردن کد، روی تصویر کلیک کنید</div>
     </div>
-
 </body>
 </html>
