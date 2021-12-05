@@ -1,5 +1,5 @@
 <div class="relative dropdown ml-1">
-    <button role="button" data-toggle="dropdownx" aria-haspopup="true" class="{{-- schedules-filter-active --}} text-sm text-gray-400 border border-gray-300 rounded h-9 w-9 sm:w-auto sm:px-4 focus-current ring-gray-400 dropdown-toggle">
+    <button role="button" data-toggle="dropdownx" aria-haspopup="true" class="{{ request()->status ? 'schedules-filter-active' : '' }} text-sm text-gray-400 border border-gray-300 rounded h-9 w-9 sm:w-auto sm:px-4 focus-current ring-gray-400 dropdown-toggle">
         <i class="fal fa-filter relative top-0.5"></i>
         <span class="mr-1 hidden sm:inline-flex">@lang('فیلتر')</span>
     </button>
@@ -8,21 +8,21 @@
             <span class="text-sm text-gray-600 variable-font-medium cursor-default">بر اساس وضعیت</span>
             <div class="border border-gray-200 rounded bg-white mt-2 p-4 space-y-2">
                 <label class="flex items-center group">
-                    <input type="checkbox" name="status" id="available" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->disposable, true)>
+                    <input type="checkbox" name="status" value="open" data-tagFilter="status" {{ in_array('open', explode(',', request()->status)) ? 'checked' : '' }} class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
                     <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600 pt-0.5">{{ __('فعال') }}</span>
                 </label>
                 <label class="flex items-center group">
-                    <input type="checkbox" name="status" id="awaiting" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->disposable, true)>
+                    <input type="checkbox" name="status" value="awaiting" data-tagFilter="status" {{ in_array('awaiting', explode(',', request()->status)) ? 'checked' : '' }} class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
                     <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600 pt-0.5">{{ __('در انتظار') }}</span>
                 </label>
                 <label class="flex items-center group">
-                    <input type="checkbox" name="status" id="expire" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->disposable, true)>
+                    <input type="checkbox" name="status" value="expires" data-tagFilter="status" {{ in_array('expires', explode(',', request()->status)) ? 'checked' : '' }} class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
                     <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600 pt-0.5">{{ __('منقضی شده') }}</span>
                 </label>
             </div>
         </div>
         <div class="flex items-center justify-between mt-4">
-            <a href="#" class="flex items-center justify-center rounded-full text-xs text-gray-500 hover:text-red-600 transition">
+            <a href="{{ request()->create(url()->current(), 'GET', array_merge(request()->all(), ['status' => null]))->getUri() }}" class="flex items-center justify-center rounded-full text-xs text-gray-500 hover:text-red-600 transition">
                 <i class="fal fa-trash-alt ml-2"></i>
                 <span>@lang('پاک کردن همه فیلترها')</span>
             </a>

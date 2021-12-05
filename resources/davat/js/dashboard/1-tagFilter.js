@@ -35,8 +35,9 @@
         timeout = setTimeout(send.bind(this, sub), 750);
     }
     function send(sub){
-        var link = new URL($(this).attr('data-url'));
-        link.searchParams.set('tag', filter[sub])
+        var link = $(this).attr('data-url') ? new URL($(this).attr('data-url')) : new URL(location.href);
+        link.searchParams.set(sub, filter[sub])
+        console.log(link.toString())
         request = new Statio({
             url : link.toString()
         });

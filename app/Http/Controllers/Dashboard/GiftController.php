@@ -30,9 +30,9 @@ class GiftController extends Controller
           $index = Client::query($query, [
             'region' => $center,
             'page' => (int) ($request->page ?: 1),
-            'status' => array_keys(array_filter($request->all('open', 'expires', 'awaiting'), function($value){
-                return $value;
-            })),
+            'status' => array_filter(explode(',', $request->status), function($value){
+                return in_array(trim($value), ['open', 'awaiting', 'expires']) ? trim($value) : false;
+            }),
             'search' => $request->q
         ]);
         $this->data->query = $index;
