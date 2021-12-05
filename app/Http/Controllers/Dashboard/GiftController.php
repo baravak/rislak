@@ -273,6 +273,31 @@ class GiftController extends Controller
         return $this->view($request, 'dashboard.gifts.listUsers');
     }
 
+    public function updateUser(Request $request, $center, $gift){
+        $mutation = 'mutation($id: GiftID!, $users:[GhostID!]!, $status:GiftUpdateStatus){
+            updateUserGift(id:$id, users:$users, input:{status:$status}){
+                id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
+                region{id detail{title}}
+                users(first:10){
+                    paginatorInfo{ count currentPage total perPage}
+                    data{
+                        usage_count status used_at
+                        ghost{
+                            id name mobile
+                        }
+                    }
+                }
+            }
+          }';
+          $response = Client::query($mutation, [
+            'id' => $gift,
+            'users' => [$request->user],
+            'status' => $request->status,
+        ]);
+        $this->data->gift = $response->updateUserGift;
+        return $this->view($request, 'dashboard.gifts.listUsers');
+    }
+
     public function all(Request $request, $code){
         $query = 'query($code:String){
             gift(code: $code){

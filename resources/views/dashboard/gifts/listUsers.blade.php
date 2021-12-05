@@ -37,9 +37,9 @@
                     @endif
                 </div>
                 <div class="flex-1 px-2 cursor-default text-xs hidden sm:block">
-                    @if (!$user->used_at)
+                    @if ($user->used_at && $user->status == 'open')
                         <span class="text-green-600">@lang('فعال')</span>
-                        @elseif($user->status == 'open')
+                    @elseif($user->status == 'open')
                         <span class="text-gray-600">@lang('استفاده نشده')</span>
                     @elseif($user->status == 'expires')
                         <span class="text-red-600">@lang('منقضی شده')</span>
@@ -61,8 +61,23 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        {{-- <div class="relative dropdown">
+                        @elseif ($gift->status != 'expires' && $gift->disposable && $user->status == 'expires')
+                            <div class="relative dropdown">
+                                <button class="dropdown-toggle text-gray-600 hover:text-green-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-green-600" title="@lang('فعال شود')">
+                                    <i class="fal fa-calendar-check"></i>
+                                </button>
+                                <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="text-sm text-gray-700 text-center cursor-default">از فعال کردن وضعیت این کاربر مطمئن هستید؟</span>
+                                        <div class="flex items-center text-xs mt-3">
+                                            <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-4 focus-current ring-gray-600 mr-2 single-click">@lang('انصراف')</button>
+                                            <button class="flex items-center bg-green-600 text-white hover:bg-green-700 transition rounded-full h-7 px-8 focus-current ring-green-600" data-lijax="" data-method="PUT" data-action="{{ route('dashboard.gifts.updateUser', [$gift->region->id, $gift->id]) }}" data-merge='{"status" : "open"}' data-name="user" data-value="{{ $user->ghost->id }}">@lang('فعال شود')</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    @elseif($user->status == 'open')
+                        <div class="relative dropdown">
                             <button class="dropdown-toggle text-gray-600 hover:text-red-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-red-600" title="@lang('منقضی شود')">
                                 <i class="fal fa-calendar-times"></i>
                             </button>
@@ -71,21 +86,7 @@
                                     <span class="text-sm text-gray-700 text-center cursor-default">از منقضی کردن وضعیت این کاربر مطمئن هستید؟</span>
                                     <div class="flex items-center text-xs mt-3">
                                         <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-4 focus-current ring-gray-600 mr-2 single-click">@lang('انصراف')</button>
-                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600">@lang('منقضی شود')</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="relative dropdown">
-                            <button class="dropdown-toggle text-gray-600 hover:text-green-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-green-600" title="@lang('فعال شود')">
-                                <i class="fal fa-calendar-check"></i>
-                            </button>
-                            <div class="dropdown-menu absolute w-60 left-10 top-1/2 transform -translate-y-1/2 bg-white rounded-md shadow-md p-3 z-50">
-                                <div class="flex flex-col items-center justify-center">
-                                    <span class="text-sm text-gray-700 text-center cursor-default">از فعال کردن وضعیت این کاربر مطمئن هستید؟</span>
-                                    <div class="flex items-center text-xs mt-3">
-                                        <button class="flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 transition rounded-full h-7 px-4 focus-current ring-gray-600 mr-2 single-click">@lang('انصراف')</button>
-                                        <button class="flex items-center bg-green-600 text-white hover:bg-green-700 transition rounded-full h-7 px-8 focus-current ring-green-600">@lang('فعال شود')</button>
+                                        <button class="flex items-center bg-red-600 text-white hover:bg-red-700 transition rounded-full h-7 px-8 focus-current ring-red-600" data-lijax="" data-method="PUT" data-action="{{ route('dashboard.gifts.updateUser', [$gift->region->id, $gift->id]) }}" data-merge='{"status" : "expires"}' data-name="user" data-value="{{ $user->ghost->id }}">@lang('منقضی شود')</button>
                                     </div>
                                 </div>
                             </div>

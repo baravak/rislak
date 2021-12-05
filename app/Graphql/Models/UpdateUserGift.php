@@ -1,4 +1,4 @@
 <?php
 namespace App\Graphql\Models;
 
-class DeleteUserGift extends Gift{}
+class UpdateUserGift extends Gift{}

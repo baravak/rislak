@@ -137,6 +137,7 @@ Route::put('centers/{center}/gifts/{gift}/renew', 'GiftController@renew')->name(
 Route::get('centers/{center}/gifts/{gift}/users/append', 'GiftController@appendUserForm')->name('gifts.appendUserForm');
 Route::post('centers/{center}/gifts/{gift}/users', 'GiftController@appendUser')->name('gifts.appendUser');
 Route::delete('centers/{center}/gifts/{gift}/users', 'GiftController@deleteUser')->name('gifts.deleteUser');
+Route::put('centers/{center}/gifts/{gift}/users', 'GiftController@updateUser')->name('gifts.updateUser');
 Route::get('giftCheck/{code}', 'GiftController@check')->name('giftCheck');
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
