@@ -1,5 +1,5 @@
 <div class="relative dropdown ml-1">
-    <button role="button" data-toggle="dropdownx" aria-haspopup="true" class="{{ request()->status ? 'schedules-filter-active' : '' }} text-sm text-gray-400 border border-gray-300 rounded h-9 w-9 sm:w-auto sm:px-4 focus-current ring-gray-400 dropdown-toggle">
+    <button role="button" data-toggle="dropdownx" aria-haspopup="true" class="{{ request()->status ? 'filter-active' : '' }} text-sm text-gray-400 border border-gray-300 rounded h-9 w-9 sm:w-auto sm:px-4 focus-current ring-gray-400 dropdown-toggle">
         <i class="fal fa-filter relative top-0.5"></i>
         <span class="mr-1 hidden sm:inline-flex">@lang('فیلتر')</span>
     </button>

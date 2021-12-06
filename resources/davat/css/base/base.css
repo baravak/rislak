@@ -73,5 +73,17 @@ th {
         .clipboard-copied + .copied-tooltip {
             @apply opacity-100 transition duration-300 ease-in;
         }
+
+        .filter-active {
+            @apply bg-gray-100 !important;
+        }
+
+        .filter-active .fa-filter {
+            font-weight: 900 !important;
+        }
+
+        .filter-active span {
+            @apply variable-font-medium !important;
+        }
     }
 }
