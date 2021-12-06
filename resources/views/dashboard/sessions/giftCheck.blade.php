@@ -1,3 +1,4 @@
+@if (config('app.env') == 'local')
 <div x-show="amount !== null">
     <div class="mt-4">
         <label for="gift_code" class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('Gift')</label>
@@ -11,23 +12,24 @@
             <button id="giftCheck" data-lijax data-action="/dashboard/giftCheck" x-on:link="$el.setAttribute('data-action', '/dashboard/giftCheck/{{ $center->id }}-'+(gift_code || '').replace(/^{{ $center->id }}\-/, '')+'?region={{ $center->id }}&amount=' + amount); if(gift.title){gift.amount = gift.type == 'percent' ? Math.max(0, (amount * (100 - gift.value))/100) : Math.max(0, amount - gift.value)}" class="mt-2 xs:mt-0 xs:mr-2 flex-shrink-0 text-sm text-white px-8 h-10 rounded bg-green-600 hover:bg-green-700 transition focus-current ring-green-600" data-lijax x-on:statio-done="gift = event.detail; gift_type = event.detail.type;">@lang('اعمال کد تخفیف')</button>
         </div>
     </div>
-    <div class="mt-6 pt-6 border-t border-dashed border-gray-300 cursor-default" x-show="gift && gift.title">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-            <span class="text-sm text-gray-400">کد تخفیف: <span x-text="gift.title"></span></span>
-            <div class="flex items-center justify-end mt-0.5">
-                <span class="text-sm text-gray-500 variable-font-medium">
-                    <span x-text="gift.type == 'percent' ? '٪' : ''"></span>
-                    <span x-text="gift.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')"></span>
-                    <span x-text="gift.type == 'percent' ? '' : 'تومان'"></span>
-                </span>
-                <button class="flex text-gray-500 hover:text-red-600 mr-2" title="@lang('حذف کد تخفیف')">
-                    <i class="fal fa-times-circle"></i>
-                </button>
+        <div class="mt-6 pt-6 border-t border-dashed border-gray-300 cursor-default" x-show="gift && gift.title">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                <span class="text-sm text-gray-400">کد تخفیف: <span x-text="gift.title"></span></span>
+                <div class="flex items-center justify-end mt-0.5">
+                    <span class="text-sm text-gray-500 variable-font-medium">
+                        <span x-text="gift.type == 'percent' ? '٪' : ''"></span>
+                        <span x-text="gift.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')"></span>
+                        <span x-text="gift.type == 'percent' ? '' : 'تومان'"></span>
+                    </span>
+                    <button class="flex text-gray-500 hover:text-red-600 mr-2" title="@lang('حذف کد تخفیف')">
+                        <i class="fal fa-times-circle"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+                <span class="text-sm text-gray-400">مبلغ قابل پرداخت</span>
+                <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-text="gift.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
-            <span class="text-sm text-gray-400">مبلغ قابل پرداخت</span>
-            <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-text="gift.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
-        </div>
     </div>
-</div>
+    @endif
