@@ -43,6 +43,31 @@
     @apply bg-brand text-white border-brand;
 }
 
+/* Sample Item Radio 2Text */
+.sample-item-radio-2text {
+    @apply grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-10 2xl:grid-cols-8 gap-2;
+}
+
+.sample-item-radio-2text .titles {
+    @apply flex items-center justify-center text-center text-sm text-gray-700 rounded p-4 cursor-default col-span-1 lg:col-span-3;
+}
+
+.sample-item-radio-2text .items {
+    @apply flex items-center flex-col-reverse lg:flex-row-reverse space-y-2 space-y-reverse lg:space-y-0 lg:space-x-2 lg:h-full lg:col-span-6 xl:col-span-4 2xl:col-span-2;
+}
+
+.sample-item-radio-2text .item {
+    @apply flex-1 h-full w-full;
+}
+
+.sample-item-radio-2text label {
+    @apply flex-1 h-full flex items-center justify-center text-sm text-gray-700 rounded cursor-pointer hover:ring-1 hover:ring-offset-2 hover:ring-gray-500 transition p-2;
+}
+
+.sample-item-radio-2text input:checked + label, .sample-item-radio-2text input:focus + label {
+    @apply ring-1 ring-offset-2 ring-gray-500;
+}
+
 /* Sample Item Radio Image */
 .sample-item-image label {
     @apply flex flex-col border border-gray-200 rounded p-1;
