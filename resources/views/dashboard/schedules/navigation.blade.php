@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="flex items-center">
-        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->sat->timestamp -1 ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->sat->timestamp -1 ]), 'GET', array_merge(request()->all(), []))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
+        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id]) : route('dashboard.center.schedules.index', ['center' => $center->id]), 'GET', array_merge(request()->all(), ['time'=>$weeks->sat->timestamp -1]))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
             <i class="fal fa-chevron-right"></i>
             <span class="hidden sm:block mr-2">هفته قبل</span>
         </a>
@@ -55,7 +55,7 @@
                 <a href="#" class="dropdown-item text-sm block w-full px-1 py-2 text-center rounded text-gray-600 hover:text-brand hover:bg-gray-100 pt-2 border-b border-gray-200">۰۴/۱۰ تا ۰۴/۱۷</a>
             </div> --}}
         </div>
-        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]) : route('dashboard.center.schedules.index', ['center' => $center->id, 'time'=>$weeks->fri->timestamp + (60*60*24) ]), 'GET', array_merge(request()->all(), []))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
+        <a href="{{ request()->create(isset($room) || $center->type =='personal_clinic' ? route('dashboard.room.schedules.index', ['room' => $room->id]) : route('dashboard.center.schedules.index', ['center' => $center->id]), 'GET', array_merge(request()->all(), ['time'=>$weeks->fri->timestamp + (60*60*24)]))->getUri() }}" role="button" class="flex items-center justify-center flex-shrink-0 text-sm text-brand border border-brand hover:text-white hover:bg-brand rounded-full w-8 sm:w-auto h-8 sm:px-4 transition focus">
             <span class="hidden sm:block ml-2">هفته بعد</span>
             <i class="fal fa-chevron-left"></i>
         </a>
