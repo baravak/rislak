@@ -46,7 +46,7 @@
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">تعداد استفاده توسط هر کاربر</span>
-                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">{{ $gift->disposable ? 'بیش از یک‌بار' : 'فقط یک‌بار' }}</span>
+                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">{{ $gift->disposable ? 'فقط یکبار' : 'بیش‌از یکبار' }}</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">وضعیت</span>

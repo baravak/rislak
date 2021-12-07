@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        @elseif ($gift->status != 'expires' && $gift->disposable && $user->status == 'expires')
+                        @elseif ($gift->status != 'expires' && !$gift->disposable && $user->status == 'expires')
                             <div class="relative dropdown">
                                 <button class="dropdown-toggle text-gray-600 hover:text-green-600 transition w-6 h-6 rounded-full flex items-center justify-center focus-current ring-green-600" title="@lang('فعال شود')">
                                     <i class="fal fa-calendar-check"></i>

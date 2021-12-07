@@ -26,6 +26,9 @@ class Client{
                 if($first->extensions->category == 'authorization'){
                     abort(403, $first->message);
                 }
+                if($first->extensions->category == 'custom'){
+                    abort(422, $first->message);
+                }
                 dd($first);
                 abort(500, $first->message);
             }

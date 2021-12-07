@@ -141,10 +141,10 @@ class GiftController extends Controller
         $link = [];
         $link[] = 'سلام';
         $link[] = "شما یک کد تخفیف $value از سمت $region دارید. با وارد کردن کد زیر در صفحه رزرواسیون جلسه، از تخفیف این کد بهره‌مند شوید";
-        $link[] = $index->gift->code;
+        $link[] = substr($index->gift->code, 10);
         $index->gift->whatsapp = join("\n", $link);
         $index->gift->whatsapp = urlencode($index->gift->whatsapp);
-        $index->gift->telegram = urlencode($index->gift->whatsapp);
+        $index->gift->telegram = $index->gift->whatsapp;
         return $this->view($request, 'dashboard.gifts.show');
     }
 
@@ -301,7 +301,7 @@ class GiftController extends Controller
     public function all(Request $request, $code){
         $query = 'query($code:String){
             gift(code: $code){
-                id status title value type region{detail{title}}
+                code status title value type region{detail{title}}
             }
         }';
         $response = Client::query($query, [

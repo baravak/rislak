@@ -11,27 +11,27 @@
                             <i class="fab fa-whatsapp text-lg"></i>
                             <span class="mr-2 text-sm pt-0.5">واتس‌اپ</span>
                         </a>
-                        <a href="https://t.me/share/url?text={!! $gift->telegram !!}" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-blue-500 transition px-3 py-2" target="_blank">
+                        <a href="https://t.me/share/url?url={{ rawurlencode(route('gifts.public', $gift->code)) }}&text={!! $gift->telegram !!}" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-blue-500 transition px-3 py-2" target="_blank">
                             <i class="fal fa-paper-plane"></i>
                             <span class="mr-2 text-sm pt-0.5">تلگرام</span>
                         </a>
-                        <a href="#" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-pink-500 transition px-3 py-2">
+                        {{-- <a href="https://instagram.com/sharer.php?u={{ rawurlencode(route('gifts.public', $gift->code)) }}" class="flex items-center text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-pink-500 transition px-3 py-2" target="_blank">
                             <i class="fab fa-instagram text-lg"></i>
                             <span class="mr-2 text-sm pt-0.5">اینستاگرام</span>
-                        </a>
+                        </a> --}}
                         <div class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-brand transition px-3 py-2">
                             <a href="{{ route('gifts.public', $gift->code) }}" target="_blank" class="flex items-center">
                                 <i class="fal fa-badge-percent text-lg"></i>
                                 <span class="mr-2 text-sm pt-0.5">صفحه کد تخفیف</span>
                             </a>
-                            <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
+                            <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus" data-clipboard-text="{{ route('gifts.public', $gift->code) }}">@lang('کپی لینک')</button>
                         </div>
                         <div class="flex items-center justify-between text-gray-500 hover:bg-gray-50 hover:bg-opacity-50 hover:text-gray-900 transition px-3 py-2">
-                            <a href="#" target="_blank" class="flex items-center">
+                            <a href="{{ env('SERVER_PUBLIC_URL') . '/tmp/gifts/'. $gift->code .'.png'  }}" target="_blank" class="flex items-center">
                                 <i class="fal fa-image-polaroid text-lg"></i>
                                 <span class="mr-2 text-sm pt-0.5">عکس کد تخفیف</span>
                             </a>
-                            <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus">@lang('کپی لینک')</button>
+                            <button class="h-6 px-2 text-xs text-gray-500 border border-gray-200 hover:border-brand hover:text-brand transition rounded-full focus" data-clipboard-text="{{ env('SERVER_PUBLIC_URL') . '/tmp/gifts/'. $gift->code .'.png'  }}">@lang('کپی لینک')</button>
                         </div>
                     </div>
                 </div>
