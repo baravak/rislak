@@ -10,12 +10,16 @@
         @isset($item->category)
         <h4 class="text-gray-700 mb-2">{{ $item->category }}</h4>
         @endisset
-        @include('samples.items.types.' . $item->type)
-        @isset($item->description)
-            <p class="text-sm mb-8">{{ $item->description }}</p>
-        @endisset
-        <div id="item-section">
-            @include('samples.items.answers.' . $item->answer->type)
-        </div>
+        @if (\View::exists('samples.items.compact.'.$item->type ))
+            @include('samples.items.compact.' . $item->type)
+        @else
+            @include('samples.items.types.' . $item->type)
+            @isset($item->description)
+                <p class="text-sm mb-8">{{ $item->description }}</p>
+            @endisset
+            <div id="item-section">
+                @include('samples.items.answers.' . $item->answer->type)
+            </div>
+        @endif
     </div>
 @endforeach
