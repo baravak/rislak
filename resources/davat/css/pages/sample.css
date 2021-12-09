@@ -53,10 +53,11 @@
 }
 
 .sample-item-two-sided .items {
-    @apply flex items-center flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-2 lg:h-full lg:col-span-6 xl:col-span-4 2xl:col-span-2;
+    @apply flex items-center flex-col lg:flex-row space-y-2 lg:space-x-reverse lg:space-y-0 lg:space-x-2 lg:h-full lg:col-span-6 xl:col-span-4 2xl:col-span-2;
 }
+
 .sample-item-two-sided .items.reverse {
-    @apply flex items-center flex-col-reverse lg:flex-row-reverse space-y-2 space-y-reverse lg:space-y-0 lg:space-x-2 lg:h-full lg:col-span-6 xl:col-span-4 2xl:col-span-2;
+    @apply flex-col-reverse lg:flex-row-reverse space-y-reverse lg:space-x-2;
 }
 
 .sample-item-two-sided .item {
