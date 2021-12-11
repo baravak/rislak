@@ -16,6 +16,7 @@ class Client{
         $response = Http::withOptions([
             'verify' => false
         ])
+        ->timeout(20)
         ->withHeaders([
             'authorization' => 'Bearer '. User::token()
         ])->withBody($json, 'application/json')->post(env('GRAPH_URL'));
