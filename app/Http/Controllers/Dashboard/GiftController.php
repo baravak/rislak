@@ -65,7 +65,7 @@ class GiftController extends Controller
 
     public function store(Request $request, $center){
         $store = <<<Query
-        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int){
+        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$exclusive: Boolean, \$exclusive_users:[GhostID!]){
             createGift(region:\$center, input: {
                 title: \$title
                 description: \$description
@@ -75,6 +75,8 @@ class GiftController extends Controller
                 expires_at: \$expires_at
                 disposable: \$disposable
                 threshold: \$threshold
+                exclusive:\$exclusive
+                exclusive_users:\$exclusive_users
             }){
               id,code,started_at
             }
@@ -89,6 +91,8 @@ class GiftController extends Controller
             'expires_at' => $request->expires_at,
             'disposable' => (boolean) $request->disposable,
             'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
+            'exclusive' => $request->exclusive ? true : false,
+            'exclusive_users' => $request->exclusive_users ?: [],
         ]);
         return[
             'redirect' => route('dashboard.gifts.show', [$center, $create->createGift->id])
