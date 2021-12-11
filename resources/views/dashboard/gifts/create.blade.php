@@ -81,8 +81,8 @@
 
         <div class="mt-4">
             <label class="inline-flex items-center group">
-                <input type="checkbox" name="disposable" id="disposable" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" @radioChecked($gift->disposable, true)>
-                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600 pt-0.5">{{ __('هر کاربر بتواند بیش از یکبار از این کد استفاده کند') }}</span>
+                <input type="checkbox" name="disposable" id="disposable" class="w-4 h-4 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1" {{ !isset($gift->disposable) ? 'checked' : ''  }}>
+                <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600 pt-0.5">{{ __('هرکاربر فقط یکبار بتواند از این کد استفاده کند') }}</span>
             </label>
         </div>
 

@@ -111,6 +111,7 @@ class GiftController extends Controller
         $query = 'query ($id: GiftID!, $page:Int, $search: String){
             gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
                 region{id detail{title}}
+                postcard{url image}
                 users(first:10, page:$page, search:$search){
                     paginatorInfo{ count currentPage total perPage}
                     data{
@@ -141,17 +142,17 @@ class GiftController extends Controller
         $link = [];
         $link[] = 'سلام';
         $link[] = "شما یک کد تخفیف $value از سمت $region دارید. با وارد کردن کد زیر در صفحه رزرواسیون جلسه، از تخفیف این کد بهره‌مند شوید";
-        $link[] = $index->gift->code;
+        $link[] = substr($index->gift->code, 10);
         $index->gift->whatsapp = join("\n", $link);
         $index->gift->whatsapp = urlencode($index->gift->whatsapp);
-        $index->gift->telegram = urlencode($index->gift->whatsapp);
+        $index->gift->telegram = $index->gift->whatsapp;
         return $this->view($request, 'dashboard.gifts.show');
     }
 
     public function renew(Request $request, $center, $gift){
         $mutation = "mutation(\$id:GiftID!){
             renewGift(id:\$id){
-                id title code description type value status renew_count last_renew_at started_at expires_at type
+                id title code description type value status renew_count last_renew_at started_at expires_at type postcard{url image}
             }
         }";
         $renew = Client::query($mutation, [
@@ -301,11 +302,11 @@ class GiftController extends Controller
     public function all(Request $request, $code){
         $query = 'query($code:String){
             gift(code: $code){
-                id status title value type region{detail{title}}
+                code status title value type region{detail{title}} postcard{image}
             }
         }';
         $response = Client::query($query, [
-            'code' => $code
+            'code' => preg_replace('/^([^\-]-)/', '', $code)
         ]);
         $this->data->gift = $response->gift;
         return $this->view($request, 'dashboard.gifts.public');

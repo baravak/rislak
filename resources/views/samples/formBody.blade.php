@@ -14,6 +14,9 @@
                     @includeWhen($sample->psychologist_description, 'samples.panel.psychologistDescription')
                 @endcan
                 @includeWhen($sample->chain, 'samples.panel.bulk-sampleStatus')
+                <div data-nav="help" data-title="@lang('راهنما')">
+                    @include('samples.panel.help')
+                </div>
                 @includeWhen($sample->prerequisites, 'samples.panel.information')
                 @include('samples.panel.description')
                 @include('samples.panel.items')

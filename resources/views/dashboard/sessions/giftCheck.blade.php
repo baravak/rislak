@@ -1,4 +1,3 @@
-@if (config('app.env') == 'local')
 <div x-show="amount !== null">
     <div class="mt-4">
         <label for="gift_code" class="block mb-2 text-sm text-gray-700 variable-font-medium">@lang('Gift')</label>
@@ -32,4 +31,3 @@
             </div>
         </div>
     </div>
-    @endif

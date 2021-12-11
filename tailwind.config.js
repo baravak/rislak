@@ -40,7 +40,10 @@ module.exports = {
     extend: {
       backgroundColor: ['disabled'],
       opacity: ['disabled'],
-      borderWidth: ['last']
+      borderWidth: ['last'],
+      ringWidth: ['hover'],
+      ringColor: ['hover'],
+      ringOffsetWidth: ['hover'],
     },
   },
   plugins: [
