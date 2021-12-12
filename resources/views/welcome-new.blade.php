@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-span-2 hidden lg:flex flex-col items-center justify-center">
-                    <object data="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4"></object>
+                    <img src="{{ asset('/images/public/risloo-home-intro-img.svg') }}" alt="" class="w-96 relative -top-4">
                 </div>
             </div>
             <div class="relative overflow-hidden w-full h-20">
