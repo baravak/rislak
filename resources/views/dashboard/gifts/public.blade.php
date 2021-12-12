@@ -29,7 +29,7 @@
     @else
         <div class="bg-brand bg-opacity-20 h-screen flex flex-col items-center justify-center">
             <div class="relative">
-                <div class="cursor-pointer"><img data-clipboard-text="{{ substr($gift->code, 10) }}" src="{{ $gift->postcard->image  }}" alt=""></div>
+                <div class="cursor-pointer" data-clipboard-text="{{ substr($gift->code, 10) }}"><img src="{{ $gift->postcard->image  }}" alt="" width="512" height="512"></div>
                 <div class="copied-tooltip absolute right-1/2 transform translate-x-1/2 -top-6">@lang('کپی شد')</div>
             </div>
             <div class="text-gray-600 mt-4 cursor-default">برای کپی کردن کد، روی تصویر کلیک کنید</div>

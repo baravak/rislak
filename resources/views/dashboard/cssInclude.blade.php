@@ -1,0 +1,1 @@
+<span class="clipboard-copied"></span>
