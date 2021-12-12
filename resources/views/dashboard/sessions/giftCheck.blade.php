@@ -13,16 +13,22 @@
     </div>
         <div class="mt-6 pt-6 border-t border-dashed border-gray-300 cursor-default" x-show="gift && gift.title">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                <span class="text-sm text-gray-400">کد تخفیف: <span x-text="gift.title"></span></span>
+                <div class="text-sm text-gray-400">کد تخفیف: <span x-text="gift.title"></span></div>
                 <div class="flex items-center justify-end mt-0.5">
-                    <span class="text-sm text-gray-500 variable-font-medium">
+                    <div class="text-sm text-gray-500 variable-font-medium">
                         <span x-text="gift.type == 'percent' ? '٪' : ''"></span>
                         <span x-text="gift.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')"></span>
                         <span x-text="gift.type == 'percent' ? '' : 'تومان'"></span>
-                    </span>
+                    </div>
                     <button class="flex text-gray-500 hover:text-red-600 mr-2" title="@lang('حذف کد تخفیف')">
                         <i class="fal fa-times-circle"></i>
                     </button>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+                <span class="text-sm text-gray-400">اعتبار کیف پول</span>
+                <div class="flex items-center justify-end mt-0.5">
+                    <span class="text-sm text-gray-500 variable-font-medium">15.000 تومان</span>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
