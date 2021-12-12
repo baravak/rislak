@@ -24,7 +24,7 @@
     </div>
     <div class="flex flex-col border border-gray-300 rounded p-4 bg-gray-50 mb-4 cursor-default">
         <h3 class="text-sm variable-font-medium text-gray-700 mb-2">{{ __('Samples list') }}</h3>
-        <div class="w-full max-h-14 overflow-y-auto bg-gray-100 rounded p-3">
+        <div class="w-full max-h-36 overflow-y-auto bg-gray-100 rounded p-3">
             <ul class="samplesLogin-list">
                 @foreach ($bulk->scales as $scale)
                     <li>{{ $scale->title }}</li>
