@@ -20,7 +20,7 @@
                         <span x-text="gift.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')"></span>
                         <span x-text="gift.type == 'percent' ? '' : 'تومان'"></span>
                     </div>
-                    <button class="flex text-gray-500 hover:text-red-600 mr-2" title="@lang('حذف کد تخفیف')">
+                    <button type="button" class="flex text-gray-500 hover:text-red-600 mr-2" title="@lang('حذف کد تخفیف')">
                         <i class="fal fa-times-circle"></i>
                     </button>
                 </div>
@@ -28,12 +28,16 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
                 <span class="text-sm text-gray-400">اعتبار کیف پول</span>
                 <div class="flex items-center justify-end mt-0.5">
-                    <span class="text-sm text-gray-500 variable-font-medium">15.000 تومان</span>
+                    <span class="text-sm text-gray-500 variable-font-medium" x-text="wallet.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
                 <span class="text-sm text-gray-400">مبلغ قابل پرداخت</span>
                 <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-text="gift.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+                <span class="text-sm text-gray-400">مبلغ قابل مورد نیاز برای شارژ</span>
+                <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-text="(Math.max(0, gift.amount - wallet)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
             </div>
         </div>
     </div>
