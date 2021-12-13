@@ -5,7 +5,7 @@
                 <div class="flex-1 flex flex-col sm:flex-row sm:items-center px-2 cursor-default">
                     <div class="flex items-center text-gray-600 text-xs">
                         <i class="fal fa-user text-sm ml-2 sm:hidden"></i>
-                        <span>{{ $user->ghost->name ?: $user->ghost->mobile }}</span>
+                        <span>{{ $user->ghost->name ?: '0' . substr($user->ghost->mobile, 3) }}</span>
                     </div>
                     <div class="mt-1 flex items-center sm:hidden text-gray-600 text-xs">
                         <span>تعداد استفاده: </span>
