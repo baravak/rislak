@@ -11,14 +11,14 @@
             <button id="giftCheck" data-lijax data-action="/dashboard/giftCheck" x-on:link="$el.setAttribute('data-action', '/dashboard/giftCheck/{{ $center->id }}-'+(gift_code || '').replace(/^{{ $center->id }}\-/, '')+'?region={{ $center->id }}&amount=' + amount); if(gift.title){gift.amount = gift.type == 'percent' ? Math.max(0, (amount * (100 - gift.value))/100) : Math.max(0, amount - gift.value)}" class="mt-2 xs:mt-0 xs:mr-2 flex-shrink-0 text-sm text-white px-8 h-10 rounded bg-green-600 hover:bg-green-700 transition focus-current ring-green-600" data-lijax x-on:statio-done="gift = event.detail; gift_type = event.detail.type;">@lang('اعمال کد تخفیف')</button>
         </div>
     </div>
-    <div class="mt-6 p-4 bg-gray-50 border-2 border-gray-300 border-dashed rounded cursor-default" x-show="gift && gift.title">
+    <div class="mt-6 p-4 bg-gray-50 border-2 border-gray-300 border-dashed rounded cursor-default">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between">
             <span class="text-sm text-gray-500">هزینه جلسه</span>
             <div class="flex items-center justify-end mt-0.5">
-                <span class="text-sm text-gray-500 variable-font-medium">20.000 تومان</span>
+                <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('amount')"></span>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2" x-show="gift && gift.title">
             <div class="text-sm text-gray-500">کد تخفیف: <span class="text-green-600 variable-font-medium" x-text="gift.title"></span></div>
             <div class="flex items-center justify-end mt-0.5">
                 <div class="text-sm text-green-600 variable-font-medium">
@@ -31,21 +31,21 @@
                 </button>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2" x-show="gift && gift.title">
             <span class="text-sm text-gray-500">هزینه جلسه با احتساب تخفیف</span>
             <div class="flex items-center justify-end mt-0.5">
-                <span class="text-sm text-gray-500 variable-font-medium" x-text="gift.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
+                <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('gift.amount')"></span>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2" x-show="wallet">
             <span class="text-sm text-gray-500">اعتبار کیف پول</span>
             <div class="flex items-center justify-end mt-0.5">
-                <span class="text-sm text-gray-500 variable-font-medium" x-text="wallet.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
+                <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('wallet')"></span>
             </div>
         </div>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 pt-2 border-t border-gray-300">
             <span class="text-sm text-gray-500">مبلغ قابل پرداخت</span>
-            <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-text="(Math.max(0, gift.amount - wallet)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،') + ' تومان'"></span>
+            <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-data="amontifa('(Math.max(0, (gift.amount || amount) - wallet))')"></span>
         </div>
     </div>
 </div>
