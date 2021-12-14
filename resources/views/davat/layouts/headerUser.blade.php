@@ -9,13 +9,18 @@
                     <div class="font-medium text-xs text-gray-700">{{ auth()->user()->name ?: auth()->user()->id }}</div>
                     @if (auth()->user()->balance)
                         <div class="text-xs text-green-500 mt-1 dir-ltr">
-                            <span class="inline-block">تومان</span>
+                            <span class="inline-block">@lang('تومانءءء')</span>
                             <span class="inline-block">
                                 @foreach (auth()->user()->treasuries->whereIn('symbol', ['wallet', 'gift'])->where('balance', '<>', 0) as $_treasury)
                                     {{ number_format($_treasury->balance) }}
                                     @if (!$loop->last)+@endif
                                 @endforeach
                             </span>
+                        </div>
+                    @else
+                        <div class="text-xs text-gray-400 mt-1">
+                            <span class="ml-1">0</span>
+                            <span>تومانءءء</span>
                         </div>
                     @endif
                 </div>
