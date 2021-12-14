@@ -24,7 +24,7 @@
                 <div class="text-sm text-green-600 variable-font-medium">
                     <span x-text="gift.type == 'percent' ? '٪' : ''"></span>
                     <span x-text="gift.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')"></span>
-                    <span x-text="gift.type == 'percent' ? '' : 'تومان'"></span>
+                    <span x-text="gift.type == 'percent' ? '' : 'تومنء'"></span>
                 </div>
                 <button type="button" class="flex items-center justify-center w-4 h-4 rounded-full text-gray-500 hover:text-red-600 mr-2 focus-current ring-red-600" title="@lang('حذف کد تخفیف')" @click="gift_code = null; gift = {title:null, type:'percent', value:0, amount:0}; document.querySelector('#giftCheck').dispatchEvent(new CustomEvent('link'))">
                     <i class="fal fa-times-circle"></i>
