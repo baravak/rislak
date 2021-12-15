@@ -37,15 +37,17 @@
                 <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('gift.amount')"></span>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 pt-2 border-t border-gray-300" x-show="wallet">
-            <span class="text-sm text-gray-500">اعتبار کیف پول</span>
-            <div class="flex items-center justify-end mt-0.5">
-                <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('wallet')"></span>
+        <div class="mt-4 pt-2 border-t border-gray-300">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2" x-show="wallet">
+                <span class="text-sm text-gray-500">اعتبار کیف پول</span>
+                <div class="flex items-center justify-end mt-0.5">
+                    <span class="text-sm text-gray-500 variable-font-medium" x-data="amontifa('wallet')"></span>
+                </div>
             </div>
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
-            <span class="text-sm text-gray-500">مبلغ قابل پرداخت</span>
-            <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-data="amontifa('(Math.max(0, (gift.amount || amount) - wallet))')"></span>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2">
+                <span class="text-sm text-gray-500">مبلغ قابل پرداخت</span>
+                <span class="text-gray-600 variable-font-semibold mt-0.5 text-left" x-data="amontifa('(Math.max(0, (gift.amount || amount) - wallet))')"></span>
+            </div>
         </div>
     </div>
 </div>
