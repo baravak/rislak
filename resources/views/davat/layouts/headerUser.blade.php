@@ -1,12 +1,12 @@
 <div class="flex" >
     <div class="relative dropdown">
         <button type="button" class="flex items-center border border-gray-300 rounded px-3 h-12 hover:bg-gray-50 transition dropdown-toggle focus">
-            <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-3 bg-brand text-white border border-gray-200 text-xs" data-xhr="short-avatar">
+            <div class="flex justify-center items-center flex-shrink-0 w-8 h-8 rounded overflow-hidden ml-3 bg-brand text-white border border-gray-200 text-xs en" data-xhr="short-avatar">
                 @avatarOrName(auth()->user())
             </div>
             <div class="flex justify-between items-center">
                 <div>
-                    <div class="font-medium text-xs text-gray-700">{{ auth()->user()->name ?: auth()->user()->id }}</div>
+                    <div class="variable-font-medium text-xs text-gray-700 {{ auth()->user()->name ? ' ':  'en font-medium' }}">{{ auth()->user()->name ?: auth()->user()->id }}</div>
                     @if (auth()->user()->balance)
                         <div class="text-xs text-green-500 mt-1 dir-ltr">
                             <span class="inline-block">@lang('تومانءءء')</span>
