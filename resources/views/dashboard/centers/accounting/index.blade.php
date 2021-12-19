@@ -29,9 +29,11 @@
             <i class="fal fa-badge-percent text-2xl"></i>
             <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Gift')</span>
         </a>
-        {{-- <a href="#" class="border border-gray-300 hover:border-gray-600 text-gray-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-gray-50 transition group focus-current ring-gray-500">
-            <i class="fal fa-exchange text-2xl"></i>
-            <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Credit transfer')</span>
-        </a> --}}
+        @if (config('app.env') == 'local')
+        <a href="#" class="border border-gray-300 hover:border-blue-500 text-blue-500 rounded p-4 flex xs:flex-col items-center xs:justify-center hover:bg-blue-50 transition group focus-current ring-blue-500">
+            <i class="fal fa-clipboard-list-check text-2xl"></i>
+            <span class="mr-4 xs:mr-0 xs:mt-2 variable-font-medium text-sm text-gray-500 text-center">@lang('Assessments')</span>
+        </a>
+        @endif
     </div>
 @endsection
