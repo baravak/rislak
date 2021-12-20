@@ -11,7 +11,7 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="text-xs text-gray-600 variable-font-medium cursor-default">{{ $settlement->creator->name }}</div>
         @if ($settlement->center)
-            <div class="text-xs text-gray-400 cursor-default">{{ $settlement->center->detail->title  }}</div>
+            <div class="text-xs text-gray-500 cursor-default">{{ $settlement->center->detail->title  }}</div>
         @endif
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
@@ -20,10 +20,8 @@
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="flex items-center">
-            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $settlement->iban }}</span>
-            <span class="text-xs text-gray-600 block">{{ $settlement->owner }}</span>
-        </div>
+        <div class="text-xs text-gray-600 text-right dir-ltr cursor-default en">{{ $settlement->iban }}</div>
+        <div class="text-xs text-gray-500 cursor-default">{{ $settlement->owner }}</div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
