@@ -34,8 +34,9 @@
     {{-- @else --}}
         <div class="flex-1 px-2 mt-2 sm:mt-0">
             <span class="text-xs text-gray-600 sm:hidden ml-2">@lang('Amount'):</span>
-            <div class="flex items-center mt-1 sm:mt-0">
-                <input type="number" value="0" class="text-left dir-ltr w-28 h-7 border border-gray-300 rounded text-xs text-gray-600 focus">
+            <div class="flex items-center mt-1 sm:mt-0" x-data="{amount:0}">
+                <input type="tel" class="text-left dir-ltr w-52 h-7 border border-gray-300 rounded text-xs text-gray-600 focus" x-data="amontity" x-fill="amount">
+                <input type="hidden" name="" x-model='amount'>
                 <span class="text-xs text-gray-600 mr-2 pt-0.5">90٬000 @lang('تومانءءء')</span>
             </div>
         </div>

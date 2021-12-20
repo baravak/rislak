@@ -106,6 +106,7 @@ Route::post('billings/{billing}/settled', 'BillingController@settled')->name('bi
 Route::get('centers/{center}/accounting', 'CenterAccountingController@index')->name('center.accounting.index');
 Route::get('centers/{center}/commissions', 'CenterAccountingController@commission')->name('center.commissions.index');
 Route::put('centers/{center}/commissions', 'CenterAccountingController@commissionUpdate')->name('center.commissions.update');
+Route::get('centers/{center}/assessments', 'CenterAssessmentController@index')->name('center.assessments.index');
 
 Route::get('centers/{center}/balance-sheets', 'CenterAccountingController@balanceSheet')->name('center.balanceSheets.index');
 Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetShow')->name('center.balanceSheets.show');
@@ -139,6 +140,7 @@ Route::post('centers/{center}/gifts/{gift}/users', 'GiftController@appendUser')-
 Route::delete('centers/{center}/gifts/{gift}/users', 'GiftController@deleteUser')->name('gifts.deleteUser');
 Route::put('centers/{center}/gifts/{gift}/users', 'GiftController@updateUser')->name('gifts.updateUser');
 Route::get('giftCheck/{code}', 'GiftController@check')->name('giftCheck');
+
 if(config('app.env') == 'local'){
     // Route::get('/billings', 'LocalController@billings');
     // Route::get('/billings/items', 'LocalController@billingItems');
