@@ -29,7 +29,17 @@ function amontity(){
         keydown : function(e){
             removeFirstZiro.call(this.$el, e)
         },
-        keyup: function(e){
+        keyup : function(e){
+            if(e.type == 'paste'){
+                const paste  = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('text')
+                let _start = e.target.selectionStart
+                let _end = e.target.selectionEnd
+                const val = this.$el.value
+                this.$el.value = `${val.substring(0, _start)}${paste}${val.substring(_end)}`
+                this.$el.setSelectionRange(_start + paste.length, _start + paste.length)
+                e.preventDefault();
+                e.stopPropagation();
+            }
             const _value = this.$el.value
             if(!this.$el.value) {
                 this.$el.value = '0'
