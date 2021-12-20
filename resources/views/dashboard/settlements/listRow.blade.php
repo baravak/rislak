@@ -1,4 +1,4 @@
-<tr class="transition hover:bg-gray-50 {{-- bg-red-100 hover:bg-red-100 bg-yellow-100 hover:bg-yellow-100 --}}">
+<tr class="transition hover:bg-gray-50 {{ ['' => 'bg-red-100 hover:bg-red-100' , 'awaiting' => 'bg-yellow-100 hover:bg-yellow-100', 'settled' => ''][$settlement->status] }}">
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $settlement->id }}</span>
@@ -22,6 +22,7 @@
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default en">{{ $settlement->iban }}</span>
+            <span class="text-xs text-gray-600 block">{{ $settlement->owner }}</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
