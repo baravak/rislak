@@ -65,6 +65,7 @@ function amontity(){
             this.$el.setAttribute(':value', `${this._amountRef}.toString().replace(/[^\\d]/g, '').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '،') || '0'`)
             this.$el.setAttribute('x-on:keydown', 'keydown')
             this.$el.setAttribute('x-on:keyup', 'keyup')
+            this.$el.setAttribute('x-on:paste', 'keyup')
         }
     }
 }
