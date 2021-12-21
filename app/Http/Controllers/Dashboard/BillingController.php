@@ -68,7 +68,7 @@ class BillingController extends Controller
     public function store(Request $request, $action){
         $billing = Billing::apiChildPost($action, $request->all());
         return $billing->response()->json([
-            'redirect' => route('dashboard.billings.show', $billing->id)
+            'redirect' => substr($action, 0, 2) == 'SE' ? route('dashboard.sessions.show', $action) : route('dashboard.billings.show', $billing->id)
         ]);
     }
 }
