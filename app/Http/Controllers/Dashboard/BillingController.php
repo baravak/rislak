@@ -14,6 +14,7 @@ class BillingController extends Controller
     public function index(Request $request)
     {
         $this->data->billings = $billings = Billing::apiIndex($request->all());
+        $billings->appends($request->all('type'));
         return $this->view($request, 'dashboard.billings.index');
     }
 
