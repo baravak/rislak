@@ -1,4 +1,4 @@
-<div data-nav="chain" data-title="@lang('Chain')" class="hidden">
+<a id="nav-next" data-nav-next data-nav="chain" data-title="@lang('Chain')" class="hidden">
     <div class="mb-8">
         <h2 class="font-medium text-gray-800 text-lg mb-2">{{ __('bulk sample status') }}</h2>
     </div>
@@ -19,4 +19,4 @@
             <span>حالت انجام نشده‌ی لینک دار</span>
         </a> --}}
     </div>
-</div>
+</a>
