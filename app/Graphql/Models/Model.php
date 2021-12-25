@@ -22,4 +22,14 @@ class Model extends EloquentModel{
         }
         return parent::fill($attributes);
     }
+    public function setRawAttributes(array $attributes, $sync = false)
+    {
+        foreach($attributes as $key => $attribute){
+            if(key_exists($key, $this->with)){
+                $this->setRelation($key, $this->with[$key]::construct($attribute));
+                unset($attributes[$key]);
+            }
+        }
+        parent::setRawAttributes((array) $attribute, $sync);
+    }
 }

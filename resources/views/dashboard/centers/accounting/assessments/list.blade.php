@@ -9,10 +9,10 @@
             <div class="flex-1 px-2">@lang('Amount')</div>
         {{-- @endif --}}
     </div>
-    {{-- @foreach ($assessments as $assessment) --}}
+    @foreach ($assessments as $assessment)
         @include('dashboard.centers.accounting.assessments.listRaw')
-    {{-- @endforeach --}}
-    {{-- @if (method_exists($assessments, 'links'))
+    @endforeach
+    @if (method_exists($assessments, 'links'))
         {{ method_exists($assessments, 'links') ? $assessments->links() : null }}
-    @endif --}}
+    @endif
 </div>
