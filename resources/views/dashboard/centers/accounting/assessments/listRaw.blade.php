@@ -35,10 +35,23 @@
     {{-- @else --}}
         <div class="flex-1 px-2 mt-2 sm:mt-0">
             <span class="text-xs text-gray-600 sm:hidden ml-2">@lang('Amount'):</span>
-            <div class="flex items-center mt-1 sm:mt-0" x-data="{amount:{{ $assessment->amount ?: '0' }}}">
-                <input type="tel" class="text-left dir-ltr w-52 h-7 border border-gray-300 rounded text-xs text-gray-600 focus" x-data="amontity" x-fill="amount">
+            <div class="mt-2 xs:mt-0 relative inline-block" x-data="{amount:{{ $assessment->amount ?: '0' }}}">
+                <input type="tel" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" x-data="amontity" x-fill="amount">
                 <input type="hidden" name="" x-model='amount'>
+                <span class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</span>
             </div>
         </div>
     {{-- @endif --}}
+
+    <div class="w-10 dir-ltr text-left px-2 hidden sm:flex">
+        <a href="#" class="text-gray-600 hover:text-blue-600 transition" title="مبلغ این آزمون در اتاق‌های درمان">
+            <i class="fal fa-loveseat pt-1"></i>
+        </a>
+    </div>
+
+    <div class="mt-4 px-2 sm:hidden">
+        <a href="#" class="text-sm rounded-full border border-gray-300 text-gray-600 hover:text-blue-600 hover:border-blue-600 transition mt-2 px-4 py-1" title="مبلغ این آزمون در اتاق‌های درمان">
+            مبلغ در اتاق‌های درمان
+        </a>
+    </div>
 </div>
