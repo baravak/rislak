@@ -72,6 +72,31 @@
     @apply ring-1 ring-offset-2 ring-gray-500;
 }
 
+/* Sample Matrix */
+.sample-matrix {
+    @apply space-y-6;
+}
+
+.sample-matrix h3 {
+    @apply text-gray-700 variable-font-semibold;
+}
+
+.sample-matrix .items {
+    @apply grid-cols-6 gap-2 mt-2 text-sm;
+}
+
+.sample-matrix .item label {
+    @apply flex items-center justify-center text-center w-full h-full p-2 rounded hover:ring-1 hover:ring-offset-2 hover:ring-gray-600 transition cursor-pointer;
+}
+
+.sample-matrix .item input:checked + label, .sample-matrix .item input:focus + label {
+    @apply ring-1 ring-offset-2 ring-gray-600;
+}
+
+.sample-matrix select {
+    @apply w-full border border-gray-500 text-sm text-gray-700 rounded;
+}
+
 /* Sample Item Radio Image */
 .sample-item-image label {
     @apply flex flex-col border border-gray-200 rounded p-1;
