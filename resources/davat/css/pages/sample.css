@@ -74,26 +74,34 @@
 
 /* Sample Matrix */
 .sample-matrix {
-    @apply space-y-6;
+    @apply space-y-2;
 }
 
-.sample-matrix h3 {
-    @apply text-gray-700 variable-font-semibold;
+.sample-matrix .matrix-grid {
+    @apply grid grid-cols-7 gap-1 cursor-default;
 }
 
-.sample-matrix .items {
-    @apply grid-cols-6 gap-2 mt-2 text-sm;
+.sample-matrix .matrix-grid h3 {
+    @apply flex items-center justify-center variable-font-medium text-sm text-center text-brand py-3 px-2 bg-brand bg-opacity-10 rounded;
 }
 
-.sample-matrix .item label {
-    @apply flex items-center justify-center text-center w-full h-full p-2 rounded hover:ring-1 hover:ring-offset-2 hover:ring-gray-600 transition cursor-pointer;
+.sample-matrix .matrix-grid h4 {
+    @apply variable-font-medium text-sm text-center text-gray-800 py-3 px-2 rounded;
 }
 
-.sample-matrix .item input:checked + label, .sample-matrix .item input:focus + label {
-    @apply ring-1 ring-offset-2 ring-gray-600;
+.sample-matrix .matrix-grid label {
+    @apply flex items-center justify-center py-4 lg:py-2 rounded cursor-pointer;
 }
 
-.sample-matrix select {
+.sample-matrix .matrix-grid input {
+    @apply w-5 h-5 border border-gray-400 cursor-pointer;
+}
+
+.sample-matrix-select h4 {
+    @apply variable-font-medium mb-2;
+}
+
+.sample-matrix-select select {
     @apply w-full border border-gray-500 text-sm text-gray-700 rounded;
 }
 
