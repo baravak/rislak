@@ -30,6 +30,6 @@ class Model extends EloquentModel{
                 unset($attributes[$key]);
             }
         }
-        parent::setRawAttributes((array) $attribute, $sync);
+        parent::setRawAttributes((array) $attributes, $sync);
     }
 }

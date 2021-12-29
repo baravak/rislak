@@ -107,6 +107,7 @@ Route::get('centers/{center}/accounting', 'CenterAccountingController@index')->n
 Route::get('centers/{center}/commissions', 'CenterAccountingController@commission')->name('center.commissions.index');
 Route::put('centers/{center}/commissions', 'CenterAccountingController@commissionUpdate')->name('center.commissions.update');
 Route::get('centers/{center}/assessments', 'CenterAssessmentController@index')->name('center.assessments.index');
+Route::put('centers/{center}/assessments/{assessment}', 'CenterAssessmentController@update')->name('center.assessments.update');
 
 Route::get('centers/{center}/balance-sheets', 'CenterAccountingController@balanceSheet')->name('center.balanceSheets.index');
 Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetShow')->name('center.balanceSheets.show');

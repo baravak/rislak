@@ -10,10 +10,15 @@
         {{-- @endif --}}
         <div class="w-10 px-2 hidden lg:block"></div>
     </div>
-    @foreach ($assessments as $assessment)
-        @include('dashboard.centers.accounting.assessments.listRaw')
-    @endforeach
-    @if (method_exists($assessments, 'links'))
-        {{ method_exists($assessments, 'links') ? $assessments->links() : null }}
-    @endif
+    {{-- @foreach ($assessments as $assessment) --}}
+        <template x-for="assessment in assessments.data">
+            @include('dashboard.centers.accounting.assessments.listRaw')
+        </template>
+    {{-- @endforeach --}}
+    <span data-xhr="paginate">
+        @if (method_exists($assessments, 'links'))
+        {{ $assessments->links(null, ['xhrBase' => 'alpine-paginate']) }}
+            {{-- {{ method_exists($assessments, 'links') ? $assessments->links('layouts.pagination-alpine', ['__PaginateVar' => 'assessments']) : null }} --}}
+        @endif
+    </span>
 </div>

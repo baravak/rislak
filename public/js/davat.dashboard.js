@@ -13064,7 +13064,7 @@ function amontifa(_amount, _unit){
     }
 }
 
-function amontity(){
+document.addEventListener('alpine:init', () => {
     removeFirstZiro = function(e){
         let start = e.target.selectionStart;
         let end = e.target.selectionStart;
@@ -13075,8 +13075,8 @@ function amontity(){
             this.setSelectionRange(Math.max(0, start -length), Math.max(end-length))
         }
     }
-    return {
-        _amountRef : undefined,
+    Alpine.data('amontity', () => ({
+        _amountRef : null,
         focus : function(){
             if(this.$el.value === '0'){
                 this.$el.setSelectionRange(0, 1)
@@ -13100,7 +13100,6 @@ function amontity(){
             if(!this.$el.value) {
                 this.$el.value = '0'
                 this.$el.setSelectionRange(0, 1)
-                return
             }
             removeFirstZiro.call(this.$el, e)
             let value = ''
@@ -13114,7 +13113,7 @@ function amontity(){
                 }
                 value = `${value}${char}`
             })
-            this[this._amountRef] = value
+            eval(`this.${this._amountRef} = value`)
             let length = value.length
             this.$el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '،')
             if(_value != this.$el.value){
@@ -13124,14 +13123,31 @@ function amontity(){
                 this.$el.setSelectionRange(additionalStart, additionalEnd)
             }
         },
+        value : function(){
+            return eval(`(this.${this._amountRef} || 0).toString().replace(/[^\\d]/g, '').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '،')`)
+        },
         init: function(){
-            _self = this
             this._amountRef = this.$el.getAttribute('x-fill')
-            this.$el.setAttribute('x-on:focus', 'focus')
-            this.$el.setAttribute(':value', `${this._amountRef}.toString().replace(/[^\\d]/g, '').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '،') || '0'`)
-            this.$el.setAttribute('x-on:keydown', 'keydown')
-            this.$el.setAttribute('x-on:keyup', 'keyup')
-            this.$el.setAttribute('x-on:paste', 'keyup')
+        },
+        amontity : {
+            ['x-init'](){
+                return this.init.call(this, ...arguments)
+            },
+            ['x-on:focus'](){
+                return this.focus.call(this, ...arguments)
+            },
+            [':value'](){
+                return this.value.call(this, ...arguments)
+            },
+            ['x-on:keydown'](){
+                return this.keydown.call(this, ...arguments)
+            },
+            ['x-on:keyup'](){
+                return this.keyup.call(this, ...arguments)
+            },
+            ['x-on:paste'](){
+                return this.keyup.call(this, ...arguments)
+            }
         }
-    }
-}
+    }));
+});

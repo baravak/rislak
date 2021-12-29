@@ -54,7 +54,8 @@
 (function(){
 	function lijax(context, onFire)
 	{
-        var back_value = $(context).val() || $(context).attr('data-value');
+        var fieldContext = $(context).attr('data-lijaxContext') ? document.querySelector($(context).attr('data-lijaxContext')) : context;
+        var back_value = $(context).attr('data-value') || $(context).val();
         if($(context).is(':checkbox'))
         {
             // back_value = $(context).is(':checked') ? 1 : 0;
@@ -78,17 +79,22 @@
                 var Time = fire[i];
                 $(context).on('keyup', function(){
                     if(Timeout) clearTimeout(Timeout);
-                    Timeout = setTimeout(send, Time);
+                    Timeout = setTimeout(function(){
+                        send.call(fieldContext);
+                    }, Time);
                 });
             }
             else
             {
-                $(context).on(fire[i], send);
+                $(context).on(fire[i], function(){
+                    send.call(fieldContext);
+                });
             }
         }
 
         function send()
         {
+            var context = this;
             if($(context).data('lijax-statio')){
                 $(context).data('lijax-statio').ajax.abort();
             }
@@ -130,7 +136,7 @@
             }
             else
             {
-                value = $(context).val() || $(context).attr('data-value') || null;
+                value = $(context).attr('data-value') || $(context).val() || null;
                 if($(context).is(':checkbox'))
                 {
                     value = $(context).is(':checked') ? 1 : 0;
@@ -1071,6 +1077,11 @@ $(document).on('statio:global:renderResponse', function (event, base, context) {
 				url: $(this).attr('href'),
 				type: $(this).is('.action') ? 'render' : 'both',
 				context: $(this),
+				ajax: {
+					headers : $(this).attr('data-xhrBase') ? {
+						'Data-xhr-base': $(this).attr('data-xhrBase')
+					} : null
+				}
 			});
 			e.preventDefault();
 		});

@@ -1,19 +1,19 @@
 
 <div class="flex flex-col sm:flex-row sm:items-center bg-gray-50 hover:bg-gray-100 transition py-3 pb-4 sm:py-2 p-2 rounded mt-2">
     <div class="w-40 cursor-default pl-2 hidden lg:flex">
-        <span class="block text-xs text-gray-600 en dir-ltr text-right">{{ $assessment->assessment->id }}</span>
+        <span class="block text-xs text-gray-600 en dir-ltr text-right" x-text="assessment.assessment.id"></span>
     </div>
     <div class="flex-1 px-2 cursor-default">
-        <div class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ substr($assessment->assessment->title, 0, -4) }}</div>
-        <span class="block text-xs text-gray-600 en dir-ltr text-right mt-1 lg:hidden">{{ $assessment->assessment->id }}</span>
+        <div class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal" x-text="assessment.assessment.title.substr(0, assessment.assessment.title.length - 4)"></div>
+        <span class="block text-xs text-gray-600 en dir-ltr text-right mt-1 lg:hidden" x-text="assessment.assessment.id"></span>
         <div class="flex items-center text-xs text-gray-400 mt-1">
-            @if ($assessment->assessment->edition)
-                <span>@lang('Edition') {{ $assessment->assessment->edition }}</span>
-                <span class="px-2">-</span>
-            @endif
-            @if ($assessment->assessment->version)
-                <span>@lang('Version') {{ $assessment->assessment->version }}</span>
-            @endif
+            <template x-if="assessment.assessment.edition">
+                <span>
+                    <span>@lang('Edition') <span x-text="assessment.assessment.edition"></span></span>
+                    <span class="px-2">-</span>
+                </span>
+            </template>
+            <span>@lang('Version') <span x-text="assessment.assessment.version"></span></span>
         </div>
     </div>
     {{-- @if ($room) --}}
@@ -35,9 +35,8 @@
     {{-- @else --}}
         <div class="flex-1 px-2 mt-2 sm:mt-0">
             <span class="text-xs text-gray-600 sm:hidden ml-2">@lang('Amount'):</span>
-            <div class="mt-2 xs:mt-0 relative inline-block" x-data="{amount:{{ $assessment->amount ?: '0' }}}">
-                <input type="tel" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" x-data="amontity" x-fill="amount">
-                <input type="hidden" name="" x-model='amount'>
+            <div class="mt-2 xs:mt-0 relative inline-block">
+                <input type="tel" name="amount" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" x-data="amontity()" x-fill="assessment.amount" x-bind="amontity" data-lijax="500 change" :data-value="assessment.amount" data-method="PUT" :data-action="'{{ route('dashboard.center.assessments.index', [$center->id]) }}' + '/' + assessment.assessment.id">
                 <span class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</span>
             </div>
         </div>
