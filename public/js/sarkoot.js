@@ -345,6 +345,7 @@
 		$(document).trigger('statio:global:init', [options.context]);
 		options.context.trigger('statio:init');
 		var ex = new CustomEvent("statio-init");
+        document.dispatchEvent(ex);
         options.context[0].dispatchEvent(ex);
 
 		var ajax_data = null;
@@ -401,6 +402,7 @@
 			$(document).trigger('statio:global:done', [options.context]);
 			options.context.trigger('statio:done');
 			var ex = new CustomEvent("statio-done");
+        	document.dispatchEvent(ex);
         	options.context[0].dispatchEvent(ex);
 		}
 		else
@@ -416,6 +418,7 @@
 			$(document).trigger('statio:global:done', [options.context]);
 			options.context.trigger('statio:done');
 			var ex = new CustomEvent("statio-done");
+        	document.dispatchEvent(ex);
         	options.context[0].dispatchEvent(ex);
 		}
 
@@ -470,6 +473,7 @@
 			$(document).trigger('statio:global:done', [options.context, response.data, response.body, jqXHR]);
 			options.context.trigger('statio:done', [response.data, response.body, jqXHR]);
 			var ex = new CustomEvent("statio-done", {detail:response.data});
+        	document.dispatchEvent(ex);
         	options.context[0].dispatchEvent(ex);
 		}
 

@@ -35,9 +35,8 @@ class CenterAssessmentController extends Controller
         $this->data->assessments = $index->assessmentsByRegion;
         $this->data->center = $index->region;
         $this->data->assessments->appends($request->all('q'));
-        if(in_array($request->header('data-xhr-base'), ['quick_search' , 'alpine-paginate'])){
-            $this->data->global->assessments = $this->data->assessments;
-            return json_encode((array) $this->data->global) . "\n<span data-xhr='paginate'>".$this->data->global->assessments->links()."</span>";
+        if($request->header('data-xhr-base') == 'quick_search'){
+            return $this->view($request, 'dashboard.centers.accounting.assessments.index-quick_search');
         }
         return $this->view($request, 'dashboard.centers.accounting.assessments.index');
     }

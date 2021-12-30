@@ -1,12 +1,12 @@
 @extends($layouts->dashboard)
 @section('content')
-    <div x-data='{assessments: {!! addcslashes(json_encode($assessments), "'") !!}}'>
+    <div>
         <div class="mt-8 mb-4">
-            <h3 class="heading" :data-total="`(${assessments.total})`" data-xhr="total">@lang('Assessments')</h3>
+            <h3 class="heading" data-xhr="total" data-total="({{ $assessments->total() }})">@lang('Assessments')</h3>
         </div>
 
-        <div class="mb-4" x-ref="quickSearch" x-on:jresp="event.detail && event.detail.assessments ? assessments = event.detail.assessments : null">
-            @include('layouts.quick_search-alpine')
+        <div class="mb-4" >
+            @include('layouts.quick_search')
         </div>
 
         @include('dashboard.centers.accounting.assessments.list')

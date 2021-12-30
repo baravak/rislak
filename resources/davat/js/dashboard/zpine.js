@@ -70,12 +70,12 @@ document.addEventListener('alpine:init', () => {
         value : function(){
             return eval(`(this.${this._amountRef} || 0).toString().replace(/[^\\d]/g, '').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '،')`)
         },
-        init: function(){
+        amontity_init: function(){
             this._amountRef = this.$el.getAttribute('x-fill')
         },
         amontity : {
             ['x-init'](){
-                return this.init.call(this, ...arguments)
+                return this.amontity_init.call(this, ...arguments)
             },
             ['x-on:focus'](){
                 return this.focus.call(this, ...arguments)
