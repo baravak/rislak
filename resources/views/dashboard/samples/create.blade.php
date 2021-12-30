@@ -1,27 +1,6 @@
 @extends('dashboard.create')
 @section('form_content')
     <div>
-        <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
-        <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}" data-placeholder="جست‌و‌جو">
-            @isset($scale)
-                <option value="{{$scale->id}}" selected>{{$scale->title}}</option>
-            @endisset
-        </select>
-        <div class="flex text-xs text-gray-400 mt-2">
-            <i class="fal fa-info-circle ml-1"></i>
-            <span>در این قسمت لیست آزمون‌های پُر کاربرد را مشاهده می‌کنید. جهت انتخاب آزمونی که در این لیست وجود ندارد، عنوان آزمون مد نظر را جست‌وجو کرده و آن را انتخاب نمایید. شما می‌توانید لیست تمام آزمون‌های موجود در سامانه را نیز در
-                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" target="_blank" class="text-blue-600 hover:text-blue-800">این صفحه</a>
-            مشاهده نمایید.
-            </span>
-        </div>
-        @isset($scale)
-        <div data-for="scale_id" class="hidden">
-            @include('dashboard.assessments.select2', ['assessments' => [$scale]])
-        </div>
-        @endisset
-    </div>
-
-    <div class="mt-4">
         <label for="room_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Room') }}</label>
         <select class="select2-select" data-relation="case_id room_client_id bulk_case_id" name="room_id"  id="room_id" data-url="{{ route('dashboard.rooms.index' , ['my_management' => 1, 'instance' => 1]) }}">
         @isset($room)
@@ -33,6 +12,19 @@
             @include('dashboard.rooms.select2', ['rooms' => [$room]])
         </div>
         @endisset
+    </div>
+
+    <div class="mt-4">
+        <label for="scale_id" data-alias="manager_id" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Scale') }}</label>
+        <select class="select2-select" multiple name="scale_id[]" id="scale_id" data-url="{{ route('dashboard.assessments.index', ['instance' => 1]) }}" data-placeholder="جست‌و‌جو">
+        </select>
+        <div class="flex text-xs text-gray-400 mt-2">
+            <i class="fal fa-info-circle ml-1"></i>
+            <span>در این قسمت لیست آزمون‌های پُر کاربرد را مشاهده می‌کنید. جهت انتخاب آزمونی که در این لیست وجود ندارد، عنوان آزمون مد نظر را جست‌وجو کرده و آن را انتخاب نمایید. شما می‌توانید لیست تمام آزمون‌های موجود در سامانه را نیز در
+                <a href="{{ route('dashboard.assessments.index') }}" data-metarget="assessments" data-metarget-pattern="^/dashboard/assessments.*" target="_blank" class="text-blue-600 hover:text-blue-800">این صفحه</a>
+            مشاهده نمایید.
+            </span>
+        </div>
     </div>
 
     <div class="mt-4">
