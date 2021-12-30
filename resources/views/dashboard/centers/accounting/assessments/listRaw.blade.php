@@ -32,9 +32,9 @@
     {{-- @else --}}
         <div class="flex-1 px-2 mt-2 sm:mt-0">
             <span class="text-xs text-gray-600 sm:hidden ml-2">@lang('Amount'):</span>
-            <div class="mt-2 xs:mt-0 relative inline-block" x-data='{amount:{{ $assessment->amount ?: '0' }}}'>
-                <input type="tel" name="amount" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" x-data="amontity()" x-fill="amount" x-bind="amontity" data-lijax="700 change" :value="amount"  :data-value="amount" data-method="PUT" data-action="{{ route('dashboard.center.assessments.index', [$center->id]) }}/{{ $assessment->assessment->id }}" autocomplete="off">
-                <span class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</span>
+            <div class="mt-2 xs:mt-0 relative inline-block">
+                <input id="amount-input-{{ $assessment->assessment->id }}"  x-data='{amount:{{ $assessment->amount ?: '0' }}}' type="tel" name="amount" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" xdata-lijax="700 change"   :data-value="amount" data-method="PUT" data-action="{{ route('dashboard.center.assessments.index', [$center->id]) }}/{{ $assessment->assessment->id }}" autocomplete="off" x-amontity="amount" x-lijax:keyup.700ms x-lijax:change x-lijax:paste x-on:statio-init="$el.readonly = true" x-on:statio-done="$el.readonly = false">
+                <label for="amount-input-{{ $assessment->assessment->id }}" class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</label>
             </div>
         </div>
     {{-- @endif --}}

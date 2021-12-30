@@ -52,6 +52,145 @@
 	window.JResp = jresp;
 })();
 (function(){
+    function send(options){
+        options = typeof options === 'object' && options !== null && !Array.isArray(options) ? options : {}
+        var context = this;
+        if($(context).data('lijax-statio')){
+            $(context).data('lijax-statio').ajax.abort();
+        }
+        var href = url.parse(location.href);
+        var name = $(context).attr('data-name') || $(context).attr('name');
+        if(href.get && href.get[name])
+        {
+            delete href.get[name];
+        }
+        var get = url.buildget(href.get);
+        href = href.url.replace(/\?(.*)$/, get ? '?' + get : '');
+        var action = $(context).attr('href') || $(context).attr('action') || $(context).attr('data-action') || href;
+        var method = $(context).attr('data-method') || $(context).attr('method') || 'GET';
+        var state = $(context).attr('data-state');
+        var value = undefined;
+        $(context).addClass('lijax-sending');
+        $(context).on('statio:done', function () {
+            $(this).removeClass('lijax-sending');
+        });
+        if($(context).is('form'))
+        {
+            var Data = new FormData(context);
+            var data = {};
+            if ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length)
+            {
+                data = Data;
+            }
+            else
+            {
+                Data.forEach(function (value, name) {
+                    data[name] = /\[\]$/.test(name) ? Data.getAll(name) : Data.get(name);
+                });
+            }
+            state = false;
+            $('input, select, textarea, button', context).not(':disabled').addClass('lijax-disable').attr('disabled', 'disabled');
+            $(context).on('statio:done', function () {
+                $('.lijax-disable', this).removeClass('lijax-disable').removeAttr('disabled')
+            });
+        }
+        else
+        {
+            value = $(context).attr('data-value') || $(context).val() || null;
+            if($(context).is(':checkbox'))
+            {
+                value = $(context).is(':checked') ? 1 : 0;
+            }
+            if(options.back_value == value && $(context).is('input, textarea, select') && !options.onFire) return;
+            options.back_value = value;
+            if($(context).is(':file')){
+                var data = new FormData();
+                data.append(name, context.files[0]);
+            }else{
+                var data = {};
+                if(name)
+                {
+                    data[name] = value;
+                }
+                if($(context).attr('data-merge')){
+                    var merge = JSON.parse($(context).attr('data-merge'));
+                    $.extend(data, merge)
+                }
+            }
+        }
+        if ($(context).attr('data-query'))
+        {
+            var action_query = url.parse(action);
+            var data_query = url.parse('?' + $(context).attr('data-query'));
+            action_query.get = $.extend(null, (action_query.get || {}), data_query.get);
+            action = url.build(action_query);
+        }
+        var headers = {};
+        if ($(context).attr('data-xhrBase'))
+        {
+            headers = {
+                'Data-xhr-base': $(context).attr('data-xhrBase')
+            };
+        }
+        var preload = $('#' + $(context).attr('data-lijax-preload')).eq(0);
+        var success = $('#' + $(context).attr('data-lijax-success')).eq(0);
+        $(context).on('statio:jsonResponse', function (event, data, jqXHR) {
+            if (preload && jqXHR.status != 202) {
+                $(this).removeClass('lijax-preload');
+                if (success && ['Created', 'OK'].indexOf(jqXHR.statusText) >= 0) {
+                    preload.hide();
+                    success.hide().removeClass('d-none').fadeIn('fast');
+                }
+                else
+                {
+                    preload.hide();
+                    $(context).fadeIn('fast');
+                }
+            }
+        });
+        var remove_query = $(context).attr('data-remove-query');
+        if(remove_query){
+            var a_url = url.parse(action);
+            var queries = remove_query.split(' ');
+            if(a_url.get){
+                for(var i = 0; i < queries.length; i++){
+                    if(a_url.get[queries[i]]){
+                        delete a_url.get[queries[i]];
+                    }
+                }
+            }
+            var s_queries = [];
+            for(var index in (a_url.get || {})){
+                s_queries.push(index +'='+a_url.get[index]);
+            }
+            a_url.query = s_queries.join('&');
+            action = url.build(a_url);
+        }
+        var uploadFile = $(context).is(':file') || ($(context).is('form') && ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length))  ? true : false;
+        $(context).trigger('lijax:data', [data]);
+        var statio = new Statio({
+            type : state ? 'both' : 'render',
+            context: context,
+            ajax : {
+                contentType:  uploadFile ? false : 'application/x-www-form-urlencoded; charset=UTF-8',
+                processData: uploadFile ? false : true,
+                cache       : false,
+                method : method,
+                data : data,
+                headers: headers,
+                beforeSend : function(){
+                    if ($(context).is('[data-lijax-preload]'))
+                    {
+                        $(context).addClass('lijax-preload').hide();
+                        preload.hide().removeClass('d-none').fadeIn('fast');
+                    }
+                }
+            },
+            url : action
+        });
+        $(context).data('lijax-statio', statio);
+        return false;
+    }
 	function lijax(context, onFire)
 	{
         var fieldContext = $(context).attr('data-lijaxContext') ? document.querySelector($(context).attr('data-lijaxContext')) : context;
@@ -80,156 +219,16 @@
                 $(context).on('keyup', function(){
                     if(Timeout) clearTimeout(Timeout);
                     Timeout = setTimeout(function(){
-                        send.call(fieldContext);
+                        send.call(fieldContext, {'back_value' : back_value, 'onFire' : onFire});
                     }, Time);
                 });
             }
             else
             {
                 $(context).on(fire[i], function(){
-                    send.call(fieldContext);
+                    send.call(fieldContext, {'back_value' : back_value, 'onFire' : onFire});
                 });
             }
-        }
-
-        function send()
-        {
-            var context = this;
-            if($(context).data('lijax-statio')){
-                $(context).data('lijax-statio').ajax.abort();
-            }
-            var href = url.parse(location.href);
-            var name = $(context).attr('data-name') || $(context).attr('name');
-            if(href.get && href.get[name])
-            {
-                delete href.get[name];
-            }
-            var get = url.buildget(href.get);
-            href = href.url.replace(/\?(.*)$/, get ? '?' + get : '');
-            var action = $(context).attr('href') || $(context).attr('action') || $(context).attr('data-action') || href;
-            var method = $(context).attr('data-method') || $(context).attr('method') || 'GET';
-            var state = $(context).attr('data-state');
-            var value = undefined;
-            $(context).addClass('lijax-sending');
-            $(context).on('statio:done', function () {
-                $(this).removeClass('lijax-sending');
-            });
-            if($(context).is('form'))
-            {
-                var Data = new FormData(context);
-                var data = {};
-				if ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length)
-                {
-                    data = Data;
-                }
-                else
-                {
-                    Data.forEach(function (value, name) {
-                        data[name] = /\[\]$/.test(name) ? Data.getAll(name) : Data.get(name);
-                    });
-                }
-                state = false;
-                $('input, select, textarea, button', context).not(':disabled').addClass('lijax-disable').attr('disabled', 'disabled');
-                $(context).on('statio:done', function () {
-                    $('.lijax-disable', this).removeClass('lijax-disable').removeAttr('disabled')
-                });
-            }
-            else
-            {
-                value = $(context).attr('data-value') || $(context).val() || null;
-                if($(context).is(':checkbox'))
-                {
-                    value = $(context).is(':checked') ? 1 : 0;
-                }
-                if(back_value == value && $(context).is('input, textarea, select') && !onFire) return;
-                back_value = value;
-                if($(context).is(':file')){
-                    var data = new FormData();
-                    data.append(name, context.files[0]);
-                }else{
-                    var data = {};
-                    if(name)
-                    {
-                        data[name] = value;
-                    }
-                    if($(context).attr('data-merge')){
-                        var merge = JSON.parse($(context).attr('data-merge'));
-                        $.extend(data, merge)
-                    }
-                }
-            }
-            if ($(context).attr('data-query'))
-            {
-                var action_query = url.parse(action);
-                var data_query = url.parse('?' + $(context).attr('data-query'));
-                action_query.get = $.extend(null, (action_query.get || {}), data_query.get);
-                action = url.build(action_query);
-            }
-            var headers = {};
-            if ($(context).attr('data-xhrBase'))
-            {
-                headers = {
-                    'Data-xhr-base': $(context).attr('data-xhrBase')
-                };
-            }
-            var preload = $('#' + $(context).attr('data-lijax-preload')).eq(0);
-            var success = $('#' + $(context).attr('data-lijax-success')).eq(0);
-            $(context).on('statio:jsonResponse', function (event, data, jqXHR) {
-                if (preload && jqXHR.status != 202) {
-                    $(this).removeClass('lijax-preload');
-                    if (success && ['Created', 'OK'].indexOf(jqXHR.statusText) >= 0) {
-                        preload.hide();
-                        success.hide().removeClass('d-none').fadeIn('fast');
-                    }
-                    else
-                    {
-                        preload.hide();
-                        $(context).fadeIn('fast');
-                    }
-                }
-            });
-            var remove_query = $(context).attr('data-remove-query');
-            if(remove_query){
-                var a_url = url.parse(action);
-                var queries = remove_query.split(' ');
-                if(a_url.get){
-                    for(var i = 0; i < queries.length; i++){
-                        if(a_url.get[queries[i]]){
-                            delete a_url.get[queries[i]];
-                        }
-                    }
-                }
-                var s_queries = [];
-                for(var index in (a_url.get || {})){
-                    s_queries.push(index +'='+a_url.get[index]);
-                }
-                a_url.query = s_queries.join('&');
-                action = url.build(a_url);
-            }
-            var uploadFile = $(context).is(':file') || ($(context).is('form') && ($(context).attr('enctype') == 'multipart/form-data' || $('input:file', context).length))  ? true : false;
-            $(context).trigger('lijax:data', [data]);
-            var statio = new Statio({
-                type : state ? 'both' : 'render',
-                context: context,
-                ajax : {
-					contentType:  uploadFile ? false : 'application/x-www-form-urlencoded; charset=UTF-8',
-					processData: uploadFile ? false : true,
-                    cache       : false,
-                    method : method,
-                    data : data,
-                    headers: headers,
-                    beforeSend : function(){
-                        if ($(context).is('[data-lijax-preload]'))
-                        {
-                            $(context).addClass('lijax-preload').hide();
-                            preload.hide().removeClass('d-none').fadeIn('fast');
-                        }
-                    }
-                },
-                url : action
-            });
-            $(context).data('lijax-statio', statio);
-            return false;
         }
         if (onFire)
         {
@@ -237,6 +236,7 @@
         }
     }
     window.Lijax = lijax;
+    window.LijaxFire = send;
 })();
 (function(){
 	var bodyStatio = null;

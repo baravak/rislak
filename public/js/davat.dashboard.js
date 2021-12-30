@@ -13054,6 +13054,108 @@ if (!Element.prototype.matches) {
 
 }));
 
+Alpine.directive('amontity', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    const amount = evaluate(expression)
+    el.value = (amount || 0).toString().replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
+    function keyup(e){
+        if(e.type == 'paste'){
+            const paste  = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('text')
+            let _start = e.target.selectionStart
+            let _end = e.target.selectionEnd
+            const val = el.value
+            el.value = `${val.substring(0, _start)}${paste}${val.substring(_end)}`
+            el.setSelectionRange(_start + paste.length, _start + paste.length)
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if(el.value == '0') return
+        const _value = el.value
+        if(!el.value) {
+            el.value = '0'
+            el.setSelectionRange(0, 1)
+        }
+        let value = ''
+        let start = e.target.selectionStart;
+        let end = e.target.selectionStart;
+        el.value.split('').forEach(function(char, i){
+            if(!(/\d/.test(char))){
+                start = start > i ? Math.max(0, start -1) : start
+                end = end > i ? Math.max(0, end -1) : end
+                return
+            }
+            value = `${value}${char}`
+        })
+        evaluate(`${expression} = ${value|| 0}`)
+        let length = value.length
+        el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
+        if(_value != el.value){
+            const ov = length%3
+            const additionalStart = start <= ov? start : start + Math.floor((start-1) / 3)
+            const additionalEnd = end <= ov? end : end + Math.floor((end-1) / 3)
+            el.setSelectionRange(additionalStart, additionalEnd)
+        }
+    }
+    function keydown(e){
+        let start = e.target.selectionStart;
+        let end = e.target.selectionStart;
+        const match = this.value.match(/^0+/)
+        if(match){
+            const length = match[0].length
+            this.setSelectionRange(Math.max(0, start -length), Math.max(end+length))
+        }
+    }
+    function focus(e){
+        if(el.value === ''){
+            el.value = '0'
+        }
+        if(el.value === '0'){
+            el.setSelectionRange(0, 1)
+        }
+    }
+    el.addEventListener('keydown', keydown)
+    el.addEventListener('keyup', keyup)
+    el.addEventListener('paste', keyup)
+    el.addEventListener('focus', focus)
+})
+
+
+Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    if(!el._lijaxEvent){
+        el._lijaxEvent = {}
+    }
+    function getValue(){
+        return el.value
+    }
+    el._lijaxOldValue = getValue()
+    function setUp(e){
+        var event = el._lijaxEvent[e.type]
+        if(event.timeout){
+            clearTimeout(event.timeout)
+        }
+        if(el._lijaxOldValue == getValue()) return
+        el._lijaxOldValue = getValue()
+        if(!event.delay){
+            LijaxFire.call(el)
+        }else{
+            _self = this
+            event.timeout = setTimeout(function(){
+                LijaxFire.call(el)
+            }, event.delay)
+        }
+    }
+    var event = value
+    if(el._lijaxEvent[event]){
+        el.removeEventListener(event, el._lijaxEvent[event].event)
+    }
+    var modifier = modifiers[0] && /^\d+ms$/.test(modifiers[0]) ? parseInt(modifiers[0].substr(0, modifiers[0].length -2)) : undefined
+    el._lijaxEvent[event] = {
+        delay : modifier,
+        event : setUp
+    }
+    el.addEventListener(event, setUp)
+})
+
+
 function amontifa(_amount, _unit){
     return {
         _amount : _amount,
@@ -13064,90 +13166,3 @@ function amontifa(_amount, _unit){
     }
 }
 
-document.addEventListener('alpine:init', () => {
-    removeFirstZiro = function(e){
-        let start = e.target.selectionStart;
-        let end = e.target.selectionStart;
-        const match = this.value.match(/^0+/)
-        if(match){
-            const length = match[0].length
-            this.value = this.value.substr(length)
-            this.setSelectionRange(Math.max(0, start -length), Math.max(end-length))
-        }
-    }
-    Alpine.data('amontity', () => ({
-        _amountRef : null,
-        focus : function(){
-            if(this.$el.value === '0'){
-                this.$el.setSelectionRange(0, 1)
-            }
-        },
-        keydown : function(e){
-            removeFirstZiro.call(this.$el, e)
-        },
-        keyup : function(e){
-            if(e.type == 'paste'){
-                const paste  = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('text')
-                let _start = e.target.selectionStart
-                let _end = e.target.selectionEnd
-                const val = this.$el.value
-                this.$el.value = `${val.substring(0, _start)}${paste}${val.substring(_end)}`
-                this.$el.setSelectionRange(_start + paste.length, _start + paste.length)
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            const _value = this.$el.value
-            if(!this.$el.value) {
-                this.$el.value = '0'
-                this.$el.setSelectionRange(0, 1)
-            }
-            removeFirstZiro.call(this.$el, e)
-            let value = ''
-            let start = e.target.selectionStart;
-            let end = e.target.selectionStart;
-            this.$el.value.split('').forEach(function(char, i){
-                if(!(/\d/.test(char))){
-                    start = start > i ? Math.max(0, start -1) : start
-                    end = end > i ? Math.max(0, end -1) : end
-                    return
-                }
-                value = `${value}${char}`
-            })
-            eval(`this.${this._amountRef} = value`)
-            let length = value.length
-            this.$el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '،')
-            if(_value != this.$el.value){
-                const ov = length%3
-                const additionalStart = start <= ov? start : start + Math.floor((start-1) / 3)
-                const additionalEnd = end <= ov? end : end + Math.floor((end-1) / 3)
-                this.$el.setSelectionRange(additionalStart, additionalEnd)
-            }
-        },
-        value : function(){
-            return eval(`(this.${this._amountRef} || 0).toString().replace(/[^\\d]/g, '').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '،')`)
-        },
-        amontity_init: function(){
-            this._amountRef = this.$el.getAttribute('x-fill')
-        },
-        amontity : {
-            ['x-init'](){
-                return this.amontity_init.call(this, ...arguments)
-            },
-            ['x-on:focus'](){
-                return this.focus.call(this, ...arguments)
-            },
-            [':value'](){
-                return this.value.call(this, ...arguments)
-            },
-            ['x-on:keydown'](){
-                return this.keydown.call(this, ...arguments)
-            },
-            ['x-on:keyup'](){
-                return this.keyup.call(this, ...arguments)
-            },
-            ['x-on:paste'](){
-                return this.keyup.call(this, ...arguments)
-            }
-        }
-    }));
-});
