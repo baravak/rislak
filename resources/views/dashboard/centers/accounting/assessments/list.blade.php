@@ -8,7 +8,7 @@
         {{-- @else --}}
             <div class="flex-1 px-2">@lang('Amount')</div>
         {{-- @endif --}}
-        <div class="w-10 px-2 hidden lg:block"></div>
+        <div class="w-20 px-2 hidden lg:block"></div>
     </div>
         @foreach ($assessments as $assessment)
             @include('dashboard.centers.accounting.assessments.listRaw')
