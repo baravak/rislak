@@ -227,6 +227,7 @@
             {
                 $(context).on(fire[i], function(){
                     send.call(fieldContext, {'back_value' : back_value, 'onFire' : onFire});
+                    return false;
                 });
             }
         }
