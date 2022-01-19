@@ -18,7 +18,7 @@
                     @include('samples.panel.help')
                 </div>
                 @includeWhen($sample->prerequisites, 'samples.panel.information')
-                @include('samples.panel.description')
+                @includeWhen($sample->description, 'samples.panel.description')
                 @include('samples.panel.items')
                 @include('samples.panel.close')
             </div>
