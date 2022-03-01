@@ -8,3 +8,12 @@ function amontifa(_amount, _unit){
     }
 }
 
+Alpine.directive('currency', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    var amount = evaluateLater(expression)
+    effect(()=>{
+            amount(change => {
+                el.innerText = (evaluate(expression) || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')
+                el.innerText += ['', ' تومانءء', ' تومانءء', ' تومانءءء'][modifiers[0] || 0]
+        })
+    })
+})

@@ -21,4 +21,13 @@ $('body').on('statio:dashboard:samples:create', function(){
         }
     });
     $('[role=tabpanel]:not([hidden])').trigger('tabby.show');
+
+    document.querySelector('#room_id').onchange = function(){
+        var event = new Event('select2seleced')
+        this.dispatchEvent(event);
+    }
+    // document.querySelector('#scale_id').onchange = function(){
+    //     var event = new Event('select2seleced')
+    //     this.dispatchEvent(event);
+    // }
 });

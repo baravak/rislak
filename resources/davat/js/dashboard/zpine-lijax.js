@@ -1,4 +1,5 @@
 Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    var ignore_event_changer = ['click']
     if(!el._lijaxEvent){
         el._lijaxEvent = {}
     }
@@ -11,7 +12,7 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
         if(event.timeout){
             clearTimeout(event.timeout)
         }
-        if(el._lijaxOldValue == getValue()) return
+        if(el._lijaxOldValue == getValue() && ignore_event_changer.indexOf(e.type) === -1) return
         el._lijaxOldValue = getValue()
         if(!event.delay){
             LijaxFire.call(el)

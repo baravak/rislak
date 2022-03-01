@@ -108,10 +108,12 @@ Route::get('centers/{center}/commissions', 'CenterAccountingController@commissio
 Route::put('centers/{center}/commissions', 'CenterAccountingController@commissionUpdate')->name('center.commissions.update');
 Route::get('centers/{center}/assessments', 'CenterAssessmentController@index')->name('center.assessments.index');
 Route::put('centers/{center}/assessments/{assessment}', 'CenterAssessmentController@update')->name('center.assessments.update');
+Route::delete('centers/{center}/assessments/{assessment}', 'CenterAssessmentController@delete')->name('center.assessments.delete');
 
 Route::get('centers/{center}/balance-sheets', 'CenterAccountingController@balanceSheet')->name('center.balanceSheets.index');
 Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetShow')->name('center.balanceSheets.show');
 Route::post('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetStore')->name('center.balanceSheets.store');
+Route::get('rooms/{room}/assessments', 'AtomAssessmentController@index')->name('atom.assessments.index');
 
 Route::get('centers/{center}/bank', 'CenterAccountingController@bankShow')->name('center.bank.show');
 Route::post('centers/{center}/bank', 'CenterAccountingController@bankStore')->name('center.bank.store');

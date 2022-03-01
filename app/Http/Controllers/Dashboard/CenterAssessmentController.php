@@ -55,4 +55,17 @@ class CenterAssessmentController extends Controller
             'amount' => $index->updateRegionAssessment->amount,
         ];
     }
+
+    public function delete(Request $request, $region, $assessment){
+        $query = 'mutation($region: RegionID!, $assessment: String!){
+            deleteRegionAssessment(region:$region, assessment:$assessment)
+        }';
+        $index = Client::query($query, [
+            'region' => $region,
+            'assessment' => $assessment,
+        ]);
+        if($index instanceof \App\Graphql\Result){
+            return [];
+        }
+    }
 }

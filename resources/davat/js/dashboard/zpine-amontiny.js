@@ -1,4 +1,10 @@
 Alpine.directive('amontity', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    const amountEffect = evaluateLater(expression)
+    effect(()=>{
+            amountEffect((...amount) => {
+                el.value = (amount || 0).toString().replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
+        })
+    })
     const amount = evaluate(expression)
     el.value = (amount || 0).toString().replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
     function keyup(e){

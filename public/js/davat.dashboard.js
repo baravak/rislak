@@ -543,6 +543,15 @@ $('body').on('statio:dashboard:samples:create', function(){
         }
     });
     $('[role=tabpanel]:not([hidden])').trigger('tabby.show');
+
+    document.querySelector('#room_id').onchange = function(){
+        var event = new Event('select2seleced')
+        this.dispatchEvent(event);
+    }
+    // document.querySelector('#scale_id').onchange = function(){
+    //     var event = new Event('select2seleced')
+    //     this.dispatchEvent(event);
+    // }
 });
 
 (function(){
@@ -13055,6 +13064,12 @@ if (!Element.prototype.matches) {
 }));
 
 Alpine.directive('amontity', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    const amountEffect = evaluateLater(expression)
+    effect(()=>{
+            amountEffect((...amount) => {
+                el.value = (amount || 0).toString().replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
+        })
+    })
     const amount = evaluate(expression)
     el.value = (amount || 0).toString().replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
     function keyup(e){
@@ -13120,6 +13135,7 @@ Alpine.directive('amontity', (el, { value, modifiers, expression }, { Alpine, ef
 
 
 Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    var ignore_event_changer = ['click']
     if(!el._lijaxEvent){
         el._lijaxEvent = {}
     }
@@ -13132,7 +13148,7 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
         if(event.timeout){
             clearTimeout(event.timeout)
         }
-        if(el._lijaxOldValue == getValue()) return
+        if(el._lijaxOldValue == getValue() && ignore_event_changer.indexOf(e.type) === -1) return
         el._lijaxOldValue = getValue()
         if(!event.delay){
             LijaxFire.call(el)
@@ -13156,6 +13172,77 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
 })
 
 
+"use strict";
+(function(){
+    templateResult = function(data, el, evaluate, expression){
+        var template_id = el.getAttribute('x-template-id') || el.id
+        var template = document.querySelector(`[x-template-result="${template_id}"]`)
+        if(template){
+            var temp_dom = template.content.cloneNode(true).childNodes[1];
+            temp_dom.setAttribute('x-data', `result = ${JSON.stringify(data)}`);
+        }
+        return template && data.text != 'Searching…' ? temp_dom : data.text
+    }
+    templateSelection = function(data, el, evaluate, expression){
+        var template_id = el.getAttribute('x-template-id') || el.id
+        var template = document.querySelector(`[x-template-selection="${template_id}"]`)
+        if(template){
+            var temp_dom = template.content.cloneNode(true).childNodes[1];
+            temp_dom.setAttribute('x-data', `result = ${JSON.stringify(data)}`);
+        }
+        return template ? temp_dom : templateResult.call(this, data, el, evaluate, expression)
+    }
+    var loaded = false
+    var init = [];
+    function initFuction(el, evaluate, expression, effect){
+        $(el).select2({
+            width: '100%',
+            minimumInputLength: 0,
+            dir: "rtl",
+            templateResult : function(data){return templateResult.call(this, data, el, evaluate, expression)},
+            templateSelection : function(data){return templateSelection.call(this, data, el, evaluate, expression)},
+            ajax: {
+                processResults : function(data){
+                    return {
+                        results: data.data || data
+                    }
+                },
+                data: function (params) {
+                    return {
+                        q: params.term || ''
+                    }
+                },
+              url: function(){
+                return el.getAttribute('data-url')
+              },
+              dataType: 'json'
+            }
+          })
+          $(el).on('select2:select', function(e) {
+              var event = new CustomEvent('select', {detail: e})
+              this.dispatchEvent(event)
+          })
+          $(el).on('select2:unselect', function(e) {
+            var event = new CustomEvent('unselect', {detail: e})
+            this.dispatchEvent(event)
+        })
+    }
+    $(document).ready(function(){
+        loaded = true
+        init.forEach((i) => {
+            i()
+        })
+    })
+    Alpine.directive('select2', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+        var _init = initFuction.bind(this, el, evaluate, expression, effect)
+        if(loaded) _init()
+        else init.push(_init)
+    })
+})()
+
+
+
+
 function amontifa(_amount, _unit){
     return {
         _amount : _amount,
@@ -13166,3 +13253,12 @@ function amontifa(_amount, _unit){
     }
 }
 
+Alpine.directive('currency', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    var amount = evaluateLater(expression)
+    effect(()=>{
+            amount(change => {
+                el.innerText = (evaluate(expression) || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،')
+                el.innerText += ['', ' تومانءء', ' تومانءء', ' تومانءءء'][modifiers[0] || 0]
+        })
+    })
+})
