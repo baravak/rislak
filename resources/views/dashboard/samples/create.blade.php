@@ -84,6 +84,7 @@
             </div>
         </div>
         </template>
+        <template x-if="!purchase"><span id="amountSum" class="hidden"></span></template>
     </div>
 
     <div class="mt-4">
