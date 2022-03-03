@@ -35,7 +35,7 @@
         </div>
         <div class="mt-4">
             <label for="purchase" class="flex items-center cursor-pointer group">
-                <input checked id="purchase" name="purchase" type="checkbox" x-model="purchase" class="w-5 h-5 rounded border border-gray-400 focus">
+                <input checked id="purchase" name="purchase" type="checkbox" x-model="purchase" class="w-5 h-5 rounded border border-gray-400 focus" x-on:change="$el.checked && document.querySelector('#amountSum').dispatchEvent(new Event('sum')) ">
                 <span class="text-sm text-gray-600 mr-1.5 group-hover:text-blue-600" x-show="purchase">@lang('مراجع بابت انجام آزمون‌ها باید به مرکز هزینه پرداخت کند')</span>
                 <span class="text-sm text-red-600 mr-1.5 font-bold" x-show="!purchase">@lang('مراجع بابت انجام آزمون‌ها «نباید» به مرکز هزینه پرداخت کند')</span>
             </label>
