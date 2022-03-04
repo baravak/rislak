@@ -30,7 +30,7 @@
                                 <span class="inline-flex text-left dir-ltr">{{ $number }}</span>
                             </a>
                         @else
-                            <a href="{{ $number }}" class="font-medium ml-3 direct">
+                            <a href="{{ $number }}" class="font-medium ml-3 direct" target="__blank">
                                 <i class="fal fa-link text-sm leading-normal ml-1"></i>
                                 <span class="inline-flex text-left dir-ltr">{{ $number }}</span>
                             </a>
