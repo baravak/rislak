@@ -24,10 +24,17 @@
             @isset ($center->detail->phone_numbers)
                 <div class="flex flex-wrap text-gray-700 text-xs mt-1">
                     @foreach ($center->detail->phone_numbers ?: [] as $number)
-                        <a href="tel:{{ $number }}" class="font-medium ml-3 direct">
-                            <i class="fal fa-phone-alt text-sm leading-normal ml-1"></i>
-                            <span class="inline-flex text-left dir-ltr">{{ $number }}</span>
-                        </a>
+                        @if (preg_match('/^[0-9\-\+]*$/', $number))
+                            <a href="tel:{{ $number }}" class="font-medium ml-3 direct">
+                                <i class="fal fa-link-alt text-sm leading-normal ml-1"></i>
+                                <span class="inline-flex text-left dir-ltr">{{ $number }}</span>
+                            </a>
+                        @else
+                            <a href="{{ $number }}" class="font-medium ml-3 direct">
+                                <i class="fal fa-link text-sm leading-normal ml-1"></i>
+                                <span class="inline-flex text-left dir-ltr">{{ $number }}</span>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
             @endisset
