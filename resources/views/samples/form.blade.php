@@ -15,7 +15,7 @@
 @include('layouts.public-scripts')
 @section('body')
     <body class="flex flex-col" data-page="{{isset($global->page) ? $global->page : ''}}">
-        @include('samples.payment')
+        @include('samples.formBody')
         <script>
             window.sample_id = "{{ $sample->id }}";
         </script>
