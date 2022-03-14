@@ -41,8 +41,7 @@
             </button> --}}
         </div>
     {{-- @endif --}}
-
-    @if ($assessment->amount)
+    @if ($assessment->allowed)
         <div class="w-20 dir-ltr text-left px-2 hidden sm:flex" x-data="">
             <button x-lijax:click data-method="DELETE" data-action="{{ route('dashboard.center.assessments.index', [$center->id]) }}/{{ $assessment->assessment->id }}" class="text-gray-600 hover:text-red-600 transition mr-4" title="حذف آزمون">
                 <i class="fal fa-trash-alt pt-0.5 text-sm"></i>

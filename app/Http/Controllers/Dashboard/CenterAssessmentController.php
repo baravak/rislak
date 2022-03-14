@@ -15,6 +15,7 @@ class CenterAssessmentController extends Controller
                 paginatorInfo{ total, hasMorePages, count, currentPage, perPage }
                 data{
                     amount
+                    allowed
                     assessment{
                         version edition edition_version id title
                         parent{id title }
