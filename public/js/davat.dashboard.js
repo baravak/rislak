@@ -13103,7 +13103,6 @@ Alpine.directive('amontity', (el, { value, modifiers, expression }, { Alpine, ef
             }
             value = `${value}${char}`
         })
-        console.log(value)
         evaluate(`${expression} = ${value|| 0}`)
         let length = value.length
         el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '٬')
