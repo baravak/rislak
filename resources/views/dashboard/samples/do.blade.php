@@ -21,6 +21,10 @@
     </div>
 @endcan
 
+{{-- <div class="inline-block">
+    <a href="#" target="_blank" class="inline-flex items-center justify-center w-20 h-7 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">@lang('Payment')</a>
+</div> --}}
+
 @if ($sample->status == 'closed')
     @can('management', [$sample, isset($room) ? $room : null])
         <span class="text-xs text-gray-500">
