@@ -1,0 +1,1 @@
+<input type="text" disabled class="border border-gray-500 h-10 rounded w-full text-sm disabled:opacity-50 focus mt-1" value="جواب سوال دوم در این  قسمت دیده میشه">

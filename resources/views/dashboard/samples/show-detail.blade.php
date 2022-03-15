@@ -46,7 +46,7 @@
         <h4 class="font-semibold text-gray-700 mb-4">{{ __('Sample items') }}</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($sample->items as $item)
-                <div>
+                <div class="flex flex-col justify-between p-4 bg-gray-50 rounded-md">
                     @include('dashboard.samples.shows.'. $item->answer->type)
                 </div>
             @endforeach
