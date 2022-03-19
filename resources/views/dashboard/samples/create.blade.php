@@ -77,8 +77,8 @@
                 </div>
             </div>
             <div class="mt-4">
-                <label for="default" class="flex items-center cursor-pointer group">
-                    <input checked id="default" type="checkbox" class="w-5 h-5 rounded border border-gray-400 focus">
+                <label for="prepayment" class="flex items-center cursor-pointer group">
+                    <input checked id="prepayment" name="prepayment" type="checkbox" class="w-5 h-5 rounded border border-gray-400 focus">
                     <span class="text-sm text-gray-600 mr-1.5 group-hover:text-blue-600">@lang('هزینه‌ی آزمون پیش از انجام، توسط مراجع پرداخت شود.')</span>
                 </label>
             </div>

@@ -11,9 +11,12 @@
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600 block text-right dir-ltr cursor-default">
+            <span class="text-xs text-gray-600 block text-right cursor-default">
                 @if ($billing->action == 'sessions')
                     <a class="underline" href="{{ route('dashboard.sessions.show', $billing->action_serial) }}">{{ $billing->title }}</a>
+                @elseif($billing->action == 'samples')
+                    {{ $billing->title }}
+                    <span class="dir-ltr inline-block">{{ $billing->action_serial }}</span>
                 @else
                     {{ $billing->title }}
                 @endif

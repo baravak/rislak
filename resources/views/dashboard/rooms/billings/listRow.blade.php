@@ -19,6 +19,8 @@
                 <span class="dir-ltr inline-block">
                     @if ($billing->session)
                         <a class="text-blue-500 underline" href="{{ route('dashboard.sessions.show', $billing->session->id) }}">{{ $billing->session->id }}</a>
+                    @elseif($billing->sample)
+                        <a class="text-blue-500 underline" href="{{ urldecode(route('dashboard.samples.show', $billing->sample->id)) }}">{{ $billing->sample->id }}</a>
                     @endif
                 </span>
             </span>
