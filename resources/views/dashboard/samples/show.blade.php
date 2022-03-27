@@ -48,40 +48,16 @@
             </div>
         </div>
         <div class="border border-gray-200 rounded p-4 cursor-default">
-            <div class="flex justify-between items-center">
-                <div class="text-xs text-gray-500 variable-font-light">@lang('مبلغ آزمون')</div>
-                <div class="text-green-700 variable-font-semibold">
-                    <span class="text-lg">۸۵‌٬۰۰۰</span>
-                    <span class="text-xs"> @lang('تومنء')</span>
+            @if ($sample->total_amount)
+                @include('dashboard.samples.sampleBilling')
+            @else
+                <div class="flex justify-between items-center">
+                    <div class="text-xs text-gray-500 variable-font-light">@lang('مبلغ آزمون')</div>
+                    <div class="text-green-700 variable-font-semibold">
+                        <span class="text-lg">رایگان</span>
+                    </div>
                 </div>
-            </div>
-            <div class="flex justify-between items-center mt-2">
-                <div class="text-xs text-gray-500 variable-font-light">@lang('وضعیت پرداخت')</div>
-                <a href="#" class="text-xs xs:text-sm text-gray-600 hover:text-blue-600 transition underline">
-                    <span>پرداخت شده</span>
-                    <span> (BL966663)</span>
-                </a>
-                {{-- <div class="text-xs xs:text-sm text-gray-600">نقدی</div> --}}
-            </div>
-            <div class="flex justify-between items-center mt-3">
-                <div class="text-xs text-gray-500 variable-font-light">@lang('زمان پرداخت')</div>
-                <div class="text-xs xs:text-sm text-gray-600">5 فروردین 01 ، ساعت 11:45</div>
-            </div>
-            {{-- <div class="flex justify-between items-center mt-3">
-                <div class="text-xs text-gray-500 variable-font-light">@lang('کیف ‌پول')</div>
-                <div>
-                    <select class="text-xs text-gray-700 border border-gray-400 rounded py-1 px-8 w-44 lijax-sending" name="treasuries">
-                        <option value="select" selected="selected">انتخاب کنید</option>
-                        <option value="treasurie1">کیف پول ۱</option>
-                        <option value="treasurie2">کیف پول شماره و رقم خورده عدد ۲ و خیلی بیشتر از آن چی میشه؟</option>
-                    </select>
-                    <span class="spinner relative top-3 -right-0.5"></span>
-                </div>
-            </div> --}}
-            {{-- <label for="prepayment" class="flex items-center cursor-pointer group mt-3">
-                <input checked id="prepayment" name="prepayment" type="checkbox" class="w-4 h-4 rounded border border-gray-400 focus">
-                <span class="text-xs text-gray-500 mr-1.5 group-hover:text-blue-600">@lang('هزینه‌ی آزمون پیش از انجام، توسط مراجع پرداخت شود.')</span>
-            </label> --}}
+            @endif
         </div>
     </div>
     @if (in_array($sample->status, ['scoring', 'creating_files']))

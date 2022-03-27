@@ -9,7 +9,9 @@ use App\scoreResult;
 use App\Session;
 use App\TherapyCase;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class SampleController extends Controller
 {
@@ -120,5 +122,41 @@ class SampleController extends Controller
             return [];
         }
         return $this->view($request, 'dashboard.samples.tables.status-list');
+    }
+
+    public function purchase(Request $request, $sample){
+        try {
+            $sample = Sample::purchase($sample, $request->all());
+            if($request->header('data-xhr-base') == 'inline'){
+                return $sample->response()->json([
+                    'redirect' => urldecode(route('dashboard.samples.show', $sample->action_serial))
+                ]);
+            }
+
+            return $sample->response()->json([
+                'redirect' => urldecode(route('samples.form', $sample)),
+                'direct' => true
+            ]);
+        } catch (\App\Exceptions\APIException $th) {
+            if($request->header('data-xhr-base') == 'inline'){
+                return $sample->response()->json();
+            }
+            if($th->response()->message == 'POVERTY'){
+                $fill = [
+                    'url' => route('samples.form', $sample)
+                ];
+                Cache::put($th->response()->payment->authorized_key, $fill, 300);
+                return response()->json([
+                    'is_ok' => true,
+                    'message' => $th->response()->message,
+                    'message_text' => $th->response()->message_text,
+                    'redirect' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key]),
+                    'direct' => true
+                    // 'window_open' => route('auth', ['authorized_key' => $th->response()->payment->authorized_key])
+                ]);
+            }else{
+                throw $th;
+            }
+        }
     }
 }

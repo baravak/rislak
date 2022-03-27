@@ -51,4 +51,8 @@ class Sample extends API
     public static function statusCheck(array $ids){
         return (new static)->execute("/live/samples-status-check", ['samples' => $ids], 'GET');
     }
+
+    public static function purchase(String $id, array $params = []){
+        return (new static)->execute("%s/$id/purchase", $params, 'POST');
+    }
 }

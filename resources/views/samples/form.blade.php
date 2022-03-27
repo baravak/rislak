@@ -15,10 +15,18 @@
 @include('layouts.public-scripts')
 @section('body')
     <body class="flex flex-col" data-page="{{isset($global->page) ? $global->page : ''}}">
-        @include('samples.formBody')
-        <script>
-            window.sample_id = "{{ $sample->id }}";
-        </script>
+        @php
+            $purchased = $sample->chain ? $sample->chain->list->where('purchased', true)->count() : $sample->purchased;
+            $amount = $sample->chain ? $sample->chain->list->where('purchased', false)->sum('amount') : $sample->amount;
+        @endphp
+        @if ($amount && !$purchased && !request()->has('skipPayment') && $sample->room->acceptation != 'manager' && !in_array($sample->room->center->acceptation, ['manager', 'operator']) && !auth()->isAdmin())
+            @include('samples.payment')
+        @else
+            @include('samples.formBody')
+            <script>
+                window.sample_id = "{{ $sample->id }}";
+            </script>
+        @endif
         @yield('scripts')
     </body>
 @endsection
