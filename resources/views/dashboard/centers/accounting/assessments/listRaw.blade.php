@@ -19,23 +19,27 @@
             <span class="text-xs text-gray-600 pt-0.5 variable-font-medium sm:variable-font-normal" x-currency.3="region_amount"></span>
         </div>
         <div class="flex-1 px-2 mt-1 sm:mt-0">
-            <label for="default-{{ $assessment->assessment->id }}" class="flex items-center cursor-pointer group">
-                <span class="text-xs text-gray-600 sm:hidden cursor-default ml-2">@lang('مبلغ در اتاق'): </span>
-                <template x-if="!default_amount">
-                    <input id="default-{{ $assessment->assessment->id }}" type="checkbox" class="w-4 h-4 rounded border border-gray-400 focus" x-model="default_amount" data-method="PUT" data-action="{{ urldecode(route('dashboard.atom.assessments.update', ['room' => $room->id, 'assessment' => $assessment->assessment->id])) }}" x-lijax:click>
-                </template>
+            @can('updateGraph', [App\Center::class, $center])
+                <label for="default-{{ $assessment->assessment->id }}" class="flex items-center cursor-pointer group">
+                    <span class="text-xs text-gray-600 sm:hidden cursor-default ml-2">@lang('مبلغ در اتاق'): </span>
+                    <template x-if="!default_amount">
+                        <input id="default-{{ $assessment->assessment->id }}" type="checkbox" class="w-4 h-4 rounded border border-gray-400 focus" x-model="default_amount" data-method="PUT" data-action="{{ urldecode(route('dashboard.atom.assessments.update', ['room' => $room->id, 'assessment' => $assessment->assessment->id])) }}" x-lijax:click>
+                    </template>
 
-                <template x-if="default_amount">
-                    <input id="default-{{ $assessment->assessment->id }}" type="checkbox" class="w-4 h-4 rounded border border-gray-400 focus" x-model="default_amount">
-                </template>
-                <span class="text-xs text-gray-600 mr-1.5 group-hover:text-blue-600">@lang('پیش‌فرض مرکز')</span>
-            </label>
-            <div class="flex items-center mt-2" x-show="!default_amount">
-                <div class="mt-2 xs:mt-0 relative inline-block">
-                    <input id="amount-input-{{ $assessment->assessment->id }}" type="tel" name="amount" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" xdata-lijax="700 change"  :data-value="amount" data-method="PUT" data-action="{{ urldecode(route('dashboard.atom.assessments.update', ['room' => $room->id, 'assessment' => $assessment->assessment->id])) }}" autocomplete="off" x-amontity="amount" x-lijax:keyup.700ms x-lijax:change x-lijax:paste x-on:statio-init="$el.readonly = true" x-on:statio-done="$el.readonly = false;">
-                    <label for="amount-input-{{ $assessment->assessment->id }}" class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</label>
+                    <template x-if="default_amount">
+                        <input id="default-{{ $assessment->assessment->id }}" type="checkbox" class="w-4 h-4 rounded border border-gray-400 focus" x-model="default_amount">
+                    </template>
+                    <span class="text-xs text-gray-600 mr-1.5 group-hover:text-blue-600">@lang('پیش‌فرض مرکز')</span>
+                </label>
+                <div class="flex items-center mt-2" x-show="!default_amount">
+                    <div class="mt-2 xs:mt-0 relative inline-block">
+                        <input id="amount-input-{{ $assessment->assessment->id }}" type="tel" name="amount" class="text-left dir-ltr w-40 h-8 pl-12 border border-gray-300 rounded text-sm text-gray-600 focus" xdata-lijax="700 change"  :data-value="amount" data-method="PUT" data-action="{{ urldecode(route('dashboard.atom.assessments.update', ['room' => $room->id, 'assessment' => $assessment->assessment->id])) }}" autocomplete="off" x-amontity="amount" x-lijax:keyup.700ms x-lijax:change x-lijax:paste x-on:statio-init="$el.readonly = true" x-on:statio-done="$el.readonly = false;">
+                        <label for="amount-input-{{ $assessment->assessment->id }}" class="absolute left-1 top-1/2 transform -translate-y-1/2 flex items-center px-2 pt-0.5 h-6 text-xs bg-gray-200 rounded text-gray-600">@lang('تومانءءء')</label>
+                    </div>
                 </div>
-            </div>
+            @else
+                <span class="text-xs text-gray-600 pt-0.5 variable-font-medium sm:variable-font-normal" x-currency.3="amount"></span>
+            @endcan
         </div>
     @else
         <div class="flex-1 px-2 mt-2 sm:mt-0">

@@ -33,6 +33,23 @@ class CenterPolicy
 
     }
 
+    public function updateGraph(User $user, $center){
+        if($user->isAdmin())
+        {
+            return true;
+        }
+        if(!$user->centers || $user->centers->where('id', $center->id)->first()){
+            return false;
+        }
+        $center = $user->centers->where('id', $center->id)->first();
+        if($center->acceptation && $center->acceptation->accepted_at && !$center->acceptation->kicked_at && in_array($center->acceptation->position, ['manager', 'owner', 'operator']))
+        {
+            return true;
+        }
+        return false;
+
+    }
+
     public function create(User $user)
     {
         if($user->isAdmin())
