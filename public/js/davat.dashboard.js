@@ -13152,13 +13152,14 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
             clearTimeout(event.timeout)
         }
         if(el._lijaxOldValue == getValue() && ignore_event_changer.indexOf(e.type) === -1) return
-        el._lijaxOldValue = getValue()
         if(!event.delay){
+            el._lijaxOldValue = getValue()
             LijaxFire.call(el)
         }else{
             _self = this
             event.timeout = setTimeout(function(){
-                LijaxFire.call(el)
+                el._lijaxOldValue = getValue()
+            LijaxFire.call(el)
             }, event.delay)
         }
     }
@@ -13172,6 +13173,26 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
         event : setUp
     }
     el.addEventListener(event, setUp)
+})
+
+
+Alpine.directive('statio', (el, { value, modifiers, expression }, { Alpine, effect, cleanup, evaluate, evaluateLater }) => {
+    el.addEventListener('click', (e)=>{
+        if (/^\#(.*)$/.test(el.getAttribute('href'))){
+            return true;
+        }
+        new Statio({
+            url: el.getAttribute('href'),
+            type: el.classList.contains('action') ? 'render' : 'both',
+            context: el,
+            ajax: {
+                headers : el.getAttribute('data-xhrBase') ? {
+                    'Data-xhr-base': el.getAttribute('data-xhrBase')
+                } : null
+            }
+        });
+        e.preventDefault();
+    })
 })
 
 
@@ -13205,6 +13226,9 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
             templateResult : function(data){return templateResult.call(this, data, el, evaluate, expression)},
             templateSelection : function(data){return templateSelection.call(this, data, el, evaluate, expression)},
             ajax: {
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Data-xhr-base', el.getAttribute('data-xhrBase') || 'select2')
+                },
                 processResults : function(data){
                     return {
                         results: data.data || data

@@ -69,4 +69,26 @@ class CenterAssessmentController extends Controller
             return [];
         }
     }
+
+    public function show(Request $request, $region, $assessment){
+        $query = 'query($region: RegionID!, $assessment: String!){
+            atomsByAssessment(region:$region, assessment:$assessment){
+              region{id detail{title}}
+              assessment{amount assessment{id title version edition}}
+              atoms{
+                id
+                owner{name}
+                amount
+              }
+            }
+          }';
+          $index = Client::query($query, [
+            'region' => $region,
+            'assessment' => $assessment,
+        ]);
+        $this->data->atoms = $index->atomsByAssessment->atoms;
+        $this->data->center = $index->atomsByAssessment->region;
+        $this->data->assessment = $index->atomsByAssessment->assessment;
+        return $this->view($request, 'dashboard.centers.accounting.assessments.byAssessment');
+    }
 }

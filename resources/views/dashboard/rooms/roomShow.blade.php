@@ -38,6 +38,10 @@
                                     <i class="w-6 text-center fal fa-tags pb-1 pl-2"></i>
                                     <span>@lang('Tags settings')</span>
                                 </a>
+                                <a href="{{ route('dashboard.atom.assessments.index', $room->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                                    <i class="w-6 text-center fal fa-clipboard-list-check pb-1 pl-2"></i>
+                                    <span>مقیاس‌ها و ارزیابی‌ها</span>
+                                </a>
                             </div>
                         </div>
                     @endcan

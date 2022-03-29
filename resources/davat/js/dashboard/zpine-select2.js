@@ -28,6 +28,9 @@
             templateResult : function(data){return templateResult.call(this, data, el, evaluate, expression)},
             templateSelection : function(data){return templateSelection.call(this, data, el, evaluate, expression)},
             ajax: {
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Data-xhr-base', el.getAttribute('data-xhrBase') || 'select2')
+                },
                 processResults : function(data){
                     return {
                         results: data.data || data

@@ -96,7 +96,7 @@ Breadcrumbs::for('dashboard.center.rooms.create', function ($trail, $data) {
 
 Breadcrumbs::for('dashboard.rooms.show', function ($trail, $data) {
     $trail->parent('dashboard.centers.show', $data);
-    $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => $data['room']->manager->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
+    $trail->push($data['room']->type == 'room' ? __('Therapy room of :user', ['user' => (isset($data['room']->owner) ? $data['room']->owner : $data['room']->manager)->name]) : __('Personal'), route('dashboard.rooms.show', $data['room']->id));
 });
 
 Breadcrumbs::for('dashboard.room.users.index', function ($trail, $data) {
@@ -346,4 +346,17 @@ Breadcrumbs::for('dashboard.gifts.edit', function ($trail, $data) {
 Breadcrumbs::for('dashboard.gifts.appendUserForm', function ($trail, $data) {
     $trail->parent('dashboard.gifts.show', $data);
     $trail->push(__('افزودن کاربر'), route('dashboard.gifts.appendUserForm', ['center' => $data['center'], 'gift'=> $data['gift']->id]));
+});
+Breadcrumbs::for('dashboard.center.assessments.index', function ($trail, $data) {
+    $trail->parent('dashboard.center.accounting.index', $data);
+    $trail->push(__('Assessments'), route('dashboard.center.assessments.index', ['center' => $data['center']->id]));
+});
+Breadcrumbs::for('dashboard.center.assessments.show', function ($trail, $data) {
+    $trail->parent('dashboard.center.assessments.index', $data);
+    $trail->push($data['assessment']->assessment->title, route('dashboard.center.assessments.show', ['center' => $data['center']->id, 'assessment' => $data['assessment']->assessment->id]));
+});
+
+Breadcrumbs::for('dashboard.atom.assessments.index', function ($trail, $data) {
+    $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__('Assessments'), route('dashboard.atom.assessments.index', ['room' => $data['room']->id]));
 });

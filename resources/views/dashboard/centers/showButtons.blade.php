@@ -32,41 +32,24 @@
                         <i class="w-6 text-center fal fa-edit pb-1"></i>
                         <span class="vaiable-font-medium mr-2">@lang('Edit')</span>
                     </a>
-                    @if ($center->type == 'personal_clinic')
-                        <div class="flex items-center text-sm text-gray-800 py-3 px-4 bg-gray-100 transition dir-rtl cursor-default">
-                            <i class="w-6 text-center fal fa-cog pb-1"></i>
-                            <span class="variable-font-medium mr-2">@lang('Settings')</span>
-                        </div>
-                        <a href="{{ route('dashboard.center.setting.session-platforms', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                            <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
-                            <span>@lang('Platform settings')</span>
-                        </a>
-                        <a href="{{ route('dashboard.room.setting.tags.show', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                            <i class="w-6 text-center fal fa-calculator pb-1 pl-2"></i>
-                            <span>@lang('Accounting')</span>
-                        </a>
-                        <a href="#" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                            <i class="w-6 text-center fal fa-tags pb-1 pl-2"></i>
-                            <span>@lang('Tags settings')</span>
-                        </a>
-                    @else
-                        <div class="flex items-center text-sm text-gray-800 py-3 px-4 bg-gray-100 transition dir-rtl cursor-default">
-                            <i class="w-6 text-center fal fa-cog pb-1"></i>
-                            <span class="variable-font-medium mr-2">@lang('Settings')</span>
-                        </div>
-                        <a href="{{ route('dashboard.center.setting.session-platforms', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                            <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
-                            <span>@lang('Platform settings')</span>
-                        </a>
+                    <div class="flex items-center text-sm text-gray-800 py-3 px-4 bg-gray-100 transition dir-rtl cursor-default">
+                        <i class="w-6 text-center fal fa-cog pb-1"></i>
+                        <span class="variable-font-medium mr-2">@lang('Settings')</span>
+                    </div>
+                    <a href="{{ route('dashboard.center.setting.session-platforms', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                        <i class="w-6 text-center fal fa-map-marker-alt pb-1 pl-2"></i>
+                        <span>@lang('Platform settings')</span>
+                    </a>
+                    @if ($center->type != 'personal_clinic')
                         <a href="{{ route('dashboard.center.rooms.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
                             <i class="w-6 text-center fal fa-loveseat pb-1 pl-2"></i>
                             <span>@lang('Rooms')</span>
                         </a>
-                        <a href="{{ route('dashboard.center.accounting.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
-                            <i class="w-6 text-center fal fa-calculator pb-1 pl-2"></i>
-                            <span>@lang('Accounting')</span>
-                        </a>
                     @endif
+                    <a href="{{ route('dashboard.center.accounting.index', $center->id) }}" class="flex items-center text-sm text-gray-700 py-3 pl-4 pr-10 hover:bg-gray-100 border-b border-gray-100 transition dir-rtl">
+                        <i class="w-6 text-center fal fa-calculator pb-1 pl-2"></i>
+                        <span>@lang('Accounting')</span>
+                    </a>
                 @endcan
             </div>
         </div>
