@@ -117,6 +117,7 @@ Route::get('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceShe
 Route::post('rooms/{room}/balance-sheets', 'CenterAccountingController@balanceSheetStore')->name('center.balanceSheets.store');
 Route::get('rooms/{room}/assessments', 'AtomAssessmentController@index')->name('atom.assessments.index');
 Route::put('rooms/{room}/assessments/{assessment}', 'AtomAssessmentController@update')->name('atom.assessments.update');
+Route::get('rooms/{room}/accounting', 'RoomController@accounting')->name('room.accounting.index');
 
 Route::get('centers/{center}/bank', 'CenterAccountingController@bankShow')->name('center.bank.show');
 Route::post('centers/{center}/bank', 'CenterAccountingController@bankStore')->name('center.bank.store');

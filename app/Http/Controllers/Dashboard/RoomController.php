@@ -79,4 +79,10 @@ class RoomController extends Controller
     public function update(Request $request, $room){
         return Room::apiUpdate($room, $request->all())->response()->json();
     }
+
+    public function accounting(Request $request, Room $room){
+        $this->data->room = $room;
+        $this->data->center = $room->center;
+        return $this->view($request, 'dashboard.rooms.accounting');
+    }
 }

@@ -312,8 +312,8 @@ Breadcrumbs::for('dashboard.center.balanceSheets.show', function ($trail, $data)
     $trail->push($data['room']->manager->name, route('dashboard.center.balanceSheets.show', $data['room']->id));
 });
 Breadcrumbs::for('dashboard.room.billings.index', function ($trail, $data) {
-    $trail->parent('dashboard.center.balanceSheets.index', $data);
-    $trail->push($data['room']->manager->name, route('dashboard.room.billings.index', $data['room']->id));
+    $trail->parent('dashboard.room.accounting.index', $data);
+    $trail->push(__('Financial-balance'), route('dashboard.room.billings.index', $data['room']->id));
 });
 
 
@@ -351,12 +351,18 @@ Breadcrumbs::for('dashboard.center.assessments.index', function ($trail, $data) 
     $trail->parent('dashboard.center.accounting.index', $data);
     $trail->push(__('Assessments'), route('dashboard.center.assessments.index', ['center' => $data['center']->id]));
 });
+
 Breadcrumbs::for('dashboard.center.assessments.show', function ($trail, $data) {
     $trail->parent('dashboard.center.assessments.index', $data);
     $trail->push($data['assessment']->assessment->title, route('dashboard.center.assessments.show', ['center' => $data['center']->id, 'assessment' => $data['assessment']->assessment->id]));
 });
 
-Breadcrumbs::for('dashboard.atom.assessments.index', function ($trail, $data) {
+Breadcrumbs::for('dashboard.room.accounting.index', function ($trail, $data) {
     $trail->parent('dashboard.rooms.show', $data);
+    $trail->push(__('Accounting'), route('dashboard.room.accounting.index', ['room' => $data['room']->id]));
+});
+
+Breadcrumbs::for('dashboard.atom.assessments.index', function ($trail, $data) {
+    $trail->parent('dashboard.room.accounting.index', $data);
     $trail->push(__('Assessments'), route('dashboard.atom.assessments.index', ['room' => $data['room']->id]));
 });
