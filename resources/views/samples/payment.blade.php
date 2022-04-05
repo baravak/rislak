@@ -1,6 +1,6 @@
 @php
     $amount = $sample->chain ? $sample->chain->list->where('purchased', false)->sum('amount') : $sample->amount;
-    $billings = $sample->chain ? $sample->chain->list->where('billing.id', '<>', null)->pluck('billing.id')->toArray() : [$sample->billing->id];
+    $billings = $sample->chain ? $sample->chain->list->where('billing.id', '<>', null)->pluck('billing.id')->toArray() : ($sample->billing ? [$sample->billing->id] : []);
 @endphp
 <div class="flex items-center justify-center h-screen px-8" x-data="{amount : {{ $amount }}, wallet:{{ auth()->user()->treasuries->where('symbol', 'wallet')->first()->balance ?: '0' }}, gift : {}, gift_code: null}">
     <div class="w-full sm:w-96">
