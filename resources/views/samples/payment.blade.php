@@ -63,7 +63,7 @@
                 <button id="giftCheck" class="mr-2 flex-shrink-0 text-xs text-green-700 px-8 h-9 rounded border border-green-100 bg-green-50 hover:bg-green-500 hover:text-white transition focus-current ring-green-600">@lang('اعمال کد')</button>
             </div>
         </div>
-        <button x-lijax:click data-action="{{ $sample->billing ? route('dashboard.billings.settled', $sample->billing->id) : route('dashboard.samples.purchase', $sample->id)  }}"  data-method="POST" class="direct flex items-center justify-center text-white text-sm bg-green-500 hover:bg-green-600 transition rounded-full h-10 mt-6 focus-current ring-green-500 spinner">@lang('پرداخت')</button>
+        <button x-lijax:click data-action="{{ $sample->billing ? route('dashboard.billings.settled', $sample->billing->id) : route('dashboard.samples.purchase', $sample->id)  }}"  data-method="POST" class="direct w-full flex items-center justify-center text-white text-sm bg-green-500 hover:bg-green-600 transition rounded-full h-10 mt-6 focus-current ring-green-500 spinner">@lang('پرداخت')</button>
         @if (!$sample->prepayment)
             <a href="{{ urldecode(route('samples.form', ['sample' => $sample->id, 'skipPayment' => true])) }}" class="direct flex items-center justify-center text-brand text-sm hover:bg-blue-50 border border-brand transition rounded-full h-10 mt-2 focus spinner">@lang('اجرای آزمون بدون پرداخت')</a>
         @endif
