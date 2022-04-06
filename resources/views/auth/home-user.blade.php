@@ -6,4 +6,4 @@
         <span>شما با شماره موبایل {{ auth()->user()->mobile }} در ریسلو هستید؛ می‌توانید خارج شوید، یا کد ورودی خود را وارد کنید و مسیریابی شوید</span>
     </div>
 </div>
-<button title="مسیریابی" aria-label="مسیریابی" role="button" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition focus">مسیریابی</button>
+<button title="برو" aria-label="برو" role="button" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition focus">برو</button>
