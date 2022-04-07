@@ -56,15 +56,13 @@
 
 @section('scripts')
     @parent
-    {{-- @isset ($authResult)
+    @isset ($authError)
         <script>
-
             $('body').ready( function(){
-                iziToast['{{ $authResult->is_ok ? 'success' : 'error' }}']({'message' : '{{ $authResult->message_text }}'});
-                // $('[data-form-page]').trigger('submit');
+                iziToast.error({'message' : '{{ $authError }}'});
             });
         </script>
-    @endif --}}
+    @endif
 @endsection
 @include('layouts.scripts')
 @include('layouts.body')
