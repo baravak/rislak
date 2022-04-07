@@ -49,9 +49,13 @@
     <label for="description" class="block mb-2 text-sm text-gray-700 variable-font-medium">توضیحات</label>
     <textarea id="description" name="description" autocomplete="off" class="resize-none border border-gray-500 h-24 md:h-16 rounded px-4 py-2 w-full text-sm placeholder-gray-300 focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60"></textarea>
 </div>
-<div class="mt-4">
-    <label class="block mb-2 text-sm text-gray-700 font-medium">نحوه پرداخت</label>
-    <select class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60" name="treasurie_id">
+<div class="mt-4" x-data="{notFree : true}">
+    <label class="block mb-2 text-sm text-gray-700 font-medium">
+        <input type="checkbox" :checked="notFree" class="w-4 h-w-4 border border-gray-600 rounded-sm focus cursor-pointer relative"  x-model="notFree">
+        جلسه برای مراجع(مراجعین) مشمول هزینه می‌باشد
+    </label>
+    <input type="hidden" name="isFree" value="1" :disabled="notFree">
+    <select class="border border-gray-500 h-10 rounded pl-4 pr-8 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60" name="treasurie_id" x-show="notFree" :disabled="!notFree">
         <option value="{{ auth()->user()->centers->where('id', $session->room->center->id)->first()->treasuries->where('creditable', $session->room->center->id)->first()->id }}">@lang('آنلاین | نسیّه')</option>
         @foreach (auth()->user()->centers->where('id', $session->room->center->id)->first()->treasuries->where('creditable', '<>', $session->room->center->id) as $treasurie)
             <option value="{{ $treasurie->id }}">{{ $treasurie->title }}</option>
