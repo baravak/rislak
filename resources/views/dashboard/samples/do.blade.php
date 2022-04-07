@@ -20,10 +20,17 @@
         <a href="{{ urldecode(route('samples.form', $sample->id)) }}" target="_blank" class="inline-flex items-center justify-center w-24 h-7 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">{{ __('Do sample') }}</a>
     </div>
 @endcan
-
-{{-- <div class="inline-block">
-    <a href="#" target="_blank" class="inline-flex items-center justify-center w-20 h-7 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">@lang('Payment')</a>
-</div> --}}
+@if ($sample->billing)
+@can('management', [$sample, isset($room) ? $room : null])
+    <div class="inline-block">
+        <span class="text-xs ml-2">@lang('پرداخت نشده')</span>
+    </div>
+@else
+    <div class="inline-block">
+        <a href="{{ route('dashboard.billings.settled', $sample->billing->id) }}" data-method="POST" class="lijax ml-2 inline-flex items-center justify-center w-20 h-7 text-xs text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 rounded-full transition">@lang('Payment')</a>
+    </div>
+@endcan
+@endif
 
 @if ($sample->status == 'closed')
     @can('management', [$sample, isset($room) ? $room : null])

@@ -47,13 +47,15 @@
             @include('dashboard.samples.do')
         </div>
     </div>
-    <div class="flex-1 px-2 hidden md:flex">
-        @if ($sample->client)
-            <span class="text-xs text-gray-600 cursor-default">@displayName($sample->client)</span>
-        @else
-            <span class="text-xs text-gray-600 cursor-default">{{ $sample->code }}</span>
-        @endif
-    </div>
+    @if (auth()->user()->type == 'admin' || (auth()->user()->centers && auth()->user()->centers->where('acceptation.position', '<>', 'client')->count()))
+        <div class="flex-1 px-2 hidden md:flex">
+            @if ($sample->client)
+                <span class="text-xs text-gray-600 cursor-default">@displayName($sample->client)</span>
+            @else
+                <span class="text-xs text-gray-600 cursor-default">{{ $sample->code }}</span>
+            @endif
+        </div>
+    @endif
 
 
     @if ((isset($bulkSample) && $bulkSample->case_status == 'personal') || !isset($bulkSample))
