@@ -1,4 +1,7 @@
-<tr class="transition hover:bg-gray-100 {{ ($loop->index % 2) ? 'bg-gray-50' : '' }}"  x-data='{"enabled":  true, "room_commission" : {{ (100 - $room->commission ?: 0) * 0.01 * $transaction->amount }}, "commission" : {{ 100 - $room->commission ?: 0 }}, "amount" : {{ $transaction->amount }}}'>
+@php
+    $commission = $transaction->percentage === null ? (100 - $room->commission ?: 0) : $transaction->percentage;
+@endphp
+<tr class="transition hover:bg-gray-100 {{ ($loop->index % 2) ? 'bg-gray-50' : '' }}"  x-data='{"enabled":  true, "room_commission" : {{ $commission * 0.01 * $transaction->amount }}, "commission" : {{ $commission }}, "amount" : {{ $transaction->amount }}}'>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
             <input type="checkbox" checked class="w-4 h-w-4 border border-gray-600 rounded-sm focus cursor-pointer relative" @change.prevent="enabled = $el.checked;" @change="$dispatch('sheetchange')">
