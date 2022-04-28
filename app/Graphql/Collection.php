@@ -12,13 +12,13 @@ class Collection extends EloquentCollection{
 
         $listModel = new static();
         $collectionModel = $listModel->model;
-        $items = $collectionModel::hydrate($model->data);
-
-        $collection = new LengthAwarePaginator($items, $model->paginatorInfo->total, $model->paginatorInfo->perPage, $model->paginatorInfo->currentPage, [
-            'path' => url()->current()
-        ]);
-        // $collection->setPath();
-        // dd($collection);
-        return $collection;
+        $items = $collectionModel::hydrate(isset($model->data) ? $model->data : $model);
+        if(isset($model->paginatorInfo)){
+            $collection = new LengthAwarePaginator($items, $model->paginatorInfo->total, $model->paginatorInfo->perPage, $model->paginatorInfo->currentPage, [
+                'path' => url()->current()
+            ]);
+            return $collection;
+        }
+        return $items;
     }
 }

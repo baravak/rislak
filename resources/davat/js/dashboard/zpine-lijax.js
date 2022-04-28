@@ -19,8 +19,9 @@ Alpine.directive('lijax', (el, { value, modifiers, expression }, { Alpine, effec
         }else{
             _self = this
             event.timeout = setTimeout(function(){
+                if(el._lijaxOldValue == getValue() && ignore_event_changer.indexOf(e.type) === -1) return
                 el._lijaxOldValue = getValue()
-            LijaxFire.call(el)
+                LijaxFire.call(el)
             }, event.delay)
         }
     }

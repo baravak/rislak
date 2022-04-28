@@ -5,14 +5,9 @@
         <div class="flex-1 px-2">@lang('آزمون‌ها')</div>
         <div class="flex-1 px-2">@lang('خدمات ریسلو')</div>
     </div>
-    {{-- @foreach ($commissions as $commission) --}}
+    @foreach ($center->atoms as $atom)
         @include('dashboard.centers.accounting.commission.listRaw')
-    {{-- @endforeach --}}
-    {{-- <div>
-        @if (method_exists($commissions, 'links'))
-            {{ $commissions->links() }}
-        @endif
-    </div> --}}
+    @endforeach
 </div>
 
 {{-- <div data-xhr="centers-rooms">

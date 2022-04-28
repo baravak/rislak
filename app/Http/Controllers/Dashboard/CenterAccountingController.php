@@ -7,6 +7,7 @@ use App\BalanceSheet;
 use App\Bank;
 use App\Center;
 use App\Commission;
+use App\Graphql\Client;
 use App\RoomBalance;
 use Illuminate\Http\Request;
 
@@ -19,15 +20,58 @@ class CenterAccountingController extends Controller
         return $this->view($request, 'dashboard.centers.accounting.index');
     }
 
-    public function commission(Request $request, $center){
-        $this->data->rooms = $rooms = AtomDetail::apiChildIndex($center);
-        $this->data->center = $rooms->parentModel;
+    public function commission(Request $request, $region){
+        $query = 'query ($region: RegionID!){
+            region(id: $region){
+                id type detail{title} commissions{topic value}
+                atoms{id owner{name} commissions{topic value pinned}}
+            }
+        }';
+        $index = Client::query($query, [
+            'region' => $region
+        ]);
+        $this->data->center = $index->region;
         return $this->view($request, 'dashboard.centers.accounting.commission.index');
     }
-    public function commissionUpdate(Request $request, $center)
+    public function commissionUpdate(Request $request, $region)
     {
-        $this->data->update = $update = Commission::apiChildUpdate($center, $request->all());
-        return $update->response()->json();
+        $query = 'mutation($region: RegionID!, $topic: CommissionTopic!, $commission: Int!){
+            updateRegionCommission(region:$region, topic: $topic, value: $commission)
+          }';
+        $index = Client::query($query, [
+            'region' => $region,
+            'topic' => strtoupper($request->topic),
+            'commission' => (int) $request->commission
+        ]);
+        return ['is_ok' => true];
+    }
+
+    public function atomCommissionUpdate(Request $request)
+    {
+        if($request->has('pin')){
+            $query = 'mutation($atom: AtomID!, $topic: CommissionTopic!){
+                '.($request->pin ? 'pin' : 'unpin').'AtomCommission(atom:$atom, topic:$topic){
+                    topic
+                    value
+                    pinned
+                  }
+              }';
+            $index = Client::query($query, [
+                'atom' => $request->atom,
+                'topic' => strtoupper($request->topic),
+            ]);
+            return ['is_ok' => true, 'value' => $index->{$request->pin ? 'pinAtomCommission' : 'unpinAtomCommission'}->value];
+        }else{
+            $query = 'mutation($atom: AtomID!, $topic: CommissionTopic!, $value: Int!){
+                updateAtomCommission(atom:$atom, topic:$topic, value:$value)
+            }';
+            $index = Client::query($query, [
+                'atom' => $request->atom,
+                'topic' => strtoupper($request->topic),
+                'value' => (int) $request->value,
+            ]);
+            return ['is_ok' => true];
+        }
     }
 
     public function balanceSheet(Request $request, $center){
