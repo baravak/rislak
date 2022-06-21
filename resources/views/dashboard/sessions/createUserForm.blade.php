@@ -7,11 +7,6 @@
             @else
                 @include('dashboard.sessions.createUserFormClient')
                 @include('dashboard.sessions.giftCheck')
-                @if ($center->id == 'RS966666Q')
-                    <p class="text-sm leading-6 text-yellow-600 bg-yellow-50 px-2 py-3 mt-4 border-r-2 border-yellow-400 cursor-default">
-                        قابل توجه مراجعان مرکز طلیعه سلامت؛</br>مبالغ اعلام شده‌ی فعلی، بر اساس تعرفه‌ی سال گذشته است. در صورت تغییر تعرفه، مبالِغ با تعرفه‌ی جدید محاسبه خواهند شد.
-                    </p>
-                @endif
             @endcan
         </div>
         <button type="submit" class="inline-flex justify-center items-center h-9 px-8 bg-brand text-white text-sm rounded-full hover:bg-brand-600 transition ml-4 focus mt-4" role="button">تأیید و ثبت جلسه درمانی</button>
