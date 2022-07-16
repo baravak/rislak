@@ -26,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(getenv('HTTP_X_FORWARDED_PROTO') == 'https' || getenv('HTTPS_CONNECTION') == '1')
+        {
+            $this->app['request']->server->set('HTTPS','on');
+            \URL::forceScheme('https');
+        }
         Paginator::defaultView('layouts.pagination');
 
         \Carbon\Carbon::setWeekEndsAt(\Carbon\Carbon::FRIDAY);

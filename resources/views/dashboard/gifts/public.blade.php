@@ -24,7 +24,7 @@
                 <span>با عرض پوزش</span>
                 <span class="mt-2">.کد تخفیف مورد نظر شما، منقضی شده است</span>
             </div>
-            <a href="https://risloo.ir/" class="en tracking-widest text-gray-400 hover:text-blue-600 transition mt-8">RISLOO.IR</a>
+            <a href="{{config('app.url')}}" class="en tracking-widest text-gray-400 hover:text-blue-600 transition mt-8">{{strtoupper(env('RISLAK_HOST'))}}</a>
         </div>
     @else
         <div class="bg-brand bg-opacity-20 h-screen flex flex-col items-center justify-center">

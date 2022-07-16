@@ -27,7 +27,7 @@ class Client{
         ->timeout(20)
         ->withHeaders(
             $headers
-        )->withBody($json, 'application/json')->post(env('GRAPH_URL'));
+        )->withBody($json, 'application/json')->post((env('HTTPS_CONNECTION') ? 'https://' : 'http://') . env('GRAPHQL_HOST').'/graphql');
         $result = $response->object(false);
         if(isset($result->errors) || isset($result->exception)){
             if(isset($result->errors)){

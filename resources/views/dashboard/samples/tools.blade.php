@@ -22,7 +22,7 @@
 @endif
 
 @if (config('app.env') == 'local' && in_array($sample->status, ['seald', 'open']))
-<a href="{{ config('app.publi_server')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1 focus">
+<a href="{{ config('app.server_url')}}/command/assessment/fill/{{substr($sample->id, 1)  . '?replace=on' }}" class="inline-flex items-center px-4 h-8 text-xs text-gray-500 hover:text-brand hover:border-brand border border-gray-500 rounded-full transition lijax status-action ml-1 focus">
         {{ __('Fill in') }}
 </a>
 {{-- <div class="relative inline-flex dropdown ml-1">
@@ -31,7 +31,7 @@
         <i class="fal fa-chevron-down mr-2"></i>
     </button>
     <div aria-labelledby="assessmentFill" class="absolute left-0 top-10 w-52 p-4 rounded bg-white border border-gray-200 shadow-lg">
-        <form action="{{ config('app.server')}}/command/assessment/fill/{{substr($sample->id, 1) }}">
+        <form action="{{ config('app.api_url')}}/command/assessment/fill/{{substr($sample->id, 1) }}">
             <label class="flex items-center group">
                 <input type="checkbox" name="replace" checked class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
                 <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Edit prev data') }}</span>

@@ -51,11 +51,11 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
-    'url' => env('APP_URL', 'http://localhost'),
+    'https' => (bool) intval(env('HTTPS_CONNECTION')) || getenv('HTTP_X_FORWARDED_PROTO') == 'https',
+    'url' => (intval(env('HTTPS_CONNECTION')) || getenv('HTTP_X_FORWARDED_PROTO') == 'https' ? 'https' : 'http') . '://'.env('RISLAK_HOST'),
     'mobileUrl' => env('APP_ENV', 'production') == 'production' ? 'risloo://' : 'bisloo://',
-    'server' => rtrim(env('SERVER_URL', 'http://localhost'), '/'),
-    'publi_server' => rtrim(env('PUBLIC_SERVER_URL', rtrim(env('SERVER_URL', 'http://localhost'), '/')), '/'),
+    'api_url' => (intval(env('HTTPS_CONNECTION')) || getenv('HTTP_X_FORWARDED_PROTO') == 'https' ? 'https' : 'http') . '://'.env('RISLOO_HOST').'/api/',
+    'server_url' => (intval(env('HTTPS_CONNECTION')) || getenv('HTTP_X_FORWARDED_PROTO') == 'https' ? 'https' : 'http') . '://'.env('RISLOO_HOST'),
 
     'asset_url' => env('ASSET_URL', null),
 
