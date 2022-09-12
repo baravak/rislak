@@ -40,6 +40,8 @@ module.exports = {
     extend: {
       backgroundColor: ['disabled'],
       opacity: ['disabled'],
+      borderColor: ['disabled'],
+      textColor: ['disabled'],
       borderWidth: ['last'],
       ringWidth: ['hover'],
       ringColor: ['hover'],

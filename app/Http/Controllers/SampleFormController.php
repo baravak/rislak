@@ -36,6 +36,7 @@ class SampleFormController extends Controller
         }
         $this->data->prerequisites = $js;
 
+        // dd($this->data->sample->items);
         if($sample->status == 'closed')
         {
             return $this->view($request, 'samples.closed');

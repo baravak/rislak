@@ -79,20 +79,27 @@
         if (blockEvents){
             return true;
         }
+
         if (e.ctrlKey  || e.shiftKey  || e.altKey || ['Control', 'Shift', 'Alt', 'Meta'].indexOf(e.key) != -1){
             return true;
         }
-
+        var black_list = ['TEXTAREA'];
         if (e.key == 'Enter' || e.key == 'ArrowLeft')
         {
-            next();
+            
+            if(black_list.indexOf(e.target.nodeName) == -1){
+                next();
+            }
         } else if (e.key == 'ArrowRight') {
-            prev();
+            if(black_list.indexOf(e.target.nodeName) == -1){
+                prev();
+            }
         }
         if (/^(Digit|Numpad)\d$/.test(e.code))
         {
             var id = e.code.replace(/Digit|Numpad/, '');
             if(pannel.eq(current).is('[data-type="item"]') && pannel.eq(current).has('[data-keyboard='+id+']')){
+                if(pannel.eq(current).is('[data-isnull]')) return;
                 var answer = $('[data-keyboard='+id+']', pannel.eq(current));
                 if(answer.attr('type') == 'radio'){
                     answer[0].checked = true;
@@ -103,15 +110,29 @@
     });
     $('input, textarea', '[data-type="item"]').on('change', function(){
         var data = JSON.parse($(this).attr('data-merge'));
-        if($(this).is(':radio') || $(this).is('textarea')){
+        if($(this).is(':radio, :hidden, textarea, input[type=number]')){
             data[1] = $(this).val();
             $(this).parents('[data-type="item"]').attr('data-answer', $(this).val());
+        }
+        if($(this).parents('[data-answer-description]').length){
+            data = {
+                item : data[0],
+                description: $(this).val()
+            };
+        }
+        if($(this).is('[data-nullable]')){
+            if($(this).is(':checked')){
+                data[1] = null;
+            }else{
+                return;
+            }
         }
         queue(data);
         findEmpty();
     });
     $('input', '[data-type="item"]').on('change', function(){
-        if(['optional', 'optional_images', 'range'].indexOf($(this).parents('[data-nav]').attr('data-answer-type')) == -1) return true;
+        if(['optional', 'optional_images', 'range'].indexOf($(this).parents('[data-nav]').attr('data-answer-type')) == -1
+        || !$(this).parents('[data-nav]').is('[data-autonext]')) return true;
         if($(this).is(':radio')){
             $(this).next().css('opacity', '');
             $('[name="'+ $(this).attr('name') + '"]').not('[value="' + $(this).val() + '"]').next().fadeTo('fast', .2);
@@ -168,9 +189,15 @@
 
     function trySend(){
         tryCount = Math.min(tryCount + 1, tryTimes.length - 1);
-        setTimeout(send, tryTimes[tryCount] * 1000);
+        // setTimeout(send, tryTimes[tryCount] * 1000);
+        setTimeout(send, 1000);
     }
-
+    $('[data-nav][data-nullable]').on('pannel:hide', function(){
+        var checkbox = $('input[data-nullable]', this);
+        if(checkbox.is(':checked')){
+            checkbox.trigger('change')
+        }
+    })
     $('[data-nav="information"]').on('pannel:hide', function(){
         $('form', this).trigger('submit');
     });
@@ -209,5 +236,22 @@
         $('#nav-empty-answers').append(empty);
     }
     findEmpty();
-
+    $('[data-nullable]').each(function(i, el){
+        function change(){
+            var parent = $(this).parents('[data-nav]');
+            var item = parent.attr('data-nav')
+            var inputs = $('input, textarea, select',`#answer-content-panel-${item}`);
+            if($(this).is(':checked')){
+                inputs.attr('disabled', 'disabled');
+                parent.attr('data-isnull', 1);
+                $(`#answer-content-panel-${item}`).fadeTo('fast', 0.3);
+            }else{
+                parent.removeAttr('data-isnull', 1);
+                inputs.removeAttr('disabled');
+                $(`#answer-content-panel-${item}`).fadeTo('fast', 1);
+            }
+        }
+        $(el).on('change', change)
+        change.call(el)
+    })
 })();

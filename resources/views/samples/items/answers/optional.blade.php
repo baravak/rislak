@@ -6,8 +6,5 @@
         <span class="answer">{{ $option }}</span>
     </label>
 </div>
-@endforeach
 
-{{-- @if ()
-    @include('samples.items.answers.optional_secondQuestion')
-@endif --}}
+@endforeach

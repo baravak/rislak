@@ -47,7 +47,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($sample->items as $item)
                 <div class="flex flex-col justify-between p-4 bg-gray-50 rounded-md">
-                    @include('dashboard.samples.shows.'. $item->answer->type)
+                    @includeFirst(['dashboard.samples.shows.'. $item->answer->type, 'dashboard.samples.shows.fail'])
                 </div>
             @endforeach
         </div>

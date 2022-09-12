@@ -13297,11 +13297,3 @@ Alpine.directive('currency', (el, { value, modifiers, expression }, { Alpine, ef
         })
     })
 })
-
-;(() => {
-    $commission = new Object
-    $commission.defaultInit = (element, event, topic, atom) => {
-        console.log(element, event, topic, atom)
-        // document.querySelectorAll('[data-topic={{ $defaultTopic }}] input').forEach((input) => {input.disabled = true}); $el.disabled = true
-    }
-})();
