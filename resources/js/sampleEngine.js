@@ -83,7 +83,7 @@
         if (e.ctrlKey  || e.shiftKey  || e.altKey || ['Control', 'Shift', 'Alt', 'Meta'].indexOf(e.key) != -1){
             return true;
         }
-        var black_list = ['TEXTAREA'];
+        var black_list = ['TEXTAREA', 'INPUT'];
         if (e.key == 'Enter' || e.key == 'ArrowLeft')
         {
             
@@ -108,8 +108,9 @@
             }
         }
     });
-    $('input, textarea', '[data-type="item"]').on('change', function(){
-        var data = JSON.parse($(this).attr('data-merge'));
+    $('input, textarea, select', '[data-type="item"]').on('change', function(){
+        if($(this).is('[data-mute]')) return;
+        var data = $(this).attr('data-merge') ? JSON.parse($(this).attr('data-merge')) : [];
         if($(this).is(':radio, :hidden, textarea, input[type=number]')){
             data[1] = $(this).val();
             $(this).parents('[data-type="item"]').attr('data-answer', $(this).val());
@@ -127,11 +128,22 @@
                 return;
             }
         }
+        if($(this).parents('[data-answer-type]').attr('data-answer-type') == 'matrix_radio' && $(this).is('select')){
+            var parent = $(this).parents('[data-answer-type]');
+            var item = parent.attr('data-nav');
+            var row = $('[data-matrixindex][data-matrix-row]', parent).val();
+            var col = $('[data-matrixindex][data-matrix-col]', parent).val();
+            if(row !== null && col !== null){
+                data = JSON.parse($(`#item-${item}-${row}-${col}`).attr('data-merge')) 
+                data[1] = `${row},${col}`;
+                $(`#item-${item}-${row}-${col}`)[0].checked = true
+            }
+        }
         queue(data);
         findEmpty();
     });
     $('input', '[data-type="item"]').on('change', function(){
-        if(['optional', 'optional_images', 'range'].indexOf($(this).parents('[data-nav]').attr('data-answer-type')) == -1
+        if(['optional', 'optional_images', 'range', 'matrix_radio'].indexOf($(this).parents('[data-nav]').attr('data-answer-type')) == -1
         || !$(this).parents('[data-nav]').is('[data-autonext]')) return true;
         if($(this).is(':radio')){
             $(this).next().css('opacity', '');
@@ -189,8 +201,8 @@
 
     function trySend(){
         tryCount = Math.min(tryCount + 1, tryTimes.length - 1);
-        // setTimeout(send, tryTimes[tryCount] * 1000);
-        setTimeout(send, 1000);
+        setTimeout(send, tryTimes[tryCount] * 1000);
+        // setTimeout(send, 1000);
     }
     $('[data-nav][data-nullable]').on('pannel:hide', function(){
         var checkbox = $('input[data-nullable]', this);
