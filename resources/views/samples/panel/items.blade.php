@@ -23,7 +23,7 @@
         @endisset
         @isset($item->answer->nullable)
             <label>
-                <input type="checkbox" data-nullable {{isset($item->user_answered) && $item->user_answered ? '' :  'checked'}} data-merge="[{{$key + 1}}]"> برای این سوال جوابی ندارم
+                <input type="checkbox" data-nullable {{isset($item->user_answered) && $item->user_answered ? '' :  'checked'}} data-merge="[{{$key + 1}}]"> {{$item->answer->nullable->text ?:  'برای این سوال جوابی ندارم'}}
             </label>
         @endisset
         <div id="answer-content-panel-{{$key + 1}}">
