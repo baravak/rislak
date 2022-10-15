@@ -19,12 +19,6 @@
                 </a>
             </div>
         @endif
-        <a href="https://risloo.ir/" class="direct w-full inline-flex items-center justify-center bg-yellow-600 py-2 px-4 hover:shadow-md transition">
-            <i class="fad fa-tools text-lg text-white ml-2"></i>
-            <div>
-                <span class="text-sm text-white">بنا به دستور مرجع قضایی کلیه خدمات پیامکی سرویس‌های اینترنتی ایران قطع می‌باشد</span>
-            </div>
-        </a>
         @include('layouts.header')
         @include('layouts.content')
     </main>
