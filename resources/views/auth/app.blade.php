@@ -15,6 +15,12 @@
                         </div>
                     </a>
                 @endif
+                <a href="https://risloo.ir/" class="direct w-full inline-flex items-center bg-yellow-600 rounded py-2 px-4 mb-6 hover:shadow-md transition">
+                    <i class="fad fa-tools text-2xl text-white ml-4"></i>
+                    <div class="border-r border-white border-opacity-20 pr-4">
+                        <span class="hidden xs:block text-sm text-white">بنا به دستور مرجع قضایی کلیه خدمات پیامکی سرویس‌های اینترنتی ایران قطع می‌باشد</span>
+                    </div>
+                </a>
                 @if (auth()->check() && auth()->user())
                     <div class="mb-4">
                         <a href="{{ route(auth()->check() ? 'dashboard.home' : 'auth') }}" class="flex justify-center items-center mx-auto w-16 h-16 rounded overflow-hidden border border-gray-200 direct flex-shrink-0 bg-gray-300 text-gray-600 text-sm">
