@@ -18,7 +18,7 @@
                 <a href="https://risloo.ir/" class="direct w-full inline-flex items-center bg-yellow-600 rounded py-2 px-4 mb-6 hover:shadow-md transition">
                     <i class="fad fa-tools text-2xl text-white ml-4"></i>
                     <div class="border-r border-white border-opacity-20 pr-4">
-                        <span class="hidden xs:block text-sm text-white">بنا به دستور مرجع قضایی کلیه خدمات پیامکی سرویس‌های اینترنتی ایران قطع می‌باشد</span>
+                        <span class="block text-sm text-white">بنا به دستور مرجع قضایی کلیه خدمات پیامکی سرویس‌های اینترنتی ایران قطع می‌باشد</span>
                     </div>
                 </a>
                 @if (auth()->check() && auth()->user())
