@@ -443,6 +443,8 @@
     "Gifts" : "کدهای تخفیف",
     "Gift" : "کد تخفیف",
     "Create gift" : "افزودن کد تخفیف",
-    "Code" : "کد"
+    "Code" : "کد",
+    "The national code can be unreal and valid only in this center" : "کد ملی می‌تواند غیرواقعی باشد و فقط در همین مرکز اعتبار دارد",
+    "National code" : "کد ملی"
 }
 

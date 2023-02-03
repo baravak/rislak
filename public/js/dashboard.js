@@ -402,10 +402,12 @@ $('body').on('statio:dashboard:center:users:create', function(){
             $("#nickname").parent().show();
             $("#room_id").parent().show();
             $("#create_case").parent().show();
+            $("#national_code").parent().show();
         }else{
             $("#nickname").parent().hide();
             $("#room_id").parent().hide();
             $("#create_case").parent().hide();
+            $("#national_code").parent().hide();
         }
     }).trigger('change');
 });

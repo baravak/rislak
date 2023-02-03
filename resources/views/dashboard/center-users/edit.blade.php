@@ -36,6 +36,15 @@
         </div>
     </div>
     <div class="mt-4">
+        <label for="national_code" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('National code') }}</label>
+        <input type="text" @formValue($user->national_code) name="national_code" id="national_code" autocomplete="off" class="border border-gray-500 h-10 rounded px-4 w-full text-sm text-left dir-ltr focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60">
+        <div class="flex items-center text-xs text-gray-400 mt-2">
+            <i class="fal fa-info-circle ml-1"></i>
+            <span>{{ __('The national code can be unreal and valid only in this center') }}</span>
+        </div>
+    </div>
+
+    <div class="mt-4">
         <h3 class="block mb-2 text-sm text-gray-700 font-medium">{{ __('Status') }}</h3>
         <div class="mt-1">
             <label class="inline-flex items-center group">
