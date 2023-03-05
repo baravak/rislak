@@ -12,15 +12,15 @@
         @endif
         <div class="text-center px-1">
             @if ($bulk->room->type == 'personal_clinic')
-            <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="{{ $bulk->room->manager->name }}">{{ $bulk->room->manager->name }}</a>
+            {{-- <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="{{ $bulk->room->manager->name }}">{{ $bulk->room->manager->name }}</a> --}}
             @else
                 <a href="{{ route('dashboard.centers.show', $bulk->room->center->id) }}" class="block text-sm variable-font-medium text-gray-800 hover:text-brand transition" title="@center($bulk->room->center)" aria-label="@center($bulk->room->center)">@center($bulk->room->center)</a>
                 <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="block text-xs text-gray-600 hover:text-brand transition mt-1" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])</a>
             @endif
         </div>
-        <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">
+        {{-- <a href="{{ route('dashboard.rooms.show', $bulk->room->id) }}" class="flex justify-center items-center flex-shrink-0 w-14 h-14 bg-gray-300 text-gray-600 text-xs rounded-full border-2 border-white overflow-hidden" title="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])" aria-label="@lang('Therapy room of :user', ['user' => $bulk->room->manager->name])">
             @avatarOrName($bulk->room->manager)
-        </a>
+        </a> --}}
     </div>
     <div class="flex flex-col border border-gray-300 rounded p-4 bg-gray-50 mb-4 cursor-default">
         <h3 class="text-sm variable-font-medium text-gray-700 mb-2">{{ __('Samples list') }}</h3>
