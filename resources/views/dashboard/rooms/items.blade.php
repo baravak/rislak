@@ -10,4 +10,3 @@
     @endif
     @endforeach
 </div>
-{{ $rooms instanceof \App\Models\ApiCollection ? null : $room->links() }}
