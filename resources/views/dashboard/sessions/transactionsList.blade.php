@@ -19,7 +19,15 @@
                     <tr>
                         <td class="p-3 whitespace-nowrap">
                             <div class="flex items-center">
-                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">{{ $transaction->id }}</span>
+                                <span class="text-xs text-gray-700 block text-right dir-ltr cursor-default">
+                                    @can('pay', [\App\Billing::class, $transaction])
+                                        <div class="inline-block">
+                                            <a href="{{ route('dashboard.billings.settled', $transaction->id) }}" data-method="post" class="lijax inline-block px-3 py-1 text-xs text-brand hover:text-white border border-brand hover:bg-brand rounded-full transition">{{ __('Payment') }}</a>
+                                        </div>
+                                    @else
+                                        {{ $transaction->id }}
+                                    @endcan
+                                </span>
                             </div>
                         </td>
                         <td class="p-3 whitespace-nowrap">
