@@ -15,7 +15,7 @@
             </div>
             <div class="flex items-center">
                 <a href="/dashboard" class="text-sm text-gray-700 ml-6 pt-0.5">@lang('ورود')</a>
-                <a href="/register" class="flex items-center text-sm text-white bg-brand px-4 h-9 rounded-lg focus transition">
+                <a href="/dashboard" class="flex items-center text-sm text-white bg-brand px-4 h-9 rounded-lg focus transition">
                     <i class="fad fa-user-plus ml-2 pb-0.5"></i>
                     <span>@lang('Register')</span>
                 </a>
@@ -321,7 +321,7 @@
                     <h5 class="variable-font-semibold text-xl">به سادگی در ریسلو عضو شوید</h5>
                     <p class="variable-font-light text-sm mt-1">به سادگی و با ثبت شماره موبایل خود، می‌توانید در ریسلو عضو شوید.</p>
                 </div>
-                <a href="/register" class="text-brand bg-white rounded-full text-center w-28 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
+                <a href="/dashboard" class="text-brand bg-white rounded-full text-center w-28 py-2 variable-font-semibold focus-current ring-white mt-4 md:mt-0">@lang('Register')</a>
             </div>
         </div>
         <div class="container mx-auto px-8 mt-20 cursor-default">
