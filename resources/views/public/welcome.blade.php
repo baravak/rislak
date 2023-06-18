@@ -11,7 +11,7 @@
     <title>Risloo | ریسلو</title>
 </head>
 
-    @includeWhen(config('app.env') == 'local', 'public.welcome-new')
-    @includeWhen(config('app.env') != 'local', 'public.welcome-old')
-
+    {{-- @includeWhen(config('app.env') == 'local', 'public.welcome-old')
+    @includeWhen(config('app.env') != 'local', 'public.welcome-old') --}}
+    @include('public.welcome-new')
 </html>
