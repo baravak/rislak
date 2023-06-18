@@ -383,15 +383,19 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="flex flex-shrink-0">
+                        <div dir="ltr" class="flex items-center space-x-2">
                             {{-- <a class="w-20" referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" title="نماد اعتماد الکترونیکی ریسلو" aria-label="نماد اعتماد الکترونیکی ریسلو">
                                 <img referrerpolicy="origin" src="{{ asset('/images/logo/enamad-new-logo.png') }}" alt="" style="cursor:pointer;" id="nI17RKpP7XMHZTzmer28">
                             </a> --}}
 
-                            <a class="w-20"  referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
-                                <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
-                            </a>
-                            <img referrerpolicy='origin' id = 'rgvjwlaooeukapfurgvjfukz' style = 'cursor:pointer' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=348536&p=xlaoaodsmcsidshwxlaogvka", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=348536&p=qftishwlaqgwujynqftiwlbq' />
+                            <div class="w-20 h-20 p-1 border border-gray-300 rounded-md flex items-center justify-center">
+                                <img referrerpolicy='origin' id = 'rgvjwlaooeukapfurgvjfukz' style = 'cursor:pointer' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=348536&p=xlaoaodsmcsidshwxlaogvka", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=348536&p=qftishwlaqgwujynqftiwlbq' />
+                            </div>
+                            <div class="w-20 h-20 p-1 border border-gray-300 rounded-md flex items-center justify-center">
+                                <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
+                                    <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
+                                </a>                            
+                            </div>
                         </div>
                     {{-- </div> --}}
                 </div>
