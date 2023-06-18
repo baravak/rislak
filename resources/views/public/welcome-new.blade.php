@@ -388,8 +388,8 @@
                                 <img referrerpolicy="origin" src="{{ asset('/images/logo/enamad-new-logo.png') }}" alt="" style="cursor:pointer;" id="nI17RKpP7XMHZTzmer28">
                             </a> --}}
 
-                            <a class="w-20"  referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28">
-                                <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
+                            <a class="w-20"  referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&Code=nI17RKpP7XMHZTzmer28">
+                                <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
                             </a>
                         </div>
                     {{-- </div> --}}

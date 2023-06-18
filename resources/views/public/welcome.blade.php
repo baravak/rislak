@@ -8,7 +8,9 @@
     <meta name="description" content="Risloo | ریسلو">
     <link rel="stylesheet" href="@staticVersion('/css/public.css')">
     <script src="@staticVersion('/js/public.min.js')" defer></script>
-    <title>Risloo | ریسلو</title>
+    {{-- <title>Risloo | ریسلو</title> --}}
+    <title>ZVZVQ05</title>
+    <meta name="samandehi" content="163718077"/>
 </head>
 
     {{-- @includeWhen(config('app.env') == 'local', 'public.welcome-old')
