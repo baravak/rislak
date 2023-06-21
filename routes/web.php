@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    if(env('RISLOO_LICENSE') !== 'Risloo'){
+        return redirect('/dashboard');
+    }
     return view('public.welcome');
 })->name('home');
 
