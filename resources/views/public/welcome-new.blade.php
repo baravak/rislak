@@ -10,7 +10,9 @@
                     {{-- <a class="menu-item" href="#testimonial">@lang('نظر متخصصان')</a> --}}
                     <a class="menu-item" href="#services">@lang('خدمات')</a>
                     <a class="menu-item" href="#advantages">@lang('مزایا')</a>
-                    <a class="menu-item" href="#app">@lang('اپلیکیشن')</a>
+                    <a class="menu-item" href="#contact">@lang('تماس با ما')</a>
+                    <span class="bg-opacity-20 h-6 bg-white mx-4" style="width: 1px;"></span>
+                    <a class="menu-item" target="_blank" href="/dashboard">@lang('پنل کاربری')</a>
                 </nav>
             </div>
             <div class="flex items-center">
@@ -328,12 +330,12 @@
             <div class="flex flex-col-reverse items-center lg:grid lg:grid-cols-12 gap-8">
                 <div class="hidden lg:block col-span-2"></div>
                 <div class="lg:col-span-4">
-                    <img class="mt-6 lg:mt-0" src="{{ asset('/images/public/android-app.png') }}" alt="اپلیکیشن ریسلو">
+                    <img class="mt-6 lg:mt-0" src="{{ asset('/images/public/android-app.png') }}" alt="پنل کاربری ریسلو">
                 </div>
                 <div class="lg:col-span-5">
                     <div class="flex flex-col justify-center items-center lg:items-start lg:h-full">
-                        <h3 class="title">از اپلیکیشن ریسلو استفاده کنید</h3>
-                        <p class="text-gray-500 text-sm mt-2 text-center lg:text-right">جهت سهولت انجام فعالیت‌ها، اپلیکیشن ریسلو را دریافت نمایید.</p>
+                        <h3 class="title">از پنل کاربری ریسلو استفاده کنید</h3>
+                        <p class="text-gray-500 text-sm mt-2 text-center lg:text-right">جهت سهولت انجام فعالیت‌ها، نسخه وب پنل کاربری ریسلو را دریافت نمایید.</p>
                         <div class="flex items-center mt-4 lg:mt-6 space-x-2 space-x-reverse">
                             <a href="/dashboard" class="flex items-center justify-center h-10 border border-gray-500 text-gray-600 hover:bg-gray-50 transition rounded px-4 sm:px-6">
                                 <i class="fal fa-browser text-xl ml-2"></i>
@@ -363,9 +365,9 @@
                         </div>
                     </div> --}}
                     {{-- <div class="flex dir-ltr"> --}}
-                        <div>
-                            <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">با ما همراه باشید</h5>
-                            <div class="flex items-center space-x-2 space-x-reverse">
+                        <div id="contact">
+                            <h5 class="text-gray-700 variable-font-bold mb-4 text-sm">تماس با ما</h5>
+                            <div class="flex items-center space-x-2 space-x-reverse mb-2">
                                 {{-- <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
@@ -382,6 +384,7 @@
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
+                            <a href="tel:+982533557715" dir="ltr" class="text-sm text-gray-600">۰۲۵ - ۳۳۵۵۷۷۱۵</a>
                         </div>
                         <div dir="ltr" class="flex items-center space-x-2">
                             {{-- <a class="w-20" referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" title="نماد اعتماد الکترونیکی ریسلو" aria-label="نماد اعتماد الکترونیکی ریسلو">
