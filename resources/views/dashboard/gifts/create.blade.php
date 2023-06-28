@@ -97,6 +97,27 @@
                 <span>شما می‌توانید با جستجو از طریق شماره موبایل و یا نام، کاربرانی که فقط آن‌ها مجاز به استفاده از این کد می‌باشند را انتخاب کنید. در صورتی که می‌خواهید همه از این کد استفاده کنند، این بخش را خالی بگذارید.</span>
             </div>
         </div>
+        @if ($center->type == 'counseling_center')
+        <div class="mt-4">
+            <select class="select2-select"  name="atom"
+            data-title="manager.name manager.id" data-id="id" id="atom_id" 
+            data-url="{{ route('dashboard.rooms.index', ['center' => $center->id]) }}" 
+            data-avatar="manager.avatar.tiny.url manager.avatar.small.url" data-placeholder="{{ __('اتاق درمانی انتخاب نشده است') }}">
+            @isset($gift->atom)
+                <option value="{{ $gift->atom->id }}" data-json="{{ json_encode($gift->atom) }}">{{$gift->atom->manager->name}}</option>
+            @endisset
+        </select>
+        @isset($gift->atom)
+        <div data-for="atom_id" class="hidden">
+            @include('dashboard.rooms.select2', ['rooms' => [$gift->atom]])
+        </div>
+        @endisset
+            <div class="flex text-xs text-gray-400 mt-2 cursor-default">
+                <i class="fal fa-info-circle ml-1"></i>
+                <span>شما می‌توانید با جستجو از طریق شماره موبایل و یا نام، کاربرانی که فقط آن‌ها مجاز به استفاده از این کد می‌باشند را انتخاب کنید. در صورتی که می‌خواهید همه از این کد استفاده کنند، این بخش را خالی بگذارید.</span>
+            </div>
+        </div>
+        @endif
 
         <div class="mt-4">
             <label for="description" class="block mb-2 text-sm text-gray-700 variable-font-medium cursor-default">{{ __('Description') }}</label>

@@ -51,7 +51,7 @@ class GiftController extends Controller
     public function create(Request $request, $center){
         $query = 'query($id: RegionID!){
             region(id: $id){
-                id type detail{title}
+                id type detail{title} type
             }
         }';
         $response = Client::query($query, [
@@ -65,7 +65,7 @@ class GiftController extends Controller
 
     public function store(Request $request, $center){
         $store = <<<Query
-        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$exclusive: Boolean, \$exclusive_users:[GhostID!]){
+        mutation(\$center: RegionID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$exclusive: Boolean, \$exclusive_users:[GhostID!], \$atom_id:AtomID){
             createGift(region:\$center, input: {
                 title: \$title
                 description: \$description
@@ -77,6 +77,7 @@ class GiftController extends Controller
                 threshold: \$threshold
                 exclusive:\$exclusive
                 exclusive_users:\$exclusive_users
+                atom_id:\$atom_id
             }){
               id,code,started_at
             }
@@ -94,6 +95,7 @@ class GiftController extends Controller
             'threshold' => ctype_digit($request->threshold) ? (int) $request->threshold : $request->threshold,
             'exclusive' => $request->exclusive ? true : false,
             'exclusive_users' => $request->exclusive_users ?: [],
+            'atom_id' => $request->atom ?: null,
         ]);
         return[
             'redirect' => route('dashboard.gifts.show', [$center, $create->createGift->id])
@@ -203,13 +205,24 @@ class GiftController extends Controller
     public function edit(Request $request, $center, $gift){
         $query = 'query ($id: GiftID!){
             gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
-                region{id detail{title}}
+                region{id detail{title} type}
+                atom{id owner{name}}
             }
         }';
         $index = Client::query($query, [
             'id' => $gift,
         ]);
         $this->data->gift = $gift = $index->gift;
+        if(isset($this->data->gift->atom)){
+            $this->data->gift->atom = (object) [
+                'id' => $this->data->gift->atom->id,
+                'type' => 'room',
+                'manager' => (object) [
+                    'name' => $this->data->gift->atom->owner->name
+                ],
+                'center' => $gift->region
+                ];
+        }
         $this->data->center = $gift->region;
 
         $this->data->global->title = 'ویرایش کد تخفیف '. $gift->title;
@@ -219,7 +232,7 @@ class GiftController extends Controller
 
     public function update(Request $request, $center, $gift){
         $store = <<<Query
-        mutation(\$id: GiftID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$status:GiftUpdateStatus, \$exclusive: Boolean, , \$exclusive_users: [GhostID!]){
+        mutation(\$id: GiftID!, \$title: String!, \$description : String, \$type:  GiftType!, \$value: Int!, \$started_at: Timestamp, \$expires_at: Timestamp, \$disposable: Boolean, \$threshold: Int, \$status:GiftUpdateStatus, \$exclusive: Boolean, \$exclusive_users: [GhostID!], \$atom_id:AtomID){
             updateGift(id:\$id, input: {
                 title: \$title
                 description: \$description
@@ -232,6 +245,7 @@ class GiftController extends Controller
                 status: \$status
                 exclusive: \$exclusive
                 exclusive_users: \$exclusive_users
+                atom_id:\$atom_id
             }){
               id,code,started_at
             }
@@ -250,6 +264,7 @@ class GiftController extends Controller
             'status' => $request->status ? 'open' : 'expires',
             'exclusive' => $request->exclusive ? true : false,
             'exclusive_users' => $request->exclusive_users ?: [],
+            'atom_id' => $request->atom ?: null,
         ]);
         return[
             'redirect' => route('dashboard.gifts.show', [$center, $create->updateGift->id])
