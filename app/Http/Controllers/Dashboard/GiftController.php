@@ -118,6 +118,7 @@ class GiftController extends Controller
         $query = 'query ($id: GiftID!, $page:Int, $search: String){
             gift(id:$id){id title code description disposable threshold usage_count user_count type value started_at expires_at exclusive status renew_count last_renew_at
                 region{id detail{title}}
+                atom {id owner{name}}
                 postcard{url image}
                 users(first:10, page:$page, search:$search){
                     paginatorInfo{ count currentPage total perPage}
