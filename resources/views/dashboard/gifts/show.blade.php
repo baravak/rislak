@@ -42,13 +42,17 @@
                             <span class="block text-xs text-gray-500">تعداد کاربران استفاده کننده</span>
                             <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->user_count }}</span>
                         </div>
-                        <div>
+                        {{-- <div>
                             <span class="block text-xs text-gray-500">کاربر خاص</span>
                             <span class="block text-gray-700 variable-font-medium mt-1">{{ $gift->exclusive ? 'دارد' : 'ندارد' }}</span>
-                        </div>
+                        </div> --}}
                         <div>
                             <span class="block text-xs text-gray-500">تعداد استفاده توسط هر کاربر</span>
                             <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">{{ $gift->disposable ? 'فقط یکبار' : 'بیش‌از یکبار' }}</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">درمانگر</span>
+                            <span class="block text-sm text-gray-700 variable-font-medium mt-1.5">اسم درمانگر</span>
                         </div>
                         <div>
                             <span class="block text-xs text-gray-500">وضعیت</span>

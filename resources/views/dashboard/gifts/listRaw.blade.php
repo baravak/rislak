@@ -9,7 +9,10 @@
             <div title="@lang('کپی کردن کد')" class="text-sm text-gray-600 hover:text-blue-600 transition ml-1 focus-current ring-blue-600 rounded-full w-5 h-5 flex items-center justify-center" data-clipboard-text="{{ substr($gift->code, 10) }}"><i class="fal fa-copy pb-0.5"></i></div>
             <span class="text-xs text-right text-gray-600 dir-ltr en cursor-default pb-0.5 font-medium">{{ substr($gift->code, 10) }}</span>
         </div>
-        <span class="text-xs text-gray-600 variable-font-medium lg:variable-font-normal">{{ $gift->title }}</span>
+        <div class="flex flex-col">
+            <span class="text-xs text-gray-600 variable-font-medium">{{ $gift->title }}</span>
+            <span class="text-xs text-gray-500 mt-0.5">اسم مشاور</span>
+        </div>
         <div class="flex text-xs text-gray-600 lg:hidden mt-1">
             @if ($gift->type == 'percent')
                 مقدار تخفیف: <span class="block dir-ltr text-right mr-1">% {{ $gift->value }}</span>
