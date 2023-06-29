@@ -15,7 +15,7 @@ class GiftController extends Controller
                         total, hasMorePages, count, currentPage, perPage
                     }
                     data{
-                        id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count, status
+                        id,title,code,disposable,type,value,threshold,started_at,expires_at,usage_count,user_count, status atom{id owner{name}}
                     }
                 }
                 region(id: $region){

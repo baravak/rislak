@@ -11,7 +11,9 @@
         </div>
         <div class="flex flex-col">
             <span class="text-xs text-gray-600 variable-font-medium">{{ $gift->title }}</span>
-            <span class="text-xs text-gray-500 mt-0.5">اسم مشاور</span>
+            @isset($gift->atom)
+            <span class="text-xs text-gray-500 mt-0.5">{{$gift->atom->owner->name}}</span>
+            @endisset
         </div>
         <div class="flex text-xs text-gray-600 lg:hidden mt-1">
             @if ($gift->type == 'percent')
