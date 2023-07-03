@@ -399,6 +399,9 @@
                                     <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
                                 </a>                            
                             </div>
+                            <div class="w-20 h-20 p-2 border border-gray-300 rounded-md flex items-center justify-center">
+                                <img src="{{ asset('/images/public/risloo-senfi.png') }}" alt="سازمان نظام صنفی رایانه‌ای کشور">                          
+                            </div>
                         </div>
                     {{-- </div> --}}
                 </div>
