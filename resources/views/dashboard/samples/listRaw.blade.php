@@ -27,6 +27,9 @@
                         <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ $sample->room->manager->name }}</a>
                     </div>
                 @endif
+                @isset($sample->room->center->detail->title)
+                    <a class="text-xs text-gray-600 hover:text-blue-500 underline" href="{{ $sample->room->center->route('show')}}">{{$sample->room->center->detail->title}}</a>
+                @endisset
                 @if ($sample->case)
                     <div class="flex">
                         <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
@@ -61,8 +64,13 @@
     @if ((isset($bulkSample) && $bulkSample->case_status == 'personal') || !isset($bulkSample))
         <div class="flex-1 px-2 hidden sm:flex flex-col">
             @if ($sample->room)
-                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">{{ $sample->room->manager->name }}</a>
+                <a href="{{ $sample->room->route('show') }}" class="text-xs text-gray-600 hover:text-blue-500 underline">
+                    {{ $sample->room->manager->name }}
+                </a>
             @endif
+            @isset($sample->room->center->detail->title)
+                <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ $sample->room->center->route('show')}}">{{$sample->room->center->detail->title}}</a>
+            @endisset
             @if ($sample->case)
                 <a class="text-xs text-gray-500 hover:text-blue-500 underline mt-2" href="{{ route('dashboard.cases.show', $sample->case->id) }}">@lang('Case') {{ $sample->case->id }}</a>
             @endif
