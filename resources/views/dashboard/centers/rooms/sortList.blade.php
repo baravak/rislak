@@ -17,7 +17,7 @@
                 </div>
                 <div class="absolute left-2 top-2">
                     <div class="relative inline-block w-8 mr-2 align-middle select-none transition ease-in-out duration-700" title="فعال / غیر فعال">
-                        <input checked type="checkbox" :name="`available[${room.id}]`" :id="`available[${room.id}]`" data-method="" data-action="" data-xhrbase="" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer platform-available-input">
+                        <input :checked="room.status === 'active'" type="checkbox" x-on:change="new Statio({context: $el, url : `/dashboard/rooms/${room.id}`,type:'render', ajax:{method : 'PUT', data : {status : $el.checked ? 1 : 0}}})" :name="`available[${room.id}]`" :id="`available[${room.id}]`" data-method="" data-action="" data-xhrbase="" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer platform-available-input">
                         <label :for="`available[${room.id}]`" class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
                     </div>
                 </div>
