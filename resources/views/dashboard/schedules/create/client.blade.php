@@ -41,7 +41,7 @@
 
 <div class="mt-4" id="clients-number-input">
     <label for="clients_number" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('تعداد حداکثر مراجعین')</label>
-    <input type="number" id="clients_number" name="clients_number" step="1" min="1" max="50" value="1" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+    <input type="number" id="clients_number" name="clients_number" step="1" min="1" max="1000" value="1" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
 </div>
 <div class="mt-4">
     <label for="selection_type" class="block mb-2 text-sm text-gray-700 font-medium">@lang('نوع انتخاب مراجع(ین)')</label>
