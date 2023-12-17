@@ -21,5 +21,10 @@
             <a href="{{ route('dashboard.sessions.edit', $session->id) }}" class="text-xs text-gray-600 border border-gray-300 rounded-full px-4 h-7 inline-flex items-center hover:text-white hover:bg-brand transition mt-4">@lang('Edit session')</a>
         @endcan
     </div>
+    @if($center->id === 'RS966666Q' && env('RISLOO_LICENSE') === 'Risloo')
+        <div class="m-auto w-full md:w-2/3 xl:w-1/2 border border-gray-300 rounded p-4 mb-2 bg-yellow-50 cursor-default text-sm">
+            مراجعین خارج از ایران، حتما قبل از رزرو جلسه با مرکز تماس گرفته و هماهنگی‌های لازم را به عمل آورند.
+        </div>
+    @endif
     @include('dashboard.sessions.createUserForm')
 @endsection
