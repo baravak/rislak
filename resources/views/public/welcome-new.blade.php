@@ -374,7 +374,7 @@
                                 <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
                                     <i class="fab fa-twitter"></i>
                                 </a> --}}
-                                <a href="https://t.me/risloo" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
+                                <a href="https://t.me/RislooAdmin" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 text-sm rounded-md">
                                     <i class="fab fa-telegram-plane"></i>
                                 </a>
                                 {{-- <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
@@ -383,10 +383,13 @@
                                 <a href="https://wa.me/+989339088858" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
+                                <a href="https://ble.ir/RislooAdmin" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md p-1">
+                                    <img src="{{ asset('/images/public/bale.svg') }}" alt="بله">  
+                                </a>
                             </div>
                             <a href="tel:+982533557715" dir="ltr" class="text-sm text-gray-600">۰۲۵ - ۳۳۵۵۷۷۱۵</a>
                         </div>
-                        <div dir="ltr" class="flex items-center space-x-2">
+                        <div dir="ltr" class="grid grid-cols-2 md:grid-cols-4 gap-2">
                             {{-- <a class="w-20" referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=223057&amp;Code=nI17RKpP7XMHZTzmer28" title="نماد اعتماد الکترونیکی ریسلو" aria-label="نماد اعتماد الکترونیکی ریسلو">
                                 <img referrerpolicy="origin" src="{{ asset('/images/logo/enamad-new-logo.png') }}" alt="" style="cursor:pointer;" id="nI17RKpP7XMHZTzmer28">
                             </a> --}}
@@ -399,8 +402,11 @@
                                     <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=223057&Code=nI17RKpP7XMHZTzmer28" alt="" style="cursor:pointer" id="nI17RKpP7XMHZTzmer28">
                                 </a>                            
                             </div>
-                            <div class="w-20 h-20 p-2 border border-gray-300 rounded-md flex items-center justify-center">
+                            <div class="w-20 h-20 p-1 border border-gray-300 rounded-md flex items-center justify-center">
                                 <img src="{{ asset('/images/public/risloo-senfi.png') }}" alt="سازمان نظام صنفی رایانه‌ای کشور">                          
+                            </div>
+                            <div class="w-20 h-20 p-3 border border-gray-300 rounded-md flex items-center justify-center">
+                                <img src="{{ asset('/images/public/risloo-khallagh.png') }}" alt="شرکت خلاق در معاونت علمی و فناوری ریاست جمهوری">                          
                             </div>
                         </div>
                     {{-- </div> --}}
