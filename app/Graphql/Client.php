@@ -38,7 +38,6 @@ class Client{
                 if($first->extensions->category == 'custom'){
                     abort(422, $first->message);
                 }
-                dd($first);
                 abort(500, $first->message);
             }
         }elseif(!$result){
