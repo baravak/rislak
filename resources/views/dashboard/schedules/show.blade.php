@@ -25,9 +25,6 @@
         <div class="m-auto w-full md:w-2/3 xl:w-1/2 border border-gray-300 rounded p-4 mb-2 bg-yellow-50 cursor-default text-sm">
             مراجعین خارج از ایران، حتما قبل از رزرو جلسه با مرکز تماس گرفته و هماهنگی‌های لازم را به عمل آورند.
         </div>
-        <div class="m-auto w-full md:w-2/3 xl:w-1/2 border border-gray-300 rounded p-4 mb-2 bg-yellow-50 cursor-default text-sm">
-            قیمت‌ها به صورت علی‌الحساب می‌باشد و با توجه به تعیین نرخ سازمان‌نظام روان‌شناسی به صورت نهایی اعلام خواهد شد و ما به التفاوت دریافت می‌شود.
-        </div>
     @endif
     @include('dashboard.sessions.createUserForm')
 @endsection
