@@ -380,7 +380,7 @@
                                 {{-- <a href="#" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
                                     <i class="fab fa-instagram"></i>
                                 </a> --}}
-                                <a href="https://wa.me/+989339088858" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
+                                <a href="https://wa.me/+989910190602" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                                 <a href="https://ble.ir/RislooAdmin" target="_blank" class="flex items-center justify-center w-7 h-7 bg-gray-200 text-gray-400 rounded-md p-1">
