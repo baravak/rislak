@@ -44,7 +44,7 @@
         @if (!$bulk->room->center->acceptation)
         <div class="mt-4">
             <label for="nickname" class="block mb-2 text-sm text-gray-700 variable-font-medium">{{ __('My nickname') }}</label>
-            <input type="text" class="w-full text-sm border border-gray-200 rounded" id="nickname" name="nickname" value="{{ auth()->user()->name }}" placeholder="{{ __('Nickname') }}">
+            <input type="text" class="w-full text-sm border border-gray-200 rounded" id="nickname" name="nickname" value="{{ auth()->user()->name }}" placeholder="{{ __('My nickname') }}">
         </div>
         @endif
         <button type="submit" class="flex items-center justify-center w-full h-10 text-sm rounded-full bg-brand text-white hover:bg-brand-600 transition mt-4 focus" title="{{ __('Verify and continue') }}" aria-label="{{ __('Verify and continue') }}" role="button">{{ __('Verify and continue') }}</button>
