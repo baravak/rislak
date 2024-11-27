@@ -9,14 +9,14 @@
         <div class="text-xs text-gray-600 cursor-default">@time($settlement->created_at,'ساعت H:i')</div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
-        <div class="text-xs text-gray-600 variable-font-medium cursor-default">{{ $settlement->creator->name }}</div>
+        <div class="text-xs text-gray-600 variable-font-medium cursor-default">{{ $settlement->creator->name }} {{ $settlement->has_room || isset($settlement->center) ? '*' : '' }}</div>
         @if ($settlement->center)
             <div class="text-xs text-gray-500 cursor-default">{{ $settlement->center->detail->title  }}</div>
         @endif
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
         <div class="flex items-center">
-            <span class="text-xs text-gray-600">@amount($settlement->amount)</span>
+            <span class="text-xs text-gray-600 cursor-pointer" data-clipboard-text="{{$settlement->amount * 10}}">@amount($settlement->amount)</span>
         </div>
     </td>
     <td class="px-3 py-2 whitespace-nowrap">
