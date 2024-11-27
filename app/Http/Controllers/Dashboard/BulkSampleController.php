@@ -11,7 +11,7 @@ class BulkSampleController extends Controller
     {
         $bulkSamples = $this->data->bulkSamples = BulkSample::apiIndex($request->all());
         $this->data->global->title = __('Bulk samples');
-        return $this->view($request, 'dashboard.bulk-samples.index');
+        return $this->view($request, $request->header('data-xhr-base') == 'quick_search'? 'dashboard.bulk-samples.list-xhr' : 'dashboard.bulk-samples.index');
     }
 
     public function show(Request $request, BulkSample $bulkSample){
