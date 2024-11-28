@@ -22,7 +22,7 @@
         </div>
         <div class="mt-4">
             <label for="cc[]" class="block mb-2 text-sm text-gray-700 font-medium">{{ __('CC to') }}</label>
-            <select class="select2-select" multiple  name="cc[]"  id="cc" data-url="{{ route('dashboard.center.users.index', ['center' => $center->id, 'position' => join(',',config('users.room_managers'))])}}" data-placeholder="{{ __('Select :attribute', ['attribute' => __('User')]) }}">
+            <select class="select2-select" multiple  name="cc[]"  id="cc" data-url="{{ route('dashboard.room.users.index', ['room' => $room->id])}}" data-placeholder="{{ __('Select :attribute', ['attribute' => __('User')]) }}">
                 @if (isset($report->viewers))
                 @foreach ($report->viewers as $viewer)
                     @if ($viewer->user_id == auth()->id())
@@ -36,7 +36,7 @@
             </select>
             @if (isset($report->viewers))
             <div data-for="cc">
-                @include('dashboard.center-users.select2', ['users' => $report->viewers])
+                @include('dashboard.room-users.select2', ['users' => $report->viewers])
             </div>
             @endif
         </div>
