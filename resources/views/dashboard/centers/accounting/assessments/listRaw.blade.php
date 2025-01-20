@@ -51,7 +51,7 @@
             <button type="button" class="flex items-center justify-center w-40 h-8 rounded border border-green-600 text-green-600 text-sm hover:text-white hover:bg-green-600 transition" x-show="!temp_allowed"
             x-on:click="temp_allowed = true;
                 $refs['amount-input-{{ $assessment->assessment->id }}'].value = '00';
-                $refs['amount-input-{{ $assessment->assessment->id }}'].dispatchEvent(new Event('change'))
+                $refs['amount-input-{{ $assessment->assessment->id }}'].dispatchEvent(new Event('change'));
                 $refs['amount-input-{{ $assessment->assessment->id }}'].value = '0';
             ">
                 @lang('افزودن به لیست')
