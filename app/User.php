@@ -32,7 +32,7 @@ class User extends _User
         }
         else
         {
-            return mb_substr($word[0], 0, 1) . mb_substr($word[count($word)-1], 0, 1);
+            return mb_substr($word[count($word)-1], 0, 1);
         }
     }
 
