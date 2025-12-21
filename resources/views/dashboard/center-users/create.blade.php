@@ -52,4 +52,12 @@
             <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">{{ __('Create case for this client') }}</span>
         </label>
     </div>
+    @if(env('RISLOO_LICENSE') !== 'Risloo')
+    <div class="mt-4">
+        <label class="inline-flex items-center group">
+            <input type="checkbox" name="sp_type" id="sp_type" value="1" class="w-3.5 h-3.5 border border-gray-600 rounded-sm focus:ring-1 focus:ring-offset-1">
+            <span class="text-sm text-gray-600 mr-2 group-hover:text-blue-600">مراجع طلبه است</span>
+        </label>
+    </div>
+    @endif
 @endsection

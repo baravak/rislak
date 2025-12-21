@@ -21,9 +21,9 @@ class CenterDetail extends Relationship
         }
         $word = mb_split(' ', $this->title);
         if (count($word) == 1) {
-            return mb_substr($word[0], 0, 2);
+            return mb_substr($word[0], 0, 1);
         } else {
-            return mb_substr($word[0], 0, 1) . mb_substr($word[count($word) - 1], 0, 1);
+            return mb_substr($word[0], 0, 1);
         }
     }
 }
