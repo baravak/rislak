@@ -1,4 +1,4 @@
-
+@isset($scoring->profiles->where)
 <div data-xhr="sample-profiles" id="sample-profile">
     <h3 class="heading">صفحه دوم</h3>
     <div class="mt-4">
@@ -8,3 +8,5 @@
         </a>
     </div>
 </div>
+@endif
+
