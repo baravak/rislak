@@ -15,7 +15,7 @@
             <i class="fal fa-info-circle ml-1 mt-0.5"></i>
             <span>@lang('Mobile verify help :mobile', ['mobile' => $theory->response('authorized_key')])</span>
         </div>
-        <div class="flex text-md text-gray-400 mt-2 cursor-default leading-relaxed" style="background: #007ba414;
+        {# <div class="flex text-md text-gray-400 mt-2 cursor-default leading-relaxed" style="background: #007ba414;
 border: 1px solid #007ba47a;
 border-radius: 8px;
 padding: 10px;
@@ -24,7 +24,7 @@ color: #007ba4;">
             <span>
                 در صورتی که پیامکی دریافت نکردید، کد {{$theory->response('secKey')}} را با همان شماره موبایلی که وارد نموده‌اید، به شمارۀ ۱۰۰۰۳۹۱۸ پیامک کنید. سپس دکمه «تایید موبایل» را بزنید. ممکن است گاهی طول بکشد، اگر تایید نشد، با فاصلۀ ده ثانیه مجددا دکمه را بزنید.
             </span>
-        </div>
+        </div> #}
 
     </div>
 
