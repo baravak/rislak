@@ -2,6 +2,7 @@
     $_aProfiles = [
         ['صفحه ۲', 'page2', 'profile_page2_png'],
         ['صفحه ۳', 'page3', 'profile_page3_png'],
+        ['صفحه ۴', 'page4', 'profile_page4_png'],
 ];
 @endphp
 <div data-xhr="sample-profiles" id="sample-profile">
