@@ -126,14 +126,14 @@ class SampleController extends Controller
 
     public function purchase(Request $request, $sample){
         try {
-            $sample = Sample::purchase($sample, $request->all());
+            $billing = Sample::purchase($sample, $request->all());
             if($request->header('data-xhr-base') == 'inline'){
-                return $sample->response()->json([
-                    'redirect' => urldecode(route('dashboard.samples.show', $sample->action_serial))
+                return $billing->response()->json([
+                    'redirect' => urldecode(route('dashboard.samples.show', $billing->action_serial))
                 ]);
             }
 
-            return $sample->response()->json([
+            return $billing->response()->json([
                 'redirect' => urldecode(route('samples.form', $sample)),
                 'direct' => true
             ]);
