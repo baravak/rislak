@@ -110,6 +110,15 @@
     });
     $('input, textarea, select', '[data-type="item"]').on('change', function(){
         if($(this).is('[data-mute]')) return;
+        if($(this).is('input[type=number]')){
+            this.setCustomValidity('');
+            if(!this.checkValidity()){
+                this.setCustomValidity(numberValidityMessage(this));
+                this.reportValidity();
+                $(this).parents('[data-type="item"]').attr('data-answer', '');
+                return;
+            }
+        }
         var data = $(this).attr('data-merge') ? JSON.parse($(this).attr('data-merge')) : [];
         if($(this).is(':radio, :hidden, textarea, input[type=number]')){
             data[1] = $(this).val();
@@ -155,6 +164,18 @@
             }, 300);
         }
     });
+    function numberValidityMessage(input){
+        var min = $(input).attr('min'), max = $(input).attr('max'), step = $(input).attr('step');
+        if(input.validity.rangeUnderflow || input.validity.rangeOverflow){
+            if(min !== undefined && max !== undefined) return 'عدد باید بین ' + min + ' و ' + max + ' باشد';
+            if(input.validity.rangeUnderflow) return 'عدد نباید کمتر از ' + min + ' باشد';
+            return 'عدد نباید بیشتر از ' + max + ' باشد';
+        }
+        if(input.validity.stepMismatch){
+            return step == 1 ? 'عدد باید صحیح باشد' : 'عدد باید مضربی از ' + step + ' باشد';
+        }
+        return 'لطفاً یک عدد معتبر وارد کنید';
+    }
     var queues_list = [];
     var requesting = false;
     var tryTimes = [1, 3, 5, 10, 15];
@@ -177,7 +198,19 @@
             scriptCharset: "utf-8",
             data: {items : data}
         }).always(function (response, status){
-            if (status != 'success')
+            if (status != 'success' && response.status == 422)
+            {
+                var json = response.responseJSON || {};
+                var errors = json.errors ? Object.values(json.errors)[0] : null;
+                var message = errors ? (Array.isArray(errors) ? errors[0] : errors) : (json.message_text || json.message || 'مقدار واردشده معتبر نیست');
+                $('[data-sync-status]').text(message);
+                if (queues_list.length){
+                    send();
+                } else {
+                    requesting = false;
+                }
+            }
+            else if (status != 'success')
             {
                 for (var i = 0; i < data.length; i++) {
                     queues_list.push(data[i]);
