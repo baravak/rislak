@@ -6,7 +6,7 @@
 <div class="mt-4">
     <label for="duration" class="inline-block mb-2 text-sm text-gray-700 font-medium">@lang('Session duration')</label>
     <span class="text-xs text-gray-600 font-light mr-1">(ساعت-دقیقه)</span>
-    <input type="number" id="duration" name="duration" step="5" min="30" max="120" value="{{ isset($session) ? $session->duration : 45}}" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
+    <input type="number" id="duration" name="duration" step="5" min="10" max="120" value="{{ isset($session) ? $session->duration : 45}}" class="border border-gray-500 placeholder-gray-300 h-10 rounded px-4 w-full text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 dir-ltr text-left">
 </div>
 
 <div class="mt-4">
